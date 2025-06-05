@@ -14,8 +14,10 @@
   },
   "dependencies": {
     "@inubekit/inubekit": "^4.0.0",
+    "design-tokens": "^1.0.1",
     "react": "^18.3.1",
-    "react-dom": "^18.3.1"
+    "react-dom": "^18.3.1",
+    "styled-components": "^6.1.18"
   },
   "devDependencies": {
     "@chromatic-com/storybook": "^4.0.0",
@@ -46,6 +48,7 @@
     "typescript": "^5.5.3",
     "typescript-eslint": "^8.7.0",
     "vite": "^5.4.8",
+    "vite-tsconfig-paths": "^5.1.4",
     "vitest": "^3.2.1"
   },
   "lint-staged": {

@@ -1,12 +1,17 @@
-import type { ICard } from '../../../types/ICard';
+import type { ICard } from "@types/components/card/ICard";
+import { StyledCard } from './styles'
+import { useMediaQuery } from '@inubekit/inubekit';
+
 
 const Card = (porps: ICard) => {
     const { children } = porps;
 
+    const screenMobile = useMediaQuery("(max-width: 768px)");
+
     return (
-        <div>
+        <StyledCard $isMobile={screenMobile}>
             {children}
-        </div>
+        </StyledCard>
     );
 }
 

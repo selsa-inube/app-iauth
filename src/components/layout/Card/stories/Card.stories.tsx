@@ -1,5 +1,5 @@
 import { Card } from "..";
-import { ICard } from "../../../../types/ICard";
+import type { ICard } from "@card-types/ICard/index";
 import { Box, Button, Input, Text } from "@inubekit/inubekit"
 
 const story = {
