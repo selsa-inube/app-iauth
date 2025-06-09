@@ -1,7 +1,15 @@
-import { Card } from "./components/layout/Card";
+import UserIU from './test/input';
+import TestLink from './test/lintTest';
+import { Route, Routes } from 'react-router-dom';
 
 function App() {
-  return <Card> </Card>;
+
+  return (
+    <Routes>
+      <Route path="/" element={<UserIU />} />
+      <Route path="/test" element={<TestLink />} />
+    </Routes>
+  );
 }
 
 export { App };
