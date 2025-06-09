@@ -14,6 +14,7 @@
   },
   "dependencies": {
     "@inubekit/inubekit": "^4.0.0",
+    "axios": "^1.9.0",
     "design-tokens": "^1.0.1",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",

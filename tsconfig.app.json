@@ -22,8 +22,10 @@
     "noFallthroughCasesInSwitch": true,
     "baseUrl": ".",
     "paths": {
-      "@types/*": ["src/types/*"],
-      "@card-types/*": ["src/types/components/card/*"]
+      "@ptypes/*": ["src/types/*"],
+      "@card-types/*": ["src/types/components/card/*"],
+      "@config/*": ["src/config/*"],
+      "@services/*": ["src/services/*"]
     }
   },
   "include": ["src"],
