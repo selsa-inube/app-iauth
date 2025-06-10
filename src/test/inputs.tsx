@@ -1,6 +1,4 @@
 import { Input, Stack, Text, Link, IInput } from "@inubekit/inubekit";
-import { useTwoStepLoginForm } from "../hooks/useTwoStepLoginForm";
-import { StyledMdOutlinePersonOutline, StyledMdLockOutline } from "./styles";
 import React from "react";
 
 type FormStepLabels = {
@@ -17,13 +15,12 @@ type FormStepLabels = {
 
 interface DynamicInputs {
     labels: FormStepLabels,
-    inputValid: boolean,
+    inputValid: boolean | null,
     handleInputChange: (e: React.ChangeEvent<HTMLInputElement>) => void,
     inputValue: string
 }
 
 const DynamicInputs: React.FC<DynamicInputs> = (props) => {
-    
     return (
         <>
             <Stack height="68px"
@@ -56,9 +53,9 @@ const DynamicInputs: React.FC<DynamicInputs> = (props) => {
                 width="452px">
                 <Input
                     size="wide"
-                    status={!props.inputValid ? 'invalid' : 'pending'}
+                    status={props.inputValid === false ? 'invalid' : 'pending'}
                     fullwidth={true}
-                    message={!props.inputValid ? props.labels.messageError : ''}
+                    message={props.inputValid === false  ? props.labels.messageError : ''}
                     iconBefore={props.labels.inputIcon} 
                     placeholder={props.labels.inputPlaceholder}
                     type={props.labels.inputType} 

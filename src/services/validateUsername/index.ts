@@ -1,6 +1,6 @@
-const valietateUsername = (username: string): boolean => {
-    console.log(username);
+const validateUsername = (username: string): boolean => {
+    console.log('Validate user: ', username)
     return true; 
 }
 
-export { valietateUsername };
+export { validateUsername };
