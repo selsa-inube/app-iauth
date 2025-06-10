@@ -25,7 +25,8 @@
       "@ptypes/*": ["src/types/*"],
       "@card-types/*": ["src/types/components/card/*"],
       "@config/*": ["src/config/*"],
-      "@services/*": ["src/services/*"]
+      "@services/*": ["src/services/*"],
+      "@design/*": ["src/design/*"]
     }
   },
   "include": ["src"],

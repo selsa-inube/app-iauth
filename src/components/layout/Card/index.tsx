@@ -1,4 +1,4 @@
-import type { ICard } from "@types/components/card/ICard";
+import type { ICard } from "@ptypes/components/card/ICard";
 import { StyledCard } from './styles'
 import { useMediaQuery } from '@inubekit/inubekit';
 

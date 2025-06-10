@@ -8,6 +8,7 @@ export default defineConfig({
     alias: {
       '@types': path.resolve(__dirname, './src/types'),
       '@card-types': path.resolve(__dirname, './src/types/components/card'),
+      '@design': path.resolve(__dirname, './src/design'),
     }
   },
 });
