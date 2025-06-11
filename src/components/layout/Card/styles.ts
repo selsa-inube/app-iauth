@@ -10,7 +10,7 @@ const StyledCard = styled.div<StyledCardProps>`
     theme?.palette?.neutral?.N10 || inube.palette.neutral.N10};
     border-radius: 8px;
     width: ${({ $isMobile }) => ($isMobile ? "320px" : "500px")};
-    height: ${({ $isMobile }) => ($isMobile ? "354px" : "430.02px" )};
+    height: ${({ $isMobile }) => ($isMobile ? "394px" : "400px" )};
     box-shadow: 0px 1px 2px 0px ${({ theme }) =>
     theme?.palette?.neutral?.N10 || inube.palette.neutral.N10};
     padding: ${({ $isMobile }) => ($isMobile ? "12px" : "24px")};

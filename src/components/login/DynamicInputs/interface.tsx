@@ -1,26 +1,8 @@
-import { Input, Stack, Text, Link, IInput } from "@inubekit/inubekit";
+import { Input, Stack, Text, Link } from "@inubekit/inubekit";
 import React from "react";
+import { IDynamicInputs } from "@ptypes/components/login/IDynamicInputs";
 
-type FormStepLabels = {
-    mainLabel: string;
-    subMainLabel: string;
-    inputLabel: string;
-    inputPlaceholder: string;
-    inputType: IInput['type'];
-    inputId: string;
-    inputIcon: React.ReactNode;
-    linkLabel: string;
-    messageError?: string;
-};
-
-interface DynamicInputs {
-    labels: FormStepLabels,
-    inputValid: boolean | null,
-    handleInputChange: (e: React.ChangeEvent<HTMLInputElement>) => void,
-    inputValue: string
-}
-
-const DynamicInputs: React.FC<DynamicInputs> = (props) => {
+const DynamicInputsUI: React.FC<IDynamicInputs> = (props) => {
     return (
         <>
             <Stack height="68px"
@@ -31,7 +13,7 @@ const DynamicInputs: React.FC<DynamicInputs> = (props) => {
             >
                 <Text as="h1"
                     textAlign="center"
-                    size="medium"
+                    size={props.sizeLables}
                     type="headline"
                     weight="bold"
                     appearance="dark">
@@ -41,7 +23,7 @@ const DynamicInputs: React.FC<DynamicInputs> = (props) => {
                     as="p"
                     textAlign="center"
                     type="title"
-                    size="medium"
+                    size={props.sizeLables}
                     appearance="gray">
                     {props.labels.subMainLabel}
                 </Text>
@@ -49,17 +31,16 @@ const DynamicInputs: React.FC<DynamicInputs> = (props) => {
 
             <Stack
                 direction="column"
-                gap="12px"
-                width="452px">
+                gap="12px">
                 <Input
                     size="wide"
-                    status={props.inputValid === false ? 'invalid' : 'pending'}
+                    status={props.status}
                     fullwidth={true}
-                    message={props.inputValid === false  ? props.labels.messageError : ''}
-                    iconBefore={props.labels.inputIcon} 
+                    message={props.message}
+                    iconBefore={props.icon}
                     placeholder={props.labels.inputPlaceholder}
-                    type={props.labels.inputType} 
-                    label={props.labels.inputLabel} 
+                    type={props.labels.inputType}
+                    label={props.labels.inputLabel}
                     id={props.labels.inputId}
                     onChange={props.handleInputChange}
                     value={props.inputValue}
@@ -81,4 +62,4 @@ const DynamicInputs: React.FC<DynamicInputs> = (props) => {
     );
 }
 
-export { DynamicInputs };
+export { DynamicInputsUI };

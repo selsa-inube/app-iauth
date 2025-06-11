@@ -1,61 +1,22 @@
 import React, { useState } from 'react';
 import { validateRequiredField } from '../../validations/fieldsValidations';
-import { StyledMdOutlinePersonOutline, StyledMdLockOutline } from "../../test/styles";
-import { IInput } from '@inubekit/inubekit';
 import { validateUsername } from '../../services/validateUsername';
 import { validatePassword } from '../../services/validatePassword';
-
-type FormStep = 'usernameInput' | 'passwordInput' | 'loginSuccess';
-interface FormStepLabels {
-    mainLabel: string;
-    subMainLabel: string;
-    inputLabel: string;
-    inputPlaceholder: string;
-    inputType: IInput['type'];
-    inputId: string;
-    inputIcon: React.ReactNode;
-    linkLabel: string;
-    messageError?: string;
-};
-
-const labelsUserName: FormStepLabels = {
-    mainLabel: 'Servicio de identidad',
-    subMainLabel: 'Por favor, ingresa tu cuenta de usuario',
-    inputLabel: 'Cuenta de usuario',
-    inputPlaceholder: 'Usuario',
-    inputType: 'text',
-    inputId: 'userName',
-    inputIcon: <StyledMdOutlinePersonOutline />,
-    linkLabel: '¿Olvidaste tu usuario?',
-    messageError: 'El usuario es requerido.'
-}
-
-const labelsPassword: FormStepLabels = {
-    mainLabel: 'Bienvenido, ',
-    subMainLabel: 'Ahora, ingresa tu contraseña',
-    inputLabel: 'Contraseña',
-    inputPlaceholder: 'Clave',
-    inputType: 'password',
-    inputId: 'userPassword',
-    inputIcon: <StyledMdLockOutline />,
-    linkLabel: '¿Olvidaste tu contraseña?',
-    messageError: 'La contraseña es requerida.'
-}
+import { IFormStepLabels } from '@ptypes/hooks/IFormStepLabels'
+import { IFormStep, IStepValidationConfig } from '@ptypes/hooks/IStepValidationConfig';
+import { labelsPassword, labelsUserName } from '@config/login/labels';
 
 
-interface StepValidationConfig {
-    labelsObject: FormStepLabels;
-    validationFn: (value: string) => boolean;
-    errorMessage: string;
-    nextStep: FormStep;
-    onSuccess: () => void;
-};
+
+
+
+
 const useTwoStepLoginForm = () => {
-    const [currentStep, setCurrentStep] = useState<FormStep>('usernameInput');
+    const [currentStep, setCurrentStep] = useState<IFormStep>('usernameInput');
     const [inputValid, setInputValid] = useState<boolean | null>(null);
     const [inputValue, setInputValue] = useState('');
     const [userName, setUserName] = useState<string>('');
-    const [labels, setLabels] = useState<FormStepLabels>(labelsUserName);
+    const [labels, setLabels] = useState<IFormStepLabels>(labelsUserName);
 
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const isValid = validateRequiredField(e.target.value);
@@ -75,12 +36,12 @@ const useTwoStepLoginForm = () => {
         setInputValid(isValid)
     };
 
-    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
 
         switch (currentStep) {
             case 'usernameInput':
-                handleStepValidation({
+                await handleStepValidation({
                     labelsObject: labelsUserName,
                     validationFn: validateUsername,
                     errorMessage: 'El usuario no existe o está mal escrito.',
@@ -95,7 +56,7 @@ const useTwoStepLoginForm = () => {
                 break;
 
             case 'passwordInput':
-                handleStepValidation({
+                await handleStepValidation({
                     labelsObject: labelsPassword,
                     validationFn: validatePassword,
                     errorMessage: 'Contraseña incorrecta.',
@@ -111,7 +72,7 @@ const useTwoStepLoginForm = () => {
         }
     }
 
-    const handleStepValidation = (config: StepValidationConfig) => {
+    const handleStepValidation = async (config: IStepValidationConfig) => {
         if (!validateRequiredField(inputValue)) {
             setInputValid(false);
             config.labelsObject.messageError = 'Este campo es requerido.';
@@ -119,7 +80,9 @@ const useTwoStepLoginForm = () => {
             return;
         }
 
-        if (!config.validationFn(inputValue)) {
+        const respose = await config.validationFn(inputValue, userName);
+
+        if (!respose.success) {
             setInputValid(false);
             config.labelsObject.messageError = config.errorMessage;
             setLabels(config.labelsObject);

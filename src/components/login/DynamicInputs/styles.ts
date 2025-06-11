@@ -4,7 +4,8 @@ import { MdOutlinePersonOutline, MdLockOutline } from "react-icons/md";
 
 
 const StyledMdOutlinePersonOutline = styled(MdOutlinePersonOutline)`
-    color: ${inube.palette.neutral.N900}
+    color: ${({theme}) =>
+        theme?.palette?.neutral?.N900 || inube.palette.neutral.N900}
 `
 
 const StyledMdLockOutline = styled(MdLockOutline)`
