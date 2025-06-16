@@ -1,4 +1,4 @@
-import { Input, Stack, Text, Link } from "@inubekit/inubekit";
+import { Input, Stack, Text, Link, Icon} from "@inubekit/inubekit";
 import { IDynamicInputs } from "@ptypes/components/login/IDynamicInputs";
 
 const DynamicInputsUI = (props: IDynamicInputs) => {
@@ -14,6 +14,7 @@ const DynamicInputsUI = (props: IDynamicInputs) => {
 
     return (
         <>
+            <Icon appearance="primary" icon={icon} />
             <Stack height="68px"
                 alignItems="center"
                 direction="column"
