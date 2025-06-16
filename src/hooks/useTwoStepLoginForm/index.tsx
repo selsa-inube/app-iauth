@@ -6,11 +6,6 @@ import { IFormStepLabels } from '@ptypes/hooks/IFormStepLabels'
 import { IFormStep, IStepValidationConfig } from '@ptypes/hooks/IStepValidationConfig';
 import { labelsPassword, labelsUserName } from '@config/login/labels';
 
-
-
-
-
-
 const useTwoStepLoginForm = () => {
     const [currentStep, setCurrentStep] = useState<IFormStep>('usernameInput');
     const [inputValid, setInputValid] = useState<boolean | null>(null);
@@ -20,7 +15,6 @@ const useTwoStepLoginForm = () => {
 
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const isValid = validateRequiredField(e.target.value);
-        // Reset to the default error in case a previous submission failed with a different error.
         switch (currentStep) {
             case 'usernameInput':
                 labelsUserName.messageError = 'El usuario es requerido.';

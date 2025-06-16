@@ -32,7 +32,7 @@
       "@hooks/*": ["src/hooks/*"],
       "@assets/*": ["src/assets/*"],
       "@api/*": ["src/api/*"],
-      "@mocks/*": ["src/mocks/*"],
+      "@mocks/*": ["src/config/mocks/*"],
       "@pages/*": ["src/pages/*"],
 
     }

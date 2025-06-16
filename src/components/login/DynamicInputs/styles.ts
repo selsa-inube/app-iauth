@@ -9,7 +9,8 @@ const StyledMdOutlinePersonOutline = styled(MdOutlinePersonOutline)`
 `
 
 const StyledMdLockOutline = styled(MdLockOutline)`
-    color: ${inube.palette.neutral.N900}
+    color: ${({theme}) =>
+        theme?.palette?.neutral?.N900 || inube.palette.neutral.N900}
 `
 
 export {

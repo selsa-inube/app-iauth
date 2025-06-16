@@ -1,7 +1,7 @@
 import { DynamicInputs } from "..";
 import { IDynamicInputs } from "@ptypes/components/login/IDynamicInputs";
-import { labelsPasswrodMock } from "@mocks/components/IDynamicInputs/labelsMock/labelsPasswordMock";
-import { labelsUsernameMock } from "@mocks/components/IDynamicInputs/labelsMock/labelsUsernameMock";
+import { labelsPasswrodMock } from "@config/mocks/components/IDynamicInputs/labelsMock/labelsPasswordMock";
+import { labelsUsernameMock } from "@config/mocks/components/IDynamicInputs/labelsMock/labelsUsernameMock";
 import { MemoryRouter } from "react-router-dom";
 import { ThemeProviderWrapper } from "@context/themeContext";
 import { StoryFn } from "@storybook/react";
