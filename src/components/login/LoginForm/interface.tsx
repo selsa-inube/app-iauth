@@ -2,6 +2,7 @@ import { Divider, Grid, Stack, Text, Button } from "@inubekit/inubekit";
 import { DynamicInputs } from "@components/login/DynamicInputs";
 import logoPadlock from "@assets/img/lgo/logo-padlock-blue.png";
 import { ILoginFormProps } from "@ptypes/components/login/IDynamicInputs";
+import { titles } from "@config/login/titles";
 
 const LoginFormUI = (props: ILoginFormProps) => {
     const {
@@ -43,7 +44,7 @@ const LoginFormUI = (props: ILoginFormProps) => {
                         appearance="gray"
                         weight="bold"
                     >
-                        iAuth
+                        { titles.mainTitle }
                     </Text>
                 </Stack>
                 <Divider
