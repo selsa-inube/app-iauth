@@ -16,7 +16,7 @@ interface IDynamicInputs {
     icon?: ReactNode,
     status?: InputStatus,
     message?: string,
-    sizeLables: TextSize
+    labelsSize: TextSize
 };
 
 interface ILoginFormProps {
@@ -28,8 +28,8 @@ interface ILoginFormProps {
   inputValue: string;
   link?: ReactNode;
   screenMobile: string;
-  sizeLables: TextSize;
-  sizeLablesDiferent: TextSize;
+  labelsSize: TextSize;
+  labelsSizeDiferent: TextSize;
 }
 
 export type { IDynamicInputs, ILoginFormProps, InputStatus, TextSize };

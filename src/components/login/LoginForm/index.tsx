@@ -9,9 +9,9 @@ const LoginForm = () => {
     const { currentStep, handleSubmit, labels, inputValid, handleInputChange, inputValue } = useTwoStepLoginForm();
     const screenMobile = useMediaQuery("(max-width: 768px)");
     const widthStack = screenMobile ? "296px" : "452px";
-    const sizeLables:TextSize = screenMobile ? "small" : "medium";
-    const sizeLablesDiferent:TextSize = screenMobile ? "medium" : "large";
-    const link = currentStep === 'usernameInput' && <Links sizeLables={sizeLables} />
+    const labelsSize:TextSize = screenMobile ? "small" : "medium";
+    const labelsSizeDiferent:TextSize = screenMobile ? "medium" : "large";
+    const link = currentStep === 'usernameInput' && <Links labelsSize={labelsSize} />
 
     return (
         <>
@@ -24,8 +24,8 @@ const LoginForm = () => {
                 inputValue={inputValue}
                 link={link}
                 screenMobile={widthStack}
-                sizeLables={sizeLables}
-                sizeLablesDiferent={sizeLablesDiferent}
+                labelsSize={labelsSize}
+                labelsSizeDiferent={labelsSizeDiferent}
             />
         </>
 

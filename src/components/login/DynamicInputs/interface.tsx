@@ -4,7 +4,7 @@ import { IDynamicInputs } from "@ptypes/components/login/IDynamicInputs";
 const DynamicInputsUI = (props: IDynamicInputs) => {
     const {
         labels,
-        sizeLables,
+        labelsSize,
         status,
         message,
         icon,
@@ -22,19 +22,19 @@ const DynamicInputsUI = (props: IDynamicInputs) => {
             >
                 <Text as="h1"
                     textAlign="center"
-                    size={sizeLables}
+                    size={labelsSize}
                     type="headline"
                     weight="bold"
                     appearance="dark">
-                    {labels.mainLabel}
+                    {labels.header.title}
                 </Text>
                 <Text
                     as="p"
                     textAlign="center"
                     type="title"
-                    size={sizeLables}
+                    size={labelsSize}
                     appearance="gray">
-                    {labels.subMainLabel}
+                    {labels.header.subtitle}
                 </Text>
             </Stack>
 
@@ -47,10 +47,10 @@ const DynamicInputsUI = (props: IDynamicInputs) => {
                     fullwidth={true}
                     message={message}
                     iconBefore={icon}
-                    placeholder={labels.inputPlaceholder}
-                    type={labels.inputType}
-                    label={labels.inputLabel}
-                    id={labels.inputId}
+                    placeholder={labels.input.placeholder}
+                    type={labels.input.type}
+                    label={labels.input.label}
+                    id={labels.input.id}
                     onChange={handleInputChange}
                     value={inputValue}
                 />
@@ -63,7 +63,7 @@ const DynamicInputsUI = (props: IDynamicInputs) => {
                         rel="noopener noreferrer"
                         size="small"
                         type="label">
-                        {labels.linkLabel}
+                        {labels.link.text}
                     </Link>
                 </Stack>
             </Stack>

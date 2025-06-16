@@ -6,13 +6,13 @@ import { ILoginFormProps } from "@ptypes/components/login/IDynamicInputs";
 const LoginFormUI = (props: ILoginFormProps) => {
     const {
         handleSubmit,
-        sizeLablesDiferent,
+        labelsSizeDiferent,
         labels,
         inputValid,
         handleInputChange,
         inputValue,
         currentStep,
-        sizeLables,
+        labelsSize,
         screenMobile,
         link,
     } = props;
@@ -39,7 +39,7 @@ const LoginFormUI = (props: ILoginFormProps) => {
                     />
                     <Text
                         type="title"
-                        size={sizeLablesDiferent}
+                        size={labelsSizeDiferent}
                         appearance="gray"
                         weight="bold"
                     >
@@ -56,7 +56,7 @@ const LoginFormUI = (props: ILoginFormProps) => {
                     handleInputChange={handleInputChange}
                     inputValue={inputValue}
                     currentStep={currentStep}
-                    sizeLables={sizeLables}
+                    labelsSize={labelsSize}
 
                 />
 

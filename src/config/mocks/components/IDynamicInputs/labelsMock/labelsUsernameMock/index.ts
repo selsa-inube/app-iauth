@@ -1,12 +1,20 @@
 const labelsUsernameMock = {
-    mainLabel: 'Servicio de identidad  MOCK',
-    subMainLabel: 'Por favor, ingresa tu cuenta de usuario  MOCK',
-    inputLabel: 'Cuenta de usuario  MOCK',
-    inputPlaceholder: 'Usuario  MOCK',
-    inputType: 'text  MOCK',
-    inputId: 'userName  MOCK',
-    linkLabel: '¿Olvidaste tu usuario?  MOCK',
-    messageError: 'El usuario es requerido.  MOCK'
+    header: {
+        title: 'Servicio de identidad',
+        subtitle: 'Por favor, ingresa tu cuenta de usuario',
+    },
+    input: {
+        label: 'Cuenta de usuario',
+        placeholder: 'Usuario',
+        type: 'text',
+        id: 'userName',
+    },
+    link: {
+        text: '¿Olvidaste tu usuario?',
+    },
+    validation: {
+        errorMessage: 'El usuario es requerido.',
+    },
 };
 
 export { labelsUsernameMock };

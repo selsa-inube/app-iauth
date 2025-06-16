@@ -21,12 +21,12 @@ const story = {
 
 const LinkPhone = (args: ILink ) => <Links {...args} />
 LinkPhone.args = {
-    sizeLables: "small"
+    labelsSize: "small"
 }
 
 const LinkPc = (args: ILink ) => <Links {...args} />
 LinkPc.args = {
-    sizeLables: "medium"
+    labelsSize: "medium"
 }
 
 export default story;

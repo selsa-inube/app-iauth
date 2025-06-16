@@ -9,7 +9,7 @@ const DynamicInputs = (props: IDynamicInputs) => {
         labels,
         handleInputChange,
         inputValue,
-        sizeLables
+        labelsSize
     } = props;
 
     const icon = currentStep === "passwordInput" ?
@@ -29,7 +29,7 @@ const DynamicInputs = (props: IDynamicInputs) => {
             status={status}
             message={message}
             icon={icon}
-            sizeLables={sizeLables}
+            labelsSize={labelsSize}
         />
     );
 }

@@ -3,7 +3,7 @@ import { ILink } from "@ptypes/components/login/ILink";
 
 const LinksUI = (props: ILink) => {
     const {
-        sizeLables
+        labelsSize
     } = props;
 
     return (
@@ -19,7 +19,7 @@ const LinksUI = (props: ILink) => {
                 height="28px">
                 <Text
                     as="span"
-                    size={sizeLables}
+                    size={labelsSize}
                     appearance="gray"
                     children="¿No tienes cuenta?"
                 />
@@ -27,7 +27,7 @@ const LinksUI = (props: ILink) => {
                     path="https://www.inubekit.com"
                     target="_blank"
                     rel="noopener noreferrer"
-                    size={sizeLables}
+                    size={labelsSize}
                     type="label"
                 >
                     ¡Regístrate!

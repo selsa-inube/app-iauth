@@ -1,14 +1,22 @@
 import { IInput } from '@inubekit/inubekit';
 
 interface IFormStepLabels {
-    mainLabel: string;
-    subMainLabel: string;
-    inputLabel: string;
-    inputPlaceholder: string;
-    inputType: IInput['type'];
-    inputId: string;
-    linkLabel: string;
-    messageError?: string;
-};
+    header: {
+        title: string;
+        subtitle: string;
+    };
+    input: {
+        label: string;
+        placeholder: string;
+        type: IInput['type'];
+        id: string;
+    };
+    link: {
+        text: string;
+    };
+    validation: {
+        errorMessage: string;
+    };
+}
 
 export type { IFormStepLabels };
