@@ -17,7 +17,7 @@ const DynamicInputs = (props: IDynamicInputs) => {
         <StyledMdOutlinePersonOutline />;
 
     const status: InputStatus = inputValid === false ? 'invalid' : 'pending';
-    const message = inputValid === false ? labels.messageError : '';
+    const message = inputValid === false ? labels.validation.errorMessage : '';
 
     return (
         <DynamicInputsUI

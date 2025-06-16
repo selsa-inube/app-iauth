@@ -47,7 +47,7 @@ const LoginFormUI = (props: ILoginFormProps) => {
                     </Text>
                 </Stack>
                 <Divider
-                    dashed={true}
+                    dashed
                 />
 
                 <DynamicInputs

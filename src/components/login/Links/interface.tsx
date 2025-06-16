@@ -9,7 +9,7 @@ const LinksUI = (props: ILink) => {
     return (
         <>
             <Divider
-                dashed={true}
+                dashed
             />
             <Stack
                 direction="row"
