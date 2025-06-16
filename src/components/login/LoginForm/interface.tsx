@@ -3,7 +3,7 @@ import { DynamicInputs } from "@components/login/DynamicInputs";
 import logoPadlock from "@assets/img/lgo/logo-padlock-blue.png";
 import { ILoginFormProps } from "@ptypes/components/login/IDynamicInputs";
 
-const LoginFormUI: React.FC<ILoginFormProps> = (props) => {
+const LoginFormUI = (props:ILoginFormProps) => {
 
     return (
         <form onSubmit={props.handleSubmit}>

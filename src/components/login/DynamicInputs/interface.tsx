@@ -1,8 +1,7 @@
 import { Input, Stack, Text, Link } from "@inubekit/inubekit";
-import React from "react";
 import { IDynamicInputs } from "@ptypes/components/login/IDynamicInputs";
 
-const DynamicInputsUI: React.FC<IDynamicInputs> = (props) => {
+const DynamicInputsUI = (props: IDynamicInputs) => {
     return (
         <>
             <Stack height="68px"

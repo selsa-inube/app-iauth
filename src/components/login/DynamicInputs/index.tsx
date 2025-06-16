@@ -1,9 +1,8 @@
 import { DynamicInputsUI } from "@components/login/DynamicInputs/interface";
-import React from "react";
 import { IDynamicInputs, InputStatus } from "@ptypes/components/login/IDynamicInputs";
 import { StyledMdOutlinePersonOutline, StyledMdLockOutline } from './styles'
 
-const DynamicInputs: React.FC<IDynamicInputs> = (props) => {
+const DynamicInputs = (props: IDynamicInputs) => {
 
     const icon = props.currentStep === "passwordInput" ?
         <StyledMdLockOutline /> :

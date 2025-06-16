@@ -1,7 +1,7 @@
 import { Divider, Stack, Text, Link } from "@inubekit/inubekit";
 import { ILink } from "@ptypes/components/login/ILink";
 
-const LinksUI:React.FC<ILink> = (props) => {
+const LinksUI = (props: ILink) => {
     return (
         <>
             <Divider
