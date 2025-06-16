@@ -2,6 +2,10 @@ import { Divider, Stack, Text, Link } from "@inubekit/inubekit";
 import { ILink } from "@ptypes/components/login/ILink";
 
 const LinksUI = (props: ILink) => {
+    const {
+        sizeLables
+    } = props;
+
     return (
         <>
             <Divider
@@ -15,7 +19,7 @@ const LinksUI = (props: ILink) => {
                 height="28px">
                 <Text
                     as="span"
-                    size={props.sizeLables}
+                    size={sizeLables}
                     appearance="gray"
                     children="¿No tienes cuenta?"
                 />
@@ -23,7 +27,7 @@ const LinksUI = (props: ILink) => {
                     path="https://www.inubekit.com"
                     target="_blank"
                     rel="noopener noreferrer"
-                    size={props.sizeLables}
+                    size={sizeLables}
                     type="label"
                 >
                     ¡Regístrate!

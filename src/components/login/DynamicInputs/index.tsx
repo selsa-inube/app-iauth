@@ -3,25 +3,33 @@ import { IDynamicInputs, InputStatus } from "@ptypes/components/login/IDynamicIn
 import { StyledMdOutlinePersonOutline, StyledMdLockOutline } from './styles'
 
 const DynamicInputs = (props: IDynamicInputs) => {
+    const {
+        currentStep,
+        inputValid,
+        labels,
+        handleInputChange,
+        inputValue,
+        sizeLables
+    } = props;
 
-    const icon = props.currentStep === "passwordInput" ?
+    const icon = currentStep === "passwordInput" ?
         <StyledMdLockOutline /> :
         <StyledMdOutlinePersonOutline />;
 
-    const status: InputStatus = props.inputValid === false ? 'invalid' : 'pending';
-    const message = props.inputValid === false ? props.labels.messageError : '';
+    const status: InputStatus = inputValid === false ? 'invalid' : 'pending';
+    const message = inputValid === false ? labels.messageError : '';
 
     return (
-        <DynamicInputsUI 
-                    labels={props.labels}
-                    inputValid={props.inputValid}
-                    handleInputChange={props.handleInputChange}
-                    inputValue={props.inputValue}
-                    currentStep={props.currentStep}
-                    status={status}
-                    message={message}
-                    icon={icon}
-                    sizeLables={props.sizeLables}
+        <DynamicInputsUI
+            labels={labels}
+            inputValid={inputValid}
+            handleInputChange={handleInputChange}
+            inputValue={inputValue}
+            currentStep={currentStep}
+            status={status}
+            message={message}
+            icon={icon}
+            sizeLables={sizeLables}
         />
     );
 }

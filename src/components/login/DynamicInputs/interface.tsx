@@ -2,6 +2,16 @@ import { Input, Stack, Text, Link } from "@inubekit/inubekit";
 import { IDynamicInputs } from "@ptypes/components/login/IDynamicInputs";
 
 const DynamicInputsUI = (props: IDynamicInputs) => {
+    const {
+        labels,
+        sizeLables,
+        status,
+        message,
+        icon,
+        handleInputChange,
+        inputValue
+    } = props;
+
     return (
         <>
             <Stack height="68px"
@@ -12,19 +22,19 @@ const DynamicInputsUI = (props: IDynamicInputs) => {
             >
                 <Text as="h1"
                     textAlign="center"
-                    size={props.sizeLables}
+                    size={sizeLables}
                     type="headline"
                     weight="bold"
                     appearance="dark">
-                    {props.labels.mainLabel}
+                    {labels.mainLabel}
                 </Text>
                 <Text
                     as="p"
                     textAlign="center"
                     type="title"
-                    size={props.sizeLables}
+                    size={sizeLables}
                     appearance="gray">
-                    {props.labels.subMainLabel}
+                    {labels.subMainLabel}
                 </Text>
             </Stack>
 
@@ -33,16 +43,16 @@ const DynamicInputsUI = (props: IDynamicInputs) => {
                 gap="12px">
                 <Input
                     size="wide"
-                    status={props.status}
+                    status={status}
                     fullwidth={true}
-                    message={props.message}
-                    iconBefore={props.icon}
-                    placeholder={props.labels.inputPlaceholder}
-                    type={props.labels.inputType}
-                    label={props.labels.inputLabel}
-                    id={props.labels.inputId}
-                    onChange={props.handleInputChange}
-                    value={props.inputValue}
+                    message={message}
+                    iconBefore={icon}
+                    placeholder={labels.inputPlaceholder}
+                    type={labels.inputType}
+                    label={labels.inputLabel}
+                    id={labels.inputId}
+                    onChange={handleInputChange}
+                    value={inputValue}
                 />
                 <Stack
                     justifyContent="flex-end"
@@ -53,7 +63,7 @@ const DynamicInputsUI = (props: IDynamicInputs) => {
                         rel="noopener noreferrer"
                         size="small"
                         type="label">
-                        {props.labels.linkLabel}
+                        {labels.linkLabel}
                     </Link>
                 </Stack>
             </Stack>

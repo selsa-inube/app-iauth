@@ -3,10 +3,22 @@ import { DynamicInputs } from "@components/login/DynamicInputs";
 import logoPadlock from "@assets/img/lgo/logo-padlock-blue.png";
 import { ILoginFormProps } from "@ptypes/components/login/IDynamicInputs";
 
-const LoginFormUI = (props:ILoginFormProps) => {
+const LoginFormUI = (props: ILoginFormProps) => {
+    const {
+        handleSubmit,
+        sizeLablesDiferent,
+        labels,
+        inputValid,
+        handleInputChange,
+        inputValue,
+        currentStep,
+        sizeLables,
+        screenMobile,
+        link,
+    } = props;
 
     return (
-        <form onSubmit={props.handleSubmit}>
+        <form onSubmit={handleSubmit}>
             <Grid templateColumns="auto"
                 templateRows="repeat(5, auto)"
                 gap="20px"
@@ -27,7 +39,7 @@ const LoginFormUI = (props:ILoginFormProps) => {
                     />
                     <Text
                         type="title"
-                        size={props.sizeLablesDiferent}
+                        size={sizeLablesDiferent}
                         appearance="gray"
                         weight="bold"
                     >
@@ -39,28 +51,28 @@ const LoginFormUI = (props:ILoginFormProps) => {
                 />
 
                 <DynamicInputs
-                    labels={props.labels}
-                    inputValid={props.inputValid}
-                    handleInputChange={props.handleInputChange}
-                    inputValue={props.inputValue}
-                    currentStep={props.currentStep}
-                    sizeLables={props.sizeLables}
+                    labels={labels}
+                    inputValid={inputValid}
+                    handleInputChange={handleInputChange}
+                    inputValue={inputValue}
+                    currentStep={currentStep}
+                    sizeLables={sizeLables}
 
                 />
 
                 <Stack
                     direction="column"
-                    width={props.screenMobile}
+                    width={screenMobile}
                 >
                     <Button
                         appearance="primary"
                         type="submit"
                         children="Continuar"
                         fullwidth={true}
-                        
+
                     />
                 </Stack>
-                {props.link}
+                {link}
             </Grid>
         </form>
     );
