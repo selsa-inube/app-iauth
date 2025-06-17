@@ -1,8 +1,8 @@
-import { Divider, Grid, Stack, Text, Button } from "@inubekit/inubekit";
+import { Divider, Grid, Stack, Button } from "@inubekit/inubekit";
+import { Links } from "@components/login/Link";
 import { DynamicInputs } from "@components/login/DynamicInputs";
-import logoPadlock from "@assets/img/lgo/logo-padlock-blue.png";
-import { ILoginFormProps } from "@ptypes/components/login/IDynamicInputs";
-import { titles } from "@config/login/titles";
+import { ILoginFormProps } from "@ptypes/components/login/ILoginFormProps";
+import { Header } from "@components/login/Header";
 
 const LoginFormUI = (props: ILoginFormProps) => {
     const {
@@ -15,7 +15,7 @@ const LoginFormUI = (props: ILoginFormProps) => {
         currentStep,
         labelsSize,
         screenMobile,
-        link,
+        showLink
     } = props;
 
     return (
@@ -26,27 +26,8 @@ const LoginFormUI = (props: ILoginFormProps) => {
                 justifyContent="center"
                 width="100%"
             >
-                <Stack
-                    alignItems="center"
-                    height="38.02px"
-                    justifyContent="center"
-                    gap="7.07px"
-                >
-                    <img
-                        src={logoPadlock}
-                        alt="Logo Candado"
-                        width="31.81"
-                        height="31.81"
-                    />
-                    <Text
-                        type="title"
-                        size={labelsSizeDiferent}
-                        appearance="gray"
-                        weight="bold"
-                    >
-                        { titles.mainTitle }
-                    </Text>
-                </Stack>
+                <Header labelsSizeDiferent={labelsSizeDiferent} />
+
                 <Divider
                     dashed
                 />
@@ -73,7 +54,11 @@ const LoginFormUI = (props: ILoginFormProps) => {
 
                     />
                 </Stack>
-                {link}
+                {
+                    showLink && (
+                        <Links labelsSize={labelsSize} />
+                    )
+                }
             </Grid>
         </form>
     );

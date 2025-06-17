@@ -1,4 +1,4 @@
-import { DynamicInputs } from "..";
+import { DynamicInputs } from "../index";
 import { IDynamicInputs } from "@ptypes/components/login/IDynamicInputs";
 import { labelsPasswrodMock } from "@config/mocks/components/IDynamicInputs/labelsMock/labelsPasswordMock";
 import { labelsUsernameMock } from "@config/mocks/components/IDynamicInputs/labelsMock/labelsUsernameMock";

@@ -1,5 +1,6 @@
 import { DynamicInputsUI } from "@components/login/DynamicInputs/interface";
-import { IDynamicInputs, InputStatus } from "@ptypes/components/login/IDynamicInputs";
+import { IDynamicInputs } from "@ptypes/components/login/IDynamicInputs";
+import { InputStatus } from "@ptypes/components/InputStatus";
 import { MdOutlinePersonOutline, MdLockOutline } from "react-icons/md";
 
 const DynamicInputs = (props: IDynamicInputs) => {

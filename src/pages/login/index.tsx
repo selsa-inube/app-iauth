@@ -1,5 +1,5 @@
 import { Card } from "@components/layout/Card";
-import { LoginForm } from "@components/login/LoginForm";
+import { LoginForm } from "@pages/loginForm";
 
 const Login = () => {
     return(

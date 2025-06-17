@@ -1,4 +1,4 @@
-import { Links } from "..";
+import { Links } from "../../../components/login/Link";
 import { MemoryRouter } from "react-router-dom";
 import { ThemeProviderWrapper } from "@context/themeContext";
 import { StoryFn } from "@storybook/react";

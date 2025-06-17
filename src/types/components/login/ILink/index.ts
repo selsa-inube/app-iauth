@@ -1,4 +1,4 @@
-import { TextSize } from '@ptypes/components/login/IDynamicInputs';
+import { TextSize } from "@ptypes/components/TextSize"; 
 
 interface ILink {
     labelsSize: TextSize;

@@ -1,11 +1,7 @@
 import { IFormStepLabels } from '@ptypes/hooks/IFormStepLabels';
-import type { FormEvent, ChangeEvent, ReactNode } from 'react';
-import { IFormStep } from '@ptypes/hooks/IStepValidationConfig';
-import { IInput, IText } from '@inubekit/inubekit';
-
-type InputStatus = IInput['status'];
-
-type TextSize = IText['size'];
+import type { ReactNode } from 'react';
+import { InputStatus } from '@ptypes/components/InputStatus';
+import { TextSize } from '@ptypes/components/TextSize';
 
 interface IDynamicInputs {
     labels: IFormStepLabels,
@@ -19,17 +15,4 @@ interface IDynamicInputs {
     labelsSize: TextSize
 };
 
-interface ILoginFormProps {
-  currentStep: IFormStep;
-  handleSubmit: (e: FormEvent<HTMLFormElement>) => void;
-  labels: IFormStepLabels;
-  inputValid: boolean | null;
-  handleInputChange: (e: ChangeEvent<HTMLInputElement>) => void;
-  inputValue: string;
-  link?: ReactNode;
-  screenMobile: string;
-  labelsSize: TextSize;
-  labelsSizeDiferent: TextSize;
-}
-
-export type { IDynamicInputs, ILoginFormProps, InputStatus, TextSize };
+export type { IDynamicInputs };
