@@ -1,7 +1,6 @@
 import { DynamicInputsUI } from "@components/login/DynamicInputs/interface";
 import { IDynamicInputs } from "@ptypes/components/login/IDynamicInputs";
 import { InputStatus } from "@ptypes/components/InputStatus";
-import { MdOutlinePersonOutline, MdLockOutline } from "react-icons/md";
 
 const DynamicInputs = (props: IDynamicInputs) => {
     const {
@@ -10,13 +9,9 @@ const DynamicInputs = (props: IDynamicInputs) => {
         labels,
         handleInputChange,
         inputValue,
-        labelsSize
+        labelsSize,
+        showUserIcon
     } = props;
-
-    const icon = currentStep === "passwordInput" ?
-        <MdLockOutline /> :
-        <MdOutlinePersonOutline />;
-
     const status: InputStatus = inputValid === false ? 'invalid' : 'pending';
     const message = inputValid === false ? labels.validation.errorMessage : '';
 
@@ -29,8 +24,8 @@ const DynamicInputs = (props: IDynamicInputs) => {
             currentStep={currentStep}
             status={status}
             message={message}
-            icon={icon}
             labelsSize={labelsSize}
+            showUserIcon={showUserIcon}
         />
     );
 }

@@ -1,5 +1,6 @@
-import { Input, Stack, Text, Link, Icon} from "@inubekit/inubekit";
+import { Input, Stack, Text, Link, Icon } from "@inubekit/inubekit";
 import { IDynamicInputs } from "@ptypes/components/login/IDynamicInputs";
+import { MdOutlinePersonOutline, MdLockOutline } from "react-icons/md";
 
 const DynamicInputsUI = (props: IDynamicInputs) => {
     const {
@@ -7,14 +8,13 @@ const DynamicInputsUI = (props: IDynamicInputs) => {
         labelsSize,
         status,
         message,
-        icon,
         handleInputChange,
-        inputValue
+        inputValue,
+        showUserIcon
     } = props;
 
     return (
         <>
-            <Icon appearance="primary" icon={icon} />
             <Stack height="68px"
                 alignItems="center"
                 direction="column"
@@ -47,7 +47,14 @@ const DynamicInputsUI = (props: IDynamicInputs) => {
                     status={status}
                     fullwidth={true}
                     message={message}
-                    iconBefore={icon}
+                    iconBefore={
+                        <Icon appearance="dark" icon={
+                            !showUserIcon ?
+                                <MdLockOutline /> :
+                                <MdOutlinePersonOutline />
+                        }
+                        />
+                    }
                     placeholder={labels.input.placeholder}
                     type={labels.input.type}
                     label={labels.input.label}

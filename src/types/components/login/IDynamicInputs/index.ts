@@ -12,7 +12,8 @@ interface IDynamicInputs {
     icon?: ReactNode,
     status?: InputStatus,
     message?: string,
-    labelsSize: TextSize
+    labelsSize: TextSize,
+    showUserIcon: boolean
 };
 
 export type { IDynamicInputs };

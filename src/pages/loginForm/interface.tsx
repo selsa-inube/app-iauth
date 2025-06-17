@@ -39,7 +39,7 @@ const LoginFormUI = (props: ILoginFormProps) => {
                     inputValue={inputValue}
                     currentStep={currentStep}
                     labelsSize={labelsSize}
-
+                    showUserIcon={showLink}
                 />
 
                 <Stack
