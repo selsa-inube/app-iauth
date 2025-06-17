@@ -6,7 +6,7 @@ import { IHeader } from "@ptypes/components/login/IHeader";
 
 const HeaderUI = (props: IHeader) => {
     const {
-        labelsSizeDiferent
+        labelsSizeDifferent
     } = props;
     
     return (
@@ -25,7 +25,7 @@ const HeaderUI = (props: IHeader) => {
             />
             <Text
                 type="title"
-                size={labelsSizeDiferent}
+                size={labelsSizeDifferent}
                 appearance="gray"
                 weight="bold"
             >

@@ -1,6 +1,6 @@
 import { IFormStepLabels } from "@ptypes/hooks/IFormStepLabels";
-import { IValidatePassword } from "@ptypes/api/IValidatePassword";
-import { IValidateUsername } from "@ptypes/api/IValidateUsername";
+import { IValidatePassword } from "@ptypes/api/validatePassword/IValidatePassword";
+import { IValidateUsername } from "@ptypes/api/validateUsername/IValidateUsername";
 
 type IFormStep = 'usernameInput' | 'passwordInput' | 'loginSuccess';
 

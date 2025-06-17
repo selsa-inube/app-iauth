@@ -1,4 +1,4 @@
-export const validateRequiredField = (valueField: string) => {
+const validateRequiredField = (valueField: string) => {
 
     if (valueField.trim() === "") {
         return false;
@@ -6,3 +6,5 @@ export const validateRequiredField = (valueField: string) => {
         return true;
     }
 };
+
+export { validateRequiredField }; 

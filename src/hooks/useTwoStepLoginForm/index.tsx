@@ -5,9 +5,11 @@ import { validatePassword } from '../../services/validatePassword';
 import { IFormStepLabels } from '@ptypes/hooks/IFormStepLabels';
 import { IFormStep } from '@ptypes/hooks/IStepValidationConfig';
 import { userNameStepLabels, passwordStepLabels } from '@config/login/labels';
+import { useMediaQuery } from "@inubekit/inubekit";
+import { FormStepLabels } from "@enum/hooks/formStepLabels";
 
 const useTwoStepLoginForm = () => {
-    const [currentStep, setCurrentStep] = useState<IFormStep>('usernameInput');
+    const [currentStep, setCurrentStep] = useState<IFormStep>(FormStepLabels.UsernameInput);
     const [inputValid, setInputValid] = useState<boolean | null>(null);
     const [inputValue, setInputValue] = useState('');
     const [userName, setUserName] = useState<string>('');
@@ -23,7 +25,7 @@ const useTwoStepLoginForm = () => {
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
 
-        if (currentStep === 'usernameInput') {
+        if (currentStep === FormStepLabels.UsernameInput) {
             if (!validateRequiredField(inputValue)) {
                 setInputValid(false);
                 setLabels(prev => ({
@@ -33,7 +35,7 @@ const useTwoStepLoginForm = () => {
                 return;
             }
 
-            const response = await validateUsername(inputValue);
+            const response = await validateUsername({ username: inputValue });
             if (!response.success) {
                 setInputValid(false);
                 setLabels(prev => ({
@@ -44,7 +46,7 @@ const useTwoStepLoginForm = () => {
             }
 
             setUserName(inputValue);
-            setCurrentStep('passwordInput');
+            setCurrentStep(FormStepLabels.PasswordInput);
             setInputValid(null);
             setInputValue('');
             setLabels({
@@ -58,7 +60,7 @@ const useTwoStepLoginForm = () => {
 
         }
 
-        if (currentStep === 'passwordInput') {
+        if (currentStep === FormStepLabels.PasswordInput) {
             if (!validateRequiredField(inputValue)) {
                 setInputValid(false);
                 setLabels(prev => ({
@@ -68,7 +70,7 @@ const useTwoStepLoginForm = () => {
                 return;
             }
 
-            const response = await validatePassword(inputValue, userName);
+            const response = await validatePassword({ password: inputValue, username: userName });
             if (!response.success) {
                 setInputValid(false);
                 setLabels(prev => ({
@@ -79,13 +81,15 @@ const useTwoStepLoginForm = () => {
             }
 
             alert('¡Login exitoso!');
-            setCurrentStep('loginSuccess');
+            setCurrentStep(FormStepLabels.LoginSuccess);
             setInputValue('');
             setInputValid(null);
         }
     };
 
-    const showLink = currentStep === 'usernameInput';
+    const screenMobile = useMediaQuery("(max-width: 768px)");
+
+    const showLink = currentStep === FormStepLabels.UsernameInput;
 
 
     return {
@@ -96,7 +100,8 @@ const useTwoStepLoginForm = () => {
         handleSubmit,
         labels,
         inputValid,
-        inputValue
+        inputValue,
+        screenMobile
     };
 };
 

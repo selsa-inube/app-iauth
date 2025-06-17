@@ -16,7 +16,8 @@ export default defineConfig({
       '@hooks': path.resolve(__dirname, './src/hooks'),
       '@api': path.resolve(__dirname, './src/api'),
       '@mocks': path.resolve(__dirname, './src/mocks'),
-      '@pages': path.resolve(__dirname, './src/pages')
+      '@pages': path.resolve(__dirname, './src/pages'),
+      '@enum': path.resolve(__dirname, './src/enum')
     }
   },
 });

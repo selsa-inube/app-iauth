@@ -1,13 +1,13 @@
 import { Divider, Grid, Stack, Button } from "@inubekit/inubekit";
 import { Links } from "@pages/Link";
 import { DynamicInputs } from "@components/login/DynamicInputs";
-import { ILoginFormProps } from "@ptypes/components/login/ILoginFormProps";
+import { ILoginForm } from "@ptypes/components/login/ILoginForm";
 import { Header } from "@components/login/Header";
 
-const LoginFormUI = (props: ILoginFormProps) => {
+const LoginFormUI = (props: ILoginForm) => {
     const {
         handleSubmit,
-        labelsSizeDiferent,
+        labelsSizeDifferent,
         labels,
         inputValid,
         handleInputChange,
@@ -26,7 +26,7 @@ const LoginFormUI = (props: ILoginFormProps) => {
                 justifyContent="center"
                 width="100%"
             >
-                <Header labelsSizeDiferent={labelsSizeDiferent} />
+                <Header labelsSizeDifferent={labelsSizeDifferent} />
 
                 <Divider
                     dashed

@@ -3,12 +3,12 @@ import { HeaderUI } from "./interface";
 
 const Header = (props: IHeader) => {
     const {
-        labelsSizeDiferent
+        labelsSizeDifferent
     } = props;
 
     return (
         <>
-        <HeaderUI labelsSizeDiferent={labelsSizeDiferent} />
+        <HeaderUI labelsSizeDifferent={labelsSizeDifferent} />
         </>
     );
 };

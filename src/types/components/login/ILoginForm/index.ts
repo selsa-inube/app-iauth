@@ -3,7 +3,7 @@ import { IFormStepLabels } from '@ptypes/hooks/IFormStepLabels';
 import { IFormStep } from '@ptypes/hooks/IStepValidationConfig';
 import { TextSize } from '@ptypes/components/TextSize';
 
-interface ILoginFormProps {
+interface ILoginForm {
   currentStep: IFormStep;
   handleSubmit: (e: FormEvent<HTMLFormElement>) => void;
   labels: IFormStepLabels;
@@ -13,8 +13,8 @@ interface ILoginFormProps {
   link?: ReactNode;
   screenMobile: string;
   labelsSize: TextSize;
-  labelsSizeDiferent: TextSize;
+  labelsSizeDifferent: TextSize;
   showLink: boolean;
 }
 
-export type { ILoginFormProps };
+export type { ILoginForm };
