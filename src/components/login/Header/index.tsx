@@ -7,9 +7,7 @@ const Header = (props: IHeader) => {
     } = props;
 
     return (
-        <>
         <HeaderUI labelsSizeDifferent={labelsSizeDifferent} />
-        </>
     );
 };
 

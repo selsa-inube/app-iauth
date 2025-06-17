@@ -53,7 +53,6 @@ const useTwoStepLoginForm = () => {
                 ...passwordStepLabels,
                 header: {
                     ...passwordStepLabels.header,
-                    title: `Bienvenido, ${inputValue}`
                 }
             });
 

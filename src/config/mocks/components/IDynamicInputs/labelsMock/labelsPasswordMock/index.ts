@@ -1,6 +1,6 @@
 const labelsPasswrodMock = {
     header: {
-        title: 'Bienvenido, ',
+        title: '¡Bienvenido!',
         subtitle: 'Ahora, ingresa tu contraseña',
     },
     input: {

@@ -1,5 +1,6 @@
 const titles = {
-    mainTitle: "iAuth"
+    firstTitleIAuth: "iAuth",
+    secondTitleIAuth: "Servicio de autenticación",
 }
 
 export { titles };

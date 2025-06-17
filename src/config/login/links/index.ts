@@ -1,6 +1,6 @@
 const links = {
     linkUsername: {
-        textSpan: "¿No tienes cuenta?",
+        textSpan: "¿Aún no estás registrado?",
         textLink: "¡Regístrate!"
     }
 }

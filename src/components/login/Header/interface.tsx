@@ -8,29 +8,44 @@ const HeaderUI = (props: IHeader) => {
     const {
         labelsSizeDifferent
     } = props;
-    
-    return (
 
+    return (
         <Stack
             alignItems="center"
-            height="38.02px"
-            justifyContent="center"
-            gap="7.07px"
+            direction="column"
         >
-            <img
-                src={logoPadlock}
-                alt="Logo Candado"
-                width="31.81"
-                height="31.81"
-            />
-            <Text
-                type="title"
-                size={labelsSizeDifferent}
-                appearance="gray"
-                weight="bold"
+            <Stack
+                alignItems="center"
+                height="38.02px"
+                justifyContent="center"
+                gap="7.07px"
             >
-                {titles.mainTitle}
-            </Text>
+                <img
+                    src={logoPadlock}
+                    alt="Logo Candado"
+                    width="31.81"
+                    height="31.81"
+                />
+                <Text
+                    type="title"
+                    size={labelsSizeDifferent}
+                    appearance="gray"
+                    weight="bold"
+                >
+                    {titles.firstTitleIAuth}
+                </Text>
+            </Stack>
+            <Stack>
+                <Text
+                    textAlign="center"
+                    type="body"
+                    size={labelsSizeDifferent}
+                    appearance="dark"
+                    weight="normal"
+                >
+                    {titles.secondTitleIAuth}
+                </Text>
+            </Stack>
         </Stack>
     );
 }

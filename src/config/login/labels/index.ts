@@ -21,7 +21,7 @@ const userNameStepLabels: IFormStepLabels = {
 
 const passwordStepLabels: IFormStepLabels = {
   header: {
-    title: 'Bienvenido, ',
+    title: '¡Bienvenido!',
     subtitle: 'Ahora, ingresa tu contraseña',
   },
   input: {

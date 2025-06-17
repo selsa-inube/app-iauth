@@ -12,7 +12,7 @@ const DynamicInputsUI = (props: IDynamicInputs) => {
         inputValue,
         showUserIcon
     } = props;
-
+    
     return (
         <>
             <Stack height="68px"
