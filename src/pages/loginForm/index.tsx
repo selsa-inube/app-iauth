@@ -2,7 +2,7 @@ import { LoginFormUI } from "./interface";
 import { useTwoStepLoginForm } from "@hooks/useTwoStepLoginForm";
 import { useMediaQuery } from "@inubekit/inubekit";
 import { TextSize } from "@ptypes/components/TextSize";
-
+import { Card } from "@components/layout/Card";
 
 const LoginForm = () => {
     const { currentStep, handleSubmit, labels, inputValid, handleInputChange, inputValue, showLink } = useTwoStepLoginForm();
@@ -12,18 +12,20 @@ const LoginForm = () => {
     const labelsSizeDiferent: TextSize = screenMobile ? "medium" : "large";
 
     return (
-        <LoginFormUI
-            currentStep={currentStep}
-            handleSubmit={handleSubmit}
-            labels={labels}
-            inputValid={inputValid}
-            handleInputChange={handleInputChange}
-            inputValue={inputValue}
-            screenMobile={widthStack}
-            labelsSize={labelsSize}
-            labelsSizeDiferent={labelsSizeDiferent}
-            showLink={showLink}
-        />
+        <Card>
+            <LoginFormUI
+                currentStep={currentStep}
+                handleSubmit={handleSubmit}
+                labels={labels}
+                inputValid={inputValid}
+                handleInputChange={handleInputChange}
+                inputValue={inputValue}
+                screenMobile={widthStack}
+                labelsSize={labelsSize}
+                labelsSizeDiferent={labelsSizeDiferent}
+                showLink={showLink}
+            />
+        </Card>
     );
 
 }
