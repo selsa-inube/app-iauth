@@ -1,15 +1,14 @@
 import { axiosInstance } from "@api/auth";
-import { IValidateUsername } from "@ptypes/api/validateUsername/IValidateUsername";
-import { IValidateUsernameParams } from "@ptypes/api/validateUsername/IValidateUsernameParams";
+import { IValidate } from "@ptypes/api/IValidations";
+import { IValidateParams } from "@ptypes/api/IValidationsParams";
 
-const validateUsername = async (params: IValidateUsernameParams): Promise<IValidateUsername> => {
+const validateUsername = async (params: IValidateParams): Promise<IValidate> => {
     const {
           username
     } = params;
     
-    const { data } = await axiosInstance.post<IValidateUsername>('/api/validate-username', { username });
+    const { data } = await axiosInstance.post<IValidate>('/api/validate-username', { username });
     return data;
-
 };
 
 export { validateUsername };

@@ -1,13 +1,15 @@
 import React, { useState } from 'react';
 import { validateRequiredField } from '../../validations/fieldsValidations';
-import { validateUsername } from '../../services/validateUsername';
-import { validatePassword } from '../../services/validatePassword';
+import { validateUsername } from '@services/validateUsername';
+import { validatePassword } from '@services/validatePassword';
 import { IFormStepLabels } from '@ptypes/hooks/IFormStepLabels';
 import { IFormStep } from '@ptypes/hooks/IStepValidationConfig';
-import { userNameStepLabels, passwordStepLabels } from '@config/login/labels';
+import { userNameStepLabels } from '@config/login/labels/usernameStepLabels'; 
+import { passwordStepLabels } from '@config/login/labels/passwordStepLabels';
 import { useMediaQuery } from "@inubekit/inubekit";
 import { EFormStepLabels } from "@enum/hooks/EFormStepLabels";
 import { TextSize } from "@ptypes/components/TextSize";
+import { messages } from '@config/hook/messages';
 
 const useTwoStepLoginForm = () => {
     const [currentStep, setCurrentStep] = useState<IFormStep>(EFormStepLabels.UsernameInput);
@@ -31,7 +33,7 @@ const useTwoStepLoginForm = () => {
                 setInputValid(false);
                 setLabels(prev => ({
                     ...prev,
-                    validation: { ...prev.validation, errorMessage: 'El usuario es requerido.' }
+                    validation: { ...prev.validation, errorMessage: messages.messageUsernameRequired }
                 }));
                 return;
             }
@@ -42,7 +44,7 @@ const useTwoStepLoginForm = () => {
                 setInputValid(false);
                 setLabels(prev => ({
                     ...prev,
-                    validation: { ...prev.validation, errorMessage: 'El usuario no existe o está mal escrito.' }
+                    validation: { ...prev.validation, errorMessage: messages.messageInocrrectUsername }
                 }));
                 return;
             }
@@ -66,7 +68,7 @@ const useTwoStepLoginForm = () => {
                 setInputValid(false);
                 setLabels(prev => ({
                     ...prev,
-                    validation: { ...prev.validation, errorMessage: 'La contraseña es requerida.' }
+                    validation: { ...prev.validation, errorMessage: messages.messagePasswordRequired }
                 }));
                 return;
             }
@@ -77,7 +79,7 @@ const useTwoStepLoginForm = () => {
                 setInputValid(false);
                 setLabels(prev => ({
                     ...prev,
-                    validation: { ...prev.validation, errorMessage: 'Contraseña incorrecta.' }
+                    validation: { ...prev.validation, errorMessage: messages.messageInocrrectPassword }
                 }));
                 return;
             }

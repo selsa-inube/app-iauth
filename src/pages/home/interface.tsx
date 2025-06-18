@@ -2,10 +2,10 @@ import { Stack, Text } from "@inubekit/inubekit"
 import logosistemasenlinea from "@assets/img/lgo/logo-sistemasnelinea.png";
 import { StyledImg } from "./styles";
 import { LoginForm } from "@pages/loginForm/";
-import { IMainEntryUI } from "@ptypes/pages/mainEntry/IMainEntryUI";
+import { IHomeUI } from "@ptypes/pages/home/IHomeUI";
 import { labelsTitles } from "@config/login/entryPage";
 
-const MainEntryUI = (props: IMainEntryUI) => {
+const HomeUI = (props: IHomeUI) => {
     const {
         $isMobile,
     } = props;
@@ -50,4 +50,4 @@ const MainEntryUI = (props: IMainEntryUI) => {
     );
 }
 
-export { MainEntryUI };
+export { HomeUI };
