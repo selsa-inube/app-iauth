@@ -66,9 +66,8 @@ const DynamicInputsUI = (props: IDynamicInputs) => {
                     justifyContent="flex-end"
                     height="16px">
                     <Link
-                        path="https://www.inubekit.com"
+                        path="https://www.sistemasenlinea.com.co/"
                         target="_blank"
-                        rel="noopener noreferrer"
                         size="small"
                         type="label">
                         {labels.link.text}

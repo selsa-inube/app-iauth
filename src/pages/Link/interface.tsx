@@ -26,7 +26,7 @@ const LinksUI = (props: ILink) => {
                     children={links.linkUsername.textSpan}
                 />
                 <Link
-                    path="https://www.inubekit.com"
+                    path="https://www.sistemasenlinea.com.co/"
                     target="_blank"
                     rel="noopener noreferrer"
                     size={labelsSize}

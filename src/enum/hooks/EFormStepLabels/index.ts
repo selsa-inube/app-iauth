@@ -1,7 +1,7 @@
-enum FormStepLabels {
+enum EFormStepLabels {
     UsernameInput = 'usernameInput',
     PasswordInput = 'passwordInput',
     LoginSuccess = 'loginSuccess',
 }
 
-export { FormStepLabels };
+export { EFormStepLabels };

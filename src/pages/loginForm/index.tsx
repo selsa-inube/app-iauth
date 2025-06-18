@@ -1,14 +1,20 @@
 import { LoginFormUI } from "./interface";
 import { useTwoStepLoginForm } from "@hooks/useTwoStepLoginForm";
-import { TextSize } from "@ptypes/components/TextSize";
 import { Card } from "@components/layout/Card";
 
 const LoginForm = () => {
-    const { currentStep, handleSubmit, labels, inputValid, handleInputChange, inputValue, showLink, screenMobile } = useTwoStepLoginForm();
-    
-    const widthStack = screenMobile ? "296px" : "452px";
-    const labelsSize: TextSize = screenMobile ? "small" : "medium";
-    const labelsSizeDifferent: TextSize = screenMobile ? "medium" : "large";
+    const {
+        showLink,
+        currentStep,
+        handleInputChange,
+        handleSubmit,
+        labels,
+        inputValid,
+        inputValue,
+        widthStack,
+        labelsSize,
+        labelsSizeDifferent
+    } = useTwoStepLoginForm();
 
     return (
         <Card>

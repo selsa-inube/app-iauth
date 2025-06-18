@@ -1,11 +1,11 @@
-import { LoginForm } from '@pages/loginForm';
+import { MainEntry } from '@pages/login/mainEntry';
 import { Route, Routes } from 'react-router-dom';
 
 function App() {
 
   return (
     <Routes>
-      <Route path="/" element={<LoginForm />} />
+      <Route path="/" element={<MainEntry />} />
     </Routes>
   );
 }

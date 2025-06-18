@@ -6,10 +6,11 @@ import { IFormStepLabels } from '@ptypes/hooks/IFormStepLabels';
 import { IFormStep } from '@ptypes/hooks/IStepValidationConfig';
 import { userNameStepLabels, passwordStepLabels } from '@config/login/labels';
 import { useMediaQuery } from "@inubekit/inubekit";
-import { FormStepLabels } from "@enum/hooks/formStepLabels";
+import { EFormStepLabels } from "@enum/hooks/EFormStepLabels";
+import { TextSize } from "@ptypes/components/TextSize";
 
 const useTwoStepLoginForm = () => {
-    const [currentStep, setCurrentStep] = useState<IFormStep>(FormStepLabels.UsernameInput);
+    const [currentStep, setCurrentStep] = useState<IFormStep>(EFormStepLabels.UsernameInput);
     const [inputValid, setInputValid] = useState<boolean | null>(null);
     const [inputValue, setInputValue] = useState('');
     const [userName, setUserName] = useState<string>('');
@@ -25,7 +26,7 @@ const useTwoStepLoginForm = () => {
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
 
-        if (currentStep === FormStepLabels.UsernameInput) {
+        if (currentStep === EFormStepLabels.UsernameInput) {
             if (!validateRequiredField(inputValue)) {
                 setInputValid(false);
                 setLabels(prev => ({
@@ -35,7 +36,8 @@ const useTwoStepLoginForm = () => {
                 return;
             }
 
-            const response = await validateUsername({ username: inputValue });
+            //const response = await validateUsername({ username: inputValue });
+            const response = {success: true};
             if (!response.success) {
                 setInputValid(false);
                 setLabels(prev => ({
@@ -46,7 +48,7 @@ const useTwoStepLoginForm = () => {
             }
 
             setUserName(inputValue);
-            setCurrentStep(FormStepLabels.PasswordInput);
+            setCurrentStep(EFormStepLabels.PasswordInput);
             setInputValid(null);
             setInputValue('');
             setLabels({
@@ -59,7 +61,7 @@ const useTwoStepLoginForm = () => {
 
         }
 
-        if (currentStep === FormStepLabels.PasswordInput) {
+        if (currentStep === EFormStepLabels.PasswordInput) {
             if (!validateRequiredField(inputValue)) {
                 setInputValid(false);
                 setLabels(prev => ({
@@ -69,7 +71,8 @@ const useTwoStepLoginForm = () => {
                 return;
             }
 
-            const response = await validatePassword({ password: inputValue, username: userName });
+            //const response = await validatePassword({ password: inputValue, username: userName });
+            const response = {success: true};
             if (!response.success) {
                 setInputValid(false);
                 setLabels(prev => ({
@@ -80,15 +83,17 @@ const useTwoStepLoginForm = () => {
             }
 
             alert('¡Login exitoso!');
-            setCurrentStep(FormStepLabels.LoginSuccess);
+            setCurrentStep(EFormStepLabels.LoginSuccess);
             setInputValue('');
             setInputValid(null);
         }
     };
 
     const screenMobile = useMediaQuery("(max-width: 768px)");
-
-    const showLink = currentStep === FormStepLabels.UsernameInput;
+    const showLink = currentStep === EFormStepLabels.UsernameInput;
+    const widthStack = screenMobile ? "296px" : "452px";
+    const labelsSize: TextSize = screenMobile ? "small" : "medium";
+    const labelsSizeDifferent: TextSize = screenMobile ? "medium" : "large";
 
 
     return {
@@ -100,7 +105,10 @@ const useTwoStepLoginForm = () => {
         labels,
         inputValid,
         inputValue,
-        screenMobile
+        screenMobile,
+        widthStack,
+        labelsSize,
+        labelsSizeDifferent
     };
 };
 

@@ -8,4 +8,4 @@ const MainEntry = () => {
     );
 }
 
-export { MainEntry }
+export { MainEntry };
