@@ -2,7 +2,7 @@ import { IFormStepLabels } from '@ptypes/hooks/IFormStepLabels'
 
 const userNameStepLabels: IFormStepLabels = {
   header: {
-    title: 'Servicio de identidad',
+    title: 'Validación de identidad',
     subtitle: 'Por favor, ingresa tu cuenta de usuario',
   },
   input: {

@@ -11,6 +11,8 @@ const HomeUI = (props: IHomeUI) => {
     } = props;
 
     return (
+        <>
+
         <Stack
             justifyContent="center"
             direction="column"
@@ -27,8 +29,8 @@ const HomeUI = (props: IHomeUI) => {
                 <Text
                     appearance="gray"
                     weight="bold"
-                    type="body"
-                    size="large"
+                    type="headline"
+                    size="small"
                     textAlign="center"
                 >
                     {labelsTitles.titleImg}
@@ -47,6 +49,7 @@ const HomeUI = (props: IHomeUI) => {
                 <LoginForm />
             </Stack>
         </Stack>
+        </>
     );
 }
 

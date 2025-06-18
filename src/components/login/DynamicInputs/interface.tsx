@@ -21,7 +21,7 @@ const DynamicInputsUI = (props: IDynamicInputs) => {
                 justifyContent="center"
                 gap="8px"
             >
-                <Text as="h1"
+                <Text 
                     textAlign="center"
                     size={labelsSize}
                     type="headline"
@@ -30,7 +30,6 @@ const DynamicInputsUI = (props: IDynamicInputs) => {
                     {labels.header.title}
                 </Text>
                 <Text
-                    as="p"
                     textAlign="center"
                     type="title"
                     size={labelsSize}
