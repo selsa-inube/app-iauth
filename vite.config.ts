@@ -17,7 +17,9 @@ export default defineConfig({
       '@api': path.resolve(__dirname, './src/api'),
       '@mocks': path.resolve(__dirname, './src/mocks'),
       '@pages': path.resolve(__dirname, './src/pages'),
-      '@enum': path.resolve(__dirname, './src/enum')
+      '@enum': path.resolve(__dirname, './src/enum'),
+      '@services': path.resolve(__dirname, './src/services'),
+
     }
   },
 });

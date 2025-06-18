@@ -8,7 +8,7 @@ const validatePassword = async ( params:IValidateParams ): Promise<IValidate> =>
         username
     } = params;
     
-    const { data } = await axiosInstance.post<IValidate>('/api/validate-password', { username, password });
+    const { data } = await axiosInstance.post<IValidate>('/validate-password', { username, password });
     return data;
 };
 

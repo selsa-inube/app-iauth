@@ -38,8 +38,8 @@ const useTwoStepLoginForm = () => {
                 return;
             }
 
-            //const response = await validateUsername({ username: inputValue });
-            const response = {success: true};
+            const response = await validateUsername({ username: inputValue });
+
             if (!response.success) {
                 setInputValid(false);
                 setLabels(prev => ({
@@ -73,8 +73,8 @@ const useTwoStepLoginForm = () => {
                 return;
             }
 
-            //const response = await validatePassword({ password: inputValue, username: userName });
-            const response = {success: true};
+            const response = await validatePassword({ password: inputValue, username: userName });
+
             if (!response.success) {
                 setInputValid(false);
                 setLabels(prev => ({

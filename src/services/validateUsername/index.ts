@@ -6,8 +6,8 @@ const validateUsername = async (params: IValidateParams): Promise<IValidate> => 
     const {
           username
     } = params;
-    
-    const { data } = await axiosInstance.post<IValidate>('/api/validate-username', { username });
+
+    const { data } = await axiosInstance.post<IValidate>('/validate-username', { username });
     return data;
 };
 
