@@ -1,7 +1,7 @@
 enum EFormStepLabels {
-    UsernameInput = 'usernameInput',
-    PasswordInput = 'passwordInput',
-    LoginSuccess = 'loginSuccess',
+    USERNAMEINPUT = 'usernameInput',
+    PASSWORDINPUT = 'passwordInput',
+    LOGINSUCCESS = 'loginSuccess',
 }
 
 export { EFormStepLabels };

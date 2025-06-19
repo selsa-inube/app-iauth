@@ -1,5 +1,5 @@
 import { Divider, Grid, Stack, Button } from "@inubekit/inubekit";
-import { Links } from "@pages/Link";
+import { Links } from "@pages/link";
 import { DynamicInputs } from "@components/login/DynamicInputs";
 import { ILoginForm } from "@ptypes/components/login/ILoginForm";
 import { Header } from "@components/login/Header";

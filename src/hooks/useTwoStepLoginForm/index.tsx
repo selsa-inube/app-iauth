@@ -12,7 +12,7 @@ import { TextSize } from "@ptypes/components/TextSize";
 import { messages } from '@config/hook/messages';
 
 const useTwoStepLoginForm = () => {
-    const [currentStep, setCurrentStep] = useState<IFormStep>(EFormStepLabels.UsernameInput);
+    const [currentStep, setCurrentStep] = useState<IFormStep>(EFormStepLabels.USERNAMEINPUT);
     const [inputValid, setInputValid] = useState<boolean | null>(null);
     const [inputValue, setInputValue] = useState('');
     const [userName, setUserName] = useState<string>('');
@@ -28,7 +28,7 @@ const useTwoStepLoginForm = () => {
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
 
-        if (currentStep === EFormStepLabels.UsernameInput) {
+        if (currentStep === EFormStepLabels.USERNAMEINPUT) {
             if (!validateRequiredField(inputValue)) {
                 setInputValid(false);
                 setLabels(prev => ({
@@ -44,13 +44,13 @@ const useTwoStepLoginForm = () => {
                 setInputValid(false);
                 setLabels(prev => ({
                     ...prev,
-                    validation: { ...prev.validation, errorMessage: messages.messageInocrrectUsername }
+                    validation: { ...prev.validation, errorMessage: messages.messageIncorrectUsername }
                 }));
                 return;
             }
 
             setUserName(inputValue);
-            setCurrentStep(EFormStepLabels.PasswordInput);
+            setCurrentStep(EFormStepLabels.PASSWORDINPUT);
             setInputValid(null);
             setInputValue('');
             setLabels({
@@ -63,7 +63,7 @@ const useTwoStepLoginForm = () => {
 
         }
 
-        if (currentStep === EFormStepLabels.PasswordInput) {
+        if (currentStep === EFormStepLabels.PASSWORDINPUT) {
             if (!validateRequiredField(inputValue)) {
                 setInputValid(false);
                 setLabels(prev => ({
@@ -79,20 +79,20 @@ const useTwoStepLoginForm = () => {
                 setInputValid(false);
                 setLabels(prev => ({
                     ...prev,
-                    validation: { ...prev.validation, errorMessage: messages.messageInocrrectPassword }
+                    validation: { ...prev.validation, errorMessage: messages.messageIncorrectPassword }
                 }));
                 return;
             }
 
             alert('¡Login exitoso!');
-            setCurrentStep(EFormStepLabels.LoginSuccess);
+            setCurrentStep(EFormStepLabels.LOGINSUCCESS);
             setInputValue('');
             setInputValid(null);
         }
     };
 
     const screenMobile = useMediaQuery("(max-width: 768px)");
-    const showLink = currentStep === EFormStepLabels.UsernameInput;
+    const showLink = currentStep === EFormStepLabels.USERNAMEINPUT;
     const widthStack = screenMobile ? "296px" : "452px";
     const labelsSize: TextSize = screenMobile ? "small" : "medium";
     const labelsSizeDifferent: TextSize = screenMobile ? "medium" : "large";

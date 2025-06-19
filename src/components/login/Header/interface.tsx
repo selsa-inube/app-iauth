@@ -1,7 +1,7 @@
 import { Stack, Text } from "@inubekit/inubekit";
-import logoPadlock from "@assets/img/lgo/logo-padlock-blue.png";
 import { titles } from "@config/login/titles";
 import { IHeader } from "@ptypes/components/login/IHeader";
+import { StyledImg } from "./styled";
 
 
 const HeaderUI = (props: IHeader) => {
@@ -20,12 +20,7 @@ const HeaderUI = (props: IHeader) => {
                 justifyContent="center"
                 gap="7.07px"
             >
-                <img
-                    src={logoPadlock}
-                    alt="Logo Candado"
-                    width="31.81"
-                    height="31.81"
-                />
+                <StyledImg />
                 <Text
                     type="title"
                     size={labelsSizeDifferent}
