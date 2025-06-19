@@ -1,7 +1,13 @@
-import { Card } from "./components/layout/Card";
+import { Home } from '@pages/home';
+import { Route, Routes } from 'react-router-dom';
 
 function App() {
-  return <Card> </Card>;
+
+  return (
+    <Routes>
+      <Route path="/" element={<Home />} />
+    </Routes>
+  );
 }
 
 export { App };
