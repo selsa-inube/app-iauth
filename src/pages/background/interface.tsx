@@ -1,8 +1,11 @@
-import { BackgroundStyled } from "./style";
+import { BackgroundStyled, StyledMask } from "./styles";
 
 function BackgroundUI() {
     return (
-        <BackgroundStyled />
+        <>
+            <StyledMask />
+            <BackgroundStyled />
+        </>
     );
 }
 

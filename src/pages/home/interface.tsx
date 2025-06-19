@@ -5,7 +5,6 @@ import { LoginForm } from "@pages/loginForm/";
 import { IHomeUI } from "@ptypes/pages/home/IHomeUI";
 import { labelsTitles } from "@config/login/entryPage";
 import { Background } from "@pages/background";
-import { Mask } from "@pages/mask";
 
 const HomeUI = (props: IHomeUI) => {
     const {
@@ -15,7 +14,6 @@ const HomeUI = (props: IHomeUI) => {
     return (
         <>
         <Background />
-        <Mask />
         <Stack
             justifyContent="center"
             direction="column"
