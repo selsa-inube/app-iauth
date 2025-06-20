@@ -1,4 +1,4 @@
-import { IFormStepLabels } from "@ptypes/hooks/IFormStepLabels";
+import { IFormStepLabels } from "@ptypes/hooks/useTwoStepLoginForm/IFormStepLabels";
 import { IValidatePassword } from "@ptypes/api/validatePassword/IValidatePassword";
 import { IValidateUsername } from "@ptypes/api/validateUsername/IValidateUsername";
 

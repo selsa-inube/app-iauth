@@ -1,5 +1,4 @@
 import { Stack, Text } from "@inubekit/inubekit"
-import logosistemasenlinea from "@assets/img/lgo/logo-sistemasnelinea.png";
 import { StyledImg } from "./styles";
 import { LoginForm } from "@pages/loginForm/";
 import { IHomeUI } from "@ptypes/pages/home/IHomeUI";
@@ -9,6 +8,7 @@ import { Background } from "@pages/background";
 const HomeUI = (props: IHomeUI) => {
     const {
         $isMobile,
+        urlLogo
     } = props;
 
     return (
@@ -37,7 +37,7 @@ const HomeUI = (props: IHomeUI) => {
                     {labelsTitles.titleImg}
                 </Text>
                 <StyledImg
-                    src={logosistemasenlinea}
+                    src={urlLogo}
                     $isMobile={$isMobile}
                     alt={labelsTitles.textAltImg}
                 />

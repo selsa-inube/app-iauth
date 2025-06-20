@@ -2,11 +2,11 @@ import axios, { AxiosInstance } from "axios";
 import { environment, fetchTimeoutServices } from "@config/environment";
 
 const axiosInstance: AxiosInstance = axios.create({
-    baseURL: environment.AUTH_API_URL,
-    timeout: fetchTimeoutServices,
-    headers: {
-        "Content-type": "application/json; charset=UTF-8",
-    },
+  baseURL: environment.IVITE_ISAAS_QUERY_PROCESS_SERVICE,
+  timeout: fetchTimeoutServices,
+  headers: {
+    "Content-type": "application/json; charset=UTF-8",
+  },
 });
 
 axiosInstance.interceptors.response.use(
@@ -16,9 +16,7 @@ axiosInstance.interceptors.response.use(
       console.error("Request timed out");
     }
     return Promise.reject(new Error(error.message));
-  }
+  },
 );
 
 export { axiosInstance };
-
-

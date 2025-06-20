@@ -1,6 +1,6 @@
 import type { FormEvent, ChangeEvent, ReactNode } from 'react';
-import { IFormStepLabels } from '@ptypes/hooks/IFormStepLabels';
-import { IFormStep } from '@ptypes/hooks/IStepValidationConfig';
+import { IFormStepLabels } from '@ptypes/hooks/useTwoStepLoginForm/IFormStepLabels';
+import { IFormStep } from '@ptypes/hooks/useTwoStepLoginForm/IStepValidationConfig';
 import { TextSize } from '@ptypes/components/TextSize';
 
 interface ILoginForm {
