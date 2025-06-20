@@ -5,6 +5,7 @@ import { LoginForm } from "@pages/loginForm/";
 import { IHomeUI } from "@ptypes/pages/home/IHomeUI";
 import { labelsTitles } from "@config/login/entryPage";
 import { Background } from "@pages/background";
+import { Modal } from "@pages/Modal";
 
 const HomeUI = (props: IHomeUI) => {
     const {
@@ -46,7 +47,9 @@ const HomeUI = (props: IHomeUI) => {
                 direction="column"
                 alignItems="center"
                 width="100%"
+                gap="20px"
             >
+                <Modal />
                 <LoginForm />
             </Stack>
         </Stack>
