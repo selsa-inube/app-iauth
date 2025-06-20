@@ -1,12 +1,10 @@
 import { IFormStepLabels } from "@ptypes/hooks/useTwoStepLoginForm/IFormStepLabels";
-import { IValidatePassword } from "@ptypes/api/validatePassword/IValidatePassword";
-import { IValidateUsername } from "@ptypes/api/validateUsername/IValidateUsername";
-
-type IFormStep = 'usernameInput' | 'passwordInput' | 'loginSuccess';
+import { IValidate } from "@ptypes/api/IValidations";
+import { IFormStep } from "@ptypes/hooks/useTwoStepLoginForm/IFormStep";
 
 interface IStepValidationConfig {
     labelsObject: IFormStepLabels;
-    validationFn: (valueOne: string, valueTwo?: string | undefined) => Promise<IValidatePassword> | Promise<IValidateUsername>;
+    validationFn: (valueOne: string, valueTwo?: string | undefined) => Promise<IValidate> | Promise<IValidate>;
     errorMessage: string;
     nextStep: IFormStep;
     onSuccess: () => void;

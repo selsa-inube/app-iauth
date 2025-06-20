@@ -1,4 +1,4 @@
-import { IBusinessManagers } from "@ptypes/staffPortal/IBusinessManagers";
+import { IBusinessManagers } from "@ptypes/services/staffPortal/IBusinessManagers";
 
 const mapBusinessManagerApiToEntity = (
   businessManager: Record<string, string>,
