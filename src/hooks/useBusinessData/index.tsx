@@ -10,7 +10,6 @@ const useBusinessData = (params: IUseBusinessData) => {
     (async () => {
         let businessManagerId = await staffPortalByBusinessManager(portalCode);
         const businessManagerData = await getBusinessManagers(businessManagerId[0].businessManagerId);
-        console.log("ñññññññññññññññññññññññññññññ  ", businessManagerData)
         setUrlLog(businessManagerData.urlLogo || urlDefault.logoUrl);
     })();
 
