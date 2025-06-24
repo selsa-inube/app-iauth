@@ -7,10 +7,10 @@ import { urlDefault } from "@config/hook/urlDefault";
 const useBusinessData = (params: IUseBusinessData) => {
     const { portalCode } = params;
     const [urlLogo, setUrlLog] = useState<string>(urlDefault.logoUrl);
-
     (async () => {
         let businessManagerId = await staffPortalByBusinessManager(portalCode);
         const businessManagerData = await getBusinessManagers(businessManagerId[0].businessManagerId);
+        console.log("ñññññññññññññññññññññññññññññ  ", businessManagerData)
         setUrlLog(businessManagerData.urlLogo || urlDefault.logoUrl);
     })();
 

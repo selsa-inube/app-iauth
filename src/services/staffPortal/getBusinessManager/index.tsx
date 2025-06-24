@@ -1,8 +1,8 @@
 import { AxiosRequestConfig } from "axios";
 import type { IBusinessManagers } from "@ptypes/services/staffPortal/IBusinessManagers";
 import { getWithRetries } from "@services/core/getWithRetries";
-import { axiosInstance } from "@api/auth";
 import { mapBusinessManagerApiToEntity } from "./mappers";
+import { axiosInstance } from "@api/isaasQuery";
 
 const getBusinessManagers = async (
   businessManagerId: string,
