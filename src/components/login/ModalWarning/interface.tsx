@@ -53,11 +53,7 @@ const ModalWarningUI = (props: IModalWarningUI) => {
                     <Icon
                         appearance="dark"
                         size="24px"
-                        icon={
-                            logo == EModalWarning.FIRSTWARNING ?
-                                <IoCloseSharp /> : <PiWarningOctagonBold />
-
-                        }
+                        icon={ <IoCloseSharp /> }
                         onClick={closeModal}
                         cursorHover
 
@@ -82,8 +78,9 @@ const ModalWarningUI = (props: IModalWarningUI) => {
                         appearance="warning"
                         size="80px"
                         icon={
-
-                            <MdOutlineWarningAmber />
+                            
+                            logo == EModalWarning.FIRSTWARNING ?
+                                <MdOutlineWarningAmber /> : <PiWarningOctagonBold />
                         }
                     />
 

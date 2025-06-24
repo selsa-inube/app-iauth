@@ -23,7 +23,7 @@ const ModalWarning = (props: IModalWarning) => {
             logo={EModalWarning.FIRSTWARNING}
             isMobile={false}
             message="Tu cuenta permanecerá bloqueada durante 24 horas, debido a que hiciste repetidos intentos fallidos."
-            auxiliaryButton={true}
+            auxiliaryButton={false}
             modalRef={modalRef}
             closeModal={closeModal}
         />
