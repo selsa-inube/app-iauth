@@ -1,9 +1,11 @@
 import { BackgroundStyled, StyledMask } from "./styles";
+import { IBackground } from "@ptypes/components/login/IBackground";
 
-function BackgroundUI() {
+function BackgroundUI(props: IBackground) {
+    const { maskRef } = props;
     return (
         <>
-            <StyledMask />
+            <StyledMask ref={maskRef} />
             <BackgroundStyled />
         </>
     );
