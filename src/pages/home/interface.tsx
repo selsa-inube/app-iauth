@@ -13,47 +13,46 @@ const HomeUI = (props: IHomeUI) => {
     } = props;
 
     return (
-        <>
-        <Background />
-        <Stack
-            justifyContent="center"
-            direction="column"
-            padding="12px 33px"
-            gap="20px"
-        >
+        <Background>
             <Stack
-                direction="column"
                 justifyContent="center"
-                width={
-                    $isMobile ? `190px` : `200px`
-                }
-            >
-                <Text
-                    appearance="gray"
-                    weight="bold"
-                    type="headline"
-                    size="small"
-                    textAlign="center"
-                >
-                    {labelsTitles.titleImg}
-                </Text>
-                <StyledImg
-                    src={logosistemasenlinea}
-                    $isMobile={$isMobile}
-                    alt={labelsTitles.textAltImg}
-                />
-            </Stack>
-            <Stack
                 direction="column"
-                alignItems="center"
-                width="100%"
+                padding="12px 33px"
                 gap="20px"
             >
-                <Modal />
-                <LoginForm />
+                <Stack
+                    direction="column"
+                    justifyContent="center"
+                    width={
+                        $isMobile ? `190px` : `200px`
+                    }
+                >
+                    <Text
+                        appearance="gray"
+                        weight="bold"
+                        type="headline"
+                        size="small"
+                        textAlign="center"
+                    >
+                        {labelsTitles.titleImg}
+                    </Text>
+                    <StyledImg
+                        src={logosistemasenlinea}
+                        $isMobile={$isMobile}
+                        alt={labelsTitles.textAltImg}
+                    />
+                </Stack>
+                <Stack
+                    direction="column"
+                    alignItems="center"
+                    width="100%"
+                    gap="20px"
+                >
+                    <Modal />
+                    <LoginForm />
+                </Stack>
             </Stack>
-        </Stack>
-        </>
+        </Background>
     );
 }
 

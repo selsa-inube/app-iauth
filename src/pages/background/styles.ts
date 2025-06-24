@@ -4,7 +4,7 @@ import imgBackground from "@assets/img/bkn/background-mainpage.png";
 const BackgroundStyled = styled.div`
 
   width: 100%;
-  height: 100%;
+  height: 115%;
   position: absolute;
   background-image: url(${imgBackground});
   z-index: -2;
