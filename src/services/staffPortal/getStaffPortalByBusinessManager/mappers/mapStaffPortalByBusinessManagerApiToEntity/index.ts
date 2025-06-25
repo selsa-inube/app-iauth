@@ -19,15 +19,6 @@ const mapStaffPortalByBusinessManagerApiToEntity = (
   return buildResend;
 };
 
-const mapStaffPortalByBusinessManagerApiToEntities = (
-  resend: Record<
-    string,
-    string | IOptionsByStaffPortalBusinessManager[] | undefined
-  >[],
-): IStaffPortalByBusinessManager[] => {
-  return resend.map(mapStaffPortalByBusinessManagerApiToEntity);
-};
 export {
-  mapStaffPortalByBusinessManagerApiToEntities,
-  mapStaffPortalByBusinessManagerApiToEntity,
+  mapStaffPortalByBusinessManagerApiToEntity
 };

@@ -2,7 +2,7 @@ import { AxiosRequestConfig } from "axios";
 import { IStaffPortalByBusinessManager } from "@ptypes/services/staffPortal/IStaffPortalByBusinessManager";
 import { getWithRetries } from "@services/core/getWithRetries";
 import { isaasQueryAxiosInstance } from "@api/isaasQuery";
-import { mapStaffPortalByBusinessManagerApiToEntities } from "./mappers";
+import { mapStaffPortalByBusinessManagerApiToEntities } from "@services/staffPortal/getStaffPortalByBusinessManager/mappers/mapStaffPortalByBusinessManagerApiToEntities";
 
 const staffPortalByBusinessManager = async (
   portalCode: string,

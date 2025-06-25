@@ -1,13 +1,13 @@
 import { IFormStepLabels } from "@ptypes/hooks/useTwoStepLoginForm/IFormStepLabels";
 import { IValidate } from "@ptypes/api/IValidations";
-import { IFormStep } from "@ptypes/hooks/useTwoStepLoginForm/IFormStep";
+import { EFormStepLabels } from "@enum/hooks/EFormStepLabels";
 
 interface IStepValidationConfig {
     labelsObject: IFormStepLabels;
     validationFn: (valueOne: string, valueTwo?: string | undefined) => Promise<IValidate> | Promise<IValidate>;
     errorMessage: string;
-    nextStep: IFormStep;
+    nextStep: EFormStepLabels;
     onSuccess: () => void;
 };
 
-export type { IStepValidationConfig, IFormStep };
+export type { IStepValidationConfig };

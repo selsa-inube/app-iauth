@@ -3,16 +3,15 @@ import { validateRequiredField } from '../../validations/fieldsValidations';
 import { validateUsername } from '@services/validateUsername';
 import { validatePassword } from '@services/validatePassword';
 import { IFormStepLabels } from '@ptypes/hooks/useTwoStepLoginForm/IFormStepLabels';
-import { IFormStep } from '@ptypes/hooks/useTwoStepLoginForm/IStepValidationConfig';
+import { EFormStepLabels } from "@enum/hooks/EFormStepLabels";
 import { userNameStepLabels } from '@config/login/labels/usernameStepLabels'; 
 import { passwordStepLabels } from '@config/login/labels/passwordStepLabels';
 import { useMediaQuery } from "@inubekit/inubekit";
-import { EFormStepLabels } from "@enum/hooks/EFormStepLabels";
 import { TextSize } from "@ptypes/components/TextSize";
 import { messages } from '@config/hook/messages';
 
 const useTwoStepLoginForm = () => {
-    const [currentStep, setCurrentStep] = useState<IFormStep>(EFormStepLabels.USERNAMEINPUT);
+    const [currentStep, setCurrentStep] = useState<EFormStepLabels>(EFormStepLabels.USERNAMEINPUT);
     const [inputValid, setInputValid] = useState<boolean | null>(null);
     const [inputValue, setInputValue] = useState('');
     const [userName, setUserName] = useState<string>('');
