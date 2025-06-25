@@ -5,7 +5,6 @@ import { LoginForm } from "@pages/loginForm/";
 import { IHomeUI } from "@ptypes/pages/home/IHomeUI";
 import { labelsTitles } from "@config/login/entryPage";
 import { Background } from "@pages/background";
-import { ModalWarning } from "@components/login/ModalWarning";
 import { Mask } from "@components/login/Mask";
 import { mask } from "@config/login/mask";
 
@@ -28,7 +27,6 @@ const HomeUI = (props: IHomeUI) => {
                 maskModalWarning={maskModalWarning}
             />
             <Background />
-            <ModalWarning  maskModalWarning={maskModalWarning}/>
             <Stack
                 justifyContent="center"
                 direction="column"

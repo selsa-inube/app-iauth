@@ -1,21 +1,16 @@
-import { Stack, Text, Icon, Grid, Divider, Button } from "@inubekit/inubekit";
+import { Stack, Text, Icon, Divider, Button } from "@inubekit/inubekit";
 import { StyledCard } from "./styles";
 import { IoCloseSharp } from "react-icons/io5";
-import { MdOutlineWarningAmber } from "react-icons/md";
-import { PiWarningOctagonBold } from "react-icons/pi";
 import { IModalWarningUI } from "@ptypes/components/modalWarning/IModalWarningUI/indext";
-import { EModalWarning } from "@enum/components/EModalWarning";
 import { modalWarning } from "@config/login/modalWarning";
 
 
 const ModalWarningUI = (props: IModalWarningUI) => {
     const {
-        logo,
         isMobile,
-        message,
-        auxiliaryButton,
         modalRef,
-        closeModal
+        closeModal,
+        children
     } = props;
 
     return (
@@ -43,79 +38,18 @@ const ModalWarningUI = (props: IModalWarningUI) => {
                     alignItems="center"
                     gap="8px"
                 >
-                    <Text
-                        type="label"
-                        size="large"
-                        appearance="dark"
-                    >
-                        {modalWarning.titleClose}
-                    </Text>
-                    <Icon
-                        appearance="dark"
-                        size="24px"
-                        icon={ <IoCloseSharp /> }
+                    <Button
+                        children={modalWarning.titleClose}
                         onClick={closeModal}
+                        iconAfter={<IoCloseSharp />}
                         cursorHover
-
+                        variant="none"
+                        appearance="dark"
                     />
                 </Stack>
             </Stack>
             <Divider />
-            <Stack
-                height="144px"
-                width="auto"
-                gap="20px"
-                direction="column"
-                margin="40px 0"
-                justifyContent="center"
-                alignContent="center"
-            >
-                <Stack
-                    width="100%"
-                    justifyContent="center"
-                >
-                    <Icon
-                        appearance="warning"
-                        size="80px"
-                        icon={
-                            
-                            logo == EModalWarning.FIRSTWARNING ?
-                                <MdOutlineWarningAmber /> : <PiWarningOctagonBold />
-                        }
-                    />
-
-                </Stack>
-
-                <Text>
-                    {message}
-                </Text>
-            </Stack>
-            <Stack
-                margin="40px 0"
-                direction="row"
-                height="auto"
-                justifyContent="end"
-                gap="20px"
-            >
-                {auxiliaryButton && (
-                    <Button
-                        appearance="warning"
-                        variant="outlined"
-                        spacing="wide"
-                        onClick={closeModal}
-                    >
-                        {modalWarning.modalWarningSecond.labelButton}
-                    </Button>
-                )}
-
-                <Button
-                    appearance="warning"
-                    spacing="wide"
-                    onClick={closeModal}
-                >
-                    {modalWarning.labelUnderstand}
-                </Button>
-            </Stack>
+            {children}
         </StyledCard>
     );
 }
