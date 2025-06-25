@@ -13,8 +13,6 @@ const useBusinessData = (params: IUseBusinessData) => {
         setUrlLog(businessManagerData.urlLogo || urlDefault.logoUrl);
     })();
 
-    console.log("Business Manager Data:", urlLogo);
-
     return {
         urlLogo
     }
