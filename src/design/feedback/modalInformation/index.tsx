@@ -1,13 +1,13 @@
-import { ModalUI } from "./interface";
+import { ModalInformationUI } from "./interface";
 import { useMediaQuery } from "@inubekit/inubekit";
 
-const Modal = () => {
+const ModalInformation = () => {
     const screenMobile = useMediaQuery("(max-width: 768px)");
     const width = screenMobile ? "345px" : "525px";
 
     return(
-        <ModalUI $isMobile={screenMobile} width={width} />
+        <ModalInformationUI $isMobile={screenMobile} width={width} />
     );
 }
 
-export { Modal };
+export { ModalInformation };

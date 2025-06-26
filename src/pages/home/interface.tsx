@@ -5,7 +5,7 @@ import { LoginForm } from "@pages/loginForm/";
 import { IHomeUI } from "@ptypes/pages/home/IHomeUI";
 import { labelsTitles } from "@config/login/entryPage";
 import { Background } from "@pages/background";
-import { Modal } from "@pages/Modal";
+import { ModalInformation } from "@design/feedback/modalInformation";
 import { tokens } from "@design/tokens/tokens";
 
 const HomeUI = (props: IHomeUI) => {
@@ -49,7 +49,7 @@ const HomeUI = (props: IHomeUI) => {
                     width="100%"
                     gap={tokens.spacing.s250}
                 >
-                    <Modal />
+                    <ModalInformation />
                     <LoginForm />
                 </Stack>
             </Stack>
