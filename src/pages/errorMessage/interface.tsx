@@ -12,7 +12,8 @@ const ErrorMessageUI = (props: IErrorMessage) => {
         auxiliaryButton,
         closeModal
     } = props;
-    
+    const logoIcon = logo == EModalWarning.FIRSTWARNING ? <MdOutlineWarningAmber /> : <PiWarningOctagonBold />
+
     return (
         <>
             <Stack
@@ -31,11 +32,7 @@ const ErrorMessageUI = (props: IErrorMessage) => {
                     <Icon
                         appearance="warning"
                         size="80px"
-                        icon={
-
-                            logo == EModalWarning.FIRSTWARNING ?
-                                <MdOutlineWarningAmber /> : <PiWarningOctagonBold />
-                        }
+                        icon={ logoIcon }
                     />
 
                 </Stack>
