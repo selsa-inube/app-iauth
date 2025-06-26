@@ -6,6 +6,7 @@ import { IHomeUI } from "@ptypes/pages/home/IHomeUI";
 import { labelsTitles } from "@config/login/entryPage";
 import { Background } from "@pages/background";
 import { Modal } from "@pages/Modal";
+import { tokens } from "@design/tokens/tokens";
 
 const HomeUI = (props: IHomeUI) => {
     const {
@@ -18,7 +19,7 @@ const HomeUI = (props: IHomeUI) => {
                 justifyContent="center"
                 direction="column"
                 padding="12px 33px"
-                gap="20px"
+                gap={tokens.spacing.s250}
             >
                 <Stack
                     direction="column"
@@ -46,7 +47,7 @@ const HomeUI = (props: IHomeUI) => {
                     direction="column"
                     alignItems="center"
                     width="100%"
-                    gap="20px"
+                    gap={tokens.spacing.s250}
                 >
                     <Modal />
                     <LoginForm />

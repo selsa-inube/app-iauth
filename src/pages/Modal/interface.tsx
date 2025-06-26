@@ -1,4 +1,4 @@
-import { Stack, Text, Icon } from "@inubekit/inubekit";
+import { Stack, Text, Icon, Box } from "@inubekit/inubekit";
 import { MdOutlineCampaign } from "react-icons/md";
 import { StyledDivIcon, StyledDivBody } from "./styles";
 import { IModalUI } from "@ptypes/pages/modal/IModalUI";
@@ -15,14 +15,16 @@ const ModalUI = (props: IModalUI) => {
             width={width}
             height="80px"
         >
-            <StyledDivIcon>
+            <Box
+                borderRadius="0px 8px 8px 0px"
+            >
                 <Icon
                     appearance="dark"
                     icon={
                         <MdOutlineCampaign />
                     }
                 />
-            </StyledDivIcon>
+            </Box>
             <StyledDivBody>
                 <Text
                     type="label"
