@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { inube } from "@inubekit/inubekit";
 import { IStyledModalWarning } from "@ptypes/components/modalWarning/IStyledModalWarning";
+import { tokensWithReference } from "@design/tokens/tokensWithReference";
 
 const StyledCard = styled.div<IStyledModalWarning>`
     background-color: ${({ theme }) =>
@@ -13,11 +14,13 @@ const StyledCard = styled.div<IStyledModalWarning>`
     height: ${({ $isMobile }) =>
         ($isMobile ? "auto" : "326px")
     };
-    box-shadow: 0px 1px 2px 0px ${({ theme }) =>
+    box-shadow: 0px ${tokensWithReference.spacing.s025} ${tokensWithReference.spacing.s025} 0px ${({ theme }) =>
         theme?.palette?.neutral?.N10 || inube.palette.neutral.N10
     };
     padding: ${({ $isMobile }) =>
-        ($isMobile ? "12px 12px 34px 12px" : "24px")
+    ($isMobile ? 
+        `${tokensWithReference.spacing.s150} ${tokensWithReference.spacing.s150} ${tokensWithReference.spacing.s400} ${tokensWithReference.spacing.s150}` :
+        `${tokensWithReference.spacing.s300}`)
     };
     position: absolute;
     top: 50%;

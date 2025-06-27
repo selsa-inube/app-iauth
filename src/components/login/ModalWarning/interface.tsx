@@ -3,6 +3,7 @@ import { StyledCard } from "./styles";
 import { IoCloseSharp } from "react-icons/io5";
 import { IModalWarningUI } from "@ptypes/components/modalWarning/IModalWarningUI/indext";
 import { modalWarning } from "@config/login/modalWarning";
+import { tokensWithReference } from "@design/tokens/tokensWithReference";
 
 
 const ModalWarningUI = (props: IModalWarningUI) => {
@@ -23,7 +24,7 @@ const ModalWarningUI = (props: IModalWarningUI) => {
                 justifyContent="space-between"
                 height="32px"
                 alignItems="center"
-                margin="0 0 20px 0"
+                margin={`0 0 ${tokensWithReference.spacing.s250} 0`}
             >
                 <Text
                     type="headline"
@@ -36,7 +37,7 @@ const ModalWarningUI = (props: IModalWarningUI) => {
                     direction="row"
                     height="100%"
                     alignItems="center"
-                    gap="8px"
+                    gap={`${tokensWithReference.spacing.s100}`}
                 >
                     <Button
                         children={modalWarning.titleClose}
