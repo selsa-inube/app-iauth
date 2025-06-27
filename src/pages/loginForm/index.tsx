@@ -13,7 +13,8 @@ const LoginForm = () => {
         inputValue,
         widthStack,
         labelsSize,
-        labelsSizeDifferent
+        labelsSizeDifferent,
+        countAttempts
     } = useTwoStepLoginForm();
 
     return (

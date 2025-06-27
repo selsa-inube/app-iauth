@@ -17,6 +17,7 @@ const useTwoStepLoginForm = () => {
     const [inputValue, setInputValue] = useState('');
     const [userName, setUserName] = useState<string>('');
     const [labels, setLabels] = useState<IFormStepLabels>(userNameStepLabels);
+    const [countAttempts, setCountAttempts] = useState(0);
 
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setInputValue(e.target.value);
@@ -76,6 +77,7 @@ const useTwoStepLoginForm = () => {
             const response = await validatePassword({ password: inputValue, username: userName });
 
             if (!response.success) {
+                setCountAttempts(countAttempts + 1);
                 setInputValid(false);
                 setLabels(prev => ({
                     ...prev,
@@ -86,7 +88,6 @@ const useTwoStepLoginForm = () => {
 
             alert('¡Login exitoso!');
             setCurrentStep(EFormStepLabels.LOGINSUCCESS);
-            setInputValue('');
             setInputValid(null);
         }
     };
@@ -110,7 +111,8 @@ const useTwoStepLoginForm = () => {
         screenMobile,
         widthStack,
         labelsSize,
-        labelsSizeDifferent
+        labelsSizeDifferent,
+        countAttempts
     };
 };
 
