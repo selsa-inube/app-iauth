@@ -4,7 +4,8 @@ interface IErrorMessage {
     logo: EModalWarning,
     message: string,
     auxiliaryButton: boolean,
-    closeModal: () => void
+    closeModal: () => void,
+    logoIcon: boolean
 }
 
 export type { IErrorMessage };

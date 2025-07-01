@@ -1,10 +1,12 @@
+import { inube } from "@inubekit/inubekit"
+
 const mask = {
     maskBackground: {
-        backgroundColor: "rgba(255, 255, 255, 0.7)",
+        backgroundColor: inube.palette.neutralAlpha.N30A ,
         zIndex: -1
     },
     maskModalWarning: {
-        backgroundColor: "rgb(9, 30, 66, 0.54)",
+        backgroundColor: inube.palette.neutralAlpha.N100A,
         zIndex: 99
     }
 

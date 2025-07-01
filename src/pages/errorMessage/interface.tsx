@@ -1,18 +1,15 @@
 import { Stack, Text, Button, Icon } from "@inubekit/inubekit";
-import { EModalWarning } from "@enum/components/EModalWarning";
-import { MdOutlineWarningAmber } from "react-icons/md";
-import { PiWarningOctagonBold } from "react-icons/pi";
+import { MdOutlineWarningAmber, MdReportGmailerrorred } from "react-icons/md";
 import { modalWarning } from "@config/login/modalWarning";
 import { IErrorMessage } from "@ptypes/pages/IErrorMessage";
 
 const ErrorMessageUI = (props: IErrorMessage) => {
     const {
-        logo,
         message,
         auxiliaryButton,
-        closeModal
+        closeModal,
+        logoIcon
     } = props;
-    const logoIcon = logo == EModalWarning.FIRSTWARNING ? <MdOutlineWarningAmber /> : <PiWarningOctagonBold />
 
     return (
         <>
@@ -32,7 +29,9 @@ const ErrorMessageUI = (props: IErrorMessage) => {
                     <Icon
                         appearance="warning"
                         size="80px"
-                        icon={ logoIcon }
+                        icon={ logoIcon 
+                            ? <MdOutlineWarningAmber /> 
+                            : <MdReportGmailerrorred />}
                     />
 
                 </Stack>
