@@ -1,10 +1,7 @@
 import { Box, IBox } from ".";
 
-import { Button } from "@inubekit/inubekit";
-import { Text } from "@inubekit/inubekit";
-import { Stack } from "@inubekit/inubekit";
+import { Button, Text, Stack, inube } from "@inubekit/inubekit";
 import { ThemeProvider } from "styled-components";
-import { inube } from "@inubekit/inubekit";
 
 const story = {
   title: "layout/Box",

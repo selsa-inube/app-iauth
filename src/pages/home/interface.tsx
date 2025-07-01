@@ -18,8 +18,9 @@ const HomeUI = (props: IHomeUI) => {
             <Stack
                 justifyContent="center"
                 direction="column"
-                padding="12px 33px"
+                padding={`${tokens.spacing.s500} ${tokens.spacing.s400}`}
                 gap={tokens.spacing.s250}
+                height="100vh"
             >
                 <Stack
                     direction="column"

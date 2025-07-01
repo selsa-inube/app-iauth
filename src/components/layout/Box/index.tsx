@@ -1,18 +1,5 @@
 import { StyledBox } from "./styles.js";
-
-interface IBox {
-  children?: React.ReactNode;
-  padding?: string;
-  margin?: string;
-  borderRadius?: string;
-  width?: string;
-  height?: string;
-  appearance?: string;
-  flexDirection?: string;
-  gap?: string;
-  justifyContent?: string;
-  alignItems?: string;
-}
+import { IBox } from "@ptypes/components/box/IBox";
 
 function Box(props: IBox) {
   const {
@@ -48,4 +35,3 @@ function Box(props: IBox) {
 }
 
 export { Box };
-export type { IBox };

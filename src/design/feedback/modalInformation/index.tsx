@@ -6,7 +6,7 @@ const ModalInformation = () => {
     const width = screenMobile ? "345px" : "525px";
 
     return(
-        <ModalInformationUI $isMobile={screenMobile} width={width} />
+        <ModalInformationUI width={width} />
     );
 }
 

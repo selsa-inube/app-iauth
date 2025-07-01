@@ -6,7 +6,6 @@ import { IModalUI } from "@ptypes/pages/modal/IModalUI";
 import { modalMock } from "@config/mocks/pages/modalMock";
 
 const ModalInformationUI = (props: IModalUI) => {
-
     const {
         width,
     } = props;
