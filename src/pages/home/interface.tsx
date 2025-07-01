@@ -5,9 +5,9 @@ import { LoginForm } from "@pages/loginForm/";
 import { IHomeUI } from "@ptypes/pages/home/IHomeUI";
 import { labelsTitles } from "@config/login/entryPage";
 import { Background } from "@pages/background";
-import { Mask } from "@components/Mask";
+import { Mask } from "@components/utils/Mask";
 import { mask } from "@config/login/mask";
-import { ModalWarning } from "@components/login/ModalWarning";
+import { ModalWarning } from "@components/layout/ModalWarning";
 import { modalWarningFirst } from "@config/mocks/components/modalWarning/modalWarningFirst";
 
 const HomeUI = (props: IHomeUI) => {
@@ -22,14 +22,14 @@ const HomeUI = (props: IHomeUI) => {
         <>
             <Mask
                 zIndex={mask.maskBackground.zIndex}
-                backgroundColor={mask.maskBackground.backgroundColor}
+                isModal={false}
             />
             {
                 isModalWarningOpen && (
                     <>
                         <Mask
                             zIndex={mask.maskModalWarning.zIndex}
-                            backgroundColor={mask.maskModalWarning.backgroundColor}
+                            isModal={true}
                         />
                         <ModalWarning
                             onClose={handleCloseModal}

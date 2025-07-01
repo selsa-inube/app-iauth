@@ -1,6 +1,5 @@
 import { inube } from "@inubekit/inubekit"
-import { ICustomTokens } from "../../ICustomTokens";
 
-type ITheme = typeof inube & ICustomTokens;
+type ITheme = typeof inube;
 
 export type{ ITheme };

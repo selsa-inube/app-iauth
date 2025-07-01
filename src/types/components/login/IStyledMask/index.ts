@@ -1,6 +1,6 @@
 interface IStyledMask {
     $zIndex: string;
-    $backgroundColor: string;
+    $isModal: boolean;
     $maskModalWarning?: React.RefObject<HTMLDivElement>;
     $direction?: string;
 };

@@ -4,13 +4,13 @@ import { StyledMask } from "./styles";
 const Mask = (props: IMask) => {
     const { 
         zIndex,
-        backgroundColor
+        isModal
     } = props;
 
     return (
         <StyledMask 
             $zIndex={zIndex}
-            $backgroundColor={backgroundColor} 
+            $isModal={isModal} 
             $direction="column"
         />
     );

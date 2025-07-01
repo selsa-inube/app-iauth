@@ -1,6 +1,6 @@
 interface IMask {
     zIndex: string;
-    backgroundColor: string;
+    isModal: boolean;
     direction?: string;
 };
 

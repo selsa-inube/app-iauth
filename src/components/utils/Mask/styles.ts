@@ -6,12 +6,12 @@ const StyledMask = styled.div<IStyledMask>`
     flex-direction: ${({ $direction }) => $direction};
     width: 100%;
     height: 100%;
-    background-color: ${({ $backgroundColor, theme }) => 
-            `${theme?.mask?.background?.light || mask.background[$backgroundColor]}`};
-    
+    background-color: ${({ $isModal, theme }) => 
+        $isModal 
+                ?`${theme?.mask?.background?.dark || mask.background.dark}`
+                :`${theme?.mask?.background?.light || mask.background.light}`};
     position: absolute;
-    z-index: ${({ $zIndex, theme }) => 
-            `${theme?.mask?.zIndex?.behind || mask.zIndex[$zIndex]}`};
+    z-index: ${({ $zIndex }) => `${$zIndex}`};
     opacity: 0.5;
 `;
 
