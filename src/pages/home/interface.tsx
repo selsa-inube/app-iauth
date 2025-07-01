@@ -5,7 +5,7 @@ import { LoginForm } from "@pages/loginForm/";
 import { IHomeUI } from "@ptypes/pages/home/IHomeUI";
 import { labelsTitles } from "@config/login/entryPage";
 import { Background } from "@pages/background";
-import { Mask } from "@components/login/Mask";
+import { Mask } from "@components/Mask";
 import { mask } from "@config/login/mask";
 import { ModalWarning } from "@components/login/ModalWarning";
 import { modalWarningFirst } from "@config/mocks/components/modalWarning/modalWarningFirst";
@@ -33,6 +33,7 @@ const HomeUI = (props: IHomeUI) => {
                         />
                         <ModalWarning
                             onClose={handleCloseModal}
+                            auxiliaryButton={true}
                         >
                             {modalWarningFirst.textInfo}
                         </ModalWarning>

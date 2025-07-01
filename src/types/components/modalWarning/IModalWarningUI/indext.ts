@@ -1,7 +1,8 @@
 interface IModalWarningUI {
     isMobile: boolean;
     onClose: () => void;
-    children: React.ReactNode
+    children: React.ReactNode;
+    auxiliaryButton: boolean;
 }
 
 export type { IModalWarningUI };

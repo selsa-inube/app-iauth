@@ -4,7 +4,8 @@ import { IModalWarning } from "@ptypes/components/login/IModalWarning";
 const ModalWarning = (props: IModalWarning) => {
     const {
         children,
-        onClose
+        onClose,
+        auxiliaryButton
     } = props;
 
     return (
@@ -12,6 +13,7 @@ const ModalWarning = (props: IModalWarning) => {
             isMobile={false}
             onClose={onClose}
             children={children}
+            auxiliaryButton={auxiliaryButton}
         />
     );
 }

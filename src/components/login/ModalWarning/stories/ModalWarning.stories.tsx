@@ -20,11 +20,26 @@ Default.args = {
             }
             />
             <Text>{modalWarningContent.modalWarningFirst.textInfo}</Text>
-            <Button appearance="warning" variant="none">{modalWarningContent.labelUnderstand}</Button>
-            <Button appearance="warning">{modalWarningContent.modalWarningSecond.labelButton}</Button>
         </>
-    )
+    ),
+    auxiliaryButton: false
+}
+
+const AuxiliaryButton = (args: IModalWarning) => <ModalWarning {...args} />
+
+AuxiliaryButton.args = {
+    maskModalWarning: { current: null },
+    children: (
+        <>
+            <Icon appearance="warning" icon={
+                <MdOutlineWarningAmber />
+            }
+            />
+            <Text>{modalWarningContent.modalWarningFirst.textInfo}</Text>
+        </>
+    ),
+    auxiliaryButton: true
 }
 
 export default story;
-export { Default };
+export { Default, AuxiliaryButton };

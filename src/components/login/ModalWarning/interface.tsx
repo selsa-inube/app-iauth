@@ -10,7 +10,8 @@ const ModalWarningUI = (props: IModalWarningUI) => {
     const {
         isMobile,
         onClose,
-        children
+        children,
+        auxiliaryButton
     } = props;
 
     return (
@@ -48,7 +49,36 @@ const ModalWarningUI = (props: IModalWarningUI) => {
                 </Stack>
             </Stack>
             <Divider />
+            <Stack height="168px">
             {children}
+            </Stack>
+            <Stack
+                margin="40px 0"
+                direction="row"
+                height="65px"
+                justifyContent="end"
+                gap="20px"
+                alignItems="end"
+            >
+                {auxiliaryButton && (
+                    <Button
+                        appearance="warning"
+                        variant="outlined"
+                        spacing="wide"
+                        onClick={onClose}
+                    >
+                        {modalWarning.modalWarningSecond.labelButton}
+                    </Button>
+                )}
+
+                <Button
+                    appearance="warning"
+                    spacing="wide"
+                    onClick={onClose}
+                >
+                    {modalWarning.labelUnderstand}
+                </Button>
+            </Stack>
         </StyledCard>
     );
 }
