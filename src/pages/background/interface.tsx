@@ -1,11 +1,15 @@
-import { BackgroundStyled, StyledMask } from "./styles";
+import { StyledMaskContainer, StyledMask } from "./styles";
+import type { ICard } from "@ptypes/components/card/ICard";
 
-function BackgroundUI() {
+const BackgroundUI = (props: ICard) =>{
+    const { children } = props;
+
     return (
-        <>
-            <StyledMask />
-            <BackgroundStyled />
-        </>
+        <StyledMaskContainer>
+            <StyledMask>
+                {children}
+            </StyledMask>
+        </StyledMaskContainer>
     );
 }
 
