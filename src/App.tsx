@@ -4,7 +4,7 @@ import { environment } from "@config/environment";
 
 const url = new URL(window.location.href);
 const params = new URLSearchParams(url.search);
-const portalCode:string = params.get("portal") || environment.DEAFULT_PORTAL_CODE;
+const portalCode:string = params.get("portal") || environment.PORTAL_CATALOG_ID;
 
 const App = () => {
 
