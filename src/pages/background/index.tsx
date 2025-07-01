@@ -1,8 +1,8 @@
-import { BackgroundUI } from "./interface";
+import { BackgroundStyled } from "./styles";
 
-function Background() {
+const Background =() => {
     return (
-        <BackgroundUI />
+        <BackgroundStyled />
     );
 }
  export { Background };

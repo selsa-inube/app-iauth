@@ -1,6 +1,6 @@
 import { Stack, Text, Icon, Divider, Button } from "@inubekit/inubekit";
 import { StyledCard } from "./styles";
-import { IoCloseSharp } from "react-icons/io5";
+import { IoMdClose } from "react-icons/io";
 import { IModalWarningUI } from "@ptypes/components/modalWarning/IModalWarningUI/indext";
 import { modalWarning } from "@config/login/modalWarning";
 import { tokensWithReference } from "@design/tokens/tokensWithReference";
@@ -9,15 +9,13 @@ import { tokensWithReference } from "@design/tokens/tokensWithReference";
 const ModalWarningUI = (props: IModalWarningUI) => {
     const {
         isMobile,
-        modalRef,
-        closeModal,
+        onClose,
         children
     } = props;
 
     return (
         <StyledCard
             $isMobile={isMobile}
-            ref={modalRef}
         >
             <Stack
                 direction="row"
@@ -41,8 +39,8 @@ const ModalWarningUI = (props: IModalWarningUI) => {
                 >
                     <Button
                         children={modalWarning.titleClose}
-                        onClick={closeModal}
-                        iconAfter={<IoCloseSharp />}
+                        onClick={onClose}
+                        iconAfter={<IoMdClose />}
                         cursorHover
                         variant="none"
                         appearance="dark"

@@ -1,6 +1,6 @@
 interface IModalWarning {
-    maskModalWarning: React.RefObject<HTMLDivElement>;
-    children: React.ReactNode
+    children: React.ReactNode,
+    onClose: () => void,
 } 
 
 export type { IModalWarning };

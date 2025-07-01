@@ -1,7 +1,10 @@
-import styled from "styled-components"
-import { IHomeUI } from "@ptypes/pages/home/IHomeUI";
+import styled from "styled-components";
 
-const StyledImg = styled.img<IHomeUI>`
+interface IStyledImg {
+    $isMobile: boolean;
+}
+
+const StyledImg = styled.img<IStyledImg>`
     width: ${({ $isMobile }) => {
         return $isMobile ? `190px` : `200px`;
     }};

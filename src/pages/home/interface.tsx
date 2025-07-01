@@ -7,11 +7,14 @@ import { labelsTitles } from "@config/login/entryPage";
 import { Background } from "@pages/background";
 import { Mask } from "@components/login/Mask";
 import { mask } from "@config/login/mask";
+import { ModalWarning } from "@components/login/ModalWarning";
+import { modalWarningFirst } from "@config/mocks/components/modalWarning/modalWarningFirst";
 
 const HomeUI = (props: IHomeUI) => {
     const {
         $isMobile,
-        maskModalWarning
+        handleCloseModal,
+        isModalWarningOpen
     } = props;
 
 
@@ -21,11 +24,21 @@ const HomeUI = (props: IHomeUI) => {
                 zIndex={mask.maskBackground.zIndex}
                 backgroundColor={mask.maskBackground.backgroundColor}
             />
-            <Mask
-                zIndex={mask.maskModalWarning.zIndex}
-                backgroundColor={mask.maskModalWarning.backgroundColor}
-                maskModalWarning={maskModalWarning}
-            />
+            {
+                isModalWarningOpen && (
+                    <>
+                        <Mask
+                            zIndex={mask.maskModalWarning.zIndex}
+                            backgroundColor={mask.maskModalWarning.backgroundColor}
+                        />
+                        <ModalWarning
+                            onClose={handleCloseModal}
+                        >
+                            {modalWarningFirst.textInfo}
+                        </ModalWarning>
+                    </>
+                )
+            }
             <Background />
             <Stack
                 justifyContent="center"

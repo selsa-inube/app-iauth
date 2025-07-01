@@ -1,7 +1,7 @@
 interface IMask {
     zIndex?: number;
     backgroundColor?: string;
-    maskModalWarning?: React.RefObject<HTMLDivElement>
+    direction?: string;
 };
 
 export type { IMask };

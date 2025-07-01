@@ -1,18 +1,17 @@
-import { MaskUI } from "./interface";
 import { IMask } from "@ptypes/components/login/IMask";
+import { StyledMask } from "./styles";
 
 const Mask = (props: IMask) => {
     const { 
-        zIndex, 
-        backgroundColor,
-        maskModalWarning 
+        zIndex,
+        backgroundColor
     } = props;
 
     return (
-        <MaskUI 
-            zIndex={zIndex}
-            backgroundColor={backgroundColor} 
-            maskModalWarning={maskModalWarning}
+        <StyledMask 
+            $zIndex={zIndex}
+            $backgroundColor={backgroundColor} 
+            $direction="column"
         />
     );
 }   

@@ -1,12 +1,18 @@
-import { IMask } from "@ptypes/components/login/IMask";
+import { IStyledMask } from "@ptypes/components/login/IStyledMask";
 import styled from "styled-components";
+import { inube } from "@inubekit/inubekit";
 
-const StyledMask = styled.div<IMask>`
+const StyledMask = styled.div<IStyledMask>`
+    flex-direction: ${({ $direction }) => $direction};
     width: 100%;
     height: 100%;
-    background-color: ${props => props.backgroundColor};
+    background-color: ${({ $backgroundColor, theme }) => 
+        $backgroundColor 
+            ? $backgroundColor 
+            : `${theme?.palette?.neutral?.N0 ?? inube.palette.neutral.N0}`};
+    
     position: absolute;
-    z-index: ${props => props.zIndex};
+    z-index: ${({ $zIndex }) => $zIndex};
 `;
 
 export { StyledMask };

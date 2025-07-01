@@ -1,7 +1,6 @@
 interface IModalWarningUI {
     isMobile: boolean;
-    modalRef: React.RefObject<HTMLDivElement>;
-    closeModal: () => void;
+    onClose: () => void;
     children: React.ReactNode
 }
 
