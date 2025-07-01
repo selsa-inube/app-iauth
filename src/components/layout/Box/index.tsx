@@ -1,7 +1,7 @@
 import { StyledBox } from "./styles.js";
 import { IBox } from "@ptypes/components/box/IBox";
 
-function Box(props: IBox) {
+const Box = (props: IBox) => {
   const {
     children,
     padding = "16px",
