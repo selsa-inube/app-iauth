@@ -1,12 +1,12 @@
 import { Home } from '@pages/home';
 import { Route, Routes } from 'react-router-dom';
-import { defaultPortalCode } from '@config/app/portalCode';
+import { environment } from "@config/environment";
 
 const url = new URL(window.location.href);
 const params = new URLSearchParams(url.search);
-const portalCode:string = params.get("portal") || defaultPortalCode;
+const portalCode:string = params.get("portal") || environment.DEAFULT_PORTAL_CODE;
 
-function App() {
+const App = () => {
 
   return (
     <Routes>
