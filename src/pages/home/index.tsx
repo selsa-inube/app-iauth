@@ -6,6 +6,7 @@ const Home = () => {
     const [showModalError, setShowModalError] = useState(false);
     const [typeError, setTypeError] = useState<EModalWarning>(EModalWarning.NONE);
     const screenMobile = useMediaQuery("(max-width: 768px)");
+
     return (
         <HomeUI
             $isMobile={screenMobile}
