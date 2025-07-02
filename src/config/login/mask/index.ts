@@ -3,7 +3,7 @@ const mask = {
         zIndex: '-1'
     },
     maskModalWarning: {
-        zIndex: '99'
+        zIndex: '1'
     }
 }
 

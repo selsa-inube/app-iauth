@@ -1,6 +1,6 @@
 import { Stack, Text, Icon, Divider, Button } from "@inubekit/inubekit";
 import { StyledCard } from "./styles";
-import { IoMdClose } from "react-icons/io";
+import { MdClose } from "react-icons/md";
 import { IModalWarningUI } from "@ptypes/components/modalWarning/IModalWarningUI/indext";
 import { modalWarning } from "@config/login/modalWarning";
 import { tokensWithReference } from "@design/tokens/tokensWithReference";
@@ -41,7 +41,7 @@ const ModalWarningUI = (props: IModalWarningUI) => {
                     <Button
                         children={modalWarning.titleClose}
                         onClick={onClose}
-                        iconAfter={<IoMdClose />}
+                        iconAfter={<MdClose />}
                         cursorHover
                         variant="none"
                         appearance="dark"
