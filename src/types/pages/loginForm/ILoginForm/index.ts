@@ -1,11 +1,8 @@
 import { EModalWarning } from "@enum/components/EModalWarning";
 
-interface IHomeUI {
-    $isMobile: boolean;
-    showModalError: boolean;
+interface ILoginForm {
     setShowModalError: React.Dispatch<React.SetStateAction<boolean>>;
-    typeError: EModalWarning; 
     setTypeError: React.Dispatch<React.SetStateAction<EModalWarning>>;
 }
 
-export type { IHomeUI };
+export type{ ILoginForm };

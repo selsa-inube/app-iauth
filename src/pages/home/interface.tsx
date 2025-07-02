@@ -9,6 +9,8 @@ import { Background } from "@pages/background";
 const HomeUI = (props: IHomeUI) => {
     const {
         $isMobile,
+        setShowModalError,
+        setTypeError
     } = props;
 
     return (
@@ -47,7 +49,10 @@ const HomeUI = (props: IHomeUI) => {
                 alignItems="center"
                 width="100%"
             >
-                <LoginForm />
+                <LoginForm 
+                    setShowModalError={setShowModalError}
+                    setTypeError={setTypeError}
+                />
             </Stack>
         </Stack>
         </>

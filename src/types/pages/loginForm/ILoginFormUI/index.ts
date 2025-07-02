@@ -3,7 +3,7 @@ import { IFormStepLabels } from '@ptypes/hooks/IFormStepLabels';
 import { IFormStep } from '@ptypes/hooks/IStepValidationConfig';
 import { TextSize } from '@ptypes/components/TextSize';
 
-interface ILoginForm {
+interface ILoginFormUI {
   currentStep: IFormStep;
   handleSubmit: (e: FormEvent<HTMLFormElement>) => void;
   labels: IFormStepLabels;
@@ -17,4 +17,4 @@ interface ILoginForm {
   showLink: boolean;
 }
 
-export type { ILoginForm };
+export type { ILoginFormUI };

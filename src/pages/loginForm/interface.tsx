@@ -1,10 +1,10 @@
 import { Divider, Grid, Stack, Button } from "@inubekit/inubekit";
 import { Links } from "@pages/link";
 import { DynamicInputs } from "@components/login/DynamicInputs";
-import { ILoginForm } from "@ptypes/components/login/ILoginForm";
+import { ILoginFormUI } from "@ptypes/pages/loginForm/ILoginFormUI";
 import { Header } from "@components/login/Header";
 
-const LoginFormUI = (props: ILoginForm) => {
+const LoginFormUI = (props: ILoginFormUI) => {
     const {
         handleSubmit,
         labelsSizeDifferent,

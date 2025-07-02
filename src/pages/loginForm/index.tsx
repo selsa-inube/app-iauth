@@ -1,8 +1,14 @@
 import { LoginFormUI } from "./interface";
 import { useTwoStepLoginForm } from "@hooks/useTwoStepLoginForm";
 import { Card } from "@components/layout/Card";
+import { ILoginForm } from "@ptypes/pages/loginForm/ILoginForm";
 
-const LoginForm = () => {
+const LoginForm = (props: ILoginForm) => {
+    const {
+        setShowModalError,
+        setTypeError
+    } = props;
+
     const {
         showLink,
         currentStep,
@@ -14,8 +20,7 @@ const LoginForm = () => {
         widthStack,
         labelsSize,
         labelsSizeDifferent,
-        countAttempts
-    } = useTwoStepLoginForm();
+    } = useTwoStepLoginForm({ setShowModalError, setTypeError });
 
     return (
         <Card>
