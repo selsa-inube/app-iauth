@@ -1,4 +1,4 @@
-import { DynamicInputsUI } from "@components/inputs/DynamicInputs/interface";
+import { DynamicInputsUI } from "@components/login/DynamicInputs/interface";
 import { IDynamicInputs } from "@ptypes/components/login/IDynamicInputs";
 import { InputStatus } from "@ptypes/components/InputStatus";
 

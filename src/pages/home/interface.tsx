@@ -46,7 +46,7 @@ const HomeUI = (props: IHomeUI) => {
                 direction="column"
                 padding={`${tokens.spacing.s500} ${tokens.spacing.s400}`}
                 gap={tokens.spacing.s250}
-                height="100vh"
+                height="auto"
             >
                 <Stack
                     direction="column"
@@ -74,6 +74,7 @@ const HomeUI = (props: IHomeUI) => {
                     direction="column"
                     alignItems="center"
                     width="100%"
+                    gap={tokens.spacing.s250}
                 >
                     <ModalInformation />
                     <LoginForm />
