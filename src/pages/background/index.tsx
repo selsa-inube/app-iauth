@@ -1,8 +1,13 @@
-import { BackgroundStyled } from "./styles";
+import { BackgroundUI } from "./interface";
+import type { ICard } from "@ptypes/components/card/ICard";
 
-const Background =() => {
+const Background = (props: ICard) => {
+    const { children } = props;
+
     return (
-        <BackgroundStyled />
+        <BackgroundUI>
+            {children}    
+        </ BackgroundUI>
     );
 }
  export { Background };

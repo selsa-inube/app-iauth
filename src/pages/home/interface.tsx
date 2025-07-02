@@ -9,6 +9,8 @@ import { Mask } from "@components/utils/Mask";
 import { mask } from "@config/login/mask";
 import { ModalWarning } from "@components/layout/ModalWarning";
 import { modalWarningFirst } from "@config/mocks/components/modalWarning/modalWarningFirst";
+import { ModalInformation } from "@design/feedback/modalInformation";
+import { tokens } from "@design/tokens/tokens";
 
 const HomeUI = (props: IHomeUI) => {
     const {
@@ -17,9 +19,8 @@ const HomeUI = (props: IHomeUI) => {
         isModalWarningOpen
     } = props;
 
-
     return (
-        <>
+        <Background>
             <Mask
                 zIndex={mask.maskBackground.zIndex}
                 isModal={false}
@@ -40,12 +41,12 @@ const HomeUI = (props: IHomeUI) => {
                     </>
                 )
             }
-            <Background />
             <Stack
                 justifyContent="center"
                 direction="column"
-                padding="12px 33px"
-                gap="20px"
+                padding={`${tokens.spacing.s500} ${tokens.spacing.s400}`}
+                gap={tokens.spacing.s250}
+                height="100vh"
             >
                 <Stack
                     direction="column"
@@ -74,10 +75,11 @@ const HomeUI = (props: IHomeUI) => {
                     alignItems="center"
                     width="100%"
                 >
+                    <ModalInformation />
                     <LoginForm />
                 </Stack>
             </Stack>
-        </>
+        </Background>
     );
 }
 
