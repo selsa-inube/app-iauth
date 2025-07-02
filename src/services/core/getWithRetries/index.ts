@@ -26,7 +26,7 @@ const getWithRetries = async <T>(
       }
     }
   }
-  throw new Error("Error al obtener los de las unidades de negocio.");
+  throw new Error("failed to fetch data after many retries");
 };
 
 export { getWithRetries };
