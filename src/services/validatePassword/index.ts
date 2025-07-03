@@ -1,19 +1,15 @@
 import { axiosInstance } from "@api/auth";
 import { IValidate } from "@ptypes/api/IValidations";
 import { IValidateParams } from "@ptypes/api/IValidationsParams";
-import { mapValidatePassword } from "./mapper";
-import { IValidatePassword } from "@ptypes/services/IValidatePassword";
-import { AxiosResponse } from 'axios';
-const validatePassword = async ( params:IValidateParams ): Promise<IValidate> => {
-    const {
-        password,
-        username
-    } = params;
-    
-    const response: AxiosResponse<IValidatePassword>  = await axiosInstance.post<IValidatePassword>('/validate-password', { username, password });
-    const data: IValidatePassword = response.data;
-    
-    return mapValidatePassword(data);
+import { IErrorHandle } from "@ptypes/services/IErrorHandle";
+
+const validatePassword = async (params: IValidateParams): Promise<IValidate | IErrorHandle> => {
+    try {
+        const { data } = await axiosInstance.post<IValidate | IErrorHandle>('/validate-password', params);
+        return data;
+    } catch (error: any) {
+        return error as IErrorHandle;
+    }
 };
 
 export { validatePassword };
