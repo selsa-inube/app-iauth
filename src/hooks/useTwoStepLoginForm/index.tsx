@@ -9,14 +9,18 @@ import { passwordStepLabels } from '@config/login/labels/passwordStepLabels';
 import { useMediaQuery } from "@inubekit/inubekit";
 import { TextSize } from "@ptypes/components/TextSize";
 import { messages } from '@config/hook/messages';
+import { IUseTwoStepLoginForm } from '@ptypes/hooks/useTwoStepLoginForm/IUseTwoStepLoginForm';
+import { environment } from "@config/environment";
+import { EModalWarning } from "@enum/components/EModalWarning";
 
-const useTwoStepLoginForm = () => {
+const useTwoStepLoginForm = (data: IUseTwoStepLoginForm) => {
+    const { setErrorType } = data;
     const [currentStep, setCurrentStep] = useState<EFormStepLabels>(EFormStepLabels.USERNAMEINPUT);
     const [inputValid, setInputValid] = useState<boolean | null>(null);
     const [inputValue, setInputValue] = useState('');
     const [userName, setUserName] = useState<string>('');
     const [labels, setLabels] = useState<IFormStepLabels>(userNameStepLabels);
-
+    const [attemptsPassword, setAttemptsPassword] = useState(0);
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setInputValue(e.target.value);
         if (inputValid === false) {
@@ -75,11 +79,22 @@ const useTwoStepLoginForm = () => {
             const response = await validatePassword({ password: inputValue, username: userName });
 
             if (!response.success) {
+                setAttemptsPassword(attemptsPassword + 1);
                 setInputValid(false);
                 setLabels(prev => ({
                     ...prev,
                     validation: { ...prev.validation, errorMessage: messages.messageIncorrectPassword }
                 }));
+                return;
+            }
+
+            if(attemptsPassword > 1 && attemptsPassword < environment.NUMBER_ATTEMPTS) {
+                setErrorType(EModalWarning.FIRSTWARNING);
+                return;
+            }
+
+            if (attemptsPassword >= environment.NUMBER_ATTEMPTS) {
+                setErrorType(EModalWarning.SECONDWARNING);
                 return;
             }
 

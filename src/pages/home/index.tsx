@@ -3,6 +3,7 @@ import { useMediaQuery } from "@inubekit/inubekit";
 import { IHome } from "@ptypes/pages/home/IHome";
 import { useBusinessData } from "@hooks/useBusinessData";
 import { useState } from "react";
+import { EModalWarning } from "@enum/components/EModalWarning";
 
 const Home = (props: IHome) => {
     const {
@@ -10,8 +11,10 @@ const Home = (props: IHome) => {
     } = props;
     const { urlLogo } = useBusinessData({ portalCode });
     const screenMobile = useMediaQuery("(max-width: 768px)");
-    const [isModalWarningOpen, setIsModalWarningOpen] = useState(true);
+    const [isModalWarningOpen, setIsModalWarningOpen] = useState(false);
+    const [errorType, setErrorType] = useState<EModalWarning>(EModalWarning.NONE);
     const handleCloseModal = () => setIsModalWarningOpen(false);
+    errorType != EModalWarning.NONE && setIsModalWarningOpen(true);
 
     return (
         <HomeUI
@@ -19,6 +22,8 @@ const Home = (props: IHome) => {
             urlLogo={urlLogo}
             handleCloseModal={handleCloseModal}
             isModalWarningOpen={isModalWarningOpen}
+            errorType={errorType}
+            setErrorType={setErrorType}
         />
     );
 }
