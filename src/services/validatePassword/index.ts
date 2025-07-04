@@ -7,7 +7,7 @@ const validatePassword = async (params: IValidateParams): Promise<IValidate | IE
     try {
         const { data } = await axiosInstance.post<IValidate | IErrorHandle>('/validate-password', params);
         return data;
-    } catch (error: any) {
+    } catch (error) {
         return error as IErrorHandle;
     }
 };

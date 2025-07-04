@@ -4,11 +4,13 @@ import { validateUsername } from '@services/validateUsername';
 import { validatePassword } from '@services/validatePassword';
 import { IFormStepLabels } from '@ptypes/hooks/useTwoStepLoginForm/IFormStepLabels';
 import { EFormStepLabels } from "@enum/hooks/EFormStepLabels";
-import { userNameStepLabels } from '@config/login/labels/usernameStepLabels'; 
+import { userNameStepLabels } from '@config/login/labels/usernameStepLabels';
 import { passwordStepLabels } from '@config/login/labels/passwordStepLabels';
 import { useMediaQuery } from "@inubekit/inubekit";
 import { TextSize } from "@ptypes/components/TextSize";
 import { messages } from '@config/hook/messages';
+import { EModalWarning } from '@enum/components/EModalWarning';
+import { NUMBER_ATTEMPTS } from '@config/environment';
 
 const useTwoStepLoginForm = () => {
     const [currentStep, setCurrentStep] = useState<EFormStepLabels>(EFormStepLabels.USERNAMEINPUT);
@@ -16,6 +18,7 @@ const useTwoStepLoginForm = () => {
     const [inputValue, setInputValue] = useState('');
     const [userName, setUserName] = useState<string>('');
     const [labels, setLabels] = useState<IFormStepLabels>(userNameStepLabels);
+    const [numberPasswordAttempts, setNumberPasswordAttempts] = useState(0);
 
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setInputValue(e.target.value);
@@ -73,15 +76,27 @@ const useTwoStepLoginForm = () => {
             }
 
             const response = await validatePassword({ password: inputValue, username: userName });
-            console.log(response);
+            console.log("respose.-.-.: ", response)
+            if (response.code == EModalWarning.CODEACCOUNTLOCKED) {
+                alert('Cuenta bloqueada');
+                return;
+            }
+
             if (!response.success) {
+                setNumberPasswordAttempts(numberPasswordAttempts + 1);
                 setInputValid(false);
                 setLabels(prev => ({
                     ...prev,
                     validation: { ...prev.validation, errorMessage: messages.messageIncorrectPassword }
                 }));
+                console.log(numberPasswordAttempts,"ññññññññññññññññ", response.code)
+                if (numberPasswordAttempts == 1 && numberPasswordAttempts < NUMBER_ATTEMPTS) {
+                    alert("le quedan algunos intentos para que le bloqueen la cuenta");
+                }
                 return;
             }
+
+
 
             alert('¡Login exitoso!');
             setCurrentStep(EFormStepLabels.LOGINSUCCESS);
