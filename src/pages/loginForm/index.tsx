@@ -5,10 +5,8 @@ import { ILoginForm } from "@ptypes/pages/loginForm/ILoginForm";
 
 const LoginForm = (props: ILoginForm) => {
     const {
-        setShowModalError,
-        setTypeError
+        setModalWarningType
     } = props;
-
     const {
         showLink,
         currentStep,
@@ -19,8 +17,8 @@ const LoginForm = (props: ILoginForm) => {
         inputValue,
         widthStack,
         labelsSize,
-        labelsSizeDifferent,
-    } = useTwoStepLoginForm({ setShowModalError, setTypeError });
+        labelsSizeDifferent
+    } = useTwoStepLoginForm({setModalWarningType});
 
     return (
         <Card>

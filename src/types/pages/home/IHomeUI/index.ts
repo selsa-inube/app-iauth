@@ -2,10 +2,11 @@ import { EModalWarning } from "@enum/components/EModalWarning";
 
 interface IHomeUI {
     $isMobile: boolean;
-    showModalError: boolean;
-    setShowModalError: React.Dispatch<React.SetStateAction<boolean>>;
-    typeError: EModalWarning; 
-    setTypeError: React.Dispatch<React.SetStateAction<EModalWarning>>;
+    maskModalWarning?: React.RefObject<HTMLDivElement>;
+    handleCloseModal: () => void,
+    isModalWarningOpen: boolean,
+    modalWarningType: EModalWarning,
+    setModalWarningType: React.Dispatch<React.SetStateAction<EModalWarning>>
 }
 
 export type { IHomeUI };

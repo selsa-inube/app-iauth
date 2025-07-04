@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { validateRequiredField } from '../../validations/fieldsValidations';
 import { validateUsername } from '@services/validateUsername';
 import { validatePassword } from '@services/validatePassword';
-import { IFormStepLabels } from '@ptypes/hooks/useTwoStepLoginForm/IFormStepLabels';
+import { IFormStepLabels } from '@ptypes/hooks/IFormStepLabels';
 import { EFormStepLabels } from "@enum/hooks/EFormStepLabels";
 import { userNameStepLabels } from '@config/login/labels/usernameStepLabels';
 import { passwordStepLabels } from '@config/login/labels/passwordStepLabels';
@@ -11,8 +11,10 @@ import { TextSize } from "@ptypes/components/TextSize";
 import { messages } from '@config/hook/messages';
 import { EModalWarning } from '@enum/components/EModalWarning';
 import { NUMBER_ATTEMPTS } from '@config/environment';
+import { IUseTwoStepLoginForm } from '@ptypes/hooks/IUseTwoStepLoginForm';
 
-const useTwoStepLoginForm = () => {
+const useTwoStepLoginForm = (data: IUseTwoStepLoginForm) => {
+    const { setModalWarningType } = data;
     const [currentStep, setCurrentStep] = useState<EFormStepLabels>(EFormStepLabels.USERNAMEINPUT);
     const [inputValid, setInputValid] = useState<boolean | null>(null);
     const [inputValue, setInputValue] = useState('');
@@ -76,9 +78,9 @@ const useTwoStepLoginForm = () => {
             }
 
             const response = await validatePassword({ password: inputValue, username: userName });
-            console.log("respose.-.-.: ", response)
+
             if (response.code == EModalWarning.CODEACCOUNTLOCKED) {
-                alert('Cuenta bloqueada');
+                setModalWarningType(EModalWarning.SECONDWARNING);
                 return;
             }
 
@@ -89,16 +91,15 @@ const useTwoStepLoginForm = () => {
                     ...prev,
                     validation: { ...prev.validation, errorMessage: messages.messageIncorrectPassword }
                 }));
-                console.log(numberPasswordAttempts,"ññññññññññññññññ", response.code)
                 if (numberPasswordAttempts == 1 && numberPasswordAttempts < NUMBER_ATTEMPTS) {
-                    alert("le quedan algunos intentos para que le bloqueen la cuenta");
+                    setModalWarningType(EModalWarning.FIRSTWARNING);
                 }
                 return;
             }
 
 
 
-            alert('¡Login exitoso!');
+            alert(messages.messageSuccessLogin);
             setCurrentStep(EFormStepLabels.LOGINSUCCESS);
             setInputValue('');
             setInputValid(null);
