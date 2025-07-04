@@ -1,6 +1,5 @@
-import { Stack, Text, Button, Icon } from "@inubekit/inubekit";
+import { Stack, Text, Icon } from "@inubekit/inubekit";
 import { MdOutlineWarningAmber, MdReportGmailerrorred } from "react-icons/md";
-import { modalWarning } from "@config/login/modalWarning";
 import { IErrorMessageUI } from "@ptypes/pages/errorMessage/IErrorMessageUI";
 import { modalWarningFirst } from "@config/mocks/components/modalWarning/modalWarningFirst";
 import { modalWarningSecond } from "@config/mocks/components/modalWarning/modalWarningSecond";
@@ -8,7 +7,6 @@ import { modalWarningSecond } from "@config/mocks/components/modalWarning/modalW
 const ErrorMessageUI = (props: IErrorMessageUI) => {
     const {
         isFirstWarning,
-        closeModal
     } = props;
 
     return (

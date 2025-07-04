@@ -11,7 +11,6 @@ const ModalWarningUI = (props: IModalWarningUI) => {
     const {
         isMobile,
         onClose,
-        auxiliaryButton,
         isFirstWarning
     } = props;
 

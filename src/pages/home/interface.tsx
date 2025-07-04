@@ -8,6 +8,10 @@ import { Background } from "@pages/background";
 import { Mask } from "@components/utils/Mask";
 import { mask } from "@config/login/mask";
 import { ModalWarning } from "@components/layout/ModalWarning";
+<<<<<<< HEAD
+=======
+import { modalWarningFirst } from "@config/mocks/components/modalWarning/modalWarningFirst";
+>>>>>>> development
 import { ModalInformation } from "@design/feedback/modalInformation";
 import { tokens } from "@design/tokens/tokens";
 
@@ -15,9 +19,13 @@ const HomeUI = (props: IHomeUI) => {
     const {
         $isMobile,
         handleCloseModal,
+<<<<<<< HEAD
         isModalWarningOpen,
         setModalWarningType,
         modalWarningType
+=======
+        isModalWarningOpen
+>>>>>>> development
     } = props;
 
     return (
@@ -36,10 +44,16 @@ const HomeUI = (props: IHomeUI) => {
                         <ModalWarning
                             onClose={handleCloseModal}
                             auxiliaryButton={true}
+<<<<<<< HEAD
                             modalWarningType={modalWarningType}
 
                         />
                         
+=======
+                        >
+                            {modalWarningFirst.textInfo}
+                        </ModalWarning>
+>>>>>>> development
                     </>
                 )
             }
@@ -79,9 +93,13 @@ const HomeUI = (props: IHomeUI) => {
                     gap={tokens.spacing.s250}
                 >
                     <ModalInformation />
+<<<<<<< HEAD
                     <LoginForm
                         setModalWarningType={setModalWarningType}
                     />
+=======
+                    <LoginForm />
+>>>>>>> development
                 </Stack>
             </Stack>
         </Background>
