@@ -1,8 +1,8 @@
 import axios, { AxiosInstance } from "axios";
-import { AUTH_API_URL, fetchTimeoutServices } from "@config/environment";
+import { environment, fetchTimeoutServices } from "@config/environment";
 
 const axiosInstance: AxiosInstance = axios.create({
-    baseURL: AUTH_API_URL,
+    baseURL: environment.AUTH_API_URL,
     timeout: fetchTimeoutServices,
     headers: {
         "Content-type": "application/json; charset=UTF-8",

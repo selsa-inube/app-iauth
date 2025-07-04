@@ -4,6 +4,9 @@ import { MdClose } from "react-icons/md";
 import { IModalWarningUI } from "@ptypes/components/modalWarning/IModalWarningUI/indext";
 import { modalWarning } from "@config/login/modalWarning";
 import { tokensWithReference } from "@design/tokens/tokensWithReference";
+import { ErrorMessage } from "@pages/errorMessage";
+import { EModalWarning } from "@enum/components/EModalWarning";
+import { modalWarningFirst } from "@config/mocks/components/modalWarning/modalWarningFirst";
 
 
 const ModalWarningUI = (props: IModalWarningUI) => {
@@ -50,7 +53,12 @@ const ModalWarningUI = (props: IModalWarningUI) => {
             </Stack>
             <Divider />
             <Stack height="168px">
-            {children}
+                <ErrorMessage
+                    logo={EModalWarning.FIRSTWARNING}
+                    message={modalWarningFirst.textInfo}
+                    auxiliaryButton={auxiliaryButton}
+                    closeModal={onClose}
+                />
             </Stack>
             <Stack
                 margin="40px 0"

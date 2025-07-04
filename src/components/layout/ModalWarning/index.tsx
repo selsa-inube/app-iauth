@@ -5,7 +5,7 @@ const ModalWarning = (props: IModalWarning) => {
     const {
         children,
         onClose,
-        auxiliaryButton
+        auxiliaryButton,
     } = props;
 
     return (

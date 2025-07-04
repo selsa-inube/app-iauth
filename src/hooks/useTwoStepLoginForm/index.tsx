@@ -2,22 +2,25 @@ import React, { useState } from 'react';
 import { validateRequiredField } from '../../validations/fieldsValidations';
 import { validateUsername } from '@services/validateUsername';
 import { validatePassword } from '@services/validatePassword';
-import { IFormStepLabels } from '@ptypes/hooks/IFormStepLabels';
-import { IFormStep } from '@ptypes/hooks/IStepValidationConfig';
+import { IFormStepLabels } from '@ptypes/hooks/useTwoStepLoginForm/IFormStepLabels';
+import { EFormStepLabels } from "@enum/hooks/EFormStepLabels";
 import { userNameStepLabels } from '@config/login/labels/usernameStepLabels'; 
 import { passwordStepLabels } from '@config/login/labels/passwordStepLabels';
 import { useMediaQuery } from "@inubekit/inubekit";
-import { EFormStepLabels } from "@enum/hooks/EFormStepLabels";
 import { TextSize } from "@ptypes/components/TextSize";
 import { messages } from '@config/hook/messages';
+import { IUseTwoStepLoginForm } from '@ptypes/hooks/useTwoStepLoginForm/IUseTwoStepLoginForm';
+import { environment } from "@config/environment";
+import { EModalWarning } from "@enum/components/EModalWarning";
 
-const useTwoStepLoginForm = () => {
-    const [currentStep, setCurrentStep] = useState<IFormStep>(EFormStepLabels.USERNAMEINPUT);
+const useTwoStepLoginForm = (data: IUseTwoStepLoginForm) => {
+    const { setErrorType } = data;
+    const [currentStep, setCurrentStep] = useState<EFormStepLabels>(EFormStepLabels.USERNAMEINPUT);
     const [inputValid, setInputValid] = useState<boolean | null>(null);
     const [inputValue, setInputValue] = useState('');
     const [userName, setUserName] = useState<string>('');
     const [labels, setLabels] = useState<IFormStepLabels>(userNameStepLabels);
-
+    const [attemptsPassword, setAttemptsPassword] = useState(0);
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setInputValue(e.target.value);
         if (inputValid === false) {
@@ -76,11 +79,22 @@ const useTwoStepLoginForm = () => {
             const response = await validatePassword({ password: inputValue, username: userName });
 
             if (!response.success) {
+                setAttemptsPassword(attemptsPassword + 1);
                 setInputValid(false);
                 setLabels(prev => ({
                     ...prev,
                     validation: { ...prev.validation, errorMessage: messages.messageIncorrectPassword }
                 }));
+                return;
+            }
+
+            if(attemptsPassword > 1 && attemptsPassword < environment.NUMBER_ATTEMPTS) {
+                setErrorType(EModalWarning.FIRSTWARNING);
+                return;
+            }
+
+            if (attemptsPassword >= environment.NUMBER_ATTEMPTS) {
+                setErrorType(EModalWarning.SECONDWARNING);
                 return;
             }
 
