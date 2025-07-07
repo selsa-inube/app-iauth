@@ -272,6 +272,14 @@ const sistemasenlinea = {
       dark: inube.palette.neutral.N900,
     },
   },
+  card: {
+    boxShadow: {
+      color: {
+        dark: inube.palette.neutral.N10,
+      }
+
+    }
+  }
 };
 
 export { sistemasenlinea };
