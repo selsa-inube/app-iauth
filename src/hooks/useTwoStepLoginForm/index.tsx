@@ -11,6 +11,7 @@ import { TextSize } from "@ptypes/components/TextSize";
 import { messages } from '@config/hook/messages';
 import { EModalWarning } from '@enum/components/EModalWarning';
 import { IUseTwoStepLoginForm } from '@ptypes/hooks/IUseTwoStepLoginForm';
+import { modalWarningContent } from '@config/hook/modalWarning';
 
 const useTwoStepLoginForm = (data: IUseTwoStepLoginForm) => {
     const { setModalWarningType } = data;
@@ -34,7 +35,7 @@ const useTwoStepLoginForm = (data: IUseTwoStepLoginForm) => {
 
         if (attempts) {
             setNumberPasswordAttempts(Number(attempts[0]));
-            if (numberPasswordAttempts == 3 || Number(attempts[0])) {
+            if (numberPasswordAttempts == modalWarningContent.numberAttemptsShowFirstWarning || Number(attempts[0])) {
                 setModalWarningType(EModalWarning.FIRSTWARNING);
             }
         }
