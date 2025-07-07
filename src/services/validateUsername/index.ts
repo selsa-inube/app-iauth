@@ -1,13 +1,10 @@
-import { axiosInstance } from "@api/auth";
+import { validateUsernameMock } from "@config/mocks/service/validateUsernameMock";
 import { IValidate } from "@ptypes/api/IValidations";
 import { IValidateParams } from "@ptypes/api/IValidationsParams";
 
 const validateUsername = async (params: IValidateParams): Promise<IValidate> => {
-    const {
-          username
-    } = params;
-
-    const { data } = await axiosInstance.post<IValidate>('/validate-username', { username });
+    const data = validateUsernameMock;
+    
     return data;
 };
 

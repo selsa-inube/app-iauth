@@ -6,20 +6,18 @@ const axiosInstance: AxiosInstance = axios.create({
   timeout: fetchTimeoutServices,
   headers: {
     "Content-type": "application/json; charset=UTF-8",
+    "X-Business-Unit": "test",
+    "X-Action": "AutenticationByCredential",
   },
 });
 
 axiosInstance.interceptors.response.use(
   (response) => response,
   (error) => {
-    if (error.response.data) {
-      return Promise.reject(error.response.data);
-
-    }
     if (error.code === "ECONNABORTED") {
       console.error("Request timed out");
     }
-    return Promise.reject(new Error(error.message));
+    return Promise.resolve(error.response.data);
   }
 );
 

@@ -1,8 +1,9 @@
 interface IValidate {
-    success: boolean,
-    message?: string,
-    name?: string,
-    username?: string
+    authenticationCode?: string,
+    callbackUrl?: string,
+    code?: string,
+    description?: string,
+    success?: boolean
 };
 
 export type { IValidate };    

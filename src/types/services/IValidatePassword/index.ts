@@ -1,9 +1,6 @@
 interface IValidatePassword {
-    success: boolean,
-    name: string,
-    username: string,
-    isLocked: boolean,
-    numberAttempts: number
+    authenticationCredential: boolean,
+    callbackUrl: string
 }
 
 export type { IValidatePassword };

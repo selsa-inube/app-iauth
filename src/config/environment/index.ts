@@ -2,6 +2,7 @@ const AUTH_API_URL = import.meta.env.VITE_AUTH_API_URL;
 const ISAAS_QUERY_PROCESS_SERVICE = import.meta.env.VITE_ISAAS_QUERY_PROCESS_SERVICE;
 const PORTAL_CATALOG_ID = import.meta.env.VITE_PORTAL_CATALOG_ID;
 const NUMBER_ATTEMPTS = import.meta.env.VITE_NUMBER_ATTEMPTS;
-const fetchTimeoutServices = 6000;
+const fetchTimeoutServices = 90000;
+const CALLBACKURL = import.meta.env.VITE_CALLBACKURL
 
-export { AUTH_API_URL, fetchTimeoutServices, ISAAS_QUERY_PROCESS_SERVICE, PORTAL_CATALOG_ID, NUMBER_ATTEMPTS };
+export { AUTH_API_URL, fetchTimeoutServices, ISAAS_QUERY_PROCESS_SERVICE, PORTAL_CATALOG_ID, NUMBER_ATTEMPTS, CALLBACKURL };

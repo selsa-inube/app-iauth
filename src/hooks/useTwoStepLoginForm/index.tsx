@@ -10,7 +10,6 @@ import { useMediaQuery } from "@inubekit/inubekit";
 import { TextSize } from "@ptypes/components/TextSize";
 import { messages } from '@config/hook/messages';
 import { EModalWarning } from '@enum/components/EModalWarning';
-import { NUMBER_ATTEMPTS } from '@config/environment';
 import { IUseTwoStepLoginForm } from '@ptypes/hooks/IUseTwoStepLoginForm';
 
 const useTwoStepLoginForm = (data: IUseTwoStepLoginForm) => {
@@ -28,6 +27,18 @@ const useTwoStepLoginForm = (data: IUseTwoStepLoginForm) => {
             setInputValid(null);
         }
     };
+
+    const getAttemptsLeft = (description: string) => {
+        const pattern = new RegExp("([1-5])");
+        const attempts = pattern.exec(description);
+
+        if (attempts) {
+            setNumberPasswordAttempts(Number(attempts[0]));
+            if (numberPasswordAttempts == 3 || Number(attempts[0])) {
+                setModalWarningType(EModalWarning.FIRSTWARNING);
+            }
+        }
+    }
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
@@ -76,24 +87,27 @@ const useTwoStepLoginForm = (data: IUseTwoStepLoginForm) => {
                 }));
                 return;
             }
-
+            
             const response = await validatePassword({ password: inputValue, username: userName });
 
-            if (response.code == EModalWarning.CODEACCOUNTLOCKED) {
+            if (response.code === EModalWarning.CODEERRORCREDENTIALS && response.description) {
+                getAttemptsLeft(response.description);
+                return;
+            }
+
+            if (response.code === EModalWarning.CODEERRORLOCKACCOUNT) {
                 setModalWarningType(EModalWarning.SECONDWARNING);
                 return;
             }
 
-            if (!response.success) {
+
+            if (response.authenticationCode) {
                 setNumberPasswordAttempts(numberPasswordAttempts + 1);
                 setInputValid(false);
                 setLabels(prev => ({
                     ...prev,
                     validation: { ...prev.validation, errorMessage: messages.messageIncorrectPassword }
                 }));
-                if (numberPasswordAttempts == 1 && numberPasswordAttempts < NUMBER_ATTEMPTS) {
-                    setModalWarningType(EModalWarning.FIRSTWARNING);
-                }
                 return;
             }
 
