@@ -1,9 +1,16 @@
 import { HomeUI } from "@pages/home/interface";
 import { useMediaQuery } from "@inubekit/inubekit";
 import { useEffect, useState } from "react";
+import { IHome } from "@ptypes/pages/home/IHome";
+import { useBusinessData } from "@hooks/useBusinessData";
+import { useState } from "react";
 import { EModalWarning } from "@enum/components/EModalWarning";
 
-const Home = () => {
+const Home = (props: IHome) => {
+    const {
+        portalCode
+    } = props;
+    const { urlLogo } = useBusinessData({ portalCode });
     const screenMobile = useMediaQuery("(max-width: 768px)");
     const [isModalWarningOpen, setIsModalWarningOpen] = useState(false);
     const [modalWarningType, setModalWarningType] = useState<EModalWarning>(EModalWarning.NONE);
@@ -18,10 +25,11 @@ const Home = () => {
     return (
         <HomeUI
             $isMobile={screenMobile}
-            handleCloseModal={handleCloseModal}
-            isModalWarningOpen={isModalWarningOpen}
             modalWarningType={modalWarningType}
             setModalWarningType={setModalWarningType}
+            urlLogo={urlLogo}
+            handleCloseModal={handleCloseModal}
+            isModalWarningOpen={isModalWarningOpen}
         />
     );
 }

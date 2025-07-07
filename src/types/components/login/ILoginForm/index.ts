@@ -1,10 +1,10 @@
 import type { FormEvent, ChangeEvent, ReactNode } from 'react';
-import { IFormStepLabels } from '@ptypes/hooks/IFormStepLabels';
-import { IFormStep } from '@ptypes/hooks/IStepValidationConfig';
+import { IFormStepLabels } from '@ptypes/hooks/useTwoStepLoginForm/IFormStepLabels';
+import { EFormStepLabels } from "@enum/hooks/EFormStepLabels";
 import { TextSize } from '@ptypes/components/TextSize';
 
 interface ILoginForm {
-  currentStep: IFormStep;
+  currentStep: EFormStepLabels;
   handleSubmit: (e: FormEvent<HTMLFormElement>) => void;
   labels: IFormStepLabels;
   inputValid: boolean | null;

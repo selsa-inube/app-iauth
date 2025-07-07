@@ -13,7 +13,7 @@ const ModalInformationUI = (props: IModalUI) => {
     return (
         <Stack
             width={width}
-            height="80px"
+            height="75px"
         >
             <Box
                 borderRadius="8px 0px 0px 8px"
@@ -46,7 +46,7 @@ const ModalInformationUI = (props: IModalUI) => {
                     weight="bold"
                     textAlign="start"
                 >
-                    {modalMock.title}
+                   
                 </Text>
                 <Text
                     type="label"

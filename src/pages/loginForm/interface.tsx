@@ -22,9 +22,10 @@ const LoginFormUI = (props: ILoginForm) => {
         <form onSubmit={handleSubmit}>
             <Grid templateColumns="auto"
                 templateRows="repeat(5, auto)"
-                gap="20px"
+                gap="13px"
                 justifyContent="center"
                 width="100%"
+                height="100%"
             >
                 <Header labelsSizeDifferent={labelsSizeDifferent} />
 
@@ -56,7 +57,7 @@ const LoginFormUI = (props: ILoginForm) => {
                 </Stack>
                 {
                     showLink && (
-                        <Links labelsSize={labelsSize} />
+                        <Links labelsSize="small" />
                     )
                 }
             </Grid>

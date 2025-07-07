@@ -23,7 +23,7 @@ const DynamicInputsUI = (props: IDynamicInputs) => {
             >
                 <Text 
                     textAlign="center"
-                    size={labelsSize}
+                    size="small"
                     type="headline"
                     weight="bold"
                     appearance="dark">
@@ -32,7 +32,7 @@ const DynamicInputsUI = (props: IDynamicInputs) => {
                 <Text
                     textAlign="center"
                     type="title"
-                    size={labelsSize}
+                    size="small"
                     appearance="gray">
                     {labels.header.subtitle}
                 </Text>

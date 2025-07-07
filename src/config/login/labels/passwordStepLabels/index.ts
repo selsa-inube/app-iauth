@@ -1,4 +1,4 @@
-import { IFormStepLabels } from '@ptypes/hooks/IFormStepLabels'
+import { IFormStepLabels } from '@ptypes/hooks/useTwoStepLoginForm/IFormStepLabels'
 
 const passwordStepLabels: IFormStepLabels = {
   header: {

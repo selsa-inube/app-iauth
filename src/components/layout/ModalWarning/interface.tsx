@@ -5,6 +5,9 @@ import { IModalWarningUI } from "@ptypes/components/modalWarning/IModalWarningUI
 import { modalWarning } from "@config/login/modalWarning";
 import { tokensWithReference } from "@design/tokens/tokensWithReference";
 import { ErrorMessage } from "@pages/errorMessage";
+import { EModalWarning } from "@enum/components/EModalWarning";
+import { modalWarningFirst } from "@config/mocks/components/modalWarning/modalWarningFirst";
+
 
 
 const ModalWarningUI = (props: IModalWarningUI) => {

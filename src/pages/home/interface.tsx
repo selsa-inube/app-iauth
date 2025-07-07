@@ -1,5 +1,4 @@
 import { Stack, Text } from "@inubekit/inubekit"
-import logosistemasenlinea from "@assets/img/lgo/logo-sistemasnelinea.png";
 import { StyledImg } from "./styles";
 import { LoginForm } from "@pages/loginForm/";
 import { IHomeUI } from "@ptypes/pages/home/IHomeUI";
@@ -10,10 +9,12 @@ import { mask } from "@config/login/mask";
 import { ModalWarning } from "@components/layout/ModalWarning";
 import { ModalInformation } from "@design/feedback/modalInformation";
 import { tokens } from "@design/tokens/tokens";
+import { spacing } from "@design/tokens/tokensWithReference/spacing/spacing";
 
 const HomeUI = (props: IHomeUI) => {
     const {
         $isMobile,
+        urlLogo,
         handleCloseModal,
         isModalWarningOpen,
         setModalWarningType,
@@ -44,10 +45,8 @@ const HomeUI = (props: IHomeUI) => {
                 )
             }
             <Stack
-                justifyContent="center"
                 direction="column"
-                padding={`${tokens.spacing.s500} ${tokens.spacing.s400}`}
-                gap={tokens.spacing.s250}
+                padding={`${tokens.spacing.s200} ${tokens.spacing.s400}`}
                 height="auto"
             >
                 <Stack
@@ -60,14 +59,14 @@ const HomeUI = (props: IHomeUI) => {
                     <Text
                         appearance="gray"
                         weight="bold"
-                        type="headline"
-                        size="small"
+                        type="body"
+                        size="large"
                         textAlign="center"
                     >
                         {labelsTitles.titleImg}
                     </Text>
                     <StyledImg
-                        src={logosistemasenlinea}
+                        src={urlLogo}
                         $isMobile={$isMobile}
                         alt={labelsTitles.textAltImg}
                     />
@@ -76,7 +75,7 @@ const HomeUI = (props: IHomeUI) => {
                     direction="column"
                     alignItems="center"
                     width="100%"
-                    gap={tokens.spacing.s250}
+                    gap={spacing.s200}
                 >
                     <ModalInformation />
                     <LoginForm

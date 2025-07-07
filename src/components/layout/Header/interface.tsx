@@ -16,7 +16,7 @@ const HeaderUI = (props: IHeader) => {
         >
             <Stack
                 alignItems="center"
-                height="38.02px"
+                height="34.02px"
                 justifyContent="center"
                 gap="7.07px"
             >
@@ -34,7 +34,7 @@ const HeaderUI = (props: IHeader) => {
                 <Text
                     textAlign="center"
                     type="body"
-                    size={labelsSizeDifferent}
+                    size="medium"
                     appearance="dark"
                     weight="normal"
                 >

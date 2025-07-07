@@ -7,6 +7,7 @@ const LoginForm = (props: ILoginForm) => {
     const {
         setModalWarningType
     } = props;
+
     const {
         showLink,
         currentStep,
