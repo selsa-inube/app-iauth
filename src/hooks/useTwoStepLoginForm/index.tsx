@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { validateRequiredField } from '../../validations/fieldsValidations';
 import { validateUsername } from '@services/validateUsername';
 import { validatePassword } from '@services/validatePassword';
-import { IFormStepLabels } from '@ptypes/hooks/IFormStepLabels';
+import { IFormStepLabels } from '@ptypes/hooks/useTwoStepLoginForm/IFormStepLabels';
 import { EFormStepLabels } from "@enum/hooks/EFormStepLabels";
 import { userNameStepLabels } from '@config/login/labels/usernameStepLabels';
 import { passwordStepLabels } from '@config/login/labels/passwordStepLabels';
@@ -29,7 +29,7 @@ const useTwoStepLoginForm = (data: IUseTwoStepLoginForm) => {
     };
 
     const getAttemptsLeft = (description: string) => {
-        const pattern = new RegExp("([1-5])");
+        const pattern = modalWarningContent.patternGetAttempts;
         const attempts = pattern.exec(description);
 
         if (attempts) {

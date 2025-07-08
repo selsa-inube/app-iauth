@@ -7,6 +7,8 @@ const modalWarningContent = {
     modalWarningSecond: {
         labelButton: "Solicitar desbloqueo",
     },
+    numberAttemptsShowFirstWarning: 4,
+    patternGetAttempts: new RegExp("([1-5])"),
 }
 
 export { modalWarningContent };
