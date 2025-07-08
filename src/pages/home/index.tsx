@@ -3,7 +3,6 @@ import { useMediaQuery } from "@inubekit/inubekit";
 import { useEffect, useState } from "react";
 import { IHome } from "@ptypes/pages/home/IHome";
 import { useBusinessData } from "@hooks/useBusinessData";
-import { useState } from "react";
 import { EModalWarning } from "@enum/components/EModalWarning";
 
 const Home = (props: IHome) => {
