@@ -13,8 +13,8 @@ const StyledCard = styled.div<StyledCardProps>`
     height: ${({ $isMobile }) => ($isMobile ? "auto" : "auto")};
     box-shadow: 0px 1px 2px 0px ${({ theme }) =>
     theme?.card?.boxShadow?.color?.N10 || card.boxShadow.color.dark};
-    padding: ${({ $isMobile }) => ($isMobile ? "12px 12px 34px 12px" : "24px 24px 44px 24px")};
-    gap: ${({ $isMobile }) => ($isMobile ? "16px" : "20px")};
+    padding: ${({ $isMobile }) => ($isMobile ? "12px 12px 34px 12px" : "24px 24px 38px 24px")};
+    gap: ${({ $isMobile }) => ($isMobile ? "16px" : "16px")};
 ` ;
 
 

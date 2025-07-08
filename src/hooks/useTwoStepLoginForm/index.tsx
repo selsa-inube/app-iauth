@@ -12,6 +12,7 @@ import { messages } from '@config/hook/messages';
 import { EModalWarning } from '@enum/components/EModalWarning';
 import { IUseTwoStepLoginForm } from '@ptypes/hooks/IUseTwoStepLoginForm';
 import { modalWarningContent } from '@config/hook/modalWarning';
+import { NUMBER_ATTEMPTS } from '@config/environment';
 
 const useTwoStepLoginForm = (data: IUseTwoStepLoginForm) => {
     const { setModalWarningType } = data;
@@ -34,9 +35,6 @@ const useTwoStepLoginForm = (data: IUseTwoStepLoginForm) => {
 
         if (attempts) {
             setNumberPasswordAttempts(Number(attempts[0]));
-            if (numberPasswordAttempts == modalWarningContent.numberAttemptsShowFirstWarning || Number(attempts[0])) {
-                setModalWarningType(EModalWarning.FIRSTWARNING);
-            }
         }
     }
 
@@ -79,6 +77,9 @@ const useTwoStepLoginForm = (data: IUseTwoStepLoginForm) => {
         }
 
         if (currentStep === EFormStepLabels.PASSWORDINPUT) {
+            setModalWarningType(EModalWarning.NONE);
+            setInputValid(true);
+
             if (!validateRequiredField(inputValue)) {
                 setInputValid(false);
                 setLabels(prev => ({
@@ -87,26 +88,28 @@ const useTwoStepLoginForm = (data: IUseTwoStepLoginForm) => {
                 }));
                 return;
             }
-            
+
             const response = await validatePassword({ password: inputValue, username: userName });
 
             if (response.code === EModalWarning.CODEERRORCREDENTIALS && response.description) {
+                let numberAttempts = numberPasswordAttempts + 1;
                 getAttemptsLeft(response.description);
-                return;
-            }
-
-            if (response.code === EModalWarning.CODEERRORLOCKACCOUNT) {
-                setModalWarningType(EModalWarning.SECONDWARNING);
-                return;
-            }
-
-            if (response.authenticationCode === EModalWarning.CODEERRORCREDENTIALS || response.authenticationCode === EModalWarning.CODEERRORLOCKACCOUNT) {
-                setNumberPasswordAttempts(numberPasswordAttempts + 1);
+                setNumberPasswordAttempts(numberAttempts);
                 setInputValid(false);
                 setLabels(prev => ({
                     ...prev,
                     validation: { ...prev.validation, errorMessage: messages.messageIncorrectPassword }
                 }));
+
+                if (numberAttempts == NUMBER_ATTEMPTS) {
+                    setModalWarningType(EModalWarning.FIRSTWARNING);
+                }
+
+                return;
+            }
+
+            if (response.code === EModalWarning.CODEERRORLOCKACCOUNT) {
+                setModalWarningType(EModalWarning.SECONDWARNING);
                 return;
             }
 
