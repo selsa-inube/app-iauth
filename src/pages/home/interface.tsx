@@ -46,7 +46,7 @@ const HomeUI = (props: IHomeUI) => {
             }
             <Stack
                 direction="column"
-                padding={`${tokens.spacing.s200} ${tokens.spacing.s400}`}
+                padding={`${tokens.spacing.s150} ${tokens.spacing.s400}`}
                 height="auto"
             >
                 <Stack
@@ -59,8 +59,8 @@ const HomeUI = (props: IHomeUI) => {
                     <Text
                         appearance="gray"
                         weight="bold"
-                        type="body"
-                        size="large"
+                        type="headline"
+                        size="small"
                         textAlign="center"
                     >
                         {labelsTitles.titleImg}
