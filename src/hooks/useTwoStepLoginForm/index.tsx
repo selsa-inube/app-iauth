@@ -55,7 +55,7 @@ const useTwoStepLoginForm = (data: IUseTwoStepLoginForm) => {
 
             const response = await validateUsername({ username: inputValue });
 
-            if (!response.success) {
+            if (response.status === EModalWarning.USERNOTFOUND) {
                 setInputValid(false);
                 setLabels(prev => ({
                     ...prev,
@@ -100,8 +100,7 @@ const useTwoStepLoginForm = (data: IUseTwoStepLoginForm) => {
                 return;
             }
 
-
-            if (response.authenticationCode) {
+            if (response.authenticationCode === EModalWarning.CODEERRORCREDENTIALS || response.authenticationCode === EModalWarning.CODEERRORLOCKACCOUNT) {
                 setNumberPasswordAttempts(numberPasswordAttempts + 1);
                 setInputValid(false);
                 setLabels(prev => ({
