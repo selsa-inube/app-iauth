@@ -14,7 +14,10 @@ import { IUseTwoStepLoginForm } from '@ptypes/hooks/IUseTwoStepLoginForm';
 import { modalWarningContent } from '@config/hook/modalWarning';
 
 const useTwoStepLoginForm = (data: IUseTwoStepLoginForm) => {
-    const { setModalWarningType } = data;
+    const { 
+        setModalWarningType,
+        setRedirectPortal
+    } = data;
     const [currentStep, setCurrentStep] = useState<EFormStepLabels>(EFormStepLabels.USERNAMEINPUT);
     const [inputValid, setInputValid] = useState<boolean | null>(null);
     const [inputValue, setInputValue] = useState('');
@@ -110,8 +113,7 @@ const useTwoStepLoginForm = (data: IUseTwoStepLoginForm) => {
                 return;
             }
 
-            alert(messages.messageSuccessLogin);
-
+            setRedirectPortal(true);
             setCurrentStep(EFormStepLabels.LOGINSUCCESS);
             setInputValue('');
             setInputValid(null);

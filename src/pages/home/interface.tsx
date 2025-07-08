@@ -10,6 +10,7 @@ import { ModalWarning } from "@components/layout/ModalWarning";
 import { ModalInformation } from "@design/feedback/modalInformation";
 import { tokens } from "@design/tokens/tokens";
 import { spacing } from "@design/tokens/tokensWithReference/spacing/spacing";
+import { RedirectSpinner } from "@pages/redirect";
 
 const HomeUI = (props: IHomeUI) => {
     const {
@@ -18,7 +19,9 @@ const HomeUI = (props: IHomeUI) => {
         handleCloseModal,
         isModalWarningOpen,
         setModalWarningType,
-        modalWarningType
+        modalWarningType,
+        isRedirectPortal,
+        setRedirectPortal
     } = props;
 
     return (
@@ -40,10 +43,23 @@ const HomeUI = (props: IHomeUI) => {
                             modalWarningType={modalWarningType}
 
                         />
-                        
+
                     </>
                 )
             }
+
+            {
+                isRedirectPortal && (
+                    <>
+                        <Mask
+                            zIndex={mask.maskModalWarning.zIndex}
+                            isModal={true}
+                        />
+                        <RedirectSpinner />
+                    </>
+                )
+            }
+
             <Stack
                 direction="column"
                 padding={`${tokens.spacing.s150} ${tokens.spacing.s400}`}
@@ -80,6 +96,7 @@ const HomeUI = (props: IHomeUI) => {
                     <ModalInformation />
                     <LoginForm
                         setModalWarningType={setModalWarningType}
+                        setRedirectPortal={setRedirectPortal}
                     />
                 </Stack>
             </Stack>

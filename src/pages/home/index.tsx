@@ -14,6 +14,7 @@ const Home = (props: IHome) => {
     const [isModalWarningOpen, setIsModalWarningOpen] = useState(false);
     const [modalWarningType, setModalWarningType] = useState<EModalWarning>(EModalWarning.NONE);
     const handleCloseModal = () => setIsModalWarningOpen(false);
+    const [isRedirectPortal, setIsRedirectPortal] = useState(false);
 
     useEffect(() => {
         if (modalWarningType !== EModalWarning.NONE) {
@@ -29,6 +30,8 @@ const Home = (props: IHome) => {
             urlLogo={urlLogo}
             handleCloseModal={handleCloseModal}
             isModalWarningOpen={isModalWarningOpen}
+            isRedirectPortal={isRedirectPortal}
+            setRedirectPortal={setIsRedirectPortal}
         />
     );
 }
