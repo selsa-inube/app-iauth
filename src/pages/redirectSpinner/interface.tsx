@@ -1,6 +1,7 @@
 import { Spinner } from "@inubekit/inubekit";
 import { StyledBox } from "./styles";
 import { Text } from "@inubekit/inubekit";
+import { redirectSpinner } from "@config/login/redirectSpinner";
 
 const RedirectSpinnerUI = () => {
     return (
@@ -15,7 +16,7 @@ const RedirectSpinnerUI = () => {
                 size="medium"
                 appearance="light"
             >
-                Redirigiendo al portal de funcionarios...
+                {redirectSpinner.message}
             </Text>
         </StyledBox>
 

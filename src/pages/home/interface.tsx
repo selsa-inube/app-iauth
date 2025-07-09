@@ -10,7 +10,7 @@ import { ModalWarning } from "@components/layout/ModalWarning";
 import { ModalInformation } from "@design/feedback/modalInformation";
 import { tokens } from "@design/tokens/tokens";
 import { spacing } from "@design/tokens/tokensWithReference/spacing/spacing";
-import { RedirectSpinner } from "@pages/redirect";
+import { RedirectSpinner } from "@pages/redirectSpinner";
 
 const HomeUI = (props: IHomeUI) => {
     const {

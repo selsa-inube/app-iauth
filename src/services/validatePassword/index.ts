@@ -14,7 +14,7 @@ const validatePassword = async ( params:IValidateParams ): Promise<IValidate> =>
         username = btoa(username);
     }
     
-    const data = await axiosInstance.post<IValidate>('/user-accounts/', { userAccount: username, authenticationCredential: password, callbackUrl: CALLBACKURL });
+    const { data } = await axiosInstance.post<IValidate>('/user-accounts/', { userAccount: username, authenticationCredential: password, callbackUrl: CALLBACKURL });
     return data;
 };
 

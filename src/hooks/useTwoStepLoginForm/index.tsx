@@ -117,6 +117,9 @@ const useTwoStepLoginForm = (data: IUseTwoStepLoginForm) => {
             setCurrentStep(EFormStepLabels.LOGINSUCCESS);
             setInputValue('');
             setInputValid(null);
+            setTimeout(() => {
+                window.location.href = response.callbackUrl || '';
+            }, 2000);
         }
     };
 
