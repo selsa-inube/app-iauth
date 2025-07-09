@@ -38,7 +38,7 @@ const HomeUI = (props: IHomeUI) => {
                             onClose={handleCloseModal}
                             auxiliaryButton={true}
                             modalWarningType={modalWarningType}
-
+                            isMobile={$isMobile}
                         />
                         
                     </>
@@ -48,6 +48,11 @@ const HomeUI = (props: IHomeUI) => {
                 direction="column"
                 padding={`${tokens.spacing.s150} ${tokens.spacing.s400}`}
                 height="auto"
+                gap={
+                    $isMobile 
+                    ? spacing.s250
+                    : '0'
+                }
             >
                 <Stack
                     direction="column"
