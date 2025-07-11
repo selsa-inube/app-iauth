@@ -1,4 +1,5 @@
 {
+  
   "compilerOptions": {
     "target": "ES2020",
     "useDefineForClassFields": true,
@@ -18,7 +19,24 @@
     "strict": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "noFallthroughCasesInSwitch": true
+    "noFallthroughCasesInSwitch": true,
+    "baseUrl": ".",
+    "paths": {
+      "@ptypes/*": ["src/types/*"],
+      "@card-types/*": ["src/types/components/card/*"],
+      "@config/*": ["src/config/*"],
+      "@services/*": ["src/services/*"],
+      "@design/*": ["src/design/*"],
+      "@context/*": ["src/context/*"],
+      "@components/*": ["src/components/*"],
+      "@hooks/*": ["src/hooks/*"],
+      "@assets/*": ["src/assets/*"],
+      "@api/*": ["src/api/*"],
+      "@mocks/*": ["src/config/mocks/*"],
+      "@pages/*": ["src/pages/*"],
+      "@enum/*": ["src/enum/*"],
+
+    }
   },
-  "include": ["src"]
+  "include": ["src"],
 }
