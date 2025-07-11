@@ -1,8 +1,8 @@
 import axios, { AxiosInstance } from "axios";
-import { IAUTH_QUERY_PROCESS_SERVICE, fetchTimeoutServices } from "@config/environment";
+import { iauthQueryProcessService, fetchTimeoutServices } from "@config/environment";
 
 const iauthQueryAxiosInstance: AxiosInstance = axios.create({
-  baseURL: IAUTH_QUERY_PROCESS_SERVICE,
+  baseURL: iauthQueryProcessService,
   timeout: fetchTimeoutServices,
   headers: {
     "Content-type": "application/json; charset=UTF-8",

@@ -6,16 +6,17 @@ const ModalWarning = (props: IModalWarning) => {
     const {
         onClose,
         auxiliaryButton,
-        modalWarningType
+        modalWarningType,
+        isMobile
     } = props;
-    const isFirstWarning = modalWarningType == EModalWarning.FIRSTWARNING;
+    const isFirstWarning = modalWarningType == EModalWarning.FIRST_WARNING;
 
     return (
         <ModalWarningUI
-            isMobile={false}
             onClose={onClose}
             auxiliaryButton={auxiliaryButton}
             isFirstWarning={isFirstWarning}
+            isMobile={isMobile}
         />
     );
 }

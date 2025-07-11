@@ -1,22 +1,21 @@
 import styled from "styled-components";
-import { inube } from "@inubekit/inubekit";
 import { IStyledModalWarning } from "@ptypes/components/modalWarning/IStyledModalWarning";
 import { tokensWithReference } from "@design/tokens/tokensWithReference";
 import { modalWarning } from "./tokens";
 
 const StyledCard = styled.div<IStyledModalWarning>`
     background-color: ${({ theme }) =>
-        theme?.background?.color || modalWarning.background.color
+        theme?.modalWarning?.neutral?.background?.color || modalWarning.neutral.background.color
     };
     border-radius: 8px;
     width: ${({ $isMobile }) =>
-        ($isMobile ? "320px" : "450px")
+        ($isMobile ? "330px" : "450px")
     };
     height: ${({ $isMobile }) =>
-        ($isMobile ? "auto" : "326px")
+        ($isMobile ? "306px" : "326px")
     };
     box-shadow: 0px ${tokensWithReference.spacing.s025} ${tokensWithReference.spacing.s025} 0px ${({ theme }) =>
-        theme?.boxShadow?.color || modalWarning.boxShadow.color
+        theme?.modalWarning?.neutral?.boxShadow?.color || modalWarning.neutral.boxShadow.color
     };
     padding: ${({ $isMobile }) =>
     ($isMobile ? 

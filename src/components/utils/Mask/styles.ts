@@ -8,8 +8,8 @@ const StyledMask = styled.div<IStyledMask>`
     height: 100%;
     background-color: ${({ $isModal, theme }) => 
         $isModal 
-                ?`${theme?.mask?.background?.dark || mask.background.dark}`
-                :`${theme?.mask?.background?.light || mask.background.light}`};
+                ?`${theme?.mask?.dark?.background?.color || mask.dark.background.color}`
+                :`${theme?.mask?.light?.background?.color || mask.light.background.color}`};
     position: absolute;
     z-index: ${({ $zIndex }) => `${$zIndex}`};
     opacity: 0.5;

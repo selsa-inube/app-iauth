@@ -1,8 +1,8 @@
 import axios, { AxiosInstance } from "axios";
-import { ISAAS_QUERY_PROCESS_SERVICE, fetchTimeoutServices } from "@config/environment";
+import { isaasQueryProcessService, fetchTimeoutServices } from "@config/environment";
 
 const isaasQueryAxiosInstance: AxiosInstance = axios.create({
-  baseURL: ISAAS_QUERY_PROCESS_SERVICE,
+  baseURL: isaasQueryProcessService,
   timeout: fetchTimeoutServices,
   headers: {
     "Content-type": "application/json; charset=UTF-8",
