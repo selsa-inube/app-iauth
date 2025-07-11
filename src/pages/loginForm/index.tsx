@@ -4,7 +4,10 @@ import { Card } from "@components/layout/Card";
 import { ILoginForm } from "@ptypes/pages/loginForm/ILoginForm";
 
 const LoginForm = (props: ILoginForm) => {
-    const { setErrorType } = props;
+    const {
+        setModalWarningType
+    } = props;
+
     const {
         showLink,
         currentStep,
@@ -15,8 +18,8 @@ const LoginForm = (props: ILoginForm) => {
         inputValue,
         widthStack,
         labelsSize,
-        labelsSizeDifferent,
-    } = useTwoStepLoginForm({ setErrorType });
+        labelsSizeDifferent
+    } = useTwoStepLoginForm({setModalWarningType});
 
     return (
         <Card>

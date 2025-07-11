@@ -1,19 +1,22 @@
 import { ModalWarningUI } from "./interface";
 import { IModalWarning } from "@ptypes/components/login/IModalWarning";
+import { EModalWarning } from "@enum/components/EModalWarning";
 
 const ModalWarning = (props: IModalWarning) => {
     const {
-        children,
         onClose,
         auxiliaryButton,
+        modalWarningType,
+        isMobile
     } = props;
+    const isFirstWarning = modalWarningType == EModalWarning.FIRST_WARNING;
 
     return (
         <ModalWarningUI
-            isMobile={false}
             onClose={onClose}
-            children={children}
             auxiliaryButton={auxiliaryButton}
+            isFirstWarning={isFirstWarning}
+            isMobile={isMobile}
         />
     );
 }

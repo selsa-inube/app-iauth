@@ -1,7 +1,10 @@
+import { EModalWarning } from "@enum/components/EModalWarning";
+
 interface IModalWarning {
-    children: React.ReactNode,
     onClose: () => void,
-    auxiliaryButton: boolean
+    auxiliaryButton: boolean,
+    modalWarningType: EModalWarning,
+    isMobile: boolean
 } 
 
 export type { IModalWarning };

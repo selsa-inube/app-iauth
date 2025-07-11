@@ -1,22 +1,15 @@
 import { ErrorMessageUI } from "./interface";
-import { IErrorMessage } from "@ptypes/pages/IErrorMessage";
-import { EModalWarning } from "@enum/components/EModalWarning";
+import { IErrorMessage } from "@ptypes/pages/errorMessage/IErrorMessage";
 const ErrorMessage = (props: IErrorMessage) => {
-        const {
-        logo,
-        message,
-        auxiliaryButton,
+    const {
+        isFirstWarning,
         closeModal
     } = props;
-    const logoIcon = logo == EModalWarning.FIRSTWARNING;
 
     return (
         <ErrorMessageUI
-            logo={logo}
-            message={message}
-            auxiliaryButton={auxiliaryButton}
+            isFirstWarning={isFirstWarning}
             closeModal={closeModal}
-            logoIcon={logoIcon}
         />
     );
 }

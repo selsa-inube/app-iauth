@@ -1,15 +1,17 @@
 import axios, { AxiosInstance } from "axios";
-import { isaasQueryProcessService, fetchTimeoutServices } from "@config/environment";
+import { iauthQueryProcessService, fetchTimeoutServices } from "@config/environment";
 
-const isaasQueryAxiosInstance: AxiosInstance = axios.create({
-  baseURL: isaasQueryProcessService,
+const iauthQueryAxiosInstance: AxiosInstance = axios.create({
+  baseURL: iauthQueryProcessService,
   timeout: fetchTimeoutServices,
   headers: {
     "Content-type": "application/json; charset=UTF-8",
+    "X-Business-Unit": "test",
+    "X-Action": "SearchAllUserAccount",
   },
 });
 
-isaasQueryAxiosInstance.interceptors.response.use(
+iauthQueryAxiosInstance.interceptors.response.use(
   (response) => response,
   (error) => {
     if (error.code === "ECONNABORTED") {
@@ -19,4 +21,4 @@ isaasQueryAxiosInstance.interceptors.response.use(
   },
 );
 
-export { isaasQueryAxiosInstance };
+export { iauthQueryAxiosInstance };

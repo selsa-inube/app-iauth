@@ -1,7 +1,7 @@
 import { EModalWarning } from "@enum/components/EModalWarning";
 
-interface ILoginForm {
+interface IUseTwoStepLoginForm {
     setModalWarningType: React.Dispatch<React.SetStateAction<EModalWarning>>;
 }
 
-export type{ ILoginForm };
+export type { IUseTwoStepLoginForm };

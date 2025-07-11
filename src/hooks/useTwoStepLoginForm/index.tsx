@@ -4,23 +4,24 @@ import { validateUsername } from '@services/validateUsername';
 import { validatePassword } from '@services/validatePassword';
 import { IFormStepLabels } from '@ptypes/hooks/useTwoStepLoginForm/IFormStepLabels';
 import { EFormStepLabels } from "@enum/hooks/EFormStepLabels";
-import { userNameStepLabels } from '@config/login/labels/usernameStepLabels'; 
+import { userNameStepLabels } from '@config/login/labels/usernameStepLabels';
 import { passwordStepLabels } from '@config/login/labels/passwordStepLabels';
 import { useMediaQuery } from "@inubekit/inubekit";
 import { TextSize } from "@ptypes/components/TextSize";
 import { messages } from '@config/hook/messages';
-import { IUseTwoStepLoginForm } from '@ptypes/hooks/useTwoStepLoginForm/IUseTwoStepLoginForm';
-import { environment } from "@config/environment";
-import { EModalWarning } from "@enum/components/EModalWarning";
+import { EModalWarning } from '@enum/components/EModalWarning';
+import { IUseTwoStepLoginForm } from '@ptypes/hooks/IUseTwoStepLoginForm';
+import { modalWarningContent } from '@config/hook/modalWarning';
+import { numberAttemptsDefault } from '@config/environment';
 
 const useTwoStepLoginForm = (data: IUseTwoStepLoginForm) => {
-    const { setErrorType } = data;
-    const [currentStep, setCurrentStep] = useState<EFormStepLabels>(EFormStepLabels.USERNAMEINPUT);
+    const { setModalWarningType } = data;
+    const [currentStep, setCurrentStep] = useState<EFormStepLabels>(EFormStepLabels.USER_NAME_INPUT);
     const [inputValid, setInputValid] = useState<boolean | null>(null);
     const [inputValue, setInputValue] = useState('');
     const [userName, setUserName] = useState<string>('');
     const [labels, setLabels] = useState<IFormStepLabels>(userNameStepLabels);
-    const [attemptsPassword, setAttemptsPassword] = useState(0);
+    const [numberPasswordAttempts, setNumberPasswordAttempts] = useState(0);
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setInputValue(e.target.value);
         if (inputValid === false) {
@@ -28,10 +29,19 @@ const useTwoStepLoginForm = (data: IUseTwoStepLoginForm) => {
         }
     };
 
+    const getAttemptsLeft = (description: string) => {
+        const pattern = modalWarningContent.patternGetAttempts;
+        const attempts = pattern.exec(description);
+
+        if (attempts) {
+            setNumberPasswordAttempts(Number(attempts[0]));
+        }
+    }
+
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
 
-        if (currentStep === EFormStepLabels.USERNAMEINPUT) {
+        if (currentStep === EFormStepLabels.USER_NAME_INPUT) {
             if (!validateRequiredField(inputValue)) {
                 setInputValid(false);
                 setLabels(prev => ({
@@ -43,7 +53,7 @@ const useTwoStepLoginForm = (data: IUseTwoStepLoginForm) => {
 
             const response = await validateUsername({ username: inputValue });
 
-            if (!response.success) {
+            if (response.status === EModalWarning.USER_NOT_FOUND) {
                 setInputValid(false);
                 setLabels(prev => ({
                     ...prev,
@@ -53,7 +63,7 @@ const useTwoStepLoginForm = (data: IUseTwoStepLoginForm) => {
             }
 
             setUserName(inputValue);
-            setCurrentStep(EFormStepLabels.PASSWORDINPUT);
+            setCurrentStep(EFormStepLabels.USER_PASSWORD_INPUT);
             setInputValid(null);
             setInputValue('');
             setLabels({
@@ -66,7 +76,10 @@ const useTwoStepLoginForm = (data: IUseTwoStepLoginForm) => {
 
         }
 
-        if (currentStep === EFormStepLabels.PASSWORDINPUT) {
+        if (currentStep === EFormStepLabels.USER_PASSWORD_INPUT) {
+            setModalWarningType(EModalWarning.NONE);
+            setInputValid(true);
+
             if (!validateRequiredField(inputValue)) {
                 setInputValid(false);
                 setLabels(prev => ({
@@ -78,35 +91,38 @@ const useTwoStepLoginForm = (data: IUseTwoStepLoginForm) => {
 
             const response = await validatePassword({ password: inputValue, username: userName });
 
-            if (!response.success) {
-                setAttemptsPassword(attemptsPassword + 1);
+            if (response.code === EModalWarning.CODE_ERROR_CREDENTIALS && response.description) {
+                let numberAttempts = numberPasswordAttempts + 1;
+                getAttemptsLeft(response.description);
+                setNumberPasswordAttempts(numberAttempts);
                 setInputValid(false);
                 setLabels(prev => ({
                     ...prev,
                     validation: { ...prev.validation, errorMessage: messages.messageIncorrectPassword }
                 }));
+
+                if (numberAttempts == numberAttemptsDefault) {
+                    setModalWarningType(EModalWarning.FIRST_WARNING);
+                }
+
                 return;
             }
 
-            if(attemptsPassword > 1 && attemptsPassword < environment.NUMBER_ATTEMPTS) {
-                setErrorType(EModalWarning.FIRSTWARNING);
+            if (response.code === EModalWarning.CODE_ERROR_LOCK_ACCOUNT) {
+                setModalWarningType(EModalWarning.SECOND_WARNING);
                 return;
             }
 
-            if (attemptsPassword >= environment.NUMBER_ATTEMPTS) {
-                setErrorType(EModalWarning.SECONDWARNING);
-                return;
-            }
+            alert(messages.messageSuccessLogin);
 
-            alert('¡Login exitoso!');
-            setCurrentStep(EFormStepLabels.LOGINSUCCESS);
+            setCurrentStep(EFormStepLabels.LOGIN_SUCCESS);
             setInputValue('');
             setInputValid(null);
         }
     };
 
     const screenMobile = useMediaQuery("(max-width: 768px)");
-    const showLink = currentStep === EFormStepLabels.USERNAMEINPUT;
+    const showLink = currentStep === EFormStepLabels.USER_NAME_INPUT;
     const widthStack = screenMobile ? "296px" : "452px";
     const labelsSize: TextSize = screenMobile ? "small" : "medium";
     const labelsSizeDifferent: TextSize = screenMobile ? "medium" : "large";

@@ -1,12 +1,14 @@
 import axios, { AxiosInstance } from "axios";
-import { environment, fetchTimeoutServices } from "@config/environment";
+import { authApiUrl, fetchTimeoutServices } from "@config/environment";
 
 const axiosInstance: AxiosInstance = axios.create({
-    baseURL: environment.AUTH_API_URL,
-    timeout: fetchTimeoutServices,
-    headers: {
-        "Content-type": "application/json; charset=UTF-8",
-    },
+  baseURL: authApiUrl,
+  timeout: fetchTimeoutServices,
+  headers: {
+    "Content-type": "application/json; charset=UTF-8",
+    "X-Business-Unit": "test",
+    "X-Action": "AutenticationByCredential",
+  },
 });
 
 axiosInstance.interceptors.response.use(
@@ -15,7 +17,7 @@ axiosInstance.interceptors.response.use(
     if (error.code === "ECONNABORTED") {
       console.error("Request timed out");
     }
-    return Promise.reject(new Error(error.message));
+    return Promise.resolve(error.response.data);
   }
 );
 

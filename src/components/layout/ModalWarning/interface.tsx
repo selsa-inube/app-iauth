@@ -5,16 +5,12 @@ import { IModalWarningUI } from "@ptypes/components/modalWarning/IModalWarningUI
 import { modalWarning } from "@config/login/modalWarning";
 import { tokensWithReference } from "@design/tokens/tokensWithReference";
 import { ErrorMessage } from "@pages/errorMessage";
-import { EModalWarning } from "@enum/components/EModalWarning";
-import { modalWarningFirst } from "@config/mocks/components/modalWarning/modalWarningFirst";
-
 
 const ModalWarningUI = (props: IModalWarningUI) => {
     const {
         isMobile,
         onClose,
-        children,
-        auxiliaryButton
+        isFirstWarning
     } = props;
 
     return (
@@ -53,12 +49,10 @@ const ModalWarningUI = (props: IModalWarningUI) => {
             </Stack>
             <Divider />
             <Stack height="168px">
-                <ErrorMessage
-                    logo={EModalWarning.FIRSTWARNING}
-                    message={modalWarningFirst.textInfo}
-                    auxiliaryButton={auxiliaryButton}
-                    closeModal={onClose}
-                />
+            <ErrorMessage 
+                isFirstWarning={isFirstWarning}
+                closeModal={onClose}
+            />
             </Stack>
             <Stack
                 margin="40px 0"
@@ -68,7 +62,7 @@ const ModalWarningUI = (props: IModalWarningUI) => {
                 gap="20px"
                 alignItems="end"
             >
-                {auxiliaryButton && (
+                {!isFirstWarning && (
                     <Button
                         appearance="warning"
                         variant="outlined"

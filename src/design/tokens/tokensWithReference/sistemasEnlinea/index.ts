@@ -272,6 +272,46 @@ const sistemasenlinea = {
       dark: inube.palette.neutral.N900,
     },
   },
+  card: {
+    backgroundColor: {
+      color: {
+        light: inube.palette.neutral.N0
+      }
+    },
+    boxShadow: {
+      color: {
+        dark: inube.palette.neutral.N10,
+      }
+
+    }
+  },
+  box: {
+    neutral: {
+      border: {
+        color: inube.palette.neutral.N40,
+      }
+    },
+    dark: {
+      background: {
+        color: inube.palette.neutral.N900,
+      }
+    },
+    light: {
+      background: {
+        color: inube.palette.neutral.N0,
+      }
+    },
+  },
+  modalWarning: {
+    neutral: {
+      background: {
+        color: inube.palette.neutral.N0
+      },
+      boxShadow: {
+        color: inube.palette.neutral.N10
+      }
+    }
+  }
 };
 
 export { sistemasenlinea };

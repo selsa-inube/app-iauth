@@ -9,8 +9,8 @@ const StyledBox = styled.div`
   align-items: ${({ $alignItems }) => $alignItems};
   border-width: 1px;
   border-style: solid;
-  background: ${({ theme, $appearance }) => theme?.box?.background?.color || box.background[$appearance]};
-  border-color: ${({ theme, $appearance }) => theme?.box?.border?.color || box.background[$appearance]};
+  background: ${({ theme, $appearance }) => theme?.box?.background?.color || box[$appearance].background.color};
+  border-color: ${({ theme, $appearance }) =>  theme?.box?.neutral?.border?.color || box[$appearance].border.color};
   border-radius: ${({ $borderRadius }) => $borderRadius};
   margin: ${({ $margin }) => $margin};
   padding: ${({ $padding }) => $padding};

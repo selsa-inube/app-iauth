@@ -1,10 +1,9 @@
-const fetchTimeoutServices = 6000;
+const authApiUrl = import.meta.env.VITE_AUTH_API_URL;
+const isaasQueryProcessService = import.meta.env.VITE_ISAAS_QUERY_PROCESS_SERVICE;
+const portalCatalogId = import.meta.env.VITE_PORTAL_CATALOG_ID;
+const numberAttemptsDefault = import.meta.env.VITE_NUMBER_ATTEMPTS;
+const fetchTimeoutServices = 90000;
+const callbackUrl = import.meta.env.VITE_CALLBACKURL;
+const iauthQueryProcessService = import.meta.env.VITE_IAUTH_QUERY_PROCESS_SERVICE;
 
-const environment = {
-    AUTH_API_URL: import.meta.env.VITE_AUTH_API_URL,
-    IVITE_ISAAS_QUERY_PROCESS_SERVICE: import.meta.env.VITE_ISAAS_QUERY_PROCESS_SERVICE,
-    PORTAL_CATALOG_ID: import.meta.env.VITE_PORTAL_CATALOG_ID,
-    NUMBER_ATTEMPTS: import.meta.env.VITE_NUMBER_ATTEMPTS
-}
-
-export { environment, fetchTimeoutServices }
+export { authApiUrl, fetchTimeoutServices, isaasQueryProcessService, portalCatalogId, numberAttemptsDefault, callbackUrl, iauthQueryProcessService };

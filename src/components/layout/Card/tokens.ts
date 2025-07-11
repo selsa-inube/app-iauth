@@ -1,16 +1,17 @@
 import { inube } from "@inubekit/inubekit";
 
-const mask = {
+const card = {
     light: {
-        background: {
+        backgroundColor: {
             color: inube.palette.neutral.N0
         }
     },
     dark: {
-        background: {
-            color: inube.palette.neutral.N900
+        boxShadow: {
+            color: inube.palette.neutral.N10,
         }
     }
+
 };
 
-export { mask };
+export { card }

@@ -6,8 +6,8 @@ interface IHomeUI {
     maskModalWarning?: React.RefObject<HTMLDivElement>;
     handleCloseModal: () => void,
     isModalWarningOpen: boolean,
-    errorType:EModalWarning,
-    setErrorType: (errorType: EModalWarning) => void
+    modalWarningType: EModalWarning,
+    setModalWarningType: React.Dispatch<React.SetStateAction<EModalWarning>>
 }
 
 export type { IHomeUI };

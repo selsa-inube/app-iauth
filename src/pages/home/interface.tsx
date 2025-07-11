@@ -7,7 +7,6 @@ import { Background } from "@pages/background";
 import { Mask } from "@components/utils/Mask";
 import { mask } from "@config/login/mask";
 import { ModalWarning } from "@components/layout/ModalWarning";
-import { modalWarningFirst } from "@config/mocks/components/modalWarning/modalWarningFirst";
 import { ModalInformation } from "@design/feedback/modalInformation";
 import { tokens } from "@design/tokens/tokens";
 import { spacing } from "@design/tokens/tokensWithReference/spacing/spacing";
@@ -17,7 +16,9 @@ const HomeUI = (props: IHomeUI) => {
         $isMobile,
         urlLogo,
         handleCloseModal,
-        isModalWarningOpen
+        isModalWarningOpen,
+        setModalWarningType,
+        modalWarningType
     } = props;
 
     return (
@@ -36,16 +37,22 @@ const HomeUI = (props: IHomeUI) => {
                         <ModalWarning
                             onClose={handleCloseModal}
                             auxiliaryButton={true}
-                        >
-                            {modalWarningFirst.textInfo}
-                        </ModalWarning>
+                            modalWarningType={modalWarningType}
+                            isMobile={$isMobile}
+                        />
+                        
                     </>
                 )
             }
             <Stack
                 direction="column"
-                padding={`${tokens.spacing.s200} ${tokens.spacing.s400}`}
+                padding={`${tokens.spacing.s150} ${tokens.spacing.s400}`}
                 height="auto"
+                gap={
+                    $isMobile 
+                    ? spacing.s250
+                    : '0'
+                }
             >
                 <Stack
                     direction="column"
@@ -57,8 +64,8 @@ const HomeUI = (props: IHomeUI) => {
                     <Text
                         appearance="gray"
                         weight="bold"
-                        type="body"
-                        size="large"
+                        type="headline"
+                        size="small"
                         textAlign="center"
                     >
                         {labelsTitles.titleImg}
@@ -76,7 +83,9 @@ const HomeUI = (props: IHomeUI) => {
                     gap={spacing.s200}
                 >
                     <ModalInformation />
-                    <LoginForm />
+                    <LoginForm
+                        setModalWarningType={setModalWarningType}
+                    />
                 </Stack>
             </Stack>
         </Background>
