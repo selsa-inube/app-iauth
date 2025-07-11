@@ -7,7 +7,9 @@ interface IHomeUI {
     handleCloseModal: () => void,
     isModalWarningOpen: boolean,
     modalWarningType: EModalWarning,
-    setModalWarningType: React.Dispatch<React.SetStateAction<EModalWarning>>
+    setModalWarningType: React.Dispatch<React.SetStateAction<EModalWarning>>,
+    isRedirectPortal: boolean,
+    setRedirectPortal: React.Dispatch<React.SetStateAction<boolean>>
 }
 
 export type { IHomeUI };

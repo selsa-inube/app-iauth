@@ -15,7 +15,10 @@ import { modalWarningContent } from '@config/hook/modalWarning';
 import { numberAttemptsDefault } from '@config/environment';
 
 const useTwoStepLoginForm = (data: IUseTwoStepLoginForm) => {
-    const { setModalWarningType } = data;
+    const { 
+        setModalWarningType,
+        setRedirectPortal
+    } = data;
     const [currentStep, setCurrentStep] = useState<EFormStepLabels>(EFormStepLabels.USER_NAME_INPUT);
     const [inputValid, setInputValid] = useState<boolean | null>(null);
     const [inputValue, setInputValue] = useState('');
@@ -112,12 +115,13 @@ const useTwoStepLoginForm = (data: IUseTwoStepLoginForm) => {
                 setModalWarningType(EModalWarning.SECOND_WARNING);
                 return;
             }
-
-            alert(messages.messageSuccessLogin);
-
+            setRedirectPortal(true);
             setCurrentStep(EFormStepLabels.LOGIN_SUCCESS);
             setInputValue('');
             setInputValid(null);
+            setTimeout(() => {
+                window.location.href = response.callbackUrl || '';
+            }, 2000);
         }
     };
 

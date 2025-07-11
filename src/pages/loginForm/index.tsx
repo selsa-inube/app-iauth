@@ -5,7 +5,8 @@ import { ILoginForm } from "@ptypes/pages/loginForm/ILoginForm";
 
 const LoginForm = (props: ILoginForm) => {
     const {
-        setModalWarningType
+        setModalWarningType,
+        setRedirectPortal
     } = props;
 
     const {
@@ -19,7 +20,7 @@ const LoginForm = (props: ILoginForm) => {
         widthStack,
         labelsSize,
         labelsSizeDifferent
-    } = useTwoStepLoginForm({setModalWarningType});
+    } = useTwoStepLoginForm({setModalWarningType, setRedirectPortal});
 
     return (
         <Card>
