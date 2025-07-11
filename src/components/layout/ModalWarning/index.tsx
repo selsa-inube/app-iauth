@@ -9,7 +9,7 @@ const ModalWarning = (props: IModalWarning) => {
         modalWarningType,
         isMobile
     } = props;
-    const isFirstWarning = modalWarningType == EModalWarning.FIRSTWARNING;
+    const isFirstWarning = modalWarningType == EModalWarning.FIRST_WARNING;
 
     return (
         <ModalWarningUI

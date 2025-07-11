@@ -1,7 +1,7 @@
 import { axiosInstance } from "@api/auth";
 import { IValidate } from "@ptypes/api/IValidations";
 import { IValidateParams } from "@ptypes/api/IValidationsParams";
-import { CALLBACKURL } from "@config/environment";
+import { callbackUrl } from "@config/environment";
 
 const validatePassword = async ( params:IValidateParams ): Promise<IValidate> => {
     let {
@@ -14,7 +14,7 @@ const validatePassword = async ( params:IValidateParams ): Promise<IValidate> =>
         username = btoa(username);
     }
     
-    const data = await axiosInstance.post<IValidate>('/user-accounts/', { userAccount: username, authenticationCredential: password, callbackUrl: CALLBACKURL });
+    const data = await axiosInstance.post<IValidate>('/user-accounts/', { userAccount: username, authenticationCredential: password, callbackUrl: callbackUrl });
     return data;
 };
 

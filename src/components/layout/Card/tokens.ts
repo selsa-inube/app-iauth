@@ -1,16 +1,17 @@
 import { inube } from "@inubekit/inubekit";
 
 const card = {
-    backgroundColor: {
-        color: {
-            light: inube.palette.neutral.N0
+    light: {
+        backgroundColor: {
+            color: inube.palette.neutral.N0
         }
     },
-    boxShadow: {
-        color: {
-            dark: inube.palette.neutral.N10,
+    dark: {
+        boxShadow: {
+            color: inube.palette.neutral.N10,
         }
     }
+
 };
 
 export { card }
