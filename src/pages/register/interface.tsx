@@ -2,7 +2,6 @@ import { Stack } from "@inubekit/inubekit";
 import { HeaderUI } from "@components/layout/Header/interface";
 import { UserWelcome } from "@components/register/UserWelcome";
 import type { IRegisterUI } from "@ptypes/pages/register/IRegisterUI";
-import { FormContainerExample } from "@components/register/FormContainer/example";
 
 const RegisterUI = (props: IRegisterUI) => {
   const { labelsSize, userData, isMobile, labels } = props;
@@ -38,8 +37,9 @@ const RegisterUI = (props: IRegisterUI) => {
         >
           <HeaderUI labelsSizeDifferent={labelsSize} />
         </Stack>
-        <FormContainerExample>
-        </FormContainerExample>
+        <div>
+
+        </div>
       </Stack>
     </Stack>
   );
