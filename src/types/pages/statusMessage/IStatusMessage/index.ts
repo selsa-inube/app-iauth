@@ -8,7 +8,7 @@ interface IStatusMessage {
     message?: string;
     buttonText?: string;
     icon?: EStatusIcon;
-    buttonAppearance?: "primary" | "warning";
+    buttonVariant?: "primary" | "warning";
   };
   onButtonClick?: () => void;
 }

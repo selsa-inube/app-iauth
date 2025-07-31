@@ -5,7 +5,7 @@ interface IStatusMessageUI {
   title: string;
   message: string;
   buttonText: string;
-  buttonAppearance: "primary" | "warning";
+  buttonVariant: "primary" | "warning";
   icon: EStatusIcon;
   labelsSizeDifferent: TextSize;
   onButtonClick: () => void;

@@ -17,7 +17,7 @@ const StatusMessage = (props: IStatusMessage) => {
         title: "Mensaje no definido",
         message: "No se ha especificado un tipo de mensaje válido.",
         buttonText: "Entendido",
-        buttonAppearance: "primary" as const,
+        buttonVariant: "primary" as const,
         icon: EStatusIcon.USER_CHECK,
       };
     }
@@ -29,8 +29,7 @@ const StatusMessage = (props: IStatusMessage) => {
       title: customMessage?.title ?? baseMessage.title,
       message: customMessage?.message ?? baseMessage.message,
       buttonText: customMessage?.buttonText ?? baseMessage.buttonText,
-      buttonAppearance:
-        customMessage?.buttonAppearance ?? baseMessage.buttonAppearance,
+      buttonVariant: customMessage?.buttonVariant ?? baseMessage.buttonVariant,
       icon: customMessage?.icon ?? baseMessage.icon,
     };
   };
@@ -50,7 +49,7 @@ const StatusMessage = (props: IStatusMessage) => {
       title={messageConfig.title}
       message={messageConfig.message}
       buttonText={messageConfig.buttonText}
-      buttonAppearance={messageConfig.buttonAppearance}
+      buttonVariant={messageConfig.buttonVariant}
       icon={messageConfig.icon}
       onButtonClick={handleButtonClick}
       labelsSizeDifferent={labelsSizeDifferent}
