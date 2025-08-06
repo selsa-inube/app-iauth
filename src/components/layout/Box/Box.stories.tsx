@@ -1,7 +1,8 @@
-import { Box, IBox } from ".";
-
+import { Box } from ".";
+import { IBox } from "@ptypes/components/box/IBox";
 import { Button, Text, Stack, inube } from "@inubekit/inubekit";
 import { ThemeProvider } from "styled-components";
+import { ITheme } from "@src/types/context/ITheme";
 
 const story = {
   title: "layout/Box",
@@ -27,17 +28,18 @@ const Composition = (args: IBox) => (
 );
 
 const Themed = (args: IBox) => (
-  <ThemeProvider theme={theme}>
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+  <ThemeProvider theme={theme as unknown as ITheme}>
     <Box {...args} />
   </ThemeProvider>
 );
-const theme = {
-  box: {
+const theme= {
+  box:{
     border: {
-      color: inube.palette.teal.T300,
-    },
-  },
-};
+      color: inube.palette.teal.T300
+    }
+  }
+}
 
 export { Default, Composition, Themed };
 export default story;

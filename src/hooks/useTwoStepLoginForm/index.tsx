@@ -7,7 +7,7 @@ import { EFormStepLabels } from "@enum/hooks/EFormStepLabels";
 import { userNameStepLabels } from "@config/login/labels/usernameStepLabels";
 import { passwordStepLabels } from "@config/login/labels/passwordStepLabels";
 import { useMediaQuery } from "@inubekit/inubekit";
-import { TextSize } from "@ptypes/components/TextSize";
+import { ITextSize } from "@ptypes/components/TextSize";
 import { messages } from "@config/hook/messages";
 import { EModalWarning } from "@enum/components/EModalWarning";
 import { IUseTwoStepLoginForm } from "@ptypes/hooks/IUseTwoStepLoginForm";
@@ -148,8 +148,8 @@ const useTwoStepLoginForm = (props: IUseTwoStepLoginForm) => {
   const screenMobile = useMediaQuery("(max-width: 768px)");
   const showLink = currentStep === EFormStepLabels.USER_NAME_INPUT;
   const widthStack = screenMobile ? "296px" : "452px";
-  const labelsSize: TextSize = screenMobile ? "small" : "medium";
-  const labelsSizeDifferent: TextSize = screenMobile ? "medium" : "large";
+  const labelsSize: ITextSize = screenMobile ? "small" : "medium";
+  const labelsSizeDifferent: ITextSize = screenMobile ? "medium" : "large";
 
   return {
     showLink,

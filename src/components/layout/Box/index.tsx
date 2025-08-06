@@ -1,4 +1,4 @@
-import { StyledBox } from "./styles.js";
+import { StyledBox } from "./styles";
 import { IBox } from "@ptypes/components/box/IBox";
 
 const Box = (props: IBox) => {
