@@ -24,8 +24,10 @@ const useTwoStepLoginForm = (props: IUseTwoStepLoginForm) => {
   const [userName, setUserName] = useState<string>("");
   const [labels, setLabels] = useState<IFormStepLabels>(userNameStepLabels);
   const [numberPasswordAttempts, setNumberPasswordAttempts] = useState(0);
-  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setInputValue(event.target.value);
+  const handleInputChange = (
+    formSubmitEvent: React.ChangeEvent<HTMLInputElement>,
+  ) => {
+    setInputValue(formSubmitEvent.target.value);
     if (inputValid === false) {
       setInputValid(null);
     }
@@ -40,8 +42,10 @@ const useTwoStepLoginForm = (props: IUseTwoStepLoginForm) => {
     }
   };
 
-  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
+  const handleSubmit = async (
+    formSubmitEvent: React.FormEvent<HTMLFormElement>,
+  ) => {
+    formSubmitEvent.preventDefault();
 
     if (currentStep === EFormStepLabels.USER_NAME_INPUT) {
       if (!validateRequiredField(inputValue)) {
