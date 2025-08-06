@@ -3,8 +3,8 @@ import { useState, useEffect } from "react";
 import { urlDefault } from "@config/hook/urlDefault";
 import { getOriginator } from "@services/core/getOriginator";
 
-const useBusinessData = (params: IUseBusinessData) => {
-  const { originatorId, originatorCode } = params;
+const useBusinessData = (props: IUseBusinessData) => {
+  const { originatorId, originatorCode } = props;
   const [urlLogo, setUrlLogo] = useState<string>(urlDefault.logoUrl);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);

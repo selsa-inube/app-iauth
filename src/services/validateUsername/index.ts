@@ -4,7 +4,7 @@ import { iauthQueryAxiosInstance } from "@api/iauthQuery";
 import { AxiosRequestConfig } from "axios";
 
 const validateUsername = async (
-  params: IValidateParams,
+  props: IValidateParams,
 ): Promise<IValidationsUsername> => {
   const config: AxiosRequestConfig = {
     headers: {
@@ -13,7 +13,7 @@ const validateUsername = async (
     },
   };
   const { status } = await iauthQueryAxiosInstance.get<IValidationsUsername>(
-    `/user-accounts/?userAccount=${params.username}`,
+    `/user-accounts/?userAccount=${props.username}`,
     config,
   );
 

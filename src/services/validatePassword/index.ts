@@ -3,11 +3,9 @@ import { IValidate } from "@ptypes/api/IValidations";
 import { IValidateParams } from "@ptypes/api/IValidationsParams";
 import { callbackUrl as defaultCallbackUrl } from "@config/environment";
 
-const validatePassword = async (
-  params: IValidateParams,
-): Promise<IValidate> => {
-  let { password, username } = params;
-  const { callbackUrl } = params;
+const validatePassword = async (props: IValidateParams): Promise<IValidate> => {
+  let { password, username } = props;
+  const { callbackUrl } = props;
   if (password && username) {
     password = btoa(password);
     username = btoa(username);

@@ -27,7 +27,7 @@ const Home = (props: IHome) => {
 
   return (
     <HomeUI
-      $isMobile={screenMobile}
+      isMobile={screenMobile}
       modalWarningType={modalWarningType}
       setModalWarningType={setModalWarningType}
       urlLogo={urlLogo}

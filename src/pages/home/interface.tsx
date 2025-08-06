@@ -14,7 +14,7 @@ import { RedirectSpinner } from "@pages/redirectSpinner";
 
 const HomeUI = (props: IHomeUI) => {
   const {
-    $isMobile,
+    isMobile,
     urlLogo,
     handleCloseModal,
     isModalWarningOpen,
@@ -30,19 +30,19 @@ const HomeUI = (props: IHomeUI) => {
       <Mask zIndex={mask.maskBackground.zIndex} isModal={false} />
       {isModalWarningOpen && (
         <>
-          <Mask zIndex={mask.maskModalWarning.zIndex} isModal={true} />
+          <Mask zIndex={mask.maskModalWarning.zIndex} isModal />
           <ModalWarning
             onClose={handleCloseModal}
-            auxiliaryButton={true}
+            auxiliaryButton
             modalWarningType={modalWarningType}
-            isMobile={$isMobile}
+            isMobile={isMobile}
           />
         </>
       )}
 
       {isRedirectPortal && (
         <>
-          <Mask zIndex={mask.maskModalWarning.zIndex} isModal={true} />
+          <Mask zIndex={mask.maskModalWarning.zIndex} isModal />
           <RedirectSpinner />
         </>
       )}
@@ -51,12 +51,12 @@ const HomeUI = (props: IHomeUI) => {
         direction="column"
         padding={`${tokens.spacing.s150} ${tokens.spacing.s400}`}
         height="auto"
-        gap={$isMobile ? spacing.s250 : "0"}
+        gap={isMobile ? spacing.s250 : "0"}
       >
         <Stack
           direction="column"
           justifyContent="center"
-          width={$isMobile ? `190px` : `200px`}
+          width={isMobile ? `190px` : `200px`}
         >
           <Text
             appearance="gray"
@@ -69,7 +69,7 @@ const HomeUI = (props: IHomeUI) => {
           </Text>
           <StyledImg
             src={urlLogo}
-            $isMobile={$isMobile}
+            $isMobile={isMobile}
             alt={labelsTitles.textAltImg}
           />
         </Stack>

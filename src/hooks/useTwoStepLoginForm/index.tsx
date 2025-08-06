@@ -14,8 +14,8 @@ import { IUseTwoStepLoginForm } from "@ptypes/hooks/IUseTwoStepLoginForm";
 import { modalWarningContent } from "@config/hook/modalWarning";
 import { numberAttemptsDefault } from "@config/environment";
 
-const useTwoStepLoginForm = (data: IUseTwoStepLoginForm) => {
-  const { setModalWarningType, setRedirectPortal, callbackUrl } = data;
+const useTwoStepLoginForm = (props: IUseTwoStepLoginForm) => {
+  const { setModalWarningType, setRedirectPortal, callbackUrl } = props;
   const [currentStep, setCurrentStep] = useState<EFormStepLabels>(
     EFormStepLabels.USER_NAME_INPUT,
   );
@@ -24,8 +24,8 @@ const useTwoStepLoginForm = (data: IUseTwoStepLoginForm) => {
   const [userName, setUserName] = useState<string>("");
   const [labels, setLabels] = useState<IFormStepLabels>(userNameStepLabels);
   const [numberPasswordAttempts, setNumberPasswordAttempts] = useState(0);
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setInputValue(e.target.value);
+  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setInputValue(event.target.value);
     if (inputValid === false) {
       setInputValid(null);
     }
@@ -40,8 +40,8 @@ const useTwoStepLoginForm = (data: IUseTwoStepLoginForm) => {
     }
   };
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
 
     if (currentStep === EFormStepLabels.USER_NAME_INPUT) {
       if (!validateRequiredField(inputValue)) {

@@ -1,14 +1,10 @@
 import { iauthQueryAxiosInstance } from "@api/iauthQuery";
-import { IOriginatorSuccess } from "@ptypes/api/IOriginator";
+import { IOriginatorSuccess } from "@ptypes/api/IOriginatorSuccess";
+import { IGetOriginator } from "@ptypes/services/core/IGetOriginator";
 import { AxiosRequestConfig } from "axios";
 
-interface IGetOriginatorParams {
-  originatorId?: string;
-  originatorCode?: string;
-}
-
 const getOriginator = async (
-  params: IGetOriginatorParams,
+  props: IGetOriginator,
 ): Promise<IOriginatorSuccess> => {
   const config: AxiosRequestConfig = {
     headers: {
@@ -17,13 +13,12 @@ const getOriginator = async (
     },
   };
 
-  // Construir query params
   const queryParams = new URLSearchParams();
-  if (params.originatorId) {
-    queryParams.append("originatorId", params.originatorId);
+  if (props.originatorId) {
+    queryParams.append("originatorId", props.originatorId);
   }
-  if (params.originatorCode) {
-    queryParams.append("originatorCode", params.originatorCode);
+  if (props.originatorCode) {
+    queryParams.append("originatorCode", props.originatorCode);
   }
 
   const queryString = queryParams.toString();
@@ -38,4 +33,3 @@ const getOriginator = async (
 };
 
 export { getOriginator };
-export type { IGetOriginatorParams };
