@@ -1,5 +1,5 @@
 import { IText } from '@inubekit/inubekit';
 
-type TextSize = IText['size'];
+type ITextSize = IText['size'];
 
-export type{ TextSize };
+export type { ITextSize };

@@ -1,4 +1,4 @@
-import { Button, Text, Icon } from "@inubekit/inubekit";
+import { Text, Icon } from "@inubekit/inubekit";
 import { ModalWarning } from "..";
 import { IModalWarning } from "@ptypes/components/login/IModalWarning";
 import { MdOutlineWarningAmber } from "react-icons/md";

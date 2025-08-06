@@ -1,9 +1,8 @@
 import styled from "styled-components";
-import { IStyledModalWarning } from "@ptypes/components/modalWarning/IStyledModalWarning";
 import { tokensWithReference } from "@design/tokens/tokensWithReference";
 import { modalWarning } from "./tokens";
 
-const StyledCard = styled.div<IStyledModalWarning>`
+const StyledCardWarning = styled.div`
     background-color: ${({ theme }) =>
         theme?.modalWarning?.neutral?.background?.color || modalWarning.neutral.background.color
     };
@@ -29,4 +28,4 @@ const StyledCard = styled.div<IStyledModalWarning>`
     z-index: 2;
 `;
 
-export { StyledCard };
+export { StyledCardWarning };

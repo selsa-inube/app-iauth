@@ -5,7 +5,7 @@ const story = {
     component: Background
 }
 
-const Default = () => <Background />;
+const Default = () => <Background><div>Contenido de ejemplo</div></Background>;
 
 
 export default story;

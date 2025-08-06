@@ -2,7 +2,7 @@ import axios, { AxiosInstance } from "axios";
 import { authApiUrl, fetchTimeoutServices } from "@config/environment";
 
 const axiosInstance: AxiosInstance = axios.create({
-  baseURL: authApiUrl,
+  baseURL: authApiUrl as string,
   timeout: fetchTimeoutServices,
   headers: {
     "Content-type": "application/json; charset=UTF-8",
@@ -13,14 +13,15 @@ const axiosInstance: AxiosInstance = axios.create({
 
 axiosInstance.interceptors.response.use(
   (response) => response,
-  (error) => {
-    if (error.code === "ECONNABORTED") {
-      console.error("Request timed out");
+  (error: unknown) => {
+    if (axios.isAxiosError(error)) {
+      if (error.code === "ECONNABORTED") {
+        console.error("Request timed out");
+      }
+      return Promise.resolve(error.response);
     }
-    return Promise.resolve(error.response.data);
-  }
+    return Promise.resolve(error);
+  },
 );
 
 export { axiosInstance };
-
-

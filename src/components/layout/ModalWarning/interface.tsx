@@ -1,5 +1,5 @@
-import { Stack, Text, Icon, Divider, Button } from "@inubekit/inubekit";
-import { StyledCard } from "./styles";
+import { Stack, Text, Divider, Button } from "@inubekit/inubekit";
+import { StyledCardWarning } from "./styles";
 import { MdClose } from "react-icons/md";
 import { IModalWarningUI } from "@ptypes/components/modalWarning/IModalWarningUI/indext";
 import { modalWarning } from "@config/login/modalWarning";
@@ -14,7 +14,7 @@ const ModalWarningUI = (props: IModalWarningUI) => {
     } = props;
 
     return (
-        <StyledCard
+        <StyledCardWarning
             $isMobile={isMobile}
         >
             <Stack
@@ -38,13 +38,14 @@ const ModalWarningUI = (props: IModalWarningUI) => {
                     gap={`${tokensWithReference.spacing.s100}`}
                 >
                     <Button
-                        children={modalWarning.titleClose}
                         onClick={onClose}
                         iconAfter={<MdClose />}
                         cursorHover
                         variant="none"
                         appearance="dark"
-                    />
+                    >
+                        {modalWarning.titleClose}
+                    </Button>
                 </Stack>
             </Stack>
             <Divider />
@@ -81,7 +82,7 @@ const ModalWarningUI = (props: IModalWarningUI) => {
                     {modalWarning.labelUnderstand}
                 </Button>
             </Stack>
-        </StyledCard>
+        </StyledCardWarning>
     );
 }
 

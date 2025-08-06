@@ -1,8 +1,7 @@
-import { IStyledMask } from "@ptypes/components/login/IStyledMask";
 import styled from "styled-components";
 import { mask } from "./tokens";
 
-const StyledMask = styled.div<IStyledMask>`
+const StyledMask = styled.div`
     flex-direction: ${({ $direction }) => $direction};
     width: 100%;
     height: 100%;

@@ -1,11 +1,7 @@
 import styled from "styled-components"
 import { card } from "./tokens"
 
-interface StyledCardProps {
-  $isMobile: boolean;
-}
-
-const StyledCard = styled.div<StyledCardProps>`
+const StyledCard = styled.div`
     background-color: ${({ theme }) =>
     theme?.card?.light?.backgroundColor?.color || card.light.backgroundColor.color};
     border-radius: 8px;
