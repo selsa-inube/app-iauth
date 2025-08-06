@@ -10,10 +10,6 @@ const meta = {
   },
   tags: ["autodocs"],
   argTypes: {
-    $isMobile: {
-      control: "boolean",
-      description: "Si la tarjeta está en vista móvil",
-    },
     title: {
       control: "text",
       description: "Título principal de la tarjeta",
@@ -49,7 +45,6 @@ type Story = StoryObj<typeof meta>;
 
 export const UserRegistered: Story = {
   args: {
-    $isMobile: false,
     title: "Ya estás registrado.",
     message:
       'Ya estás registrado, utiliza tus credenciales o dirígete al portal que requieres por la opción "¿Olvidaste tu usuario?".',
@@ -63,7 +58,6 @@ export const UserRegistered: Story = {
 
 export const LinkExpired: Story = {
   args: {
-    $isMobile: false,
     title: "Lo sentimos.",
     message:
       "Esta invitación perdió su vigencia después de # días sin utilizarse, si lo requieres, dirígete nuevamente al portal donde solicitaste el registro.",
@@ -77,7 +71,6 @@ export const LinkExpired: Story = {
 
 export const MobileView: Story = {
   args: {
-    $isMobile: true,
     title: "Vista móvil",
     message:
       "Esta es la vista de la tarjeta optimizada para dispositivos móviles con espaciado y tamaños ajustados.",
@@ -91,7 +84,6 @@ export const MobileView: Story = {
 
 export const CustomMessage: Story = {
   args: {
-    $isMobile: false,
     title: "Mensaje personalizado",
     message:
       "Este es un ejemplo de mensaje completamente personalizado que demuestra la flexibilidad del componente InformativeCard.",

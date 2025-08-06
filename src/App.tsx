@@ -1,7 +1,5 @@
-/* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import { Home } from "@pages/home";
 import { Route, Routes } from "react-router-dom";
-import { portalCatalogId } from "@config/environment";
 import Register from "@pages/register";
 import { ValidateLink } from "@pages/validateLink";
 import { PageLayout } from "@components/layout/PageLayout";

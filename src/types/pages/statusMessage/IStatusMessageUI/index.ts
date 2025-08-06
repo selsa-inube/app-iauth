@@ -1,5 +1,5 @@
 import { EStatusIcon } from "@enum/components/EStatusIcon";
-import { TextSize } from "@ptypes/components/TextSize";
+import { ITextSize } from "@src/types/components/ITextSize";
 
 interface IStatusMessageUI {
   title: string;
@@ -7,7 +7,7 @@ interface IStatusMessageUI {
   buttonText: string;
   buttonVariant: "primary" | "warning";
   icon: EStatusIcon;
-  labelsSizeDifferent: TextSize;
+  labelsSizeDifferent: ITextSize;
   onButtonClick: () => void;
 }
 

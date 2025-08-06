@@ -1,9 +1,9 @@
-import { TextSize } from '@ptypes/components/TextSize';
+import { ITextSize } from '@src/types/components/ITextSize';
 import type { UserData } from '@ptypes/hooks/useValidationToken/IUserData';
 import type { IRegisterLabels } from '@ptypes/config/register/IRegisterLabels';
 
 interface IRegisterUI {
-  labelsSize: TextSize;
+  labelsSize: ITextSize;
   userData: UserData;
   isMobile?: boolean;
   labels: IRegisterLabels;

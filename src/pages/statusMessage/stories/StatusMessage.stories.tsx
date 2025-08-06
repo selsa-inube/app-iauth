@@ -24,10 +24,6 @@ const meta = {
       options: Object.values(EStatusMessage),
       description: "Tipo de mensaje a mostrar",
     },
-    portalCode: {
-      control: "text",
-      description: "Código del portal para obtener el logo",
-    },
     customMessage: {
       control: "object",
       description:
@@ -41,7 +37,6 @@ type Story = StoryObj<typeof meta>;
 
 export const UserAlreadyRegistered: Story = {
   args: {
-    portalCode: "sistemasenlinea",
     messageType: EStatusMessage.USER_ALREADY_REGISTERED,
   },
   parameters: {
@@ -56,7 +51,6 @@ export const UserAlreadyRegistered: Story = {
 
 export const LinkExpired: Story = {
   args: {
-    portalCode: "sistemasenlinea",
     messageType: EStatusMessage.LINK_EXPIRED,
   },
   parameters: {
@@ -71,7 +65,6 @@ export const LinkExpired: Story = {
 
 export const WithCustomMessage: Story = {
   args: {
-    portalCode: "sistemasenlinea",
     messageType: EStatusMessage.USER_ALREADY_REGISTERED,
     customMessage: {
       title: "Título personalizado",
@@ -94,7 +87,6 @@ export const WithCustomMessage: Story = {
 
 export const MobileView: Story = {
   args: {
-    portalCode: "sistemasenlinea",
     messageType: EStatusMessage.LINK_EXPIRED,
   },
   parameters: {

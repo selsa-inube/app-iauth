@@ -4,13 +4,13 @@ import { IStatusMessage } from "@ptypes/pages/statusMessage/IStatusMessage";
 import { statusMessages } from "@config/pages/statusMessage";
 import { EStatusMessage } from "@enum/pages/EStatusMessage";
 import { EStatusIcon } from "@enum/components/EStatusIcon";
-import { TextSize } from "@ptypes/components/TextSize";
+import { ITextSize } from "@src/types/components/ITextSize";
 import { useNavigate } from "react-router-dom";
 const StatusMessage = (props: IStatusMessage) => {
   const { messageType, customMessage, onButtonClick } = props;
   const navigate = useNavigate();
   const screenMobile = useMediaQuery("(max-width: 768px)");
-  const labelsSizeDifferent: TextSize = screenMobile ? "medium" : "large";
+  const labelsSizeDifferent: ITextSize = screenMobile ? "medium" : "large";
   const getMessageConfig = () => {
     if (messageType === EStatusMessage.NONE) {
       return {

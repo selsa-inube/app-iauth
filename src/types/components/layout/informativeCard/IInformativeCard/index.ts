@@ -1,4 +1,4 @@
-import { TextSize } from "@ptypes/components/TextSize";
+import { ITextSize } from "@src/types/components/ITextSize";
 import { EStatusIcon } from "@enum/components/EStatusIcon";
 
 interface IInformativeCard {
@@ -8,7 +8,7 @@ interface IInformativeCard {
   buttonVariant: "primary" | "warning";
   icon: EStatusIcon;
   onButtonClick: () => void;
-  labelsSizeDifferent: TextSize;
+  labelsSizeDifferent: ITextSize;
 }
 
 export type { IInformativeCard };

@@ -1,4 +1,4 @@
-import { ITextSize } from "@ptypes/components/TextSize"; 
+import { ITextSize } from "@src/types/components/ITextSize"; 
 
 interface ILink {
     labelsSize: ITextSize;
