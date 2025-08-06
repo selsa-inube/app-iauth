@@ -1,5 +1,7 @@
 interface IHome {
-    portalCode: string;
-};
+  originatorId?: string;
+  originatorCode?: string;
+  callbackUrl?: string;
+}
 
 export type { IHome };

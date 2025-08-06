@@ -3,9 +3,8 @@ import { StyledCard } from './styles'
 import { useMediaQuery } from '@inubekit/inubekit';
 
 
-const Card = (porps: ICard) => {
-    const { children } = porps;
-
+const Card = (props: ICard) => {
+    const { children } = props;    
     const screenMobile = useMediaQuery("(max-width: 768px)");
 
     return (

@@ -1,4 +1,4 @@
-import { Stack, Text } from "@inubekit/inubekit"
+import { Stack, Text } from "@inubekit/inubekit";
 import { StyledImg } from "./styles";
 import { LoginForm } from "@pages/loginForm/";
 import { IHomeUI } from "@ptypes/pages/home/IHomeUI";
@@ -13,100 +13,82 @@ import { spacing } from "@design/tokens/tokensWithReference/spacing/spacing";
 import { RedirectSpinner } from "@pages/redirectSpinner";
 
 const HomeUI = (props: IHomeUI) => {
-    const {
-        $isMobile,
-        urlLogo,
-        handleCloseModal,
-        isModalWarningOpen,
-        setModalWarningType,
-        modalWarningType,
-        isRedirectPortal,
-        setRedirectPortal
-    } = props;
+  const {
+    isMobile,
+    urlLogo,
+    handleCloseModal,
+    isModalWarningOpen,
+    setModalWarningType,
+    modalWarningType,
+    isRedirectPortal,
+    setRedirectPortal,
+    callbackUrl,
+  } = props;
 
-    return (
-        <Background>
-            <Mask
-                zIndex={mask.maskBackground.zIndex}
-                isModal={false}
-            />
-            {
-                isModalWarningOpen && (
-                    <>
-                        <Mask
-                            zIndex={mask.maskModalWarning.zIndex}
-                            isModal={true}
-                        />
-                        <ModalWarning
-                            onClose={handleCloseModal}
-                            auxiliaryButton={true}
-                            modalWarningType={modalWarningType}
-                            isMobile={$isMobile}
-                        />
+  return (
+    <Background>
+      <Mask zIndex={mask.maskBackground.zIndex} isModal={false} />
+      {isModalWarningOpen && (
+        <>
+          <Mask zIndex={mask.maskModalWarning.zIndex} isModal />
+          <ModalWarning
+            onClose={handleCloseModal}
+            auxiliaryButton
+            modalWarningType={modalWarningType}
+            isMobile={isMobile}
+          />
+        </>
+      )}
 
-                    </>
-                )
-            }
+      {isRedirectPortal && (
+        <>
+          <Mask zIndex={mask.maskModalWarning.zIndex} isModal />
+          <RedirectSpinner />
+        </>
+      )}
 
-            {
-                isRedirectPortal && (
-                    <>
-                        <Mask
-                            zIndex={mask.maskModalWarning.zIndex}
-                            isModal={true}
-                        />
-                        <RedirectSpinner />
-                    </>
-                )
-            }
-
-            <Stack
-                direction="column"
-                padding={`${tokens.spacing.s150} ${tokens.spacing.s400}`}
-                height="auto"
-                gap={
-                    $isMobile 
-                    ? spacing.s250
-                    : '0'
-                }
-            >
-                <Stack
-                    direction="column"
-                    justifyContent="center"
-                    width={
-                        $isMobile ? `190px` : `200px`
-                    }
-                >
-                    <Text
-                        appearance="gray"
-                        weight="bold"
-                        type="headline"
-                        size="small"
-                        textAlign="center"
-                    >
-                        {labelsTitles.titleImg}
-                    </Text>
-                    <StyledImg
-                        src={urlLogo}
-                        $isMobile={$isMobile}
-                        alt={labelsTitles.textAltImg}
-                    />
-                </Stack>
-                <Stack
-                    direction="column"
-                    alignItems="center"
-                    width="100%"
-                    gap={spacing.s200}
-                >
-                    <ModalInformation />
-                    <LoginForm
-                        setModalWarningType={setModalWarningType}
-                        setRedirectPortal={setRedirectPortal}
-                    />
-                </Stack>
-            </Stack>
-        </Background>
-    );
-}
+      <Stack
+        direction="column"
+        padding={`${tokens.spacing.s150} ${tokens.spacing.s400}`}
+        height="auto"
+        gap={isMobile ? spacing.s250 : "0"}
+      >
+        <Stack
+          direction="column"
+          justifyContent="center"
+          width={isMobile ? `190px` : `200px`}
+        >
+          <Text
+            appearance="gray"
+            weight="bold"
+            type="headline"
+            size="small"
+            textAlign="center"
+          >
+            {labelsTitles.titleImg}
+          </Text>
+          <StyledImg
+            src={urlLogo}
+            $isMobile={isMobile}
+            alt={labelsTitles.textAltImg}
+          />
+        </Stack>
+        <Stack
+          direction="column"
+          alignItems="center"
+          width="100%"
+          gap={spacing.s200}
+        >
+          <ModalInformation />
+          <LoginForm
+            setModalWarningType={setModalWarningType}
+            setRedirectPortal={setRedirectPortal}
+            callbackUrl={callbackUrl}
+          />
+        </Stack>
+      </Stack>
+    </Background>
+  );
+};
 
 export { HomeUI };

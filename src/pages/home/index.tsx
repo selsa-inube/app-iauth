@@ -6,34 +6,38 @@ import { useBusinessData } from "@hooks/useBusinessData";
 import { EModalWarning } from "@enum/components/EModalWarning";
 
 const Home = (props: IHome) => {
-    const {
-        portalCode
-    } = props;
-    const { urlLogo } = useBusinessData({ portalCode });
-    const screenMobile = useMediaQuery("(max-width: 768px)");
-    const [isModalWarningOpen, setIsModalWarningOpen] = useState(false);
-    const [modalWarningType, setModalWarningType] = useState<EModalWarning>(EModalWarning.NONE);
-    const handleCloseModal = () => setIsModalWarningOpen(false);
-    const [isRedirectPortal, setIsRedirectPortal] = useState(false);
+  const { originatorId, originatorCode, callbackUrl } = props;
+  const { urlLogo } = useBusinessData({
+    originatorId,
+    originatorCode,
+  });
+  const screenMobile = useMediaQuery("(max-width: 768px)");
+  const [isModalWarningOpen, setIsModalWarningOpen] = useState(false);
+  const [modalWarningType, setModalWarningType] = useState<EModalWarning>(
+    EModalWarning.NONE,
+  );
+  const handleCloseModal = () => setIsModalWarningOpen(false);
+  const [isRedirectPortal, setIsRedirectPortal] = useState(false);
 
-    useEffect(() => {
-        if (modalWarningType !== EModalWarning.NONE) {
-            setIsModalWarningOpen(true);
-        }
-    }, [modalWarningType]);
-  
-    return (
-        <HomeUI
-            $isMobile={screenMobile}
-            modalWarningType={modalWarningType}
-            setModalWarningType={setModalWarningType}
-            urlLogo={urlLogo}
-            handleCloseModal={handleCloseModal}
-            isModalWarningOpen={isModalWarningOpen}
-            isRedirectPortal={isRedirectPortal}
-            setRedirectPortal={setIsRedirectPortal}
-        />
-    );
-}
+  useEffect(() => {
+    if (modalWarningType !== EModalWarning.NONE) {
+      setIsModalWarningOpen(true);
+    }
+  }, [modalWarningType]);
+
+  return (
+    <HomeUI
+      isMobile={screenMobile}
+      modalWarningType={modalWarningType}
+      setModalWarningType={setModalWarningType}
+      urlLogo={urlLogo}
+      handleCloseModal={handleCloseModal}
+      isModalWarningOpen={isModalWarningOpen}
+      isRedirectPortal={isRedirectPortal}
+      setRedirectPortal={setIsRedirectPortal}
+      callbackUrl={callbackUrl}
+    />
+  );
+};
 
 export { Home };
