@@ -22,7 +22,7 @@ const meta = {
       control: "text",
       description: "Texto del botón de acción",
     },
-    buttonVariant: {
+    buttonAppearance: {
       control: "select",
       options: ["primary", "warning"],
       description: "Variante del botón",
@@ -49,7 +49,7 @@ export const UserRegistered: Story = {
     message:
       'Ya estás registrado, utiliza tus credenciales o dirígete al portal que requieres por la opción "¿Olvidaste tu usuario?".',
     buttonText: "Entendido",
-    buttonVariant: "primary",
+    buttonAppearance: "primary",
     icon: EStatusIcon.USER_CHECK,
     labelsSizeDifferent: "large",
     onButtonClick: () => console.log("Button clicked!"),
@@ -62,7 +62,7 @@ export const LinkExpired: Story = {
     message:
       "Esta invitación perdió su vigencia después de # días sin utilizarse, si lo requieres, dirígete nuevamente al portal donde solicitaste el registro.",
     buttonText: "Entendido",
-    buttonVariant: "warning",
+    buttonAppearance: "warning",
     icon: EStatusIcon.CLOCK_WARNING,
     labelsSizeDifferent: "large",
     onButtonClick: () => console.log("Button clicked!"),
@@ -75,7 +75,7 @@ export const MobileView: Story = {
     message:
       "Esta es la vista de la tarjeta optimizada para dispositivos móviles con espaciado y tamaños ajustados.",
     buttonText: "Continuar",
-    buttonVariant: "primary",
+    buttonAppearance: "primary",
     icon: EStatusIcon.USER_CHECK,
     labelsSizeDifferent: "medium",
     onButtonClick: () => console.log("Mobile button clicked!"),
@@ -88,7 +88,7 @@ export const CustomMessage: Story = {
     message:
       "Este es un ejemplo de mensaje completamente personalizado que demuestra la flexibilidad del componente InformativeCard.",
     buttonText: "Acción personalizada",
-    buttonVariant: "warning",
+    buttonAppearance: "warning",
     icon: EStatusIcon.CLOCK_WARNING,
     labelsSizeDifferent: "large",
     onButtonClick: () => console.log("Custom action!"),

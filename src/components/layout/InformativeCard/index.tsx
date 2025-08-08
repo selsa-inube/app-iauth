@@ -6,7 +6,7 @@ const InformativeCard = (props: IInformativeCard) => {
     title,
     message,
     buttonText,
-    buttonVariant,
+    buttonAppearance,
     icon,
     onButtonClick,
     labelsSizeDifferent,
@@ -17,7 +17,7 @@ const InformativeCard = (props: IInformativeCard) => {
       title={title}
       message={message}
       buttonText={buttonText}
-      buttonVariant={buttonVariant}
+      buttonAppearance={buttonAppearance}
       icon={icon}
       onButtonClick={onButtonClick}
       labelsSizeDifferent={labelsSizeDifferent}

@@ -6,7 +6,7 @@ const StatusMessageUI = (props: IStatusMessageUI) => {
     title,
     message,
     buttonText,
-    buttonVariant,
+    buttonAppearance,
     icon,
     labelsSizeDifferent,
     onButtonClick,
@@ -23,7 +23,7 @@ const StatusMessageUI = (props: IStatusMessageUI) => {
         title={title}
         message={message}
         buttonText={buttonText}
-        buttonVariant={buttonVariant}
+        buttonAppearance={buttonAppearance}
         icon={icon}
         onButtonClick={onButtonClick}
         labelsSizeDifferent={labelsSizeDifferent}

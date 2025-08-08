@@ -9,7 +9,7 @@ const InformativeCardUI = (props: IInformativeCard) => {
     title,
     message,
     buttonText,
-    buttonVariant,
+    buttonAppearance,
     icon,
     onButtonClick,
     labelsSizeDifferent,
@@ -18,11 +18,9 @@ const InformativeCardUI = (props: IInformativeCard) => {
   return (
     <Card>
       <Stack direction="column" gap={tokensWithReference.spacing.s250}>
-        {/* Header con logo de iAuth */}
         <HeaderUI labelsSizeDifferent={labelsSizeDifferent} />
         <Divider dashed />
 
-        {/* Título principal */}
         <Text
           textAlign="center"
           type="headline"
@@ -32,22 +30,19 @@ const InformativeCardUI = (props: IInformativeCard) => {
           {title}
         </Text>
 
-        {/* Icono del estado */}
         <StatusIcon icon={icon} />
 
-        {/* Mensaje */}
         <Text type="body" size="medium" appearance="gray" textAlign="start">
           {message}
         </Text>
 
-        {/* Botón de acción */}
         <Stack
           direction="row"
           justifyContent="right"
           margin={`${tokensWithReference.spacing.s025} 0 0 0`}
         >
           <Button
-            appearance={buttonVariant}
+            appearance={buttonAppearance}
             spacing="wide"
             onClick={onButtonClick}
           >

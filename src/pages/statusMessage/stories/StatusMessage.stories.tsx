@@ -71,7 +71,7 @@ export const WithCustomMessage: Story = {
       message:
         "Este es un mensaje completamente personalizado para mostrar la flexibilidad del componente modularizado.",
       buttonText: "Acción personalizada",
-      buttonVariant: "warning",
+      buttonAppearance: "warning",
       icon: EStatusIcon.CLOCK_WARNING,
     },
   },

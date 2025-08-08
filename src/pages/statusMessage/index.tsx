@@ -4,7 +4,7 @@ import { IStatusMessage } from "@ptypes/pages/statusMessage/IStatusMessage";
 import { statusMessages } from "@config/pages/statusMessage";
 import { EStatusMessage } from "@enum/pages/EStatusMessage";
 import { EStatusIcon } from "@enum/components/EStatusIcon";
-import { ITextSize } from "@src/types/components/ITextSize";
+import { ITextSize } from "@ptypes/components/ITextSize";
 import { useNavigate } from "react-router-dom";
 const StatusMessage = (props: IStatusMessage) => {
   const { messageType, customMessage, onButtonClick } = props;
@@ -17,7 +17,7 @@ const StatusMessage = (props: IStatusMessage) => {
         title: "Mensaje no definido",
         message: "No se ha especificado un tipo de mensaje válido.",
         buttonText: "Entendido",
-        buttonVariant: "primary" as const,
+        buttonAppearance: "primary" as const,
         icon: EStatusIcon.USER_CHECK,
       };
     }
@@ -29,7 +29,7 @@ const StatusMessage = (props: IStatusMessage) => {
       title: customMessage?.title ?? baseMessage.title,
       message: customMessage?.message ?? baseMessage.message,
       buttonText: customMessage?.buttonText ?? baseMessage.buttonText,
-      buttonVariant: customMessage?.buttonVariant ?? baseMessage.buttonVariant,
+      buttonAppearance: customMessage?.buttonAppearance ?? baseMessage.buttonAppearance,
       icon: customMessage?.icon ?? baseMessage.icon,
     };
   };
@@ -49,7 +49,7 @@ const StatusMessage = (props: IStatusMessage) => {
       title={messageConfig.title}
       message={messageConfig.message}
       buttonText={messageConfig.buttonText}
-      buttonVariant={messageConfig.buttonVariant}
+      buttonAppearance={messageConfig.buttonAppearance}
       icon={messageConfig.icon}
       onButtonClick={handleButtonClick}
       labelsSizeDifferent={labelsSizeDifferent}

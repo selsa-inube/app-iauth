@@ -1,4 +1,4 @@
-export interface IUserWelcome {
+interface IUserWelcome {
   userData: {
     firstName: string;
     lastName: string;
@@ -11,3 +11,5 @@ export interface IUserWelcome {
     };
   };
 }
+
+export type { IUserWelcome };

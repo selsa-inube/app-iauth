@@ -1,4 +1,4 @@
-import { ITextSize } from '@src/types/components/ITextSize';
+import { ITextSize } from '@ptypes/components/ITextSize';
 import type { UserData } from '@ptypes/hooks/useValidationToken/IUserData';
 import type { IRegisterLabels } from '@ptypes/config/register/IRegisterLabels';
 

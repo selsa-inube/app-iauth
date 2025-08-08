@@ -2,7 +2,7 @@ import { useMediaQuery } from "@inubekit/inubekit";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import { RegisterUI } from "./interface";
-import { ITextSize } from "@src/types/components/ITextSize";
+import { ITextSize } from "@ptypes/components/ITextSize";
 import { registerLabels } from "@config/register/labels/registerLabels";
 import type { ILocationState } from "@ptypes/pages/register/ILocationState";
 import type { UserData } from "@ptypes/hooks/useValidationToken/IUserData";
@@ -34,4 +34,4 @@ const Register = () => {
   />;
 };
 
-export default Register;
+export { Register };
