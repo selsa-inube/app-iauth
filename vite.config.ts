@@ -6,6 +6,7 @@ export default defineConfig({
   plugins: [react()],
   resolve: {
     alias: {
+      '@ptypes': path.resolve(__dirname, './src/types'),
       '@types': path.resolve(__dirname, './src/types'),
       '@card-types': path.resolve(__dirname, './src/types/components/card'),
       '@design': path.resolve(__dirname, './src/design'),

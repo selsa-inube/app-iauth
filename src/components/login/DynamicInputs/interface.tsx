@@ -5,7 +5,6 @@ import { MdOutlinePersonOutline, MdLockOutline } from "react-icons/md";
 const DynamicInputsUI = (props: IDynamicInputs) => {
     const {
         labels,
-        labelsSize,
         status,
         message,
         handleInputChange,

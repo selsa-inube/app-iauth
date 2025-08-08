@@ -1,5 +1,6 @@
 interface IUseBusinessData {
-    portalCode: string;
-};
+  originatorId?: string;
+  originatorCode?: string;
+}
 
 export type { IUseBusinessData };
