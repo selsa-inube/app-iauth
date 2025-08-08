@@ -1,7 +1,7 @@
 import type { FormEvent, ChangeEvent, ReactNode } from "react";
 import { IFormStepLabels } from "@ptypes/hooks/useTwoStepLoginForm/IFormStepLabels";
 import { EFormStepLabels } from "@enum/hooks/EFormStepLabels";
-import { ITextSize } from "@ptypes/components/TextSize";
+import { ITextSize } from "@ptypes/components/ITextSize";
 
 interface ILoginForm {
   currentStep: EFormStepLabels;
