@@ -5,6 +5,10 @@ interface IRegisterLabels {
     greeting: string;
     userInfo: string;
   };
+  invitedBy: {
+    text: string;
+    imageUrl: string;
+  };
 }
 
 export type { IRegisterLabels };

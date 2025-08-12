@@ -1,15 +1,9 @@
+import type { UserData } from "@ptypes/hooks/useValidationToken/IUserData";
+import type { IRegisterLabels } from "@ptypes/config/register/IRegisterLabels";
+
 interface IUserWelcome {
-  userData: {
-    firstName: string;
-    lastName: string;
-    documentType: string;
-    documentNumber: string;
-  };
-  labels: {
-    welcomeMessage: {
-      greeting: string;
-    };
-  };
+  userData: UserData;
+  labels: IRegisterLabels;
 }
 
 export type { IUserWelcome };

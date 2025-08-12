@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 const StyledHeader = styled.header`
   width: 100%;
-  height: 53px;
+  height: 5dvh;
   background-color: #ffffff;
   flex-shrink: 0;
   display: flex;

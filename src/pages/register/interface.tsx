@@ -1,10 +1,21 @@
 import { Stack } from "@inubekit/inubekit";
 import { HeaderUI } from "@components/layout/Header/interface";
 import { UserWelcome } from "@components/register/UserWelcome";
-import type { IRegisterUI } from "@ptypes/pages/register/IRegisterUI";
+import { InvitedBy } from "@components/register/InvitedBy";
+import { RegisterOrchestrator } from "@components/register/RegisterOrchestrator";
+import { registerStepLabels } from "@config/register/labels/registerStepLabels";
+import type { IRegisterPageUI } from "@ptypes/pages/register/IRegisterPageUI";
 
-const RegisterUI = (props: IRegisterUI) => {
-  const { labelsSize, userData, isMobile, labels } = props;
+const RegisterUI = (props: IRegisterPageUI) => {
+  const {
+    labelsSize,
+    userData,
+    isMobile,
+    labels,
+    onRegisterSubmit,
+    passwordPolicy,
+    isPolicyLoading,
+  } = props;
 
   return (
     <Stack
@@ -18,8 +29,8 @@ const RegisterUI = (props: IRegisterUI) => {
         justifyContent="center"
         alignItems="center"
         direction="column"
-        width= {isMobile ? "328px" : "900px"}
-        height= "100%"
+        width={isMobile ? "90vw" : "900px"}
+        height="100%"
       >
         <Stack
           width="100%"
@@ -30,16 +41,24 @@ const RegisterUI = (props: IRegisterUI) => {
           <HeaderUI labelsSizeDifferent={labelsSize} />
           <UserWelcome userData={userData} labels={labels} />
         </Stack>
-        <Stack
-          width="100%"
-          justifyContent="start"
-          alignItems="center"
-        >
-          <HeaderUI labelsSizeDifferent={labelsSize} />
+        <Stack width="100%" justifyContent="start" alignItems="center">
+          <InvitedBy
+            urlImg={labels.invitedBy.imageUrl}
+            text={labels.invitedBy.text}
+            textSize={labelsSize}
+            isMobile={isMobile}
+          />
         </Stack>
-        <div>
-
-        </div>
+        <RegisterOrchestrator
+          labelsSize={labelsSize ?? "medium"}
+          isMobile={isMobile}
+          labels={registerStepLabels}
+          onSubmit={onRegisterSubmit}
+          originatorId={userData.originatorId}
+          originatorCode={userData.originatorCode}
+          passwordPolicy={passwordPolicy}
+          isPolicyLoading={isPolicyLoading}
+        />
       </Stack>
     </Stack>
   );

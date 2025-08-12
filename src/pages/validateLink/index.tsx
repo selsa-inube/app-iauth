@@ -20,7 +20,7 @@ const ValidateLink = () => {
     }
 
     void validateToken(token);
-  }, []);
+  }, [token, navigate, validateToken]);
 
   useEffect(() => {
     if (error) {
@@ -35,7 +35,7 @@ const ValidateLink = () => {
         },
       });
     }
-  }, [error, isLoading, validationResult]);
+  }, [error, isLoading, validationResult, navigate]);
 
   if (isLoading) {
     return (

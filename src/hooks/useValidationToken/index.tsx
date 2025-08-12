@@ -1,7 +1,6 @@
 import { useState, useCallback } from "react";
 import type { ValidationResult } from "@ptypes/hooks/useValidationToken/IValidationResult";
 
-
 const useValidationToken = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [validationResult, setValidationResult] =
@@ -50,6 +49,8 @@ const simulateApiCall = async (token: string): Promise<ValidationResult> => {
       documentNumber: "1234567890",
       firstName: "Juan",
       lastName: "Pérez",
+      originatorId: "id-originador-prueba",
+      originatorCode: "SistemasEnlinea",
     },
   };
 };
