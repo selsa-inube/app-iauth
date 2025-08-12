@@ -140,7 +140,12 @@ const useTwoStepLoginForm = (props: IUseTwoStepLoginForm) => {
       setInputValue("");
       setInputValid(null);
       setTimeout(() => {
-        window.location.href = response.callbackUrl ?? "";
+        const baseUrl = response.callbackUrl ?? "";
+        const url = new URL(baseUrl);
+        if (response.authenticationCode) {
+          url.searchParams.set("ac", response.authenticationCode);
+        }
+        window.location.href = url.toString();
       }, 2000);
     }
   };
