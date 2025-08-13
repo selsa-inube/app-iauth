@@ -19,7 +19,7 @@ const PageLayoutUI = (props: IPageLayout) => {
             width: "100%",
             overflowY: "auto",
             overflowX: "hidden",
-            padding: "20px 0",
+            padding: "10px 0",
             boxSizing: "border-box",
           }}
         >

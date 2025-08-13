@@ -1,32 +1,28 @@
 import { Text } from "@inubekit/inubekit";
 import type { IRequirementsBoxUI } from "@ptypes/components/utils/IRequirementsBoxUI";
+import { MdChecklistRtl } from "react-icons/md";
+import {
+  StyledChecklistIcon,
+  StyledContent,
+  StyledRequirementsBox,
+  StyledHeader,
+} from "./styles";
 
 const RequirementsBoxUI = (props: IRequirementsBoxUI) => {
   const { title, requirements, minWidth = "205px" } = props;
 
   return (
-    <div
-      style={{
-        display: "flex",
-        flexDirection: "row",
-        alignItems: "center",
-        padding: "6px 16px",
-        minWidth: minWidth,
-        width: "fit-content",
-        minHeight: "96px",
-        height: "auto",
-        background: "#FAFBFC",
-        borderRadius: "8px",
-        flex: "none",
-        order: 0,
-        flexGrow: 0,
-      }}
-    >
-      <div style={{ fontSize: "0.75rem", color: "#666" }}>
-        <Text size="medium" weight="bold">
-          {title}
-        </Text>
-        <ul style={{ margin: "0.5rem 0", paddingLeft: "1rem" }}>
+    <StyledRequirementsBox $minWidth={minWidth}>
+      <StyledContent>
+        <StyledHeader>
+          <StyledChecklistIcon aria-label="requirements icon">
+            <MdChecklistRtl />
+          </StyledChecklistIcon>
+          <Text size="medium" weight="bold">
+            {title}
+          </Text>
+        </StyledHeader>
+        <ul>
           {requirements.map((requirement, index) => (
             <li key={index}>
               <Text appearance="gray" size="medium">
@@ -35,8 +31,8 @@ const RequirementsBoxUI = (props: IRequirementsBoxUI) => {
             </li>
           ))}
         </ul>
-      </div>
-    </div>
+      </StyledContent>
+    </StyledRequirementsBox>
   );
 };
 
