@@ -25,7 +25,14 @@ interface IRegisterStepLabels {
     phoneLabel: string;
     phonePlaceholder: string;
     whatsappLabel: string;
+    whatsappLabelMobile: string;
     whatsappToggleLabel: string;
+    whatsappPhoneLabel: string;
+    whatsappPhonePlaceholder: string;
+    errors: {
+      invalidEmail: string;
+      minimumDigits: string;
+    };
   };
   securityQuestions: {
     description: string;

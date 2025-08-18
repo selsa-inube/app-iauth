@@ -9,7 +9,10 @@ interface IRegisterFormData {
   // Paso 3: Contact Info
   email: string;
   phone: string;
+  phoneCountryCode: string;
   isWhatsappUsed: boolean;
+  whatsappPhone?: string;
+  whatsappPhoneCountryCode?: string;
 
   // Paso 4: Security Questions
   securityQuestion1: string;

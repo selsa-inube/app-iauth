@@ -2,6 +2,9 @@ import { useState } from "react";
 import { RegisterOrchestratorUI } from "./interface";
 import { AccountStep } from "../steps/AccountStep";
 import { PasswordStep } from "../steps/PasswordStep";
+import { ContactInfoStep } from "../steps/ContactInfoStep";
+import { SecurityQuestionsStep } from "../steps/SecurityQuestionsStep";
+import { DataUsageStep } from "../steps/DataUsageStep";
 import type { IRegisterOrchestratorProps } from "@ptypes/components/register/IRegisterOrchestratorProps";
 import type { IRegisterFormData } from "@ptypes/components/register/IRegisterFormData";
 import type { IStep } from "@ptypes/components/register/IFormContainer";
@@ -58,7 +61,9 @@ const RegisterOrchestrator = (props: IRegisterOrchestratorProps) => {
     confirmPassword: "",
     email: "",
     phone: "",
-    isWhatsappUsed: false,
+    phoneCountryCode: "CO",
+    isWhatsappUsed: true,
+    whatsappPhoneCountryCode: "CO",
     securityQuestion1: "",
     securityQuestion2: "",
     securityQuestion3: "",
@@ -122,11 +127,11 @@ const RegisterOrchestrator = (props: IRegisterOrchestratorProps) => {
           />
         );
       case "contact-info":
-        return <div />;
+        return <ContactInfoStep {...stepProps} isMobile={isMobile} />;
       case "questions":
-        return <div />;
+        return <SecurityQuestionsStep {...stepProps} />;
       case "usage":
-        return <div />;
+        return <DataUsageStep {...stepProps} />;
       default:
         return null;
     }

@@ -37,8 +37,15 @@ const registerStepLabels: IRegisterStepLabels = {
     emailPlaceholder: "Email",
     phoneLabel: "Número",
     phonePlaceholder: "Número móvil",
-    whatsappLabel: "¿Lo usas para whatsapp?",
+    whatsappLabel: "¿Lo usas para WhatsApp?",
+    whatsappLabelMobile: "¿Mismo # WhatsApp?",
     whatsappToggleLabel: "Sí",
+    whatsappPhoneLabel: "Número de WhatsApp",
+    whatsappPhonePlaceholder: "WhatsApp",
+    errors: {
+      invalidEmail: "Email inválido",
+      minimumDigits: "Mínimo 7 dígitos",
+    },
   },
   securityQuestions: {
     description: "Por favor, responde al menos 3 de las siguientes preguntas.",

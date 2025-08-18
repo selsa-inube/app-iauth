@@ -1,27 +1,90 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { ContactInfoStepUI } from "./interface";
 import type { IRegisterStepProps } from "@ptypes/components/register/IRegisterStepProps";
 
-const ContactInfoStep = (props: IRegisterStepProps) => {
-  const { formData, onFormChange, labels, onNextEnabledChange } = props;
+const ContactInfoStep = (
+  props: IRegisterStepProps & { isMobile?: boolean },
+) => {
+  const { formData, onFormChange, labels, onNextEnabledChange, isMobile } =
+    props;
+
+  const [errors, setErrors] = useState({
+    email: "",
+    phone: "",
+    whatsappPhone: "",
+  });
 
   const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     onFormChange("email", e.target.value);
   };
 
-  const handlePhoneChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    onFormChange("phone", e.target.value);
+  const handlePhoneChange = (val: string) => {
+    onFormChange("phone", val);
+  };
+
+  const handlePhoneCountryChange = (countryCode: string) => {
+    onFormChange("phoneCountryCode", countryCode);
   };
 
   const handleWhatsappToggle = (e: React.ChangeEvent<HTMLInputElement>) => {
     onFormChange("isWhatsappUsed", e.target.checked);
   };
 
+  const handleWhatsappPhoneChange = (val: string) => {
+    onFormChange("whatsappPhone", val);
+  };
+
+  const handleWhatsappPhoneCountryChange = (countryCode: string) => {
+    onFormChange("whatsappPhoneCountryCode", countryCode);
+  };
+
   useEffect(() => {
-    const isValid =
-      formData.email.trim() !== "" && formData.phone.trim() !== "";
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const isValidEmail = emailRegex.test(formData.email.trim());
+
+    const phoneDigits = formData.phone.replace(/[^0-9]/g, "");
+    const isValidPhone = phoneDigits.length >= 7;
+
+    const baseValid = isValidEmail && isValidPhone;
+
+    const needsAltWhatsapp = formData.isWhatsappUsed === false;
+    let altValid = true;
+
+    if (needsAltWhatsapp) {
+      const whatsappDigits = (formData.whatsappPhone ?? "").replace(
+        /[^0-9]/g,
+        "",
+      );
+      altValid = whatsappDigits.length >= 7;
+    }
+
+    const newErrors = {
+      email:
+        formData.email.trim() && !isValidEmail
+          ? labels.contactInfo.errors.invalidEmail
+          : "",
+      phone:
+        formData.phone.trim() && !isValidPhone
+          ? labels.contactInfo.errors.minimumDigits
+          : "",
+      whatsappPhone:
+        needsAltWhatsapp && formData.whatsappPhone?.trim() && !altValid
+          ? labels.contactInfo.errors.minimumDigits
+          : "",
+    };
+    setErrors(newErrors);
+
+    const isValid = baseValid && altValid;
     onNextEnabledChange?.(isValid);
-  }, [formData.email, formData.phone, onNextEnabledChange]);
+  }, [
+    formData.email,
+    formData.phone,
+    formData.whatsappPhone,
+    formData.isWhatsappUsed,
+    onNextEnabledChange,
+    labels.contactInfo.errors.invalidEmail,
+    labels.contactInfo.errors.minimumDigits,
+  ]);
 
   return (
     <ContactInfoStepUI
@@ -29,7 +92,12 @@ const ContactInfoStep = (props: IRegisterStepProps) => {
       labels={labels}
       onEmailChange={handleEmailChange}
       onPhoneChange={handlePhoneChange}
+      onPhoneCountryChange={handlePhoneCountryChange}
       onWhatsappToggle={handleWhatsappToggle}
+      onWhatsappPhoneChange={handleWhatsappPhoneChange}
+      onWhatsappPhoneCountryChange={handleWhatsappPhoneCountryChange}
+      isMobile={isMobile}
+      errors={errors}
     />
   );
 };
