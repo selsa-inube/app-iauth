@@ -30,7 +30,7 @@ const NavigationButtonsUI = (props: INavigationButtonsUIProps) => {
   return (
     <Stack direction="row" gap="16px" justifyContent="flex-end" width="100%">
       {!isFirstStep && (
-        <Button onClick={onBack} variant="outlined">
+        <Button onClick={onBack} variant="outlined" appearance="gray">
           {labels.previous}
         </Button>
       )}

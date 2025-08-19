@@ -17,9 +17,10 @@ const RegisterOrchestrator = (props: IRegisterOrchestratorProps) => {
     onSubmit,
     passwordPolicy,
     isPolicyLoading,
+    securityQuestions,
   } = props;
 
-  const steps: IStep[] = [
+  const baseSteps: IStep[] = [
     {
       id: "account",
       number: 1,
@@ -38,19 +39,26 @@ const RegisterOrchestrator = (props: IRegisterOrchestratorProps) => {
       name: "Datos de Contacto",
       description: "Completa los datos de contacto.",
     },
-    {
-      id: "questions",
-      number: 4,
-      name: "Preguntas de Seguridad",
-      description: "Preguntas secretas útiles para cambios en tu cuenta.",
-    },
-    {
-      id: "usage",
-      number: 5,
-      name: "Uso de datos personales",
-      description: "Confirmación de uso de tus datos personales.",
-    },
   ];
+
+  const securityQuestionsStep: IStep = {
+    id: "questions",
+    number: 4,
+    name: "Preguntas de Seguridad",
+    description: "Preguntas secretas útiles para cambios en tu cuenta.",
+  };
+
+  const dataUsageStep: IStep = {
+    id: "usage",
+    number: passwordPolicy?.policyForTheUserKey === "HighLevel" ? 5 : 4,
+    name: "Uso de datos personales",
+    description: "Confirmación de uso de tus datos personales.",
+  };
+
+  const steps: IStep[] =
+    passwordPolicy?.policyForTheUserKey === "HighLevel"
+      ? [...baseSteps, securityQuestionsStep, dataUsageStep]
+      : [...baseSteps, dataUsageStep];
 
   const [currentStep, setCurrentStep] = useState<IStep>(steps[0]);
   const [isNextEnabled, setIsNextEnabled] = useState(false);
@@ -64,11 +72,7 @@ const RegisterOrchestrator = (props: IRegisterOrchestratorProps) => {
     phoneCountryCode: "CO",
     isWhatsappUsed: true,
     whatsappPhoneCountryCode: "CO",
-    securityQuestion1: "",
-    securityQuestion2: "",
-    securityQuestion3: "",
-    religion: "",
-    birthplace: "",
+    securityAnswers: {},
     dataTreatmentAccepted: false,
     dataIdentityAccepted: false,
   });
@@ -108,30 +112,37 @@ const RegisterOrchestrator = (props: IRegisterOrchestratorProps) => {
   };
 
   const renderCurrentStep = () => {
-    const stepProps = {
+    const baseProps = {
       formData,
       onFormChange: handleFormChange,
       labels,
       onNextEnabledChange: handleNextEnabledChange,
+      isMobile,
     };
 
     switch (currentStep.id) {
       case "account":
-        return <AccountStep {...stepProps} />;
+        return <AccountStep {...baseProps} />;
       case "password":
         return (
           <PasswordStep
-            {...stepProps}
+            {...baseProps}
             passwordPolicy={passwordPolicy}
             isPolicyLoading={isPolicyLoading}
           />
         );
       case "contact-info":
-        return <ContactInfoStep {...stepProps} isMobile={isMobile} />;
+        return <ContactInfoStep {...baseProps} />;
       case "questions":
-        return <SecurityQuestionsStep {...stepProps} />;
+        return (
+          <SecurityQuestionsStep
+            {...baseProps}
+            securityQuestions={securityQuestions}
+            minRequiredAnswers={3}
+          />
+        );
       case "usage":
-        return <DataUsageStep {...stepProps} />;
+        return <DataUsageStep {...baseProps} />;
       default:
         return null;
     }

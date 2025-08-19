@@ -1,6 +1,5 @@
 import type { IRegisterFormData } from "@ptypes/components/register/IRegisterFormData";
 import type { IRegisterStepLabels } from "@ptypes/components/register/IRegisterStepLabels";
-import type { IPasswordPolicy } from "@ptypes/hooks/usePasswordPolicy";
 
 interface IRegisterStepProps {
   formData: IRegisterFormData;
@@ -10,8 +9,7 @@ interface IRegisterStepProps {
   ) => void;
   labels: IRegisterStepLabels;
   onNextEnabledChange?: (enabled: boolean) => void;
-  passwordPolicy?: IPasswordPolicy | null;
-  isPolicyLoading?: boolean;
+  isMobile?: boolean;
 }
 
 export type { IRegisterStepProps };

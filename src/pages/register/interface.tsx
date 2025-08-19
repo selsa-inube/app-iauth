@@ -15,6 +15,7 @@ const RegisterUI = (props: IRegisterPageUI) => {
     onRegisterSubmit,
     passwordPolicy,
     isPolicyLoading,
+    securityQuestions,
   } = props;
 
   return (
@@ -58,6 +59,7 @@ const RegisterUI = (props: IRegisterPageUI) => {
           originatorCode={userData.originatorCode}
           passwordPolicy={passwordPolicy}
           isPolicyLoading={isPolicyLoading}
+          securityQuestions={securityQuestions}
         />
       </Stack>
     </Stack>

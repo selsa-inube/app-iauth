@@ -14,12 +14,8 @@ interface IRegisterFormData {
   whatsappPhone?: string;
   whatsappPhoneCountryCode?: string;
 
-  // Paso 4: Security Questions
-  securityQuestion1: string;
-  securityQuestion2: string;
-  securityQuestion3: string;
-  religion: string;
-  birthplace: string;
+  // Paso 4: Security Questions (Dynamic)
+  securityAnswers: Record<string, string>;
 
   // Paso 5: Data Usage
   dataTreatmentAccepted: boolean;

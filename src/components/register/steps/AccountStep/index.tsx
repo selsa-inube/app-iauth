@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { AccountStepUI } from "./interface";
-import type { IRegisterStepProps } from "@ptypes/components/register/IRegisterStepProps";
+import type { IAccountStepProps } from "@ptypes/components/register/steps/IAccountStepProps";
 
-const AccountStep = (props: IRegisterStepProps) => {
+const AccountStep = (props: IAccountStepProps) => {
   const { formData, onFormChange, labels, onNextEnabledChange } = props;
   const [validationMessage, setValidationMessage] = useState<string>("");
 

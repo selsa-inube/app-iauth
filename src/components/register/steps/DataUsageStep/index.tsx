@@ -1,8 +1,8 @@
 import { useEffect } from "react";
 import { DataUsageStepUI } from "./interface";
-import type { IRegisterStepProps } from "@ptypes/components/register/IRegisterStepProps";
+import type { IDataUsageStepProps } from "@ptypes/components/register/steps/IDataUsageStepProps";
 
-const DataUsageStep = (props: IRegisterStepProps) => {
+const DataUsageStep = (props: IDataUsageStepProps) => {
   const { formData, onFormChange, labels, onNextEnabledChange } = props;
 
   const handleDataTreatmentChange = (

@@ -6,76 +6,79 @@ const SecurityQuestionsStepUI = (props: ISecurityQuestionsStepUI) => {
   const {
     formData,
     labels,
-    onSecurityQuestion1Change,
-    onSecurityQuestion2Change,
-    onSecurityQuestion3Change,
-    onReligionChange,
-    onBirthplaceChange,
+    securityQuestions,
+    onAnswerChange,
+    isMobile,
+    minRequiredAnswers,
   } = props;
+
+  if (!securityQuestions?.SecurityQuestionAndAnswer) {
+    return (
+      <Stack direction="column" gap="16px" width="100%" height="100%">
+        <Box height="auto" width="100%">
+          <Text appearance="gray">
+            No hay preguntas de seguridad disponibles.
+          </Text>
+        </Box>
+      </Stack>
+    );
+  }
 
   return (
     <Stack direction="column" gap="16px" width="100%" height="100%">
       <Box height="auto" width="100%">
-        <Text appearance="gray">{labels.securityQuestions.description}</Text>
-        <StyledQuestionsGrid>
-          <Textfield
-            id="securityQuestion1"
-            label={labels.securityQuestions.question1Label}
-            placeholder={labels.securityQuestions.questionPlaceholder}
-            fullwidth={true}
-            type="text"
-            size="wide"
-            maxLength={30}
-            minLength={0}
-            value={formData.securityQuestion1}
-            onChange={onSecurityQuestion1Change}
-          />
+        <Text appearance="gray">
+          {labels.securityQuestions.description.replace(
+            "{0}",
+            minRequiredAnswers.toString(),
+          )}
+        </Text>
+        <StyledQuestionsGrid $isMobile={isMobile}>
+          {securityQuestions.SecurityQuestionAndAnswer.map((question) => {
+            const currentValue =
+              formData.securityAnswers[question.numberQuestion] || "";
 
-          <Textfield
-            id="securityQuestion2"
-            label={labels.securityQuestions.question2Label}
-            placeholder={labels.securityQuestions.questionPlaceholder}
-            fullwidth={true}
-            type="text"
-            size="wide"
-            maxLength={50}
-            minLength={0}
-            value={formData.securityQuestion2}
-            onChange={onSecurityQuestion2Change}
-          />
+            if (question.answers) {
+              const selectOptions = question.answers.map((item) => ({
+                id: item.answer,
+                value: item.answer,
+                label: item.answer,
+              }));
 
-          <Textfield
-            id="securityQuestion3"
-            label={labels.securityQuestions.question3Label}
-            placeholder={labels.securityQuestions.questionPlaceholder}
-            fullwidth={true}
-            type="text"
-            size="wide"
-            maxLength={50}
-            minLength={0}
-            value={formData.securityQuestion3}
-            onChange={onSecurityQuestion3Change}
-          />
-
-          <Select
-            label={labels.securityQuestions.religionLabel}
-            placeholder={labels.securityQuestions.religionPlaceholder}
-            fullwidth={true}
-            options={labels.securityQuestions.religionOptions}
-            onChange={onReligionChange}
-            name="religion"
-            value={formData.religion}
-          />
-
-          <Select
-            label={labels.securityQuestions.birthplaceLabel}
-            placeholder={labels.securityQuestions.birthplacePlaceholder}
-            fullwidth={true}
-            options={labels.securityQuestions.birthplaceOptions}
-            name="birthplace"
-            onChange={onBirthplaceChange}
-            value={formData.birthplace}
-          />
+              return (
+                <Select
+                  key={question.numberQuestion}
+                  label={`${question.numberQuestion}. ${question.question}`}
+                  placeholder="Selecciona una opción"
+                  fullwidth={true}
+                  options={selectOptions}
+                  onChange={(_, value) =>
+                    onAnswerChange(question.numberQuestion, value)
+                  }
+                  name={`question-${question.numberQuestion}`}
+                  value={currentValue}
+                />
+              );
+            } else {
+              return (
+                <Textfield
+                  key={question.numberQuestion}
+                  id={`question-${question.numberQuestion}`}
+                  label={`${question.numberQuestion}. ${question.question}`}
+                  placeholder="Escribe tu respuesta"
+                  fullwidth={true}
+                  type="text"
+                  size="wide"
+                  maxLength={50}
+                  minLength={0}
+                  value={currentValue}
+                  onChange={(e) =>
+                    onAnswerChange(question.numberQuestion, e.target.value)
+                  }
+                />
+              );
+            }
+          })}
         </StyledQuestionsGrid>
       </Box>
     </Stack>

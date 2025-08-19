@@ -48,7 +48,8 @@ const registerStepLabels: IRegisterStepLabels = {
     },
   },
   securityQuestions: {
-    description: "Por favor, responde al menos 3 de las siguientes preguntas.",
+    description:
+      "Por favor, responde al menos {0} de las siguientes preguntas.",
     question1Label: "1. ¿Cuál es el primer nombre de tu madre?",
     question2Label: "2. ¿Cuál es tu ciudad de nacimiento?",
     question3Label: "3. ¿Cuál es el nombre de tu abuela materna?",

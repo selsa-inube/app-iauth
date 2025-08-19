@@ -1,10 +1,8 @@
 import { useEffect, useState } from "react";
 import { ContactInfoStepUI } from "./interface";
-import type { IRegisterStepProps } from "@ptypes/components/register/IRegisterStepProps";
+import type { IContactInfoStepProps } from "@ptypes/components/register/steps/IContactInfoStepProps";
 
-const ContactInfoStep = (
-  props: IRegisterStepProps & { isMobile?: boolean },
-) => {
+const ContactInfoStep = (props: IContactInfoStepProps) => {
   const { formData, onFormChange, labels, onNextEnabledChange, isMobile } =
     props;
 

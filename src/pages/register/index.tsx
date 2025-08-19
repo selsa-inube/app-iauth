@@ -25,7 +25,9 @@ const Register = () => {
 
   const {
     fetchCredentialRequirements,
+    fetchSecurityQuestions,
     policy: passwordPolicy,
+    securityQuestions,
     isLoading: isPolicyLoading,
   } = useCredentialRequirements();
 
@@ -61,6 +63,25 @@ const Register = () => {
     fetchCredentialRequirements,
   ]);
 
+  useEffect(() => {
+    if (
+      passwordPolicy?.policyForTheUserKey === "HighLevel" &&
+      (userData?.originatorId || userData?.originatorCode)
+    ) {
+      fetchSecurityQuestions({
+        originatorId: userData.originatorId,
+        originatorCode: userData.originatorCode,
+      }).catch((error) => {
+        console.error("Error fetching security questions:", error);
+      });
+    }
+  }, [
+    passwordPolicy?.policyForTheUserKey,
+    userData?.originatorId,
+    userData?.originatorCode,
+    fetchSecurityQuestions,
+  ]);
+
   const handleRegisterSubmit = (formData: IRegisterFormData) => {
     console.log("Formulario de registro enviado:", formData);
     console.log("Política de contraseñas:", passwordPolicy);
@@ -79,6 +100,7 @@ const Register = () => {
       onRegisterSubmit={handleRegisterSubmit}
       passwordPolicy={passwordPolicy}
       isPolicyLoading={isPolicyLoading}
+      securityQuestions={securityQuestions}
     />
   );
 };
