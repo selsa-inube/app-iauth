@@ -14,6 +14,7 @@ const RegisterOrchestrator = (props: IRegisterOrchestratorProps) => {
     labelsSize,
     isMobile,
     labels,
+    userData,
     onSubmit,
     passwordPolicy,
     isPolicyLoading,
@@ -118,6 +119,7 @@ const RegisterOrchestrator = (props: IRegisterOrchestratorProps) => {
       labels,
       onNextEnabledChange: handleNextEnabledChange,
       isMobile,
+      userData,
     };
 
     switch (currentStep.id) {

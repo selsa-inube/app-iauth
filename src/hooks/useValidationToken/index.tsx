@@ -51,6 +51,7 @@ const simulateApiCall = async (token: string): Promise<ValidationResult> => {
       lastName: "Pérez",
       originatorId: "id-originador-prueba",
       originatorCode: "SistemasEnlinea",
+      originatorName: "Sistemas Enlinea",
     },
   };
 };

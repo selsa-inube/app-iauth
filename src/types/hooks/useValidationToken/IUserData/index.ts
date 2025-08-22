@@ -5,6 +5,7 @@ interface UserData {
   lastName: string;
   originatorId?: string;
   originatorCode?: string;
+  originatorName?: string;
 }
 
 export type { UserData };

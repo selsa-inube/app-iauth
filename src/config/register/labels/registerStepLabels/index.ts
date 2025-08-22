@@ -75,7 +75,7 @@ const registerStepLabels: IRegisterStepLabels = {
   dataUsage: {
     dataTreatmentLabel:
       "Autorizo el tratamiento de los datos de acuerdo a Tratamiento de datos",
-    dataIdentityLabel: "Autorizo el tratamiento de los datos de identidad",
+    dataIdentityLabel: "Autorizo compartir mi identidad con {0}",
   },
   buttons: {
     previous: "Anterior",

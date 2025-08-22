@@ -53,6 +53,7 @@ const RegisterUI = (props: IRegisterPageUI) => {
         <RegisterOrchestrator
           labelsSize={labelsSize ?? "medium"}
           isMobile={isMobile}
+          userData={userData}
           labels={registerStepLabels}
           onSubmit={onRegisterSubmit}
           originatorId={userData.originatorId}
