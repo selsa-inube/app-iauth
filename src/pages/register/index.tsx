@@ -6,16 +6,16 @@ import { ITextSize } from "@ptypes/components/ITextSize";
 import { registerLabels } from "@config/register/labels/registerLabels";
 import { useBusinessData } from "@hooks/useBusinessData";
 import { useCredentialRequirements } from "@hooks/useCredentialRequirements";
+import { useRegisterModal } from "@hooks/useRegisterModal";
 import type { ILocationState } from "@ptypes/pages/register/ILocationState";
 import type { UserData } from "@ptypes/hooks/useValidationToken/IUserData";
-import type { IRegisterFormData } from "@ptypes/components/register/IRegisterFormData";
+import { RegisterProgressModal } from "@components/register/RegisterProgressModal";
 
 const Register = () => {
   const location = useLocation() as { state: ILocationState };
   const navigate = useNavigate();
   const screenMobile = useMediaQuery("(max-width: 768px)");
   const labelsSizeDifferent: ITextSize = screenMobile ? "medium" : "large";
-
   const userData: UserData | undefined = location.state?.userData;
 
   const { urlLogo } = useBusinessData({
@@ -30,6 +30,13 @@ const Register = () => {
     securityQuestions,
     isLoading: isPolicyLoading,
   } = useCredentialRequirements();
+
+  const {
+    isModalOpen,
+    registerParams,
+    openModal,
+    closeModal,
+  } = useRegisterModal(userData);
 
   const dynamicRegisterLabels = useMemo(
     () => ({
@@ -82,26 +89,31 @@ const Register = () => {
     fetchSecurityQuestions,
   ]);
 
-  const handleRegisterSubmit = (formData: IRegisterFormData) => {
-    console.log("Formulario de registro enviado:", formData);
-    console.log("Política de contraseñas:", passwordPolicy);
-  };
-
   if (!userData) {
     return null;
   }
 
   return (
-    <RegisterUI
-      labelsSize={labelsSizeDifferent}
-      userData={userData}
-      isMobile={screenMobile}
-      labels={dynamicRegisterLabels}
-      onRegisterSubmit={handleRegisterSubmit}
-      passwordPolicy={passwordPolicy}
-      isPolicyLoading={isPolicyLoading}
-      securityQuestions={securityQuestions}
-    />
+    <>
+      <RegisterUI
+        labelsSize={labelsSizeDifferent}
+        userData={userData}
+        isMobile={screenMobile}
+        labels={dynamicRegisterLabels}
+        onRegisterSubmit={openModal}
+        passwordPolicy={passwordPolicy}
+        isPolicyLoading={isPolicyLoading}
+        securityQuestions={securityQuestions}
+      />
+      
+      {isModalOpen && registerParams && (
+        <RegisterProgressModal
+          isMobile={screenMobile}
+          registerParams={registerParams}
+          onModalClose={closeModal}
+        />
+      )}
+    </>
   );
 };
 

@@ -18,6 +18,8 @@ const RegisterUI = (props: IRegisterPageUI) => {
     securityQuestions,
   } = props;
 
+  const containerWidth = isMobile ? "90vw" : "900px";
+
   return (
     <Stack
       height="100%"
@@ -30,7 +32,7 @@ const RegisterUI = (props: IRegisterPageUI) => {
         justifyContent="center"
         alignItems="center"
         direction="column"
-        width={isMobile ? "90vw" : "900px"}
+        width={containerWidth}
         height="100%"
       >
         <Stack
@@ -42,7 +44,12 @@ const RegisterUI = (props: IRegisterPageUI) => {
           <HeaderUI labelsSizeDifferent={labelsSize} />
           <UserWelcome userData={userData} labels={labels} />
         </Stack>
-        <Stack width="100%" justifyContent="start" alignItems="center">
+        
+        <Stack 
+          width="100%" 
+          justifyContent="start" 
+          alignItems="center"
+        >
           <InvitedBy
             urlImg={labels.invitedBy.imageUrl}
             text={labels.invitedBy.text}
@@ -50,6 +57,7 @@ const RegisterUI = (props: IRegisterPageUI) => {
             isMobile={isMobile}
           />
         </Stack>
+        
         <RegisterOrchestrator
           labelsSize={labelsSize ?? "medium"}
           isMobile={isMobile}
