@@ -6,8 +6,6 @@ const axiosInstance: AxiosInstance = axios.create({
   timeout: fetchTimeoutServices,
   headers: {
     "Content-type": "application/json; charset=UTF-8",
-    "X-Business-Unit": "test",
-    "X-Action": "AutenticationByCredential",
   },
 });
 

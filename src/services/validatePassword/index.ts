@@ -2,6 +2,7 @@ import { axiosInstance } from "@api/auth";
 import { IValidate } from "@ptypes/api/IValidations";
 import { IValidateParams } from "@ptypes/api/IValidationsParams";
 import { callbackUrl as defaultCallbackUrl } from "@config/environment";
+import { AxiosRequestConfig } from "axios";
 
 const validatePassword = async (props: IValidateParams): Promise<IValidate> => {
   let { password, username } = props;
@@ -10,6 +11,12 @@ const validatePassword = async (props: IValidateParams): Promise<IValidate> => {
     password = btoa(password);
     username = btoa(username);
   }
+  const config: AxiosRequestConfig = {
+      headers: {
+        "X-Business-Unit": "test",
+        "X-Action": "AutenticationByCredential",
+      },
+    };
 
   const finalCallbackUrl: string = callbackUrl ?? defaultCallbackUrl ?? "";
 
@@ -17,7 +24,7 @@ const validatePassword = async (props: IValidateParams): Promise<IValidate> => {
     userAccount: username,
     authenticationCredential: password,
     callbackUrl: finalCallbackUrl,
-  });
+  }, config);
   return data;
 };
 
