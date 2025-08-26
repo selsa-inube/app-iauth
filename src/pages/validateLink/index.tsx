@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import { useValidationToken } from "@hooks/useValidationToken";
+import { selfRegisterTokenQueryParam } from "@config/environment";
 import { StatusMessage } from "@pages/statusMessage";
 import { EStatusMessage } from "@enum/pages/EStatusMessage";
 import { Spinner, Stack } from "@inubekit/inubekit";
@@ -8,7 +9,8 @@ import { Spinner, Stack } from "@inubekit/inubekit";
 const ValidateLink = () => {
   const [searchParams] = useSearchParams();
   const navigate = useNavigate();
-  const token = searchParams.get("token");
+  const queryParamName = selfRegisterTokenQueryParam ?? "a";
+  const token = searchParams.get(queryParamName);
 
   const { validateToken, isLoading, validationResult, error } =
     useValidationToken();

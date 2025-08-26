@@ -11,6 +11,8 @@ const iauthQueryProcessService = import.meta.env
 const authCodeQueryParam = import.meta.env.VITE_AUTH_CODE_QUERY_PARAM as
   | string
   | undefined;
+const selfRegisterTokenQueryParam = import.meta.env
+  .VITE_SELF_REGISTER_TOKEN_QUERY_PARAM as string | undefined;
 
 export {
   authApiUrl,
@@ -20,4 +22,5 @@ export {
   callbackUrl,
   iauthQueryProcessService,
   authCodeQueryParam,
+  selfRegisterTokenQueryParam,
 };
