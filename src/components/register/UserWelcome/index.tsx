@@ -6,7 +6,7 @@ const UserWelcome = (props: IUserWelcome) => {
 
   return (
     <StyledUserWelcome>
-      {labels.welcomeMessage.greeting}, <b>{`${userData.firstName} ${userData.lastName}`}</b> - {userData.documentType} {userData.documentNumber}
+      {labels.welcomeMessage.greeting}, <b>{`${userData.firstNames} ${userData.lastNames}`}</b> - {userData.identificationType} {userData.identificationNumber}
     </StyledUserWelcome>
   );
 };

@@ -21,12 +21,12 @@ const DataUsageStepUI = (props: IDataUsageStepUIProps) => {
     const userInfoBoxes = [
       {
         title: "Nombre",
-        content: `${userData.firstName} ${userData.lastName}`,
+        content: `${userData.firstNames} ${userData.lastNames}`,
         showOnMobile: false,
       },
       {
         title: "Identificación", 
-        content: `${userData.documentType} No. ${userData.documentNumber}`,
+        content: `${userData.identificationType} No. ${userData.identificationNumber}`,
         showOnMobile: false,
       },
       {
