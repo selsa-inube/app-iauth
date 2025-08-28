@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 import { RegisterProgressModal } from './index';
 import { IRegisterUserParams } from '@ptypes/api/IRegisterUserParams';
 import { registerProgressModal } from '@config/register/modal/registerProgress';
@@ -63,8 +63,6 @@ const mockRegisterParams: IRegisterUserParams = {
     consumerApplicationCode: 'APP001',
     userManagementRequestsId: 'REQ001',
   },
-  originatorId: 'ORG001',
-  originatorCode: 'BANK123',
 };
 
 export const Default: Story = {

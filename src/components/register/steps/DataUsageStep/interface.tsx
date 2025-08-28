@@ -15,7 +15,7 @@ const DataUsageStepUI = (props: IDataUsageStepUIProps) => {
 
   const getUserInfo = () => {
     const phoneDisplay = formData.phone
-      ? `(+57) ${formData.phone}${formData.isWhatsappUsed ? " activo para WA." : ""}`
+      ? `(+${formData.phoneCountryCode}) ${formData.phone}${formData.isWhatsappUsed ? " activo para WA." : ""}`
       : "No registrado";
 
     const userInfoBoxes = [
