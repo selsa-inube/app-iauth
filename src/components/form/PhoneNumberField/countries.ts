@@ -237,4 +237,17 @@ const countries: CountryOption[] = [
   { code: "ZW", dialCode: "+263", name: "Zimbabue" },
 ];
 
-export { countries };
+// Quick lookup map: ISO alpha-2 -> dial code (e.g. CO -> +57)
+const dialCodeByCountryCode: Record<string, string> = countries.reduce(
+  (acc, c) => {
+    acc[c.code] = c.dialCode;
+    return acc;
+  },
+  {} as Record<string, string>,
+);
+
+// Helper: get dial code by ISO alpha-2 code
+const getDialCodeByCountryCode = (code: string): string =>
+  dialCodeByCountryCode[code] ?? "";
+
+export { countries, dialCodeByCountryCode, getDialCodeByCountryCode };

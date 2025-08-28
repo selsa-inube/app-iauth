@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { ContactInfoStepUI } from "./interface";
 import type { IContactInfoStepProps } from "@ptypes/components/register/steps/IContactInfoStepProps";
+import type { CountryOption } from "@components/form/PhoneNumberField/types";
 
 const ContactInfoStep = (props: IContactInfoStepProps) => {
   const { formData, onFormChange, labels, onNextEnabledChange, isMobile } =
@@ -20,8 +21,9 @@ const ContactInfoStep = (props: IContactInfoStepProps) => {
     onFormChange("phone", val);
   };
 
-  const handlePhoneCountryChange = (countryCode: string) => {
-    onFormChange("phoneCountryCode", countryCode);
+  const handlePhoneCountryChange = (country: CountryOption) => {
+    onFormChange("phoneCountryCode", country.code);
+    onFormChange("phoneDialCode", country.dialCode);
   };
 
   const handleWhatsappToggle = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -32,8 +34,9 @@ const ContactInfoStep = (props: IContactInfoStepProps) => {
     onFormChange("whatsappPhone", val);
   };
 
-  const handleWhatsappPhoneCountryChange = (countryCode: string) => {
-    onFormChange("whatsappPhoneCountryCode", countryCode);
+  const handleWhatsappPhoneCountryChange = (country: CountryOption) => {
+    onFormChange("whatsappPhoneCountryCode", country.code);
+    onFormChange("whatsappPhoneDialCode", country.dialCode);
   };
 
   useEffect(() => {

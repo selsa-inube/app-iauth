@@ -8,6 +8,7 @@ import { DataUsageStep } from "../steps/DataUsageStep";
 import type { IRegisterOrchestratorProps } from "@ptypes/components/register/IRegisterOrchestratorProps";
 import type { IRegisterFormData } from "@ptypes/components/register/IRegisterFormData";
 import type { IStep } from "@ptypes/components/register/IFormContainer";
+import { getDialCodeByCountryCode } from "@components/form/PhoneNumberField/countries";
 
 const RegisterOrchestrator = (props: IRegisterOrchestratorProps) => {
   const {
@@ -71,8 +72,10 @@ const RegisterOrchestrator = (props: IRegisterOrchestratorProps) => {
     email: "",
     phone: "",
     phoneCountryCode: "CO",
+    phoneDialCode: getDialCodeByCountryCode("CO"),
     isWhatsappUsed: true,
     whatsappPhoneCountryCode: "CO",
+    whatsappPhoneDialCode: getDialCodeByCountryCode("CO"),
     securityAnswers: {},
     dataTreatmentAccepted: false,
     dataIdentityAccepted: false,

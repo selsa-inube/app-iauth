@@ -58,7 +58,7 @@ const ContactInfoStepUI = (props: IContactInfoStepUI) => {
                 onChange={onPhoneChangeHandler}
                 onCountryChange={(country) => {
                   console.log("Phone country changed:", country);
-                  onPhoneCountryChange(country.code);
+                  onPhoneCountryChange(country);
                 }}
                 showDialCode={!isMobile}
                 error={errors?.phone ?? ""}
@@ -94,7 +94,7 @@ const ContactInfoStepUI = (props: IContactInfoStepUI) => {
                   onChange={onWhatsappPhoneChange}
                   onCountryChange={(country) => {
                     console.log("WhatsApp country changed:", country);
-                    onWhatsappPhoneCountryChange?.(country.code);
+                    onWhatsappPhoneCountryChange?.(country);
                   }}
                   showDialCode={!isMobile}
                   error={errors?.whatsappPhone ?? ""}

@@ -10,9 +10,11 @@ interface IRegisterFormData {
   email: string;
   phone: string;
   phoneCountryCode: string;
+  phoneDialCode: string;
   isWhatsappUsed: boolean;
   whatsappPhone?: string;
   whatsappPhoneCountryCode?: string;
+  whatsappPhoneDialCode?: string;
 
   // Paso 4: Security Questions (Dynamic)
   securityAnswers: Record<string, string>;

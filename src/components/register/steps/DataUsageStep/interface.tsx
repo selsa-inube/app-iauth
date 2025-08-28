@@ -15,7 +15,7 @@ const DataUsageStepUI = (props: IDataUsageStepUIProps) => {
 
   const getUserInfo = () => {
     const phoneDisplay = formData.phone
-      ? `(+${formData.phoneCountryCode}) ${formData.phone}${formData.isWhatsappUsed ? " activo para WA." : ""}`
+      ? `(${formData.phoneDialCode}) ${formData.phone}${formData.isWhatsappUsed ? " activo para WA." : ""}`
       : "No registrado";
 
     const userInfoBoxes = [
@@ -25,7 +25,7 @@ const DataUsageStepUI = (props: IDataUsageStepUIProps) => {
         showOnMobile: false,
       },
       {
-        title: "Identificación", 
+        title: "Identificación",
         content: `${userData.identificationType} No. ${userData.identificationNumber}`,
         showOnMobile: false,
       },
@@ -41,7 +41,7 @@ const DataUsageStepUI = (props: IDataUsageStepUIProps) => {
       },
     ];
 
-    return userInfoBoxes.filter(box => isMobile ? box.showOnMobile : true);
+    return userInfoBoxes.filter((box) => (isMobile ? box.showOnMobile : true));
   };
 
   const userInfoBoxes = getUserInfo();
@@ -49,7 +49,10 @@ const DataUsageStepUI = (props: IDataUsageStepUIProps) => {
   return (
     <Box height="auto" width="100%">
       <Stack direction="column" gap="24px" width="100%" height="100%">
-        <StyledQuestionsGrid $isMobile={isMobile} margin={isMobile ? "0 0 0 0.2rem" : "0 0 0 0.5rem"}>
+        <StyledQuestionsGrid
+          $isMobile={isMobile}
+          margin={isMobile ? "0 0 0 0.2rem" : "0 0 0 0.5rem"}
+        >
           {userInfoBoxes.map((infoBox, index) => (
             <InformationBox
               key={`${infoBox.title}-${index}`}
@@ -59,7 +62,7 @@ const DataUsageStepUI = (props: IDataUsageStepUIProps) => {
             />
           ))}
         </StyledQuestionsGrid>
-        
+
         <Stack direction="column" gap="16px" width="100%">
           <Checkbox
             value="dataTreatment"
