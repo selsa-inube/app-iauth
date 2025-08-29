@@ -47,7 +47,7 @@ const validateRegistrationRequest = async (
     if (err.code === "C001004") {
       return { type: "LINK_EXPIRED" } as ValidationResult;
     }
-    if (err.code === "C001007") {
+    if (err.code === "C001008") {
       return { type: "USER_ALREADY_REGISTERED" } as ValidationResult;
     }
     return { type: "LINK_EXPIRED" } as ValidationResult;

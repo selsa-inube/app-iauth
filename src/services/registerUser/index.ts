@@ -1,8 +1,10 @@
-import { IRegisterUserParams } from "../../types/api/IRegisterUserParams";
-import { IRegisterUserResponse } from "../../types/api/IRegisterUserResponse";
 import { ISaveUserAccountRequest } from "@ptypes/services/ISaveUserAccountRequest";
 import { axiosInstance } from "@api/auth";
-import { AxiosRequestConfig } from "axios";
+import { AxiosRequestConfig, AxiosResponse } from "axios";
+import type { IValidateRegistrationErrorResponse } from "@ptypes/services/IValidateRegistrationErrorReponse";
+import type { ISaveUserAccountResponse } from "@ptypes/services/ISaveUserAccountResponse";
+import { IRegisterUserParams } from "@ptypes/api/IRegisterUserParams";
+import { IRegisterUserResponse } from "@ptypes/api/IRegisterUserResponse";
 
 const registerUser = async (
   params: IRegisterUserParams,
@@ -55,30 +57,31 @@ const registerUser = async (
   };
 
   const url = "/user-accounts/";
-  const response = await axiosInstance.post<
-    ISaveUserAccountRequest,
-    any,
-    ISaveUserAccountRequest
-  >(url, body, config);
+  const response = (await axiosInstance.post(
+    url,
+    body,
+    config,
+  )) as AxiosResponse<ISaveUserAccountResponse | IValidateRegistrationErrorResponse>;
   const { data, status } = response;
 
-  if (status >= 200 && status < 300) {
+  if (status >= 200 && status < 300 && !(data as IValidateRegistrationErrorResponse)?.code) {
     const resp: IRegisterUserResponse = {
       success: true,
       message: "Usuario registrado exitosamente",
-      userId: data?.userAccountId ?? data?.userAccount ?? undefined,
+      userId: (data as ISaveUserAccountResponse)?.userAccountId ?? (data as ISaveUserAccountResponse)?.userAccount ?? undefined,
     };
     return resp;
   }
 
+  const errData = data as IValidateRegistrationErrorResponse | undefined;
   const errMsg =
-    data?.message ??
-    data?.description ??
+    errData?.message ??
+    errData?.description ??
     `Server responded with status ${status}`;
   return {
     success: false,
     message: errMsg,
-    errorCode: data?.code ?? undefined,
+    errorCode: errData?.code ?? undefined,
   };
 };
 
