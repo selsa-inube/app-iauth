@@ -2,12 +2,7 @@ import { useCallback, useState } from "react";
 import { registerUser } from "@services/registerUser";
 import { IRegisterUserParams } from "../../types/api/IRegisterUserParams";
 import { IRegisterUserResponse } from "../../types/api/IRegisterUserResponse";
-
-interface IUseRegisterUser {
-  registerUserSubmit: (params: IRegisterUserParams) => Promise<IRegisterUserResponse>;
-  isLoading: boolean;
-  error: string | null;
-}
+import type { IUseRegisterUser } from "@ptypes/hooks/useRegisterUser/IUseRegisterUser";
 
 const useRegisterUser = (): IUseRegisterUser => {
     const [isLoading, setIsLoading] = useState(false);
@@ -40,4 +35,3 @@ const useRegisterUser = (): IUseRegisterUser => {
 };
 
 export { useRegisterUser };
-export type { IUseRegisterUser };

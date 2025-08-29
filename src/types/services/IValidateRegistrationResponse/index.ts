@@ -1,13 +1,13 @@
 
 interface IValidateRegistrationResponse {
-    userManagementRequestsId?: string;
-    originatorCode?: string;
-    originatorName?: string;
-    consumerApplicationCode?: string;
-    lastNames?: string;
-    firstNames?: string;
+    userManagementRequestsId: string;
+    originatorCode: string;
+    originatorName: string;
+    consumerApplicationCode: string;
+    lastNames: string;
+    firstNames: string;
     biologicalSex?: string;
-    identificationType?: string;
-    identificationNumber?: string;
+    identificationType: string;
+    identificationNumber: string;
 }
 export type { IValidateRegistrationResponse };

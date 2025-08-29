@@ -1,43 +1,84 @@
 import { IRegisterUserParams } from "../../types/api/IRegisterUserParams";
 import { IRegisterUserResponse } from "../../types/api/IRegisterUserResponse";
-// import { iauthQueryAxiosInstance } from "@api/iauthQuery";
-// import { AxiosRequestConfig } from "axios";
+import { ISaveUserAccountRequest } from "@ptypes/services/ISaveUserAccountRequest";
+import { axiosInstance } from "@api/auth";
+import { AxiosRequestConfig } from "axios";
 
 const registerUser = async (
   params: IRegisterUserParams,
 ): Promise<IRegisterUserResponse> => {
-  // TODO: Implementar petición real cuando esté lista la API
-  // const config: AxiosRequestConfig = {
-  //   headers: {
-  //     "X-Business-Unit": "test",
-  //     "X-Action": "RegisterUser",
-  //   },
-  // };
+  const config: AxiosRequestConfig = {
+    headers: {
+      "X-Business-Unit": "test",
+      "X-Action": "SaveUserAccount",
+    },
+  };
+  const body: ISaveUserAccountRequest = {
+    userManagementRequestsId: params.userData.userManagementRequestsId,
+    accountName: params.formData.username,
+    email: params.formData.email,
+    identificationNumber: params.userData.identificationNumber,
+    identificationType: params.userData.identificationType,
+    names: params.userData.firstNames,
+    surnames: params.userData.lastNames,
+    userAccount: params.formData.username,
+    userPhoneNumber: params.formData.phone,
+    consumerApplicationCode: params.userData.consumerApplicationCode ?? "",
+    mainOriginatorCode: params.userData.originatorCode ?? "",
+    ...(Object.entries(params.formData.securityAnswers || {}).length > 0 && {
+      securityQuestions: Object.entries(
+        params.formData.securityAnswers || {},
+      ).map(([key, value]) => ({
+        securityQuestionNumber: key,
+        securityQuestionAnswer: value,
+      })),
+    }),
+    userAccountAuthenticationMethod: {
+      authenticationCredential: params.formData.password,
+      authenticationMethod: "Credentials",
+      updateDate: new Date().toISOString(),
+    },
+    userConsentOfScopeAttribute: {
+      attributeIncludedInConsent: "True",
+      dateOfConsent: new Date().toISOString(),
+    },
+    accountNumberPerMessageOperator: {
+      messageOperator:
+        !params.formData.isWhatsappUsed && params.formData.whatsappPhoneDialCode
+          ? params.formData.whatsappPhoneDialCode.replace("+", "")
+          : params.formData.phoneDialCode.replace("+", ""),
+      messagingAccountNumber:
+        !params.formData.isWhatsappUsed && params.formData.whatsappPhone
+          ? params.formData.whatsappPhone
+          : params.formData.phone,
+    },
+  };
 
-  // const url = `/iauth-query-process-service-service/api/users/register`;
-  // const { data } = await iauthQueryAxiosInstance.post<IRegisterUserResponse>(url, params, config);
-  // return data;
+  const url = "/user-accounts/";
+  const response = await axiosInstance.post<
+    ISaveUserAccountRequest,
+    any,
+    ISaveUserAccountRequest
+  >(url, body, config);
+  const { data, status } = response;
 
-  console.log("Registering user with data:", params);
-
-  // Simular delay de red
-  await new Promise((resolve) => setTimeout(resolve, 3000));
-
-  // Mock: Simular éxito o error basado en el username
-  // Si el username contiene "error", simular un error
-  if (params.formData.username.toLowerCase().includes('error')) {
-    return {
-      success: false,
-      message: "Error al crear la cuenta. El nombre de usuario ya existe.",
-      errorCode: "USER_ALREADY_EXISTS"
+  if (status >= 200 && status < 300) {
+    const resp: IRegisterUserResponse = {
+      success: true,
+      message: "Usuario registrado exitosamente",
+      userId: data?.userAccountId ?? data?.userAccount ?? undefined,
     };
+    return resp;
   }
 
-  // Simular éxito
+  const errMsg =
+    data?.message ??
+    data?.description ??
+    `Server responded with status ${status}`;
   return {
-    success: true,
-    message: "Usuario registrado exitosamente",
-    userId: `user_${Date.now()}`
+    success: false,
+    message: errMsg,
+    errorCode: data?.code ?? undefined,
   };
 };
 

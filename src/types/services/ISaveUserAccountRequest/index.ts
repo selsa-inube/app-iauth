@@ -15,7 +15,7 @@ interface ISaveUserAccountRequest {
   userPhoneNumber: string;
   consumerApplicationCode: string;
   mainOriginatorCode: string;
-  securityQuestions: ISecurityQuestionAnswer[];
+  securityQuestions?: ISecurityQuestionAnswer[];
   userAccountAuthenticationMethod: IUserAccountAuthenticationMethod;
   userConsentOfScopeAttribute: IUserConsentOfScopeAttribute;
   accountNumberPerMessageOperator: IAccountNumberPerMessageOperator;

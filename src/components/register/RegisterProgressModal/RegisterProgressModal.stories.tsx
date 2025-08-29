@@ -45,6 +45,7 @@ const mockRegisterParams: IRegisterUserParams = {
     isWhatsappUsed: true,
     whatsappPhone: '3001234567',
     whatsappPhoneCountryCode: '+57',
+    phoneDialCode: '+57',
     securityAnswers: {
       'question1': 'Respuesta de seguridad 1',
       'question2': 'Respuesta de seguridad 2',

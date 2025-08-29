@@ -5,6 +5,7 @@ import { RegisterRequestWarning } from "@components/layout/RegisterRequestWarnin
 import { useRegistrationProgress } from "@hooks/useRegistrationProgress";
 import { ERegistrationState } from "@enum/hooks/ERegistrationState";
 import { registerProgressModal } from "@config/register/modal/registerProgress";
+import { useNavigate } from "react-router-dom";
 
 const RegisterProgressModal = (props: IRegisterProgressModal) => {
   const { isMobile, registerParams, onModalClose } = props;
@@ -14,10 +15,16 @@ const RegisterProgressModal = (props: IRegisterProgressModal) => {
     progressSteps,
     processRegistration,
   } = useRegistrationProgress();
+  const navigate = useNavigate();
 
   const handleModalClose = useCallback(() => {
     onModalClose?.();
   }, [onModalClose]);
+
+  const handleSuccessClose = useCallback(() => {
+    onModalClose?.();
+    navigate("/", { replace: true });
+  }, [onModalClose, navigate]);
 
   useEffect(() => {
     processRegistration(registerParams);
@@ -33,7 +40,7 @@ const RegisterProgressModal = (props: IRegisterProgressModal) => {
             isMobile={isMobile}
             title={registerProgressModal.title}
             description={registerProgressModal.description}
-            onComplete={registrationState === ERegistrationState.SUCCESS ? handleModalClose : undefined}
+            onComplete={registrationState === ERegistrationState.SUCCESS ? handleSuccessClose : undefined}
           />
         );
       

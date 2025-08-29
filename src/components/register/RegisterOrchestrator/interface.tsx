@@ -20,7 +20,7 @@ const RegisterOrchestratorUI = (props: IRegisterOrchestratorUI) => {
 
   return (
     <FormContainer
-      title="Registro de Usuario"
+      title="Formulario de auto registro"
       labelsSize={labelsSize}
       isMobile={isMobile}
       showAssisted={isMobile ? false : true}
