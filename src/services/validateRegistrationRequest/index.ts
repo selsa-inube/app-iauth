@@ -34,8 +34,8 @@ const validateRegistrationRequest = async (
       firstNames: success.firstNames ?? "",
       lastNames: success.lastNames ?? "",
       originatorId: success.userManagementRequestsId ?? undefined,
-      originatorCode: success.originatorCode ?? undefined,
-      originatorName: success.originatorName ?? undefined,
+      originatorCode: success.originatorCode,
+      originatorName: success.originatorName,
       consumerApplicationCode: success.consumerApplicationCode ?? "",
       userManagementRequestsId: success.userManagementRequestsId ?? "",
     };

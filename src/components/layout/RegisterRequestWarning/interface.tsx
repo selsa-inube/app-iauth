@@ -8,7 +8,8 @@ const RegisterRequestWarningUI = (props: IRegisterRequestWarningUI) => {
     const {
         isMobile,
         onClose,
-        onConfirm
+        onConfirm,
+        originatorName,
     } = props;
 
     const footer = (
@@ -62,7 +63,7 @@ const RegisterRequestWarningUI = (props: IRegisterRequestWarningUI) => {
                     </Stack>
 
                     <Text textAlign="center">
-                        {registerRequestWarning.message}
+                        {registerRequestWarning.message.replace("{0}", originatorName ?? "")}
                     </Text>
                 </Stack>
             </Modal>

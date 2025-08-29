@@ -50,6 +50,7 @@ const RegisterProgressModal = (props: IRegisterProgressModal) => {
             isMobile={isMobile}
             onClose={handleModalClose}
             onConfirm={handleModalClose}
+            originatorName={registerParams?.userData?.originatorName}
           />
         );
       

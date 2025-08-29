@@ -4,7 +4,7 @@ const registerRequestWarning: IRegisterRequestWarningConfig = {
   title: "Solicitud",
   closeButton: "Cerrar",
   confirmButton: "Confirmar",
-  message: "Se presentó un error, vuelve a intentarlo más tarde utilizando este mismo link o comunícate con el servicio de soporte del portal +*Nombre del originador*.",
+  message: "Se presentó un error, vuelve a intentarlo más tarde utilizando este mismo link o comunícate con el servicio de soporte del portal {0}.",
 };
 
 export { registerRequestWarning };

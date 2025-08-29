@@ -5,7 +5,8 @@ const RegisterRequestWarning = (props: IRegisterRequestWarning) => {
     const {
         isMobile,
         onClose,
-        onConfirm
+        onConfirm,
+        originatorName,
     } = props;
 
     return (
@@ -13,6 +14,7 @@ const RegisterRequestWarning = (props: IRegisterRequestWarning) => {
             isMobile={isMobile}
             onClose={onClose}
             onConfirm={onConfirm}
+            originatorName={originatorName}
         />
     );
 }
