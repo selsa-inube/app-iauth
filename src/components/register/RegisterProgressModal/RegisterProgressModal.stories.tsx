@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { RegisterProgressModal } from './index';
-import { IRegisterUserParams } from '@ptypes/api/IRegisterUserParams';
+import { ERequestStepsStatus } from '@enum/components/ERequestStepsStatus';
+import { ERegistrationState } from '@enum/hooks/ERegistrationState';
 import { registerProgressModal } from '@config/register/modal/registerProgress';
 
 const meta: Meta<typeof RegisterProgressModal> = {
@@ -20,9 +21,13 @@ const meta: Meta<typeof RegisterProgressModal> = {
       control: 'boolean',
       description: 'Indica si el modal debe adaptarse para dispositivos móviles',
     },
-    registerParams: {
+    registrationState: {
+      control: 'text',
+      description: 'Estado del registro (processing, success, error)',
+    },
+    progressSteps: {
       control: 'object',
-      description: 'Parámetros necesarios para el registro del usuario',
+      description: 'Pasos de progreso de la solicitud',
     },
     onModalClose: {
       action: 'onModalClose',
@@ -34,41 +39,16 @@ const meta: Meta<typeof RegisterProgressModal> = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-const mockRegisterParams: IRegisterUserParams = {
-  formData: {
-    username: 'juanperez',
-    password: 'SecurePass123!',
-    confirmPassword: 'SecurePass123!',
-    email: 'user@example.com',
-    phone: '3001234567',
-    phoneCountryCode: '+57',
-    isWhatsappUsed: true,
-    whatsappPhone: '3001234567',
-    whatsappPhoneCountryCode: '+57',
-    phoneDialCode: '+57',
-    securityAnswers: {
-      'question1': 'Respuesta de seguridad 1',
-      'question2': 'Respuesta de seguridad 2',
-    },
-    dataTreatmentAccepted: true,
-    dataIdentityAccepted: true,
-  },
-  userData: {
-    identificationType: 'CC',
-    identificationNumber: '12345678',
-    firstNames: 'Juan',
-    lastNames: 'Pérez',
-    originatorCode: 'BANK123',
-    originatorName: 'Banco Ejemplo',
-    consumerApplicationCode: 'APP001',
-    userManagementRequestsId: 'REQ001',
-  },
-};
+const mockProgressSteps = [
+  { name: 'Enviando solicitud', status: ERequestStepsStatus.COMPLETED },
+  { name: 'Usuario creado', status: ERequestStepsStatus.PENDING },
+];
 
 export const Default: Story = {
   args: {
     isMobile: false,
-    registerParams: mockRegisterParams,
+    registrationState: ERegistrationState.PROCESSING,
+    progressSteps: mockProgressSteps,
   },
   parameters: {
     docs: {
@@ -82,7 +62,8 @@ export const Default: Story = {
 export const Mobile: Story = {
   args: {
     isMobile: true,
-    registerParams: mockRegisterParams,
+    registrationState: ERegistrationState.PROCESSING,
+    progressSteps: mockProgressSteps,
   },
   parameters: {
     docs: {
@@ -99,7 +80,11 @@ export const Mobile: Story = {
 export const WithCallback: Story = {
   args: {
     isMobile: false,
-    registerParams: mockRegisterParams,
+    registrationState: ERegistrationState.SUCCESS,
+    progressSteps: [
+      { name: 'Enviando solicitud', status: ERequestStepsStatus.COMPLETED },
+      { name: 'Usuario creado', status: ERequestStepsStatus.COMPLETED },
+    ],
     onModalClose: () => console.log('Modal cerrado'),
   },
   parameters: {

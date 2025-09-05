@@ -1,9 +1,12 @@
-import { IRegisterUserParams } from "@ptypes/api/IRegisterUserParams";
+import type { IRequestSteps } from "@ptypes/components/requestSteps";
+import type { ERegistrationState } from "@enum/hooks/ERegistrationState";
 
 interface IRegisterProgressModal {
   isMobile: boolean;
-  registerParams: IRegisterUserParams;
+  registrationState: ERegistrationState | string;
+  progressSteps: IRequestSteps[];
   onModalClose?: () => void;
+  originatorName?: string;
 }
 
 export type { IRegisterProgressModal };

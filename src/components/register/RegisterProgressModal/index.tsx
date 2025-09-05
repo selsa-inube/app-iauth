@@ -1,20 +1,13 @@
-import { useEffect, useCallback } from "react";
+import { useCallback } from "react";
 import { RequestProcessModal } from "../../modals/RequestProcessModal";
 import { IRegisterProgressModal } from "./interface";
 import { RegisterRequestWarning } from "@components/layout/RegisterRequestWarning";
-import { useRegistrationProgress } from "@hooks/useRegistrationProgress";
 import { ERegistrationState } from "@enum/hooks/ERegistrationState";
 import { registerProgressModal } from "@config/register/modal/registerProgress";
 import { useNavigate } from "react-router-dom";
 
 const RegisterProgressModal = (props: IRegisterProgressModal) => {
-  const { isMobile, registerParams, onModalClose } = props;
-  
-  const {
-    registrationState,
-    progressSteps,
-    processRegistration,
-  } = useRegistrationProgress();
+  const { isMobile, onModalClose, registrationState, progressSteps, originatorName } = props;
   const navigate = useNavigate();
 
   const handleModalClose = useCallback(() => {
@@ -25,10 +18,6 @@ const RegisterProgressModal = (props: IRegisterProgressModal) => {
     onModalClose?.();
     navigate("/", { replace: true });
   }, [onModalClose, navigate]);
-
-  useEffect(() => {
-    processRegistration(registerParams);
-  }, [processRegistration, registerParams]);
 
   const renderModal = () => {
     switch (registrationState) {
@@ -50,7 +39,7 @@ const RegisterProgressModal = (props: IRegisterProgressModal) => {
             isMobile={isMobile}
             onClose={handleModalClose}
             onConfirm={handleModalClose}
-            originatorName={registerParams?.userData?.originatorName}
+            originatorName={originatorName}
           />
         );
       
