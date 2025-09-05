@@ -7,14 +7,7 @@ import type { IRegisterFormData } from "@ptypes/components/register/IRegisterFor
 import type { UserData } from "@ptypes/hooks/useValidationToken/IUserData";
 import type { IRegisterUserParams } from "@ptypes/api/IRegisterUserParams";
 import { useRegisterUser } from "@hooks/useRegisterUser";
-
-interface IUseRegisterFlow {
-  isModalOpen: boolean;
-  registrationState: ERegistrationState;
-  progressSteps: IRequestSteps[];
-  handleRegisterSubmit: (formData: IRegisterFormData) => Promise<void>;
-  onModalClose: () => void;
-}
+import { IUseRegisterFlow } from "@src/types/hooks/useRegisterFlow";
 
 const useRegisterFlow = (userData: UserData | undefined): IUseRegisterFlow => {
   const { registerUserSubmit } = useRegisterUser();
