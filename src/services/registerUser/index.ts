@@ -54,6 +54,7 @@ const registerUser = async (
           ? params.formData.whatsappPhone
           : params.formData.phone,
     },
+    userManagementRequestsIdEncrypt: params.userData.userManagementRequestsIdEncrypt,
   };
 
   const url = "/user-accounts/";

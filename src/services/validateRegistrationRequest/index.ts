@@ -37,6 +37,7 @@ const validateRegistrationRequest = async (
       originatorName: success.originatorName,
       consumerApplicationCode: success.consumerApplicationCode ?? "",
       userManagementRequestsId: success.userManagementRequestsId ?? "",
+      userManagementRequestsIdEncrypt: token,
     };
 
     return { type: "VALID_USER_DATA", userData } as ValidationResult;

@@ -19,6 +19,7 @@ interface ISaveUserAccountRequest {
   userAccountAuthenticationMethod: IUserAccountAuthenticationMethod;
   userConsentOfScopeAttribute: IUserConsentOfScopeAttribute;
   accountNumberPerMessageOperator: IAccountNumberPerMessageOperator;
+  userManagementRequestsIdEncrypt: string;
 }
 
 export type { ISaveUserAccountRequest };
