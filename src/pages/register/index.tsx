@@ -19,7 +19,6 @@ const Register = () => {
   const userData: UserData | undefined = location.state?.userData;
 
   const { urlLogo } = useBusinessData({
-    originatorId: userData?.originatorId,
     originatorCode: userData?.originatorCode,
   });
 
@@ -56,16 +55,14 @@ const Register = () => {
   }, [userData, navigate]);
 
   useEffect(() => {
-    if (userData?.originatorId || userData?.originatorCode) {
+    if (userData?.originatorCode) {
       fetchCredentialRequirements({
-        originatorId: userData.originatorId,
         originatorCode: userData.originatorCode,
       }).catch((error) => {
         console.error("Error fetching credential requirements:", error);
       });
     }
   }, [
-    userData?.originatorId,
     userData?.originatorCode,
     fetchCredentialRequirements,
   ]);
@@ -73,10 +70,9 @@ const Register = () => {
   useEffect(() => {
     if (
       passwordPolicy?.policyForTheUserKey === "HighLevel" &&
-      (userData?.originatorId || userData?.originatorCode)
+      (userData?.originatorCode)
     ) {
       fetchSecurityQuestions({
-        originatorId: userData.originatorId,
         originatorCode: userData.originatorCode,
       }).catch((error) => {
         console.error("Error fetching security questions:", error);
@@ -84,7 +80,6 @@ const Register = () => {
     }
   }, [
     passwordPolicy?.policyForTheUserKey,
-    userData?.originatorId,
     userData?.originatorCode,
     fetchSecurityQuestions,
   ]);

@@ -3,7 +3,6 @@ interface UserData {
   identificationNumber: string;
   firstNames: string;
   lastNames: string;
-  originatorId?: string;
   originatorCode: string;
   originatorName: string;
   consumerApplicationCode: string;

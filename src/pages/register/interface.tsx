@@ -64,7 +64,6 @@ const RegisterUI = (props: IRegisterPageUI) => {
           userData={userData}
           labels={registerStepLabels}
           onSubmit={onRegisterSubmit}
-          originatorId={userData.originatorId}
           originatorCode={userData.originatorCode}
           passwordPolicy={passwordPolicy}
           isPolicyLoading={isPolicyLoading}

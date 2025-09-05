@@ -58,7 +58,6 @@ const mockRegisterParams: IRegisterUserParams = {
     identificationNumber: '12345678',
     firstNames: 'Juan',
     lastNames: 'Pérez',
-    originatorId: 'ORG001',
     originatorCode: 'BANK123',
     originatorName: 'Banco Ejemplo',
     consumerApplicationCode: 'APP001',
