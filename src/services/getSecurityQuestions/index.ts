@@ -19,6 +19,8 @@ const getSecurityQuestions = async (
 
   const url = `/originators?${queryParams.toString()}`;
   const { data } = await iauthQueryAxiosInstance.get<ISecurityQuestionsResponse>(url, config);
+  const spanishQuestions = data.SecurityQuestionAndAnswer.filter(q => q.idiom === "es");
+  data.SecurityQuestionAndAnswer = spanishQuestions;
   data.SecurityQuestionAndAnswer.sort((a, b) => a.numberQuestion > b.numberQuestion ? 1 : -1);
   return data;
 };

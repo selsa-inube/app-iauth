@@ -3,6 +3,7 @@ import type { ISecurityQuestionAnswer } from "@ptypes/api/ISecurityQuestionAnswe
 interface ISecurityQuestion {
   numberQuestion: string;
   question: string;
+  idiom: string;
   answers?: ISecurityQuestionAnswer[];
 }
 

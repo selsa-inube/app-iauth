@@ -23,7 +23,8 @@ const getCredentialRequirements = async (
 
   const url = `/originators?${queryParams.toString()}`;
   const { data } = await iauthQueryAxiosInstance.get<ICredentialRequirementResponse>(url, config);
-  return data;
+  const spanishRequirements = data.requirements.filter(req => req.idiom === "es");
+  return { ...data, requirements: spanishRequirements };
 };
 
 export { getCredentialRequirements };
