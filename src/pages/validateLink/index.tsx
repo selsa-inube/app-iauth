@@ -5,13 +5,13 @@ import { selfRegisterTokenQueryParam } from "@config/environment";
 import { StatusMessage } from "@pages/statusMessage";
 import { EStatusMessage } from "@enum/pages/EStatusMessage";
 import { Spinner, Stack } from "@inubekit/inubekit";
+import { safeBase64ToString } from "@utils/base64";
 
 const ValidateLink = () => {
   const [searchParams] = useSearchParams();
   const navigate = useNavigate();
   const queryParamName = selfRegisterTokenQueryParam ?? "a";
-  const token = searchParams.get(queryParamName);
-
+  const token = safeBase64ToString(searchParams.get(queryParamName));
   const { validateToken, isLoading, validationResult, error } =
     useValidationToken();
 
