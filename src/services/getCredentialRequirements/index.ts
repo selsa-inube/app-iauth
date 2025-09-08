@@ -1,6 +1,7 @@
 import { ICredentialRequirementResponse } from "@ptypes/api/ICredentialRequirementResponse";
 import { ICredentialRequirementParams } from "@ptypes/api/ICredentialRequirementParams";
 import { iauthQueryAxiosInstance } from "@api/iauthQuery";
+import type { ICredentialRequirementApiResponse } from "@ptypes/services/ICredentialRequirementApiResponse";
 import { AxiosRequestConfig } from "axios";
 
 const getCredentialRequirements = async (
@@ -22,9 +23,16 @@ const getCredentialRequirements = async (
   }
 
   const url = `/originators?${queryParams.toString()}`;
-  const { data } = await iauthQueryAxiosInstance.get<ICredentialRequirementResponse>(url, config);
-  const spanishRequirements = data.requirements.filter(req => req.idiom === "es");
-  return { ...data, requirements: spanishRequirements };
+  const { data } = await iauthQueryAxiosInstance.get<ICredentialRequirementApiResponse>(url, config);
+  const mapped: ICredentialRequirementResponse = {
+    policyForTheUserKey: data.policyForTheUserKey,
+    requirements: data.requirements.map((req) => ({
+      value: req.i18n?.es ?? req.value,
+      regex: req.regex,
+    })),
+  };
+
+  return mapped;
 };
 
 export { getCredentialRequirements };

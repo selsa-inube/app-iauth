@@ -1,6 +1,7 @@
 import type { ISecurityQuestionsResponse } from "@ptypes/api/ISecurityQuestionsResponse";
 import type { ICredentialRequirementParams } from "@ptypes/api/ICredentialRequirementParams";
 import { iauthQueryAxiosInstance } from "@api/iauthQuery";
+import type { ISecurityQuestionsApiResponse } from "@ptypes/services/ISecurityQuestionsApiResponse";
 import { AxiosRequestConfig } from "axios";
 
 const getSecurityQuestions = async (
@@ -18,11 +19,19 @@ const getSecurityQuestions = async (
   if (params.originatorCode) queryParams.append("originatorCode", params.originatorCode);
 
   const url = `/originators?${queryParams.toString()}`;
-  const { data } = await iauthQueryAxiosInstance.get<ISecurityQuestionsResponse>(url, config);
-  const spanishQuestions = data.SecurityQuestionAndAnswer.filter(q => q.idiom === "es");
-  data.SecurityQuestionAndAnswer = spanishQuestions;
-  data.SecurityQuestionAndAnswer.sort((a, b) => a.numberQuestion > b.numberQuestion ? 1 : -1);
-  return data;
+  const { data } = await iauthQueryAxiosInstance.get<ISecurityQuestionsApiResponse>(url, config);
+  const mapped: ISecurityQuestionsResponse = {
+    SecurityQuestionAndAnswer: data.SecurityQuestionAndAnswer.map((q) => ({
+      numberQuestion: q.numberQuestion,
+      question: q.i18n?.es ?? q.question,
+      answers: q.answers?.map((a) => ({
+        answer: a.i18n?.es ?? a.answer,
+      })),
+    }))
+      .sort((a, b) => (a.numberQuestion > b.numberQuestion ? 1 : -1)),
+  };
+
+  return mapped;
 };
 
 export { getSecurityQuestions };
