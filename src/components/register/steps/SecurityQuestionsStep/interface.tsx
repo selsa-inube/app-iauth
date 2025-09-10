@@ -42,7 +42,7 @@ const SecurityQuestionsStepUI = (props: ISecurityQuestionsStepUI) => {
               const selectOptions = question.answers.map((item) => ({
                 id: item.answer,
                 value: item.answer,
-                label: item.answer,
+                label: item.label,
               }));
 
               return (

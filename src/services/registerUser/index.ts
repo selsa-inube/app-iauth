@@ -28,12 +28,17 @@ const registerUser = async (
     consumerApplicationCode: params.userData.consumerApplicationCode ?? "",
     mainOriginatorCode: params.userData.originatorCode ?? "",
     ...(Object.entries(params.formData.securityAnswers || {}).length > 0 && {
-      securityQuestions: Object.entries(
-        params.formData.securityAnswers || {},
-      ).map(([key, value]) => ({
-        securityQuestionNumber: key,
-        securityQuestionAnswer: value,
-      })),
+      securityQuestions: Object.entries(params.formData.securityAnswers || {})
+        .map(([key, value]) => ({
+          securityQuestionNumber: key,
+          securityQuestionAnswer: value,
+        }))
+        .filter(
+          (question) =>
+            question.securityQuestionAnswer !== undefined &&
+            question.securityQuestionAnswer !== null &&
+            question.securityQuestionAnswer !== "",
+        ),
     }),
     userAccountAuthenticationMethod: {
       authenticationCredential: params.formData.password,
@@ -62,14 +67,23 @@ const registerUser = async (
     url,
     body,
     config,
-  )) as AxiosResponse<ISaveUserAccountResponse | IValidateRegistrationErrorResponse>;
+  )) as AxiosResponse<
+    ISaveUserAccountResponse | IValidateRegistrationErrorResponse
+  >;
   const { data, status } = response;
 
-  if (status >= 200 && status < 300 && !(data as IValidateRegistrationErrorResponse)?.code) {
+  if (
+    status >= 200 &&
+    status < 300 &&
+    !(data as IValidateRegistrationErrorResponse)?.code
+  ) {
     const resp: IRegisterUserResponse = {
       success: true,
       message: "Usuario registrado exitosamente",
-      userId: (data as ISaveUserAccountResponse)?.userAccountId ?? (data as ISaveUserAccountResponse)?.userAccount ?? undefined,
+      userId:
+        (data as ISaveUserAccountResponse)?.userAccountId ??
+        (data as ISaveUserAccountResponse)?.userAccount ??
+        undefined,
     };
     return resp;
   }

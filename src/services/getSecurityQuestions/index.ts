@@ -25,7 +25,8 @@ const getSecurityQuestions = async (
       numberQuestion: q.numberQuestion,
       question: q.i18n?.es ?? q.question,
       answers: q.answers?.map((a) => ({
-        answer: a.i18n?.es ?? a.answer,
+        answer: a.answer,
+        label: a.i18n?.es ?? a.answer,
       })),
     }))
       .sort((a, b) => (a.numberQuestion > b.numberQuestion ? 1 : -1)),
