@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 const GAP = "0.5rem";
 
-const FieldsRow = styled.div<{ $isMobile?: boolean }>`
+const StyledFieldsRow = styled.div<{ $isMobile?: boolean }>`
   display: flex;
   flex-direction: ${({ $isMobile }) => ($isMobile ? "column" : "row")};
   justify-content: space-between;
@@ -35,4 +35,4 @@ const FieldsRow = styled.div<{ $isMobile?: boolean }>`
     `}
 `;
 
-export { FieldsRow };
+export { StyledFieldsRow };

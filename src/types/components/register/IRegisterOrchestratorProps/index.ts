@@ -4,7 +4,7 @@ import type { IPasswordPolicy } from "@ptypes/hooks/usePasswordPolicy";
 import type { ISecurityQuestionsResponse } from "@ptypes/api/ISecurityQuestionsResponse";
 import type { UserData } from "@ptypes/hooks/useValidationToken/IUserData";
 
-interface IRegisterOrchestratorProps {
+interface IRegisterOrchestrator {
   labelsSize: "small" | "medium" | "large";
   isMobile?: boolean;
   labels: IRegisterStepLabels;
@@ -17,4 +17,4 @@ interface IRegisterOrchestratorProps {
   securityQuestions: ISecurityQuestionsResponse | null;
 }
 
-export type { IRegisterOrchestratorProps };
+export type { IRegisterOrchestrator };

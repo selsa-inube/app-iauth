@@ -2,7 +2,7 @@ import { IRegisterFormData } from "@ptypes/components/register/IRegisterFormData
 import { IRegisterStepLabels } from "@ptypes/components/register/IRegisterStepLabels";
 import { UserData } from "@ptypes/hooks/useValidationToken/IUserData";
 
-interface IDataUsageStepUIProps {
+interface IDataUsageStepUI {
   formData: IRegisterFormData;
   labels: IRegisterStepLabels;
   userData: UserData;
@@ -11,4 +11,4 @@ interface IDataUsageStepUIProps {
   isMobile?: boolean;
 }
 
-export type { IDataUsageStepUIProps };
+export type { IDataUsageStepUI };

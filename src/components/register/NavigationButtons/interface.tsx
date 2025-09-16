@@ -1,6 +1,6 @@
 import { Button, Stack } from "@inubekit/inubekit";
 
-interface INavigationButtonsUIProps {
+interface INavigationButtonsUI {
   isFirstStep: boolean;
   isLastStep: boolean;
   onBack: () => void;
@@ -15,7 +15,7 @@ interface INavigationButtonsUIProps {
   isSubmitDisabled?: boolean;
 }
 
-const NavigationButtonsUI = (props: INavigationButtonsUIProps) => {
+const NavigationButtonsUI = (props: INavigationButtonsUI) => {
   const {
     isFirstStep,
     isLastStep,

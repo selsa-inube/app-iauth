@@ -1,5 +1,5 @@
-import type { IRegisterStepProps } from "@ptypes/components/register/IRegisterStepProps";
+import type { IRegisterStep } from "@ptypes/components/register/IRegisterStepProps";
 
-type IContactInfoStepProps = IRegisterStepProps;
+type IContactInfoStep = IRegisterStep;
 
-export type { IContactInfoStepProps };
+export type { IContactInfoStep };

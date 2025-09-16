@@ -1,7 +1,7 @@
 import { NavigationButtonsUI } from "./interface";
-import type { INavigationButtonsProps } from "@ptypes/components/register/INavigationButtons";
+import type { INavigationButtons } from "@ptypes/components/register/INavigationButtons";
 
-const NavigationButtons = (props: INavigationButtonsProps) => {
+const NavigationButtons = (props: INavigationButtons) => {
   const {
     currentStep,
     totalSteps,

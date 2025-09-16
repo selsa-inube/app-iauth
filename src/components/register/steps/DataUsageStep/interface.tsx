@@ -1,9 +1,9 @@
 import { Box, Checkbox, Stack } from "@inubekit/inubekit";
-import { IDataUsageStepUIProps } from "@ptypes/components/register/steps/IDataUsageStepUIProps";
+import { IDataUsageStepUI } from "@ptypes/components/register/steps/IDataUsageStepUIProps";
 import { InformationBox } from "@components/utils/InformationBox";
 import { StyledQuestionsGrid } from "../SecurityQuestionsStep/styles";
 
-const DataUsageStepUI = (props: IDataUsageStepUIProps) => {
+const DataUsageStepUI = (props: IDataUsageStepUI) => {
   const {
     formData,
     labels,

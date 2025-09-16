@@ -2,6 +2,7 @@ import { GlobalHeader } from "@components/layout/GlobalHeader";
 import { GlobalFooter } from "@components/layout/GlobalFooter";
 import { IPageLayout } from "@ptypes/components/layout/pageLayout/IPageLayout";
 import { BackgroundUnsplash } from "@components/layout/BackgroundUnsplash";
+import { StyledContentArea, StyledInnerColumn } from "./styles";
 
 const PageLayoutUI = (props: IPageLayout) => {
   const { children, headerContent, footerContent } = props;
@@ -10,32 +11,9 @@ const PageLayoutUI = (props: IPageLayout) => {
     <>
       <GlobalHeader>{headerContent}</GlobalHeader>
       <BackgroundUnsplash>
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "flex-start",
-            height: "90dvh",
-            width: "100%",
-            overflowY: "auto",
-            overflowX: "hidden",
-            padding: "10px 0",
-            boxSizing: "border-box",
-          }}
-        >
-          <div
-            style={{
-              width: "100%",
-              maxWidth: "100%",
-              minHeight: "100%",
-              display: "flex",
-              flexDirection: "column",
-              justifyContent: "center",
-            }}
-          >
-            {children}
-          </div>
-        </div>
+        <StyledContentArea>
+          <StyledInnerColumn>{children}</StyledInnerColumn>
+        </StyledContentArea>
       </BackgroundUnsplash>
       <GlobalFooter>{footerContent}</GlobalFooter>
     </>

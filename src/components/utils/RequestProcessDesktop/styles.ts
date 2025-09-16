@@ -37,3 +37,11 @@ const StyledStepIndicator = styled.div<IStyledStepIndicator>`
 `;
 
 export { StyledContainerProgressBar, StyledStepIndicator };
+
+const StyledRequestContainer = styled.div`
+  border: 1px solid #E5E7EB;
+  border-radius: ${tokens.spacing.s100};
+  padding: ${tokens.spacing.s150};
+`;
+
+export { StyledRequestContainer };

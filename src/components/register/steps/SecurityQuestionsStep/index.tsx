@@ -1,8 +1,8 @@
 import { useEffect } from "react";
 import { SecurityQuestionsStepUI } from "./interface";
-import type { ISecurityQuestionsStepProps } from "@ptypes/components/register/steps/ISecurityQuestionsStepProps";
+import type { ISecurityQuestionsStep } from "@ptypes/components/register/steps/ISecurityQuestionsStepProps";
 
-const SecurityQuestionsStep = (props: ISecurityQuestionsStepProps) => {
+const SecurityQuestionsStep = (props: ISecurityQuestionsStep) => {
   const {
     formData,
     onFormChange,

@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { tokensWithReference } from "@design/tokens/tokensWithReference";
 
-interface IStyledInformationBoxProps {
+interface IStyledInformationBox {
   $width?: string;
   $height?: string;
   $minWidth?: string;
@@ -10,7 +10,7 @@ interface IStyledInformationBoxProps {
   $maxHeight?: string;
 }
 
-const StyledInformationBox = styled.div<IStyledInformationBoxProps>`
+const StyledInformationBox = styled.div<IStyledInformationBox>`
   position: relative;
   display: flex;
   flex-direction: column;

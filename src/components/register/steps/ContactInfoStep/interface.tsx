@@ -8,7 +8,7 @@ import {
 } from "@inubekit/inubekit";
 import { MdOutlineMail } from "react-icons/md";
 import type { IContactInfoStepUI } from "@ptypes/components/register/steps/IContactInfoStepUI";
-import { FieldsRow } from "./styles";
+import { StyledFieldsRow } from "./styles";
 import { PhoneNumberField } from "@components/form/PhoneNumberField";
 
 const ContactInfoStepUI = (props: IContactInfoStepUI) => {
@@ -45,7 +45,7 @@ const ContactInfoStepUI = (props: IContactInfoStepUI) => {
           message={errors?.email ?? ""}
         />
         <Fieldset legend="Móvil" spacing="compact">
-          <FieldsRow $isMobile={isMobile}>
+          <StyledFieldsRow $isMobile={isMobile}>
             <div className="field-wrapper first">
               <PhoneNumberField
                 id="phone"
@@ -101,7 +101,7 @@ const ContactInfoStepUI = (props: IContactInfoStepUI) => {
                 />
               )}
             </div>
-          </FieldsRow>
+          </StyledFieldsRow>
         </Fieldset>
       </Stack>
     </Box>

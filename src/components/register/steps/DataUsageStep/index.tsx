@@ -1,8 +1,8 @@
 import { useEffect } from "react";
 import { DataUsageStepUI } from "./interface";
-import type { IDataUsageStepProps } from "@ptypes/components/register/steps/IDataUsageStepProps";
+import type { IDataUsageStep } from "@ptypes/components/register/steps/IDataUsageStepProps";
 
-const DataUsageStep = (props: IDataUsageStepProps) => {
+const DataUsageStep = (props: IDataUsageStep) => {
   const { 
     formData, 
     onFormChange, 

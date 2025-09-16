@@ -1,11 +1,11 @@
 import styled from "styled-components";
 
-interface IStyledQuestionsGridProps {
+interface IStyledQuestionsGrid {
   $isMobile?: boolean;
   margin?: string;
 }
 
-const StyledQuestionsGrid = styled.div<IStyledQuestionsGridProps>`
+const StyledQuestionsGrid = styled.div<IStyledQuestionsGrid>`
   display: grid;
   grid-template-columns: ${({ $isMobile }) =>
     !$isMobile ? "repeat(2, 1fr)" : "repeat(auto-fit, minmax(12rem, 1fr))"};

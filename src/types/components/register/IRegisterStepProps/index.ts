@@ -2,7 +2,7 @@ import type { IRegisterFormData } from "@ptypes/components/register/IRegisterFor
 import type { IRegisterStepLabels } from "@ptypes/components/register/IRegisterStepLabels";
 import type { UserData } from "@ptypes/hooks/useValidationToken/IUserData";
 
-interface IRegisterStepProps {
+interface IRegisterStep {
   formData: IRegisterFormData;
   onFormChange: <K extends keyof IRegisterFormData>(
     field: K,
@@ -14,4 +14,4 @@ interface IRegisterStepProps {
   isMobile?: boolean;
 }
 
-export type { IRegisterStepProps };
+export type { IRegisterStep };

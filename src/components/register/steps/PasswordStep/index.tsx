@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import { PasswordStepUI } from "./interface";
 import { usePasswordPolicy } from "@hooks/usePasswordPolicy";
-import type { IPasswordStepProps } from "@ptypes/components/register/steps/IPasswordStepProps";
+import type { IPasswordStep } from "@ptypes/components/register/steps/IPasswordStepProps";
 
-const PasswordStep = (props: IPasswordStepProps) => {
+const PasswordStep = (props: IPasswordStep) => {
   const {
     formData,
     onFormChange,

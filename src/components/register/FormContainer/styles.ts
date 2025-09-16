@@ -1,15 +1,15 @@
 import styled from "styled-components";
 import { formContainer } from "./tokens";
 
-interface StyledFormContainerProps {
+interface StyledFormContainer {
   $isMobile?: boolean;
 }
 
-interface StyledFormTitleProps {
+interface StyledFormTitle {
   $labelsSize: "large" | "medium" | "small";
 }
 
-const StyledFormContainer = styled.div<StyledFormContainerProps>`
+const StyledFormContainer = styled.div<StyledFormContainer>`
   width: 100%;
   min-height: ${({ $isMobile }) => ($isMobile ? "" : "620px")};
   height: auto;
@@ -25,7 +25,7 @@ const StyledFormContainer = styled.div<StyledFormContainerProps>`
     0px 2px 6px 2px ${formContainer.dark.boxShadow.color};
 `;
 
-const StyledFormTitle = styled.h1<StyledFormTitleProps>`
+const StyledFormTitle = styled.h1<StyledFormTitle>`
   font-size: ${({ $labelsSize }) =>
     $labelsSize === "large"
       ? "1.5rem"

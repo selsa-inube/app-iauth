@@ -1,11 +1,11 @@
 import styled from "styled-components";
 import { tokensWithReference } from "@design/tokens/tokensWithReference";
 
-interface IStyledRequirementsBoxProps {
+interface IStyledRequirementsBox {
   $minWidth: string;
 }
 
-const StyledRequirementsBox = styled.div<IStyledRequirementsBoxProps>`
+const StyledRequirementsBox = styled.div<IStyledRequirementsBox>`
   position: relative;
   display: flex;
   flex-direction: row;

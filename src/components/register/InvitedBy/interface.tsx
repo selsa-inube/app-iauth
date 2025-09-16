@@ -1,8 +1,8 @@
 import { Text, Stack } from "@inubekit/inubekit";
 import { StyledInvitedByImg } from "./styled";
-import type { IInvitedByUIProps } from "@ptypes/components/register/IInvitedByUIProps";
+import type { IInvitedByUI } from "@ptypes/components/register/IInvitedByUIProps";
 
-const InvitedByUI = (props: IInvitedByUIProps) => {
+const InvitedByUI = (props: IInvitedByUI) => {
   const { urlImg, text, textSize = "medium", isMobile = false } = props;
 
   return (

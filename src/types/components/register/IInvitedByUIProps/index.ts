@@ -1,5 +1,5 @@
 import type { IInvitedBy } from "@ptypes/components/register/IInvitedBy";
 
-type IInvitedByUIProps = IInvitedBy;
+type IInvitedByUI = IInvitedBy;
 
-export type { IInvitedByUIProps };
+export type { IInvitedByUI };

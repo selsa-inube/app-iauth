@@ -1,4 +1,4 @@
-interface INavigationButtonsProps {
+interface INavigationButtons {
   currentStep: number;
   totalSteps: number;
   onBack: () => void;
@@ -13,4 +13,4 @@ interface INavigationButtonsProps {
   isSubmitDisabled?: boolean;
 }
 
-export type { INavigationButtonsProps };
+export type { INavigationButtons };

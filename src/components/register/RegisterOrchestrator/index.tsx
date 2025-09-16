@@ -5,12 +5,12 @@ import { PasswordStep } from "../steps/PasswordStep";
 import { ContactInfoStep } from "../steps/ContactInfoStep";
 import { SecurityQuestionsStep } from "../steps/SecurityQuestionsStep";
 import { DataUsageStep } from "../steps/DataUsageStep";
-import type { IRegisterOrchestratorProps } from "@ptypes/components/register/IRegisterOrchestratorProps";
+import type { IRegisterOrchestrator } from "@ptypes/components/register/IRegisterOrchestratorProps";
 import type { IRegisterFormData } from "@ptypes/components/register/IRegisterFormData";
 import type { IStep } from "@ptypes/components/register/IFormContainer";
 import { getDialCodeByCountryCode } from "@components/form/PhoneNumberField/countries";
 
-const RegisterOrchestrator = (props: IRegisterOrchestratorProps) => {
+const RegisterOrchestrator = (props: IRegisterOrchestrator) => {
   const {
     labelsSize,
     isMobile,

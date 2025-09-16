@@ -2,7 +2,7 @@ import { MdCheckCircle } from "react-icons/md";
 import { Icon, ProgressBar, Stack, Text } from "@inubekit/inubekit";
 import { tokens } from "@design/tokens/tokens";
 import { EComponentAppearance } from "@enum/appearances";
-import { StyledContainerProgressBar, StyledStepIndicator } from "./styles";
+import { StyledContainerProgressBar, StyledStepIndicator, StyledRequestContainer } from "./styles";
 import { IRequestProcessDesktop } from "./interface";
 import { addPercentage } from "@utils/addPercentage";
 import { countVerifiedRequests } from "@utils/countVerifiedRequests";
@@ -14,13 +14,7 @@ const RequestProcessDesktop = (props: IRequestProcessDesktop) => {
 
   if (!requestSteps || requestSteps.length === 0) {
     return (
-      <div
-        style={{
-          border: `1px solid #E5E7EB`,
-          borderRadius: tokens.spacing.s100,
-          padding: tokens.spacing.s150,
-        }}
-      >
+      <StyledRequestContainer>
         <Stack
           direction="column"
           gap={tokens.spacing.s100}
@@ -31,7 +25,7 @@ const RequestProcessDesktop = (props: IRequestProcessDesktop) => {
             {requestProcessDesktop.loading}
           </Text>
         </Stack>
-      </div>
+      </StyledRequestContainer>
     );
   }
 
@@ -50,13 +44,7 @@ const RequestProcessDesktop = (props: IRequestProcessDesktop) => {
   const currentStepName = requestSteps[validStepIndex]?.name || requestProcessDesktop.processing;
   
   return (
-    <div
-      style={{
-        border: `1px solid #E5E7EB`,
-        borderRadius: tokens.spacing.s100,
-        padding: tokens.spacing.s150,
-      }}
-    >
+    <StyledRequestContainer>
       <Stack
         direction="column"
         gap={tokens.spacing.s100}
@@ -111,7 +99,7 @@ const RequestProcessDesktop = (props: IRequestProcessDesktop) => {
           {percentage}
         </Text>
       </Stack>
-    </div>
+    </StyledRequestContainer>
   );
 };
 

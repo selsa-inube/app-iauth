@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import { ContactInfoStepUI } from "./interface";
-import type { IContactInfoStepProps } from "@ptypes/components/register/steps/IContactInfoStepProps";
+import type { IContactInfoStep } from "@ptypes/components/register/steps/IContactInfoStepProps";
 import type { CountryOption } from "@components/form/PhoneNumberField/types";
 
-const ContactInfoStep = (props: IContactInfoStepProps) => {
+const ContactInfoStep = (props: IContactInfoStep) => {
   const { formData, onFormChange, labels, onNextEnabledChange, isMobile } =
     props;
 

@@ -15,4 +15,25 @@ const StyledLogoImage = styled.img`
   object-fit: cover;
 `;
 
-export { StyledLogoContainer, StyledLogoImage };
+const StyledContentArea = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  height: 90dvh;
+  width: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 10px 0;
+  box-sizing: border-box;
+`;
+
+const StyledInnerColumn = styled.div`
+  width: 100%;
+  max-width: 100%;
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+`;
+
+export { StyledLogoContainer, StyledLogoImage, StyledContentArea, StyledInnerColumn };

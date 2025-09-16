@@ -1,5 +1,5 @@
-import type { IRegisterStepProps } from "@ptypes/components/register/IRegisterStepProps";
+import type { IRegisterStep } from "@ptypes/components/register/IRegisterStepProps";
 
-type IDataUsageStepProps = IRegisterStepProps;
+type IDataUsageStep = IRegisterStep;
 
-export type { IDataUsageStepProps };
+export type { IDataUsageStep };
