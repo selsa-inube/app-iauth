@@ -4,7 +4,7 @@ interface CountryOption {
   name: string; // e.g. Colombia
 }
 
-interface IPhoneNumberFieldProps {
+interface IPhoneNumberField {
   id?: string;
   label?: string;
   placeholder?: string;
@@ -26,4 +26,4 @@ interface IPhoneNumberFieldProps {
   minDigits?: number;
 }
 
-export type { CountryOption, IPhoneNumberFieldProps };
+export type { CountryOption, IPhoneNumberField };

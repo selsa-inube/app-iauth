@@ -1,8 +1,5 @@
 import type { CountryOption } from "./types";
-
-// Full country list (ISO alpha-2 + primary international dialing code). Names in Spanish.
-// Fuente: E.164 / ITU (datos públicos). Algunos territorios comparten código (ej. +1, +44, +61).
-// Puedes reducir o sobreescribir con la prop countries del componente.
+// Base country list (ISO alpha-2 + dial code). names in Spanish.
 const countries: CountryOption[] = [
   { code: "AF", dialCode: "+93", name: "Afganistán" },
   { code: "AL", dialCode: "+355", name: "Albania" },
@@ -237,17 +234,15 @@ const countries: CountryOption[] = [
   { code: "ZW", dialCode: "+263", name: "Zimbabue" },
 ];
 
-// Quick lookup map: ISO alpha-2 -> dial code (e.g. CO -> +57)
-const dialCodeByCountryCode: Record<string, string> = countries.reduce(
-  (acc, c) => {
-    acc[c.code] = c.dialCode;
-    return acc;
+const dialCodeMap: Record<string, string> = countries.reduce(
+  (map, country) => {
+    map[country.code] = country.dialCode;
+    return map;
   },
   {} as Record<string, string>,
 );
 
-// Helper: get dial code by ISO alpha-2 code
 const getDialCodeByCountryCode = (code: string): string =>
-  dialCodeByCountryCode[code] ?? "";
+  dialCodeMap[code] ?? "";
 
-export { countries, dialCodeByCountryCode, getDialCodeByCountryCode };
+export { countries, dialCodeMap, getDialCodeByCountryCode };

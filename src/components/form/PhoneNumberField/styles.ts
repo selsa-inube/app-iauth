@@ -1,34 +1,45 @@
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 import { tokensWithReference } from "@design/tokens/tokensWithReference";
+import { inube } from "@inubekit/inubekit";
 
 const fieldHeights: Record<string, string> = {
   compact: "2.5rem",
   wide: "3rem",
 };
 
-const Wrapper = styled.div<{ $fullwidth?: boolean }>`
+const StyledWrapper = styled.div<{ $fullwidth?: boolean }>`
   display: flex;
   flex-direction: column;
   width: ${({ $fullwidth }) => ($fullwidth ? "100%" : "auto")};
   min-width: 0;
 `;
 
-const LabelRow = styled.label<{ $disabled?: boolean }>`
+const StyledLabelRow = styled.label<{ $disabled?: boolean }>`
   font-size: 0.875rem;
   font-weight: 600;
-  color: ${({ $disabled }) => ($disabled ? "#8A8A8A" : "#0D2135")};
+  color: ${({ $disabled }) =>
+    $disabled
+      ? inube.palette.neutral.N500
+      : inube.palette.neutral.N900};
   margin: 0 0 ${tokensWithReference.spacing.s050};
 `;
 
-const FieldContainer = styled.div<{
+const StyledFieldContainer = styled.div<{
   $size: "compact" | "wide";
   $invalid?: boolean;
   $disabled?: boolean;
 }>`
   display: flex;
   align-items: stretch;
-  border: 1px solid ${({ $invalid }) => ($invalid ? "#D14343" : "#D0D5DD")};
-  background: ${({ $disabled }) => ($disabled ? "#F3F4F6" : "#FFFFFF")};
+  border: 1px solid
+    ${({ $invalid }) =>
+      $invalid
+        ? inube.palette.red.R400
+        : inube.palette.neutral.N40};
+  background: ${({ $disabled }) =>
+    $disabled
+      ? inube.palette.neutral.N10
+      : inube.palette.neutral.N0};
   border-radius: 8px;
   height: ${({ $size }) => fieldHeights[$size]};
   overflow: hidden;
@@ -37,34 +48,30 @@ const FieldContainer = styled.div<{
   min-width: 0;
 
   &:focus-within {
-    border-color: #005bbb;
+    border-color: ${inube.palette.blue.B500};
   }
 `;
 
-const CountryButton = styled.button<{
+const StyledCountryButton = styled.button<{
   $size: "compact" | "wide";
   $open: boolean;
 }>`
   display: flex;
   align-items: center;
   gap: ${tokensWithReference.spacing.s050};
-  background: #f7f8f9;
+  background: ${inube.palette.neutral.N10};
   border: none;
   padding: 0 ${tokensWithReference.spacing.s100};
   cursor: pointer;
   font: inherit;
-  color: #0d2135;
+  color: ${inube.palette.neutral.N900};
   outline: none;
-  border-right: 1px solid #d0d5dd;
+  border-right: 1px solid ${inube.palette.neutral.N40};
 
-  ${({ $open }) =>
-    $open &&
-    css`
-      background: #eef2f6;
-    `};
+  ${({ $open }) => $open && `background: ${inube.palette.neutral.N30};`}
 
   &:hover {
-    background: #eef2f6;
+    background: ${inube.palette.neutral.N30};
   }
 
   & > span.dial {
@@ -73,7 +80,7 @@ const CountryButton = styled.button<{
   }
 `;
 
-const NumberInput = styled.input<{ $size: "compact" | "wide" }>`
+const StyledNumberInput = styled.input<{ $size: "compact" | "wide" }>`
   flex: 1 1 auto;
   width: 100%;
   min-width: 0;
@@ -84,17 +91,17 @@ const NumberInput = styled.input<{ $size: "compact" | "wide" }>`
   background: transparent;
 
   &::placeholder {
-    color: #98a2b3;
+    color: ${inube.palette.neutral.N300};
   }
 `;
 
-const Dropdown = styled.div`
+const StyledDropdown = styled.div`
   position: absolute;
   z-index: 10;
   margin-top: 4px;
-  background: #ffffff;
-  border: 1px solid #d0d5dd;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
+  background: ${inube.palette.neutral.N0};
+  border: 1px solid ${inube.palette.neutral.N40};
+  box-shadow: 0 4px 8px rgba(0,0,0,0.08);
   border-radius: 8px;
   width: 100%;
   max-height: 320px;
@@ -103,15 +110,15 @@ const Dropdown = styled.div`
   overflow: hidden;
 `;
 
-const SearchBox = styled.input`
+const StyledSearchBox = styled.input`
   border: none;
-  border-bottom: 1px solid #e4e7ec;
+  border-bottom: 1px solid ${inube.palette.neutral.N40};
   padding: 8px 12px;
   outline: none;
   font-size: 0.85rem;
 `;
 
-const CountryList = styled.ul`
+const StyledCountryList = styled.ul`
   list-style: none;
   margin: 0;
   padding: 0;
@@ -119,42 +126,44 @@ const CountryList = styled.ul`
   flex: 1;
 `;
 
-const CountryItem = styled.li<{ $active?: boolean }>`
+const StyledCountryItem = styled.li<{ $active?: boolean }>`
   display: flex;
   align-items: center;
   gap: 8px;
   padding: 6px 10px;
   cursor: pointer;
   font-size: 0.85rem;
-  background: ${({ $active }) => ($active ? "#EEF2F6" : "transparent")};
+  background: ${({ $active }) =>
+    $active ? inube.palette.neutral.N30 : "transparent"};
 
   &:hover {
-    background: #f1f5f9;
+    background: ${inube.palette.neutral.N30};
   }
 
   & span.name {
     flex: 1;
   }
   & span.code {
-    color: #667085;
+  color: ${inube.palette.neutral.N500};
     font-size: 0.75rem;
   }
 `;
 
-const HelperText = styled.span<{ $error?: boolean }>`
+const StyledHelperText = styled.span<{ $error?: boolean }>`
   margin-top: 4px;
   font-size: 0.75rem;
-  color: ${({ $error }) => ($error ? "#D14343" : "#667085")};
+  color: ${({ $error }) =>
+    $error ? inube.palette.red.R400 : inube.palette.neutral.N500};
 `;
 
-const ErrorContainer = styled.div`
+const StyledErrorContainer = styled.div`
   display: flex;
   align-items: center;
   gap: 4px;
   margin-top: 4px;
 `;
 
-const WarningIcon = styled.figure`
+const StyledWarningIcon = styled.figure`
   margin: 0;
   padding: 0;
   display: flex;
@@ -163,16 +172,32 @@ const WarningIcon = styled.figure`
 `;
 
 export {
-  Wrapper,
-  LabelRow,
-  FieldContainer,
-  CountryButton,
-  NumberInput,
-  Dropdown,
-  SearchBox,
-  CountryList,
-  CountryItem,
-  HelperText,
-  ErrorContainer,
-  WarningIcon,
+  StyledWrapper,
+  StyledLabelRow,
+  StyledFieldContainer,
+  StyledCountryButton,
+  StyledNumberInput,
+  StyledDropdown,
+  StyledSearchBox,
+  StyledCountryList,
+  StyledCountryItem,
+  StyledHelperText,
+  StyledErrorContainer,
+  StyledWarningIcon,
 };
+const StyledRelative = styled.div`
+  position: relative;
+`;
+
+const StyledFlag = styled.span<{ $size?: number; $round?: boolean }>`
+  display: inline-flex;
+  width: ${({ $size = 20 }) => $size}px;
+  height: ${({ $size = 20 }) => $size}px;
+  border-radius: ${({ $round = true }) => ($round ? "50%" : "0")};
+  overflow: hidden;
+  align-items: center;
+  justify-content: center;
+  & > svg, & > img { width: 100%; height: 100%; object-fit: cover; }
+`;
+
+export { StyledRelative, StyledFlag };

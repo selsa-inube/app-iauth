@@ -22,8 +22,6 @@
     "react-router-dom": "^6.30.1",
     "styled-components": "^6.1.18"
   },
-  "overrides": {},
-  "resolutions": {},
   "devDependencies": {
     "@chromatic-com/storybook": "^4.0.0",
     "@commitlint/cli": "^19.5.0",

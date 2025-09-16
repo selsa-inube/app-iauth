@@ -1,28 +1,33 @@
-import { useState, useMemo, useRef, useEffect } from "react";
+import { useState, useMemo, useRef, useEffect, useCallback } from "react";
 import ReactCountryFlag from "react-country-flag";
 import { MdKeyboardArrowDown } from "react-icons/md";
 import { countries as defaultCountries } from "./countries";
-import type { CountryOption, IPhoneNumberFieldProps } from "./types";
+import { PHONE_NUMBER_FIELD_TEXT } from "./constants";
+import type { CountryOption, IPhoneNumberField } from "./types";
 import {
-  Wrapper,
-  LabelRow,
-  FieldContainer,
-  CountryButton,
-  NumberInput,
-  Dropdown,
-  SearchBox,
-  CountryList,
-  CountryItem,
-  HelperText,
-  ErrorContainer,
-  WarningIcon,
+  StyledWrapper,
+  StyledLabelRow,
+  StyledFieldContainer,
+  StyledCountryButton,
+  StyledNumberInput,
+  StyledDropdown,
+  StyledSearchBox,
+  StyledCountryList,
+  StyledCountryItem,
+  StyledHelperText,
+  StyledErrorContainer,
+  StyledWarningIcon,
+  StyledRelative,
+  StyledFlag,
 } from "./styles";
 
-const PhoneNumberFieldUI = (props: IPhoneNumberFieldProps) => {
+const sanitizePhoneValue = (input: string) => input.replace(/[^0-9\s\-()]/g, "");
+
+const PhoneNumberFieldUI = (props: IPhoneNumberField) => {
   const {
     id,
-    label = "Número",
-    placeholder = "Número móvil",
+  label = PHONE_NUMBER_FIELD_TEXT.labelDefault,
+  placeholder = PHONE_NUMBER_FIELD_TEXT.placeholderDefault,
     value = "",
     countryCode = "CO",
     showDialCode = true,
@@ -35,9 +40,9 @@ const PhoneNumberFieldUI = (props: IPhoneNumberFieldProps) => {
     fullwidth,
     size = "compact",
     countries,
-    searchPlaceholder = "Buscar país o código",
-    noResultsText = "Sin resultados",
-    selectCountryAriaLabel = "Seleccionar país",
+  searchPlaceholder = PHONE_NUMBER_FIELD_TEXT.searchPlaceholder,
+  noResultsText = PHONE_NUMBER_FIELD_TEXT.noResultsText,
+  selectCountryAriaLabel = PHONE_NUMBER_FIELD_TEXT.selectCountryAriaLabel,
   } = props;
 
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
@@ -49,6 +54,14 @@ const PhoneNumberFieldUI = (props: IPhoneNumberFieldProps) => {
       availableCountries[0],
   );
   const dropdownRef = useRef<HTMLDivElement | null>(null);
+
+  const handleInputChange = useCallback(
+    (e: React.ChangeEvent<HTMLInputElement>) => {
+      const sanitizedValue = sanitizePhoneValue(e.target.value);
+      onChange?.(sanitizedValue);
+    },
+    [onChange],
+  );
 
   const filteredCountries = useMemo(() => {
     const normalizedSearch = searchTerm.trim().toLowerCase();
@@ -81,16 +94,16 @@ const PhoneNumberFieldUI = (props: IPhoneNumberFieldProps) => {
   }, []);
 
   return (
-    <Wrapper $fullwidth={fullwidth}>
+    <StyledWrapper $fullwidth={fullwidth}>
       {label && (
-        <LabelRow htmlFor={id} $disabled={disabled}>
+        <StyledLabelRow htmlFor={id} $disabled={disabled}>
           {label}
           {required && " *"}
-        </LabelRow>
+        </StyledLabelRow>
       )}
-      <div style={{ position: "relative" }} ref={dropdownRef}>
-        <FieldContainer $size={size} $invalid={!!error} $disabled={disabled}>
-          <CountryButton
+      <StyledRelative ref={dropdownRef}>
+        <StyledFieldContainer $size={size} $invalid={!!error} $disabled={disabled}>
+          <StyledCountryButton
             type="button"
             aria-label={selectCountryAriaLabel}
             onClick={() =>
@@ -100,74 +113,60 @@ const PhoneNumberFieldUI = (props: IPhoneNumberFieldProps) => {
             $open={isDropdownOpen}
             disabled={disabled}
           >
-            <ReactCountryFlag
-              svg
-              countryCode={selectedCountry.code}
-              style={{ width: "20px", height: "20px", borderRadius: "50%" }}
-            />
+            <StyledFlag>
+              <ReactCountryFlag svg countryCode={selectedCountry.code} />
+            </StyledFlag>
             {showDialCode && (
               <span className="dial">({selectedCountry.dialCode})</span>
             )}
             <MdKeyboardArrowDown size={18} />
-          </CountryButton>
-          <NumberInput
+          </StyledCountryButton>
+          <StyledNumberInput
             id={id}
             placeholder={placeholder}
             value={value}
-            onChange={(e) => {
-              const sanitizedValue = e.target.value.replace(
-                /[^0-9\s\-()]/g,
-                "",
-              );
-              onChange?.(sanitizedValue);
-            }}
+            onChange={handleInputChange}
             disabled={disabled}
             maxLength={maxLength}
             $size={size}
             autoComplete="tel"
             inputMode="tel"
           />
-        </FieldContainer>
+        </StyledFieldContainer>
         {isDropdownOpen && (
-          <Dropdown>
-            <SearchBox
+          <StyledDropdown>
+            <StyledSearchBox
               placeholder={searchPlaceholder}
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
               autoFocus
             />
-            <CountryList>
+            <StyledCountryList>
               {filteredCountries.map((country) => (
-                <CountryItem
+                <StyledCountryItem
                   key={country.code}
                   onClick={() => handleCountrySelect(country)}
                   $active={country.code === selectedCountry.code}
                 >
-                  <ReactCountryFlag
-                    svg
-                    countryCode={country.code}
-                    style={{
-                      width: "18px",
-                      height: "18px",
-                      borderRadius: "50%",
-                    }}
-                  />
+                  <StyledFlag $size={18}>
+                    <ReactCountryFlag svg countryCode={country.code} />
+                  </StyledFlag>
                   <span className="name">{country.name}</span>
                   <span className="code">{country.dialCode}</span>
-                </CountryItem>
+                </StyledCountryItem>
               ))}
               {filteredCountries.length === 0 && (
-                <CountryItem $active={false} style={{ cursor: "default" }}>
+                <StyledCountryItem $active={false}>
                   <span className="name">{noResultsText}</span>
-                </CountryItem>
+                </StyledCountryItem>
               )}
-            </CountryList>
-          </Dropdown>
+            </StyledCountryList>
+          </StyledDropdown>
         )}
-      </div>
+  </StyledRelative>
       {error && (
-        <ErrorContainer>
-          <WarningIcon>
+        <StyledErrorContainer>
+          <StyledWarningIcon>
             <svg
               width="12"
               height="12"
@@ -192,11 +191,11 @@ const PhoneNumberFieldUI = (props: IPhoneNumberFieldProps) => {
               />
               <circle cx="6" cy="8.5" r="0.5" fill="#D14343" />
             </svg>
-          </WarningIcon>
-          <HelperText $error>{error}</HelperText>
-        </ErrorContainer>
+          </StyledWarningIcon>
+          <StyledHelperText $error>{error}</StyledHelperText>
+        </StyledErrorContainer>
       )}
-    </Wrapper>
+    </StyledWrapper>
   );
 };
 
