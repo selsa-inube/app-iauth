@@ -11,7 +11,6 @@ const registerUser = async (
 ): Promise<IRegisterUserResponse> => {
   const config: AxiosRequestConfig = {
     headers: {
-      "X-Business-Unit": "test",
       "X-Action": "SaveUserAccount",
     },
   };

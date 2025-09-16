@@ -13,7 +13,6 @@ const validatePassword = async (props: IValidateParams): Promise<IValidate> => {
   }
   const config: AxiosRequestConfig = {
       headers: {
-        "X-Business-Unit": "test",
         "X-Action": "AutenticationByCredential",
       },
     };

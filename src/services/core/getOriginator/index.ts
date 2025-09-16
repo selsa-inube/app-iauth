@@ -8,7 +8,6 @@ const getOriginator = async (
 ): Promise<IOriginatorSuccess> => {
   const config: AxiosRequestConfig = {
     headers: {
-      "X-Business-Unit": "test",
       "X-Action": "SearchValidOriginator",
     },
   };
