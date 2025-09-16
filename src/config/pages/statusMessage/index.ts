@@ -17,6 +17,14 @@ const statusMessages = {
     buttonText: "Entendido",
     buttonAppearance: "warning" as const,
   },
+  missingParams: {
+    title: "Parámetros incompletos.",
+    message:
+      "La URL que estás intentando usar no contiene todos los parámetros requeridos para continuar con el proceso de autenticación. Por favor regresa al portal de origen e inicia nuevamente el proceso.",
+    icon: EStatusIcon.CLOCK_WARNING,
+    buttonText: "Entendido",
+    buttonAppearance: "warning" as const,
+  },
 };
 
 export { statusMessages };

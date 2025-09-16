@@ -1,15 +1,32 @@
 import { HomeUI } from "@pages/home/interface";
 import { useMediaQuery } from "@inubekit/inubekit";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { IHome } from "@ptypes/pages/home/IHome";
 import { useBusinessData } from "@hooks/useBusinessData";
 import { EModalWarning } from "@enum/components/EModalWarning";
+import { StatusMessage } from "@pages/statusMessage";
+import { EStatusMessage } from "@enum/pages/EStatusMessage";
+import { PageLayout } from "@components/layout/PageLayout";
+
+const REQUIRED_PARAMS = [
+  "originatorId",
+  "applicationName",
+  "callbackUrl",
+  "state",
+  "codeChallenge",
+];
 
 const Home = (props: IHome) => {
-  const { originatorId, originatorCode, callbackUrl } = props;
+  const searchParams = useMemo(() => new URLSearchParams(window.location.search), []);
+
+  const originatorId = props.originatorId ?? searchParams.get("originatorId") ?? undefined;
+  const callbackUrl = props.callbackUrl ?? searchParams.get("callbackUrl") ?? undefined;
+
+  const missingParams = REQUIRED_PARAMS.filter((p) => !searchParams.get(p));
+  const hasMissing = missingParams.length > 0;
+
   const { urlLogo } = useBusinessData({
     originatorId,
-    originatorCode,
   });
   const screenMobile = useMediaQuery("(max-width: 768px)");
   const [isModalWarningOpen, setIsModalWarningOpen] = useState(false);
@@ -24,6 +41,24 @@ const Home = (props: IHome) => {
       setIsModalWarningOpen(true);
     }
   }, [modalWarningType]);
+
+  if (hasMissing) {
+    return (
+      <PageLayout>
+        <StatusMessage
+          messageType={EStatusMessage.MISSING_PARAMS}
+          // Removemos botón para bloquear avance: sobre-escribimos con customMessage sin buttonText
+          customMessage={{
+            title: "Error en la solicitud",
+            message:
+              "Faltan parámetros obligatorios en la URL (" + missingParams.join(", ") + "). No es posible continuar.",
+            buttonText: "", // evita render de botón (ajustaremos StatusMessageUI para soportar ocultarlo si vacío)
+          }}
+          onButtonClick={undefined}
+        />
+      </PageLayout>
+    );
+  }
 
   return (
     <HomeUI

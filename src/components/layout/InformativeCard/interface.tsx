@@ -9,7 +9,7 @@ const InformativeCardUI = (props: IInformativeCard) => {
     title,
     message,
     buttonText,
-    buttonAppearance,
+    buttonAppearance = "primary",
     icon,
     onButtonClick,
     labelsSizeDifferent,
@@ -36,19 +36,21 @@ const InformativeCardUI = (props: IInformativeCard) => {
           {message}
         </Text>
 
-        <Stack
-          direction="row"
-          justifyContent="right"
-          margin={`${tokensWithReference.spacing.s025} 0 0 0`}
-        >
-          <Button
-            appearance={buttonAppearance}
-            spacing="wide"
-            onClick={onButtonClick}
+        {buttonText && (
+          <Stack
+            direction="row"
+            justifyContent="right"
+            margin={`${tokensWithReference.spacing.s025} 0 0 0`}
           >
-            {buttonText}
-          </Button>
-        </Stack>
+            <Button
+              appearance={buttonAppearance}
+              spacing="wide"
+              onClick={onButtonClick}
+            >
+              {buttonText}
+            </Button>
+          </Stack>
+        )}
       </Stack>
     </Card>
   );
