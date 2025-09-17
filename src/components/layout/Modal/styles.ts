@@ -35,7 +35,7 @@ const StyledCardModal = styled.div<IStyledCardModal>`
     width: ${({ $isMobile, $width }) => $width || ($isMobile ? "330px" : "450px")};
     height: ${({ $isMobile, $height }) => $height || ($isMobile ? "auto" : "auto")};
     min-height: ${({ $isMobile }) => ($isMobile ? "306px" : "326px")};
-    z-index: 999;
+    z-index: 2;
 `;
 
 export { StyledCardModal };

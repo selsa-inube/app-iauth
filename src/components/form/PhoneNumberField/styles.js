@@ -94,7 +94,7 @@ const StyledNumberInput = styled.input`
 
 const StyledDropdown = styled.div`
   position: absolute;
-  z-index: 10;
+  z-index: 2;
   margin-top: 4px;
   background: ${({ theme }) =>
     theme?.phoneField?.dropdown?.background?.color ?? phoneFieldTokens.dropdown.background.color};
