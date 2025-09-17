@@ -1,16 +1,17 @@
 import { LoginForm } from "..";
 import { MemoryRouter } from "react-router-dom";
 import { ThemeProviderWrapper } from "@context/themeContext";
-import { StoryFn, StoryObj } from "@storybook/react";
+import {StoryObj } from "@storybook/react";
+import { ElementType } from "react";
 
 const story = {
     title: "Login/LoginForm",
     component: LoginForm,
     decorators: [
-        (Story: StoryFn) => (
+        (Story: ElementType) => (
             <MemoryRouter>
                 <ThemeProviderWrapper>
-                    {<Story />}
+                    <Story />
                 </ThemeProviderWrapper>
             </MemoryRouter>
         ),

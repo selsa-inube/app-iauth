@@ -1,14 +1,14 @@
 import { Links } from "../";
 import { MemoryRouter } from "react-router-dom";
 import { ThemeProviderWrapper } from "@context/themeContext";
-import { StoryFn } from "@storybook/react";
 import { ILink } from "@ptypes/components/login/ILink";
+import { ElementType } from "react";
 
 const story = {
     title: "Login/Links",
     component: Links,
     decorators: [
-        (Story: StoryFn) => (
+        (Story: ElementType) => (
             <MemoryRouter>
                 <ThemeProviderWrapper>
                     {<Story />}
