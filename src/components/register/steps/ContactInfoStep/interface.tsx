@@ -57,7 +57,6 @@ const ContactInfoStepUI = (props: IContactInfoStepUI) => {
                 countryCode={formData.phoneCountryCode}
                 onChange={onPhoneChangeHandler}
                 onCountryChange={(country) => {
-                  console.log("Phone country changed:", country);
                   onPhoneCountryChange(country);
                 }}
                 showDialCode={!isMobile}

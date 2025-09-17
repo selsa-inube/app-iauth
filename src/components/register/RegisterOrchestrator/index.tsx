@@ -8,7 +8,7 @@ import { DataUsageStep } from "../steps/DataUsageStep";
 import type { IRegisterOrchestrator } from "@ptypes/components/register/IRegisterOrchestratorProps";
 import type { IRegisterFormData } from "@ptypes/components/register/IRegisterFormData";
 import type { IStep } from "@ptypes/components/register/IFormContainer";
-import { getDialCodeByCountryCode } from "@components/form/PhoneNumberField/countries";
+import { getDialCodeByCountryCode } from "@components/form/PhoneNumberField/utils";
 
 const RegisterOrchestrator = (props: IRegisterOrchestrator) => {
   const {

@@ -234,15 +234,4 @@ const countries: CountryOption[] = [
   { code: "ZW", dialCode: "+263", name: "Zimbabue" },
 ];
 
-const dialCodeMap: Record<string, string> = countries.reduce(
-  (map, country) => {
-    map[country.code] = country.dialCode;
-    return map;
-  },
-  {} as Record<string, string>,
-);
-
-const getDialCodeByCountryCode = (code: string): string =>
-  dialCodeMap[code] ?? "";
-
-export { countries, dialCodeMap, getDialCodeByCountryCode };
+export { countries };
