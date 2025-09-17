@@ -19,6 +19,9 @@ import {
   StyledWarningIcon,
   StyledRelative,
   StyledFlag,
+  StyledDial,
+  StyledCountryName,
+  StyledCountryCode,
 } from "./styles";
 
 const sanitizePhoneValue = (input: string) => input.replace(/[^0-9\s\-()]/g, "");
@@ -117,7 +120,7 @@ const PhoneNumberFieldUI = (props: IPhoneNumberField) => {
               <ReactCountryFlag svg countryCode={selectedCountry.code} />
             </StyledFlag>
             {showDialCode && (
-              <span className="dial">({selectedCountry.dialCode})</span>
+              <StyledDial>({selectedCountry.dialCode})</StyledDial>
             )}
             <MdKeyboardArrowDown size={18} />
           </StyledCountryButton>
@@ -151,13 +154,13 @@ const PhoneNumberFieldUI = (props: IPhoneNumberField) => {
                   <StyledFlag $size={18}>
                     <ReactCountryFlag svg countryCode={country.code} />
                   </StyledFlag>
-                  <span className="name">{country.name}</span>
-                  <span className="code">{country.dialCode}</span>
+                  <StyledCountryName>{country.name}</StyledCountryName>
+                  <StyledCountryCode>{country.dialCode}</StyledCountryCode>
                 </StyledCountryItem>
               ))}
               {filteredCountries.length === 0 && (
                 <StyledCountryItem $active={false}>
-                  <span className="name">{noResultsText}</span>
+                  <StyledCountryName>{noResultsText}</StyledCountryName>
                 </StyledCountryItem>
               )}
             </StyledCountryList>
