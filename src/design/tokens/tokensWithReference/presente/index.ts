@@ -528,6 +528,16 @@ const presente = {
       color: inube.palette.neutral.N0,
     },
   },
+  backgroundUnsplash: {
+    mask: { background: { color: inube.palette.neutralAlpha.N60A } },
+  },
+  backgroundPage: {
+    mask: { background: { color: inube.palette.neutralAlpha.N60A } },
+  },
+  formContainer: {
+    background: { color: inube.palette.neutral.N0 },
+    shadow: { color: inube.palette.neutral.N10 },
+  },
   requestProcessDesktop: {
     progressBar: {
       track: {
