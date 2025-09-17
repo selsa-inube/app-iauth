@@ -312,6 +312,66 @@ const sistemasenlinea = {
       }
     }
   },
+  informativeCard: {
+    container: {
+      background: { color: inube.palette.neutral.N0 },
+      shadow: {
+        color: inube.palette.neutralAlpha.N30A,
+        offsetX: "0px",
+        offsetY: "4px",
+        blur: "16px",
+        spread: "0px",
+      },
+    },
+  },
+  modal: {
+    card: {
+      background: { color: inube.palette.neutral.N0 },
+      shadow: {
+        color: inube.palette.neutral.N10,
+        offsetX: "0px",
+        offsetY: "2px",
+        blur: "2px",
+        spread: "0px",
+      },
+    },
+  },
+  globalHeader: {
+    background: {
+      color: inube.palette.neutral.N0,
+    },
+    border: {
+      bottom: {
+        color: inube.palette.neutral.N60,
+      },
+    },
+  },
+  globalFooter: {
+    background: {
+      color: inube.palette.neutral.N0,
+    },
+  },
+  requestProcessDesktop: {
+    progressBar: {
+      track: {
+        background: { color: inube.palette.neutral.N30 },
+        border: { color: inube.palette.neutral.N10 },
+      },
+    },
+    stepIndicator: {
+      border: { color: { error: inube.palette.red.R400, success: inube.palette.green.G400 } },
+    },
+    requestContainer: {
+      border: { color: inube.palette.neutral.N40 },
+    },
+  },
+  requirementsBox: {
+    box: {
+      background: { color: inube.palette.neutral.N10 },
+    },
+    content: { color: inube.palette.neutral.N300 },
+    icon: { color: inube.palette.neutral.N300 },
+  },
   phoneField:{
     border: {
       color: {

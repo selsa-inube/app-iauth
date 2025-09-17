@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { tokensWithReference } from "@design/tokens/tokensWithReference";
+import { informativeCardTokens } from "./tokens";
 
 interface IStyledContainer {
   $isMobile: boolean;
@@ -22,9 +23,20 @@ const StyledContainer = styled.div<IStyledContainer>`
 `;
 
 const StyledCard = styled.div<IStyledContainer>`
-  background-color: #ffffff;
+  background-color: ${({ theme }) =>
+    (theme as any)?.informativeCard?.container?.background?.color ?? informativeCardTokens.container.background.color};
   border-radius: ${tokensWithReference.spacing.s100};
-  box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.1);
+  box-shadow: ${({ theme }) => {
+    const t = (theme as any)?.informativeCard?.container?.shadow;
+    const shadow = {
+      color: t?.color ?? informativeCardTokens.container.shadow.color,
+      x: t?.offsetX ?? informativeCardTokens.container.shadow.offsetX,
+      y: t?.offsetY ?? informativeCardTokens.container.shadow.offsetY,
+      blur: t?.blur ?? informativeCardTokens.container.shadow.blur,
+      spread: t?.spread ?? informativeCardTokens.container.shadow.spread,
+    };
+    return `${shadow.x} ${shadow.y} ${shadow.blur} ${shadow.spread} ${shadow.color}`;
+  }};
   padding: ${(props) =>
     props.$isMobile
       ? tokensWithReference.spacing.s300
