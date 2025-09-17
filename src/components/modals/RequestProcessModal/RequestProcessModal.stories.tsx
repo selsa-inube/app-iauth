@@ -4,6 +4,46 @@ import { ERequestStepsStatus } from '@enum/components/ERequestStepsStatus';
 import { IRequestSteps } from '@ptypes/components/requestSteps';
 import { useState } from 'react';
 import { Button } from '@inubekit/inubekit';
+import styled from 'styled-components';
+
+const StyledPadded = styled.div`
+  padding: 20px;
+`;
+
+const StyledControls = styled.div`
+  margin-bottom: 20px;
+  display: flex;
+  gap: 10px;
+  flex-direction: column;
+`;
+
+const StyledAlert = styled.div`
+  padding: 12px;
+  background-color: #d4edda;
+  color: #155724;
+  border: 1px solid #c3e6cb;
+  border-radius: 4px;
+  font-weight: bold;
+`;
+
+const StyledToolbar = styled.div`
+  margin-bottom: 20px;
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+`;
+
+const StyledNote = styled.div`
+  margin-top: 8px;
+  padding: 8px;
+  background-color: #f8f9fa;
+  border-left: 4px solid #007bff;
+  font-style: italic;
+`;
+
+const StyledInfo = styled.div`
+  margin-bottom: 20px;
+`;
 
 const meta: Meta<typeof RequestProcessModal> = {
   title: 'Components/Modals/RequestProcessModal',
@@ -253,25 +293,18 @@ export const WithCompleteButton: Story = {
     };
 
     return (
-      <div style={{ padding: '20px' }}>
-        <div style={{ marginBottom: '20px', display: 'flex', gap: '10px', flexDirection: 'column' }}>
+      <StyledPadded>
+        <StyledControls>
           <Button onClick={() => setShowModal(true)}>
             Mostrar Modal Completado
           </Button>
           
           {message && (
-            <div style={{ 
-              padding: '12px', 
-              backgroundColor: '#d4edda', 
-              color: '#155724', 
-              border: '1px solid #c3e6cb', 
-              borderRadius: '4px',
-              fontWeight: 'bold'
-            }}>
+            <StyledAlert>
               {message}
-            </div>
+            </StyledAlert>
           )}
-        </div>
+        </StyledControls>
 
         {showModal && (
           <RequestProcessModal
@@ -283,7 +316,7 @@ export const WithCompleteButton: Story = {
             onComplete={handleComplete}
           />
         )}
-      </div>
+      </StyledPadded>
     );
   },
   parameters: {
@@ -372,8 +405,8 @@ export const Interactive: Story = {
     const allStepsCompleted = currentStep >= steps.length;
 
     return (
-      <div style={{ padding: '20px' }}>        
-        <div style={{ marginBottom: '20px', display: 'flex', gap: '10px', flexWrap: 'wrap' }}>
+      <StyledPadded>
+        <StyledToolbar>
           <Button onClick={() => setShowModal(true)}>
             Mostrar Modal
           </Button>
@@ -389,23 +422,17 @@ export const Interactive: Story = {
           <Button onClick={reset} variant="outlined">
             Reiniciar
           </Button>
-        </div>
+        </StyledToolbar>
 
-        <div style={{ marginBottom: '20px' }}>
+        <StyledInfo>
           <div><strong>Paso actual:</strong> {currentStep} de {steps.length}</div>
           <div><strong>Estado:</strong> {allStepsCompleted ? 'Todos los pasos completados - Botón "Entendido" visible' : 'En progreso'}</div>
           {lastAction && (
-            <div style={{ 
-              marginTop: '8px', 
-              padding: '8px', 
-              backgroundColor: '#f8f9fa', 
-              borderLeft: '4px solid #007bff',
-              fontStyle: 'italic'
-            }}>
+            <StyledNote>
               {lastAction}
-            </div>
+            </StyledNote>
           )}
-        </div>
+        </StyledInfo>
 
         {showModal && (
           <RequestProcessModal
@@ -417,7 +444,7 @@ export const Interactive: Story = {
             onComplete={allStepsCompleted ? handleComplete : undefined}
           />
         )}
-      </div>
+      </StyledPadded>
     );
   },
   parameters: {

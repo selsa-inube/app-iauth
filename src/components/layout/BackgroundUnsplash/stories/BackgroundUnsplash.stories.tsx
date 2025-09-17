@@ -1,6 +1,34 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { BackgroundUnsplash } from "../index";
 import { Text } from "@inubekit/inubekit";
+import styled from "styled-components";
+
+const StyledCenteredColumn = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 20px;
+  gap: 16px;
+`;
+
+const StyledCentered = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 20px;
+`;
+
+const StyledCard = styled.div`
+  background-color: white;
+  border-radius: 8px;
+  padding: 32px;
+  box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.1);
+  max-width: 500px;
+  text-align: center;
+`;
 
 const meta = {
   title: "Layout/BackgroundUnsplash",
@@ -23,17 +51,7 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
   args: {
     children: (
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          justifyContent: "center",
-          minHeight: "100vh",
-          padding: "20px",
-          gap: "16px",
-        }}
-      >
+      <StyledCenteredColumn>
         <Text type="headline" size="large" appearance="dark" textAlign="center">
           Contenido sobre fondo Unsplash
         </Text>
@@ -41,7 +59,7 @@ export const Default: Story = {
           Este es un ejemplo de contenido que se muestra sobre el fondo de
           Unsplash.
         </Text>
-      </div>
+      </StyledCenteredColumn>
     ),
   },
 };
@@ -49,25 +67,8 @@ export const Default: Story = {
 export const WithCard: Story = {
   args: {
     children: (
-      <div
-        style={{
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          minHeight: "100vh",
-          padding: "20px",
-        }}
-      >
-        <div
-          style={{
-            backgroundColor: "white",
-            borderRadius: "8px",
-            padding: "32px",
-            boxShadow: "0px 4px 16px rgba(0, 0, 0, 0.1)",
-            maxWidth: "500px",
-            textAlign: "center",
-          }}
-        >
+      <StyledCentered>
+        <StyledCard>
           <Text
             type="headline"
             size="medium"
@@ -81,8 +82,8 @@ export const WithCard: Story = {
             Esta tarjeta demuestra cómo se ve el contenido sobre el fondo de
             Unsplash.
           </Text>
-        </div>
-      </div>
+        </StyledCard>
+      </StyledCentered>
     ),
   },
 };
