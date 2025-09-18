@@ -8,31 +8,43 @@ const StyledFieldsRow = styled.div<{ $isMobile?: boolean }>`
   justify-content: space-between;
   width: 100%;
   gap: ${GAP};
+`;
 
-  & > .field-wrapper {
-    flex: 1 1 0;
-    min-width: 0;
-    ${({ $isMobile }) => $isMobile && "margin: 0.5rem 0;"}
-    box-sizing: border-box;
-  }
+const StyledFieldWrapper = styled.div<{ $isMobile?: boolean }>`
+  flex: 1 1 0;
+  min-width: 0;
+  box-sizing: border-box;
+  ${({ $isMobile }) => $isMobile && "margin: 0.5rem 0;"}
+`;
 
-  & > .field-wrapper.middle {
-    ${({ $isMobile }) =>
-      $isMobile &&
-      `
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-        `}
-  }
-
+const StyledFieldFirst = styled(StyledFieldWrapper)<{ $isMobile?: boolean }>`
   ${({ $isMobile }) =>
-    !$isMobile &&
-    `
-    & > .field-wrapper.first { flex: 0 0 calc(35% - (${GAP} * 2 / 3)); max-width: calc(35% - (${GAP} * 2 / 3)); }
-    & > .field-wrapper.middle { flex: 0 0 calc(25% - (${GAP} * 2 / 3)); max-width: calc(25% - (${GAP} * 2 / 3)); }
-    & > .field-wrapper.last { flex: 0 0 calc(35% - (${GAP} * 2 / 3)); max-width: calc(35% - (${GAP} * 2 / 3)); }
+    !$isMobile && `
+      flex: 0 0 calc(35% - (${GAP} * 2 / 3));
+      max-width: calc(35% - (${GAP} * 2 / 3));
     `}
 `;
 
-export { StyledFieldsRow };
+const StyledFieldMiddle = styled(StyledFieldWrapper)<{ $isMobile?: boolean }>`
+  ${({ $isMobile }) =>
+    $isMobile
+      ? `
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+      `
+      : `
+        flex: 0 0 calc(25% - (${GAP} * 2 / 3));
+        max-width: calc(25% - (${GAP} * 2 / 3));
+      `}
+`;
+
+const StyledFieldLast = styled(StyledFieldWrapper)<{ $isMobile?: boolean }>`
+  ${({ $isMobile }) =>
+    !$isMobile && `
+      flex: 0 0 calc(35% - (${GAP} * 2 / 3));
+      max-width: calc(35% - (${GAP} * 2 / 3));
+    `}
+`;
+
+export { StyledFieldsRow, StyledFieldFirst, StyledFieldMiddle, StyledFieldLast };

@@ -8,7 +8,12 @@ import {
 } from "@inubekit/inubekit";
 import { MdOutlineMail } from "react-icons/md";
 import type { IContactInfoStepUI } from "@ptypes/components/register/steps/IContactInfoStepUI";
-import { StyledFieldsRow } from "./styles";
+import {
+  StyledFieldsRow,
+  StyledFieldFirst,
+  StyledFieldMiddle,
+  StyledFieldLast,
+} from "./styles";
 import { PhoneNumberField } from "@components/form/PhoneNumberField";
 
 const ContactInfoStepUI = (props: IContactInfoStepUI) => {
@@ -46,7 +51,7 @@ const ContactInfoStepUI = (props: IContactInfoStepUI) => {
         />
         <Fieldset legend="Móvil" spacing="compact">
           <StyledFieldsRow $isMobile={isMobile}>
-            <div className="field-wrapper first">
+            <StyledFieldFirst $isMobile={isMobile}>
               <PhoneNumberField
                 id="phone"
                 label={labels.contactInfo.phoneLabel}
@@ -62,8 +67,8 @@ const ContactInfoStepUI = (props: IContactInfoStepUI) => {
                 showDialCode={!isMobile}
                 error={errors?.phone ?? ""}
               />
-            </div>
-            <div className="field-wrapper middle">
+            </StyledFieldFirst>
+            <StyledFieldMiddle $isMobile={isMobile}>
               <Label>
                 <b>
                   {isMobile
@@ -79,8 +84,8 @@ const ContactInfoStepUI = (props: IContactInfoStepUI) => {
               >
                 {labels.contactInfo.whatsappToggleLabel}
               </Toggle>
-            </div>
-            <div className="field-wrapper last">
+            </StyledFieldMiddle>
+            <StyledFieldLast $isMobile={isMobile}>
               {formData.isWhatsappUsed === false && (
                 <PhoneNumberField
                   id="whatsappPhone"
@@ -99,7 +104,7 @@ const ContactInfoStepUI = (props: IContactInfoStepUI) => {
                   error={errors?.whatsappPhone ?? ""}
                 />
               )}
-            </div>
+            </StyledFieldLast>
           </StyledFieldsRow>
         </Fieldset>
       </Stack>
