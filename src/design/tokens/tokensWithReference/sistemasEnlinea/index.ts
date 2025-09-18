@@ -1,4 +1,5 @@
 import { inube } from "@inubekit/inubekit";
+import { palette } from "@design/tokens/palette";
 const sistemasenlinea = {
   icon: {
     primary: {
@@ -352,10 +353,10 @@ const sistemasenlinea = {
     },
   },
   backgroundUnsplash: {
-    mask: { background: { color: inube.palette.neutralAlpha.N60A } },
+    mask: { background: { color: palette.neutralAlpha.W65A } },
   },
   backgroundPage: {
-    mask: { background: { color: inube.palette.neutralAlpha.N60A } },
+    mask: { background: { color: palette.neutralAlpha.W70A } },
   },
   formContainer: {
     background: { color: inube.palette.neutral.N0 },

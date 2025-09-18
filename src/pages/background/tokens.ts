@@ -1,9 +1,9 @@
-import { inube } from "@inubekit/inubekit";
+import { palette } from "@design/tokens/palette";
 
 const backgroundPageTokens = {
   mask: {
     background: {
-      color: inube.palette.neutralAlpha.N60A,
+      color: palette.neutralAlpha.W70A,
     },
   },
 };
