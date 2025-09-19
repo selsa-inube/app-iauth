@@ -8,7 +8,6 @@ import { Mask } from "@components/utils/Mask";
 import { mask } from "@config/login/mask";
 import { ModalWarning } from "@components/layout/ModalWarning";
 import { ModalInformation } from "@design/feedback/modalInformation";
-import { tokens } from "@design/tokens/tokens";
 import { spacing } from "@design/tokens/tokensWithReference/spacing/spacing";
 import { RedirectSpinner } from "@pages/redirectSpinner";
 
@@ -23,6 +22,7 @@ const HomeUI = (props: IHomeUI) => {
     isRedirectPortal,
     setRedirectPortal,
     callbackUrl,
+    applicationName,
   } = props;
 
   return (
@@ -68,7 +68,7 @@ const HomeUI = (props: IHomeUI) => {
             size="small"
             textAlign="center"
           >
-            {labelsTitles.titleImg.replace("{0}", "crédito")}
+            {labelsTitles.titleImg.replace("{0}", applicationName ?? "")}
           </Text>
           <StyledImg
             src={urlLogo}

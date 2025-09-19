@@ -17,6 +17,9 @@ const LoginForm = (props: ILoginForm) => {
     widthStack,
     labelsSize,
     labelsSizeDifferent,
+    securityImageUrl,
+    securityPhrase,
+    screenMobile
   } = useTwoStepLoginForm({
     setModalWarningType,
     setRedirectPortal,
@@ -36,6 +39,9 @@ const LoginForm = (props: ILoginForm) => {
         labelsSize={labelsSize}
         labelsSizeDifferent={labelsSizeDifferent}
         showLink={showLink}
+        securityImageUrl={securityImageUrl}
+        securityPhrase={securityPhrase}
+        isMobile={screenMobile}
       />
     </Card>
   );

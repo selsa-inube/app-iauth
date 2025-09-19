@@ -28,7 +28,7 @@ const ModalInformationUI = (props: IModalUI) => {
             >
                 <Box
                     borderRadius="8px 0px 0px 8px"
-                    appearance="light"
+                    appearance="neutral"
                     flexDirection="column"
                     justifyContent="center"
                     alignItems="center"
@@ -44,7 +44,7 @@ const ModalInformationUI = (props: IModalUI) => {
                 </Box>
                 <Box
                     borderRadius="0px 8px 8px 0px"
-                    appearance="dark"
+                    appearance="light"
                     flexDirection="column"
                     justifyContent="center"
                     gap={tokens.spacing.s075}
@@ -53,7 +53,7 @@ const ModalInformationUI = (props: IModalUI) => {
                     <Text
                         type="label"
                         size="medium"
-                        appearance="light"
+                        appearance="dark"
                     >
                         {modalMock.content}
                     </Text>

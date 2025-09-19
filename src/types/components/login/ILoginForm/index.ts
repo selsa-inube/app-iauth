@@ -15,6 +15,9 @@ interface ILoginForm {
   labelsSize: ITextSize;
   labelsSizeDifferent: ITextSize;
   showLink: boolean;
+  securityImageUrl?: string;
+  securityPhrase?: string;
+  isMobile?: boolean;
 }
 
 export type { ILoginForm };

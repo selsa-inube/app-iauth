@@ -21,7 +21,7 @@ const Home = (props: IHome) => {
 
   const originatorId = props.originatorId ?? searchParams.get("originatorId") ?? undefined;
   const callbackUrl = props.callbackUrl ?? searchParams.get("callbackUrl") ?? undefined;
-
+  const applicationName = props.applicationName ?? searchParams.get("applicationName") ?? undefined;
   const missingParams = REQUIRED_PARAMS.filter((p) => !searchParams.get(p));
   const hasMissing = missingParams.length > 0;
 
@@ -63,6 +63,7 @@ const Home = (props: IHome) => {
       isRedirectPortal={isRedirectPortal}
       setRedirectPortal={setIsRedirectPortal}
       callbackUrl={callbackUrl}
+      applicationName={applicationName}
     />
   );
 };
