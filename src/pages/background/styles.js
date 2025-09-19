@@ -21,8 +21,8 @@ const StyledMask = styled.div`
     theme?.backgroundPage?.mask?.background?.color ??
     backgroundPageTokens.mask.background.color};
   z-index: -1;
+  z-index: -1;
   box-sizing: border-box;
   overflow: auto;
 `;
-
 export { StyledMaskContainer, StyledMask };

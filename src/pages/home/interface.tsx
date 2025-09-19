@@ -49,14 +49,17 @@ const HomeUI = (props: IHomeUI) => {
 
       <Stack
         direction="column"
-        padding={`${tokens.spacing.s150} ${tokens.spacing.s400}`}
-        height="auto"
+        height="100vh"
+        justifyContent="flex-start"
+        alignItems="center"
         gap={isMobile ? spacing.s250 : "0"}
       >
         <Stack
           direction="column"
           justifyContent="center"
-          width={isMobile ? `190px` : `200px`}
+          alignItems="center"
+          padding={`${spacing.s200} 0 0 0`}
+          width={isMobile ? `240px` : `360px`}
         >
           <Text
             appearance="gray"
@@ -65,7 +68,7 @@ const HomeUI = (props: IHomeUI) => {
             size="small"
             textAlign="center"
           >
-            {labelsTitles.titleImg}
+            {labelsTitles.titleImg.replace("{0}", "crédito")}
           </Text>
           <StyledImg
             src={urlLogo}
@@ -76,7 +79,10 @@ const HomeUI = (props: IHomeUI) => {
         <Stack
           direction="column"
           alignItems="center"
+          justifyContent="center"
+          alignContent="center"
           width="100%"
+          height="100%"
           gap={spacing.s200}
         >
           <ModalInformation />

@@ -4,6 +4,7 @@ import { MdOutlineCampaign } from "react-icons/md";
 import { tokens } from "@design/tokens/tokens";
 import { IModalUI } from "@ptypes/pages/modal/IModalUI";
 import { modalMock } from "@config/mocks/pages/modalMock";
+import { labelsModalInformation } from "@config/login/modalInformation";
 
 const ModalInformationUI = (props: IModalUI) => {
     const {
@@ -11,51 +12,53 @@ const ModalInformationUI = (props: IModalUI) => {
     } = props;
 
     return (
-        <Stack
-            width={width}
-            height="75px"
-        >
-            <Box
-                borderRadius="8px 0px 0px 8px"
-                appearance="light"
-                flexDirection="column"
-                justifyContent="center"
-                alignItems="center"
-                padding={tokens.spacing.s100}
-                width="40px"
-            >
-                <Icon
+        <Stack direction="column" gap={tokens.spacing.s200} alignContent="center" justifyContent="center">
+                <Text
+                    type="label"
+                    size="large"
                     appearance="dark"
-                    icon={
-                        <MdOutlineCampaign />
-                    }
-                />
-            </Box>
-            <Box
-                borderRadius="0px 8px 8px 0px"
-                appearance="dark"
-                flexDirection="column"
-                justifyContent="center"
-                gap={tokens.spacing.s075}
-                padding={tokens.spacing.s100}
-            >
-                <Text
-                    type="label"
-                    size="medium"
-                    appearance="light"
                     weight="bold"
-                    textAlign="start"
+                    textAlign="center"
                 >
-                   
+                    {labelsModalInformation.title}
                 </Text>
-                <Text
-                    type="label"
-                    size="medium"
+            <Stack
+                width={width}
+                height="75px"
+            >
+                <Box
+                    borderRadius="8px 0px 0px 8px"
                     appearance="light"
+                    flexDirection="column"
+                    justifyContent="center"
+                    alignItems="center"
+                    padding={tokens.spacing.s100}
+                    width="40px"
                 >
-                    {modalMock.content}
-                </Text>
-            </Box>
+                    <Icon
+                        appearance="dark"
+                        icon={
+                            <MdOutlineCampaign />
+                        }
+                    />
+                </Box>
+                <Box
+                    borderRadius="0px 8px 8px 0px"
+                    appearance="dark"
+                    flexDirection="column"
+                    justifyContent="center"
+                    gap={tokens.spacing.s075}
+                    padding={tokens.spacing.s100}
+                >
+                    <Text
+                        type="label"
+                        size="medium"
+                        appearance="light"
+                    >
+                        {modalMock.content}
+                    </Text>
+                </Box>
+            </Stack>
         </Stack>
     );
 }

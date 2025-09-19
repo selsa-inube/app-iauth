@@ -47,14 +47,6 @@ const Home = (props: IHome) => {
       <PageLayout>
         <StatusMessage
           messageType={EStatusMessage.MISSING_PARAMS}
-          // Removemos botón para bloquear avance: sobre-escribimos con customMessage sin buttonText
-          customMessage={{
-            title: "Error en la solicitud",
-            message:
-              "Faltan parámetros obligatorios en la URL (" + missingParams.join(", ") + "). No es posible continuar.",
-            buttonText: "", // evita render de botón (ajustaremos StatusMessageUI para soportar ocultarlo si vacío)
-          }}
-          onButtonClick={undefined}
         />
       </PageLayout>
     );
