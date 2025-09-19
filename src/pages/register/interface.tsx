@@ -41,7 +41,7 @@ const RegisterUI = (props: IRegisterPageUI) => {
           alignItems="center"
           direction="column"
         >
-          <HeaderUI labelsSizeDifferent={labelsSize} />
+          <HeaderUI />
           <UserWelcome userData={userData} labels={labels} />
         </Stack>
         

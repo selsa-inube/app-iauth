@@ -7,7 +7,6 @@ import { Header } from "@components/layout/Header";
 const LoginFormUI = (props: ILoginForm) => {
     const {
         handleSubmit,
-        labelsSizeDifferent,
         labels,
         inputValid,
         handleInputChange,
@@ -27,7 +26,7 @@ const LoginFormUI = (props: ILoginForm) => {
                 width="100%"
                 height="100%"
             >
-                <Header labelsSizeDifferent={labelsSizeDifferent} />
+                <Header />
 
                 <Divider
                     dashed

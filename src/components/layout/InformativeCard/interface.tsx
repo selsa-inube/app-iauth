@@ -12,13 +12,12 @@ const InformativeCardUI = (props: IInformativeCard) => {
     buttonAppearance = "primary",
     icon,
     onButtonClick,
-    labelsSizeDifferent,
   } = props;
 
   return (
     <Card>
       <Stack direction="column" gap={tokensWithReference.spacing.s250}>
-        <HeaderUI labelsSizeDifferent={labelsSizeDifferent} />
+        <HeaderUI />
         <Divider dashed />
 
         <Text
