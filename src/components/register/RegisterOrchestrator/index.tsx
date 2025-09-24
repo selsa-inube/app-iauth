@@ -5,6 +5,7 @@ import { PasswordStep } from "../steps/PasswordStep";
 import { ContactInfoStep } from "../steps/ContactInfoStep";
 import { SecurityQuestionsStep } from "../steps/SecurityQuestionsStep";
 import { DataUsageStep } from "../steps/DataUsageStep";
+import { SecurityImageStep } from "../steps/SecurityImageStep";
 import type { IRegisterOrchestrator } from "@ptypes/components/register/IRegisterOrchestratorProps";
 import type { IRegisterFormData } from "@ptypes/components/register/IRegisterFormData";
 import type { IStep } from "@ptypes/components/register/IFormContainer";
@@ -45,22 +46,34 @@ const RegisterOrchestrator = (props: IRegisterOrchestrator) => {
 
   const securityQuestionsStep: IStep = {
     id: "questions",
-    number: 4,
+    number: 0,
     name: "Preguntas de Seguridad",
     description: "Preguntas secretas útiles para cambios en tu cuenta.",
   };
 
+  const securityImageStep: IStep = {
+    id: "security-image",
+    number: 0,
+    name: "Imagen y frase de seguridad",
+    description: "Configura tu imagen y frase de seguridad.",
+  };
+
   const dataUsageStep: IStep = {
     id: "usage",
-    number: passwordPolicy?.policyForTheUserKey === "HighLevel" ? 5 : 4,
+    number: 0,
     name: "Uso de datos personales",
     description: "Confirmación de uso de tus datos personales.",
   };
 
-  const steps: IStep[] =
+  const stepsBeforeNumbering: IStep[] =
     passwordPolicy?.policyForTheUserKey === "HighLevel"
-      ? [...baseSteps, securityQuestionsStep, dataUsageStep]
-      : [...baseSteps, dataUsageStep];
+      ? [...baseSteps, securityQuestionsStep, securityImageStep, dataUsageStep]
+      : [...baseSteps, securityImageStep, dataUsageStep];
+
+  const steps: IStep[] = stepsBeforeNumbering.map((s, index) => ({
+    ...s,
+    number: index + 1,
+  }));
 
   const [currentStep, setCurrentStep] = useState<IStep>(steps[0]);
   const [isNextEnabled, setIsNextEnabled] = useState(false);
@@ -144,6 +157,12 @@ const RegisterOrchestrator = (props: IRegisterOrchestrator) => {
             {...baseProps}
             securityQuestions={securityQuestions}
             minRequiredAnswers={3}
+          />
+        );
+      case "security-image":
+        return (
+          <SecurityImageStep
+            {...baseProps}
           />
         );
       case "usage":

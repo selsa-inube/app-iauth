@@ -22,6 +22,8 @@ interface IRegisterFormData {
   // Paso 5: Data Usage
   dataTreatmentAccepted: boolean;
   dataIdentityAccepted: boolean;
+  // Paso nuevo: Imagen y frase de seguridad
+  securityPhrase?: string;
 }
 
 export type { IRegisterFormData };
