@@ -23,8 +23,8 @@ const HomeUI = (props: IHomeUI) => {
     setRedirectPortal,
     callbackUrl,
     applicationName,
+    modalInformation,
   } = props;
-
   return (
     <Background>
       <Mask zIndex={mask.maskBackground.zIndex} isModal={false} />
@@ -85,7 +85,11 @@ const HomeUI = (props: IHomeUI) => {
           height="100%"
           gap={spacing.s200}
         >
-          <ModalInformation />
+          <ModalInformation 
+            showModal={modalInformation?.showModal}
+            title={modalInformation?.title}
+            content={modalInformation?.content}
+          />
           <LoginForm
             setModalWarningType={setModalWarningType}
             setRedirectPortal={setRedirectPortal}

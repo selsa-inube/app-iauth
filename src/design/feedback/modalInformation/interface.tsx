@@ -3,25 +3,31 @@ import { Box } from "@components/layout/Box";
 import { MdOutlineCampaign } from "react-icons/md";
 import { tokens } from "@design/tokens/tokens";
 import { IModalUI } from "@ptypes/pages/modal/IModalUI";
-import { modalMock } from "@config/mocks/pages/modalMock";
 import { labelsModalInformation } from "@config/login/modalInformation";
 
 const ModalInformationUI = (props: IModalUI) => {
     const {
         width,
+        showModal = true,
+        title = labelsModalInformation.title,
+        content = labelsModalInformation.defaultContent,
     } = props;
+
+    if (!showModal) {
+        return null;
+    }
 
     return (
         <Stack direction="column" gap={tokens.spacing.s200} alignContent="center" justifyContent="center">
-                <Text
-                    type="label"
-                    size="large"
-                    appearance="dark"
-                    weight="bold"
-                    textAlign="center"
-                >
-                    {labelsModalInformation.title}
-                </Text>
+            <Text
+                type="label"
+                size="large"
+                appearance="dark"
+                weight="bold"
+                textAlign="center"
+            >
+                {title}
+            </Text>
             <Stack
                 width={width}
                 height="75px"
@@ -37,9 +43,7 @@ const ModalInformationUI = (props: IModalUI) => {
                 >
                     <Icon
                         appearance="dark"
-                        icon={
-                            <MdOutlineCampaign />
-                        }
+                        icon={<MdOutlineCampaign />}
                     />
                 </Box>
                 <Box
@@ -55,7 +59,7 @@ const ModalInformationUI = (props: IModalUI) => {
                         size="medium"
                         appearance="dark"
                     >
-                        {modalMock.content}
+                        {content}
                     </Text>
                 </Box>
             </Stack>

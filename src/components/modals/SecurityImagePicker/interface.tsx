@@ -1,4 +1,3 @@
-import { useMemo } from "react";
 import { Stack, Grid, Button, Blanket } from "@inubekit/inubekit";
 import { Modal } from "@components/layout/Modal";
 import type { ISecurityImagePickerUI } from "@ptypes/components/modals/SecurityImagePicker/ISecurityImagePickerUI";
