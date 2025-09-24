@@ -1,11 +1,11 @@
 import { Stack, Text, Icon, Button, Textfield, Box } from "@inubekit/inubekit";
 import { MdOutlineImage } from "react-icons/md";
-import { StyledCircle } from "./styles";
+import { StyledCircle, StyledSelectedImage } from "./styles";
 import type { ISecurityImageStepUI } from "@ptypes/components/register/steps/ISecurityImageStepUI";
 import { securityImageStepLabels } from "@config/register/labels/securityImageStepLabels";
 
 const SecurityImageStepUI = (props: ISecurityImageStepUI) => {
-  const { formData, onPhraseChange } = props;
+  const { formData, onPhraseChange, onOpenPicker } = props;
 
   return (
     <Stack direction="column" gap="16px" width="100%" height="100%">
@@ -15,9 +15,13 @@ const SecurityImageStepUI = (props: ISecurityImageStepUI) => {
           </Text>
           <Stack direction="column" alignItems="center" gap="16px" padding="11px 0">
             <StyledCircle>
-              <Icon size="60px" icon={<MdOutlineImage />} appearance="light" />
+              {formData.securityImage ? (
+                <StyledSelectedImage src={formData.securityImage} alt={securityImageStepLabels.selectedAlt} />
+              ) : (
+                <Icon size="60px" icon={<MdOutlineImage />} appearance="light" />
+              )}
             </StyledCircle>
-            <Button variant="outlined" appearance="primary">
+            <Button variant="outlined" appearance="primary" onClick={onOpenPicker}>
               {securityImageStepLabels.selectButton}
             </Button>
           </Stack>

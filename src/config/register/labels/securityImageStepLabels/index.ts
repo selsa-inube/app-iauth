@@ -3,6 +3,7 @@ const securityImageStepLabels = {
   selectButton: "Seleccionar",
   phraseLabel: "Frase de seguridad",
   phrasePlaceholder: "Escribe aquí",
+  selectedAlt: "Imagen de seguridad seleccionada",
 };
 
 export { securityImageStepLabels };

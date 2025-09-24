@@ -18,12 +18,11 @@ interface IRegisterFormData {
 
   // Paso 4: Security Questions (Dynamic)
   securityAnswers: Record<string, string>;
-
-  // Paso 5: Data Usage
+  securityPhrase?: string;
+  securityImage?: string;
   dataTreatmentAccepted: boolean;
   dataIdentityAccepted: boolean;
-  // Paso nuevo: Imagen y frase de seguridad
-  securityPhrase?: string;
+  // New step: Security image and phrase
 }
 
 export type { IRegisterFormData };
