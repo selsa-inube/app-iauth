@@ -1,7 +1,7 @@
 import type { ITextSize } from "@ptypes/components/ITextSize";
 import type { UserData } from "@ptypes/hooks/useValidationToken/IUserData";
 import type { IRegisterFormData } from "@ptypes/components/register/IRegisterFormData";
-import type { IPasswordPolicy } from "@ptypes/hooks/usePasswordPolicy";
+import type { IPasswordPolicy } from "@ptypes/hooks/usePasswordPolicy/IPasswordPolicy";
 import type { IRegisterLabels } from "@ptypes/config/register/IRegisterLabels";
 import type { ISecurityQuestionsResponse } from "@ptypes/api/ISecurityQuestionsResponse";
 

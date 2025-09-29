@@ -1,14 +1,6 @@
 import styled from "styled-components";
-import { tokensWithReference } from "@design/tokens/tokensWithReference";
-
-interface IStyledInformationBox {
-  $width?: string;
-  $height?: string;
-  $minWidth?: string;
-  $maxWidth?: string;
-  $minHeight?: string;
-  $maxHeight?: string;
-}
+import { informationBoxTokens } from "./tokens";
+import type { IStyledInformationBox } from "@ptypes/components/utils/InformationBox/IStyledInformationBox";
 
 const StyledInformationBox = styled.div<IStyledInformationBox>`
   position: relative;
@@ -20,25 +12,24 @@ const StyledInformationBox = styled.div<IStyledInformationBox>`
   max-width: ${({ $maxWidth }) => $maxWidth || "none"};
   min-height: ${({ $minHeight }) => $minHeight || "auto"};
   max-height: ${({ $maxHeight }) => $maxHeight || "none"};
-  background: #fafbfc;
-  border-radius: 8px;
+  background: ${informationBoxTokens.container.background.color};
+  border-radius: ${informationBoxTokens.container.radius};
   overflow: hidden;
 `;
 
 const StyledContent = styled.div`
   font-size: 0.75rem;
-  color: #666;
+  color: ${informationBoxTokens.content.color};
   display: flex;
   flex-direction: column;
-  gap: ${tokensWithReference.spacing.s075};
-  padding: ${tokensWithReference.spacing.s075}
-    ${tokensWithReference.spacing.s200};
+  gap: ${informationBoxTokens.content.gap};
+  padding: ${informationBoxTokens.content.paddingY} ${informationBoxTokens.content.paddingX};
 `;
 
 const StyledHeader = styled.div`
   display: flex;
   align-items: center;
-  gap: ${tokensWithReference.spacing.s075};
+  gap: ${informationBoxTokens.header.gap};
 `;
 
 export {

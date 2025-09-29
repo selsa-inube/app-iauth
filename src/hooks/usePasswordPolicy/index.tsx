@@ -1,9 +1,8 @@
 import { useCallback } from "react";
 import type {
   IPasswordPolicy,
-  IPasswordValidationResult,
-} from "@ptypes/hooks/usePasswordPolicy";
-
+} from "@ptypes/hooks/usePasswordPolicy/IPasswordPolicy";
+import type { IPasswordValidationResult } from "@ptypes/hooks/usePasswordPolicy/IPasswordValidationResult";
 const usePasswordPolicy = () => {
   const validatePassword = useCallback(
     (
