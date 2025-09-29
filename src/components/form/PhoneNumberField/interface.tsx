@@ -23,6 +23,7 @@ import {
   StyledCountryName,
   StyledCountryCode,
 } from "./styles";
+import { phoneFieldTokens } from "@components/form/PhoneNumberField/tokens";
 
 const sanitizePhoneValue = (input: string) => input.replace(/[^0-9\s\-()]/g, "");
 
@@ -179,7 +180,7 @@ const PhoneNumberFieldUI = (props: IPhoneNumberField) => {
             >
               <path
                 d="M6 1L11 10H1L6 1Z"
-                stroke="#D14343"
+                stroke={phoneFieldTokens.helperText.color.error}
                 strokeWidth="1.5"
                 strokeLinecap="round"
                 strokeLinejoin="round"
@@ -187,12 +188,12 @@ const PhoneNumberFieldUI = (props: IPhoneNumberField) => {
               />
               <path
                 d="M6 4V6"
-                stroke="#D14343"
+                stroke={phoneFieldTokens.helperText.color.error}
                 strokeWidth="1.5"
                 strokeLinecap="round"
                 strokeLinejoin="round"
               />
-              <circle cx="6" cy="8.5" r="0.5" fill="#D14343" />
+              <circle cx="6" cy="8.5" r="0.5" fill={phoneFieldTokens.helperText.color.error} />
             </svg>
           </StyledWarningIcon>
           <StyledHelperText $error>{error}</StyledHelperText>
