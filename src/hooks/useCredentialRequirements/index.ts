@@ -1,7 +1,7 @@
 import { useState, useCallback } from "react";
 import { getCredentialRequirements } from "../../services/getCredentialRequirements";
 import { getSecurityQuestions } from "../../services/getSecurityQuestions";
-import type { IPasswordPolicy } from "../../types/hooks/usePasswordPolicy";
+import type { IPasswordPolicy } from "@ptypes/hooks/usePasswordPolicy/IPasswordPolicy";
 import type { ICredentialRequirementParams } from "../../types/api/ICredentialRequirementParams";
 import type { ISecurityQuestionsResponse } from "../../types/api/ISecurityQuestionsResponse";
 

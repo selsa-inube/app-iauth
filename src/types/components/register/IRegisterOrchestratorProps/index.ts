@@ -1,6 +1,6 @@
 import type { IRegisterFormData } from "@ptypes/components/register/IRegisterFormData";
 import type { IRegisterStepLabels } from "@ptypes/components/register/IRegisterStepLabels";
-import type { IPasswordPolicy } from "@ptypes/hooks/usePasswordPolicy";
+import type { IPasswordPolicy } from "@ptypes/hooks/usePasswordPolicy/IPasswordPolicy";
 import type { ISecurityQuestionsResponse } from "@ptypes/api/ISecurityQuestionsResponse";
 import type { UserData } from "@ptypes/hooks/useValidationToken/IUserData";
 
