@@ -4,13 +4,13 @@ import { labelsPasswrodMock } from "@config/mocks/components/IDynamicInputs/labe
 import { labelsUsernameMock } from "@config/mocks/components/IDynamicInputs/labelsMock/labelsUsernameMock";
 import { MemoryRouter } from "react-router-dom";
 import { ThemeProviderWrapper } from "@context/themeContext";
-import { StoryFn } from "@storybook/react";
+import { ElementType } from "react";
 
 const story = {
     title: "Login/DynamicInputs",
     component: DynamicInputs,
     decorators: [
-        (Story: StoryFn) => (
+        (Story: ElementType) => (
             <MemoryRouter>
                 <ThemeProviderWrapper>
                     {<Story />}

@@ -7,7 +7,7 @@ import { EFormStepLabels } from "@enum/hooks/EFormStepLabels";
 import { userNameStepLabels } from "@config/login/labels/usernameStepLabels";
 import { passwordStepLabels } from "@config/login/labels/passwordStepLabels";
 import { useMediaQuery } from "@inubekit/inubekit";
-import { ITextSize } from "@ptypes/components/TextSize";
+import { ITextSize } from "@ptypes/components/ITextSize";
 import { messages } from "@config/hook/messages";
 import { EModalWarning } from "@enum/components/EModalWarning";
 import { IUseTwoStepLoginForm } from "@ptypes/hooks/IUseTwoStepLoginForm";
