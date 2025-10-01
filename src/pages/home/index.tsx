@@ -1,30 +1,23 @@
 import { HomeUI } from "@pages/home/interface";
-import { useMediaQuery } from "@inubekit/inubekit";
-import { useEffect, useMemo, useState } from "react";
+import { Spinner, Stack, useMediaQuery } from "@inubekit/inubekit";
+import { useEffect, useState } from "react";
 import { IHome } from "@ptypes/pages/home/IHome";
 import { useBusinessData } from "@hooks/useBusinessData";
 import { EModalWarning } from "@enum/components/EModalWarning";
 import { StatusMessage } from "@pages/statusMessage";
 import { EStatusMessage } from "@enum/pages/EStatusMessage";
 import { PageLayout } from "@components/layout/PageLayout";
-
-const REQUIRED_PARAMS = [
-  "originatorId",
-  "applicationName",
-  "callbackUrl",
-  "state",
-  "codeChallenge",
-];
+import { useHomeValidation } from "@hooks/useHomeValidation";
 
 const Home = (props: IHome) => {
-  const searchParams = useMemo(() => new URLSearchParams(window.location.search), []);
-
-  const originatorId = props.originatorId ?? searchParams.get("originatorId") ?? undefined;
-  const callbackUrl = props.callbackUrl ?? searchParams.get("callbackUrl") ?? undefined;
-  const applicationName = props.applicationName ?? searchParams.get("applicationName") ?? undefined;
-  
-  const missingParams = REQUIRED_PARAMS.filter((p) => !searchParams.get(p));
-  const hasMissing = missingParams.length > 0;
+  const {
+    originatorId,
+    callbackUrl,
+    applicationName,
+    hasMissingParams,
+    isValidatingOriginator,
+    hasOriginatorError,
+  } = useHomeValidation(props);
 
   const { urlLogo } = useBusinessData({
     originatorId,
@@ -43,11 +36,36 @@ const Home = (props: IHome) => {
     }
   }, [modalWarningType]);
 
-  if (hasMissing) {
+  if (hasMissingParams) {
     return (
       <PageLayout>
         <StatusMessage
           messageType={EStatusMessage.MISSING_PARAMS}
+        />
+      </PageLayout>
+    );
+  }
+
+  if (isValidatingOriginator) {
+    return (
+      <PageLayout>
+        <Stack
+          justifyContent="center"
+          alignItems="center"
+          height="100%"
+          width="100%"
+        >
+          <Spinner />
+        </Stack>
+      </PageLayout>
+    );
+  }
+
+  if (hasOriginatorError) {
+    return (
+      <PageLayout>
+        <StatusMessage
+          messageType={EStatusMessage.GENERAL_ERROR}
         />
       </PageLayout>
     );

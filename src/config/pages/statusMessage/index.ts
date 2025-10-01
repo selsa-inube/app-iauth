@@ -25,6 +25,14 @@ const statusMessages = {
     buttonText: "Entendido",
     buttonAppearance: "warning" as const,
   },
+  generalError: {
+    title: "No pudimos continuar.",
+    message:
+      "Ocurrió un inconveniente al validar tu solicitud. Regresa al portal de origen e intenta nuevamente el proceso.",
+    icon: EStatusIcon.ERROR,
+    buttonText: "Regresar",
+    buttonAppearance: "primary" as const,
+  },
 };
 
 export { statusMessages };

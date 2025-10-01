@@ -1,7 +1,7 @@
 import { StatusIconUI } from "./interface.tsx";
 import { IStatusIcon } from "@ptypes/components/utils/statusIcon/IStatusIcon";
 import { EStatusIcon } from "@enum/components/EStatusIcon";
-import { MdHowToReg, MdRunningWithErrors } from "react-icons/md";
+import { MdErrorOutline, MdHowToReg, MdRunningWithErrors } from "react-icons/md";
 
 const StatusIcon = (props: IStatusIcon) => {
   const { icon } = props;
@@ -15,6 +15,11 @@ const StatusIcon = (props: IStatusIcon) => {
     [EStatusIcon.CLOCK_WARNING]: {
       icon: <MdRunningWithErrors />,
       appearance: "warning" as const,
+      size: "100px"
+    },
+    [EStatusIcon.ERROR]: {
+      icon: <MdErrorOutline />,
+      appearance: "danger" as const,
       size: "100px"
     },
   };
