@@ -117,6 +117,8 @@ const useHomeValidation = (props: IHome): IUseHomeValidation => {
     originatorId,
     callbackUrl,
     applicationName,
+    state: stateValue,
+    codeChallenge,
     hasMissingParams,
     isValidatingOriginator,
     hasOriginatorError,

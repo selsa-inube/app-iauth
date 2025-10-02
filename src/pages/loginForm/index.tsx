@@ -4,7 +4,7 @@ import { Card } from "@components/layout/Card";
 import { ILoginForm } from "@ptypes/pages/loginForm/ILoginForm";
 
 const LoginForm = (props: ILoginForm) => {
-  const { setModalWarningType, setRedirectPortal, callbackUrl } = props;
+  const { setModalWarningType, setRedirectPortal, callbackUrl, state, codeChallenge } = props;
 
   const {
     showLink,
@@ -24,6 +24,8 @@ const LoginForm = (props: ILoginForm) => {
     setModalWarningType,
     setRedirectPortal,
     callbackUrl,
+    state,
+    codeChallenge,
   });
 
   return (

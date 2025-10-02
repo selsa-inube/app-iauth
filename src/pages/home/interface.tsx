@@ -94,6 +94,8 @@ const HomeUI = (props: IHomeUI) => {
             setModalWarningType={setModalWarningType}
             setRedirectPortal={setRedirectPortal}
             callbackUrl={callbackUrl}
+            state={props.state}
+            codeChallenge={props.codeChallenge}
           />
         </Stack>
       </Stack>

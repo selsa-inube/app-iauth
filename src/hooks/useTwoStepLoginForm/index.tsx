@@ -16,7 +16,7 @@ import { modalWarningContent } from "@config/hook/modalWarning";
 import { numberAttemptsDefault, authCodeQueryParam } from "@config/environment";
 
 const useTwoStepLoginForm = (props: IUseTwoStepLoginForm) => {
-  const { setModalWarningType, setRedirectPortal, callbackUrl } = props;
+  const { setModalWarningType, setRedirectPortal, callbackUrl, state, codeChallenge } = props;
   const [currentStep, setCurrentStep] = useState<EFormStepLabels>(
     EFormStepLabels.USER_NAME_INPUT,
   );
@@ -123,6 +123,8 @@ const useTwoStepLoginForm = (props: IUseTwoStepLoginForm) => {
         password: inputValue,
         username: userName,
         callbackUrl: callbackUrl,
+        state: state,
+        codeChallenge: codeChallenge,
       });
 
       if (

@@ -14,6 +14,8 @@ const Home = (props: IHome) => {
     originatorId,
     callbackUrl,
     applicationName,
+    state,
+    codeChallenge,
     hasMissingParams,
     isValidatingOriginator,
     hasOriginatorError,
@@ -89,6 +91,8 @@ const Home = (props: IHome) => {
       setRedirectPortal={setIsRedirectPortal}
       callbackUrl={callbackUrl}
       applicationName={applicationName}
+      state={state}
+      codeChallenge={codeChallenge}
     />
   );
 };
