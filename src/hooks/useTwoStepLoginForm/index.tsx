@@ -14,7 +14,6 @@ import { EModalWarning } from "@enum/components/EModalWarning";
 import { IUseTwoStepLoginForm } from "@ptypes/hooks/IUseTwoStepLoginForm";
 import { modalWarningContent } from "@config/hook/modalWarning";
 import { numberAttemptsDefault, authCodeQueryParam } from "@config/environment";
-import securityLogo from "@assets/img/lgo/logo-linix-user.svg";
 
 const useTwoStepLoginForm = (props: IUseTwoStepLoginForm) => {
   const { setModalWarningType, setRedirectPortal, callbackUrl } = props;
@@ -77,10 +76,21 @@ const useTwoStepLoginForm = (props: IUseTwoStepLoginForm) => {
         }));
         return;
       }
+      if (response.status !== 200) {
+        setInputValid(false);
+        setLabels((prev) => ({
+          ...prev,
+          validation: {
+            ...prev.validation,
+            errorMessage: messages.messageServiceError,
+          },
+        }));
+        return;
+      }
 
       setUserName(inputValue);
-      setSecurityImageUrl(securityLogo);
-      setSecurityPhrase("Hola, soy un perrito muy bonito.");
+      setSecurityImageUrl(response.securityImageUrl);
+      setSecurityPhrase(response.safetyPhrase);
       setCurrentStep(EFormStepLabels.SECURITY_CHECK);
       setInputValid(null);
       setInputValue("");

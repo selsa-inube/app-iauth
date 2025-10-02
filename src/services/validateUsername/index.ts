@@ -8,15 +8,25 @@ const validateUsername = async (
 ): Promise<IValidationsUsername> => {
   const config: AxiosRequestConfig = {
     headers: {
-      "X-Action": "SearchAllUserAccount",
+      "X-Action": "SearchUserForAutentication",
     },
   };
-  const { status } = await iauthQueryAxiosInstance.get<IValidationsUsername>(
-    `/user-accounts/?userAccount=${props.username}`,
+  
+  const response = await iauthQueryAxiosInstance.get<IValidationsUsername>(
+    `/user-accounts?userAccount=${props.username}`,
     config,
   );
 
-  return { status };
+  if (response.status === 200 && response.data) {
+    return {
+      status: response.status,
+      userAccount: response.data.userAccount,
+      safetyPhrase: response.data.safetyPhrase,
+      securityImageUrl: response.data.securityImageUrl,
+    };
+  }
+
+  return { status: response.status, userAccount: "", safetyPhrase: "", securityImageUrl: "" };
 };
 
 export { validateUsername };
