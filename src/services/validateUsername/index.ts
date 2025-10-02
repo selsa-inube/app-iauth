@@ -8,7 +8,7 @@ const validateUsername = async (
 ): Promise<IValidationsUsername> => {
   const config: AxiosRequestConfig = {
     headers: {
-      "X-Action": "SearchUserForAutentication",
+      "X-Action": "SearchUserForAuthentication",
     },
   };
   
