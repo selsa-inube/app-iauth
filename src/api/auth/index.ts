@@ -1,5 +1,6 @@
 import axios, { AxiosInstance } from "axios";
 import { authApiUrl, fetchTimeoutServices } from "@config/environment";
+import { setupOriginatorCodeInterceptor } from "@api/originatorCodeInterceptor";
 
 const axiosInstance: AxiosInstance = axios.create({
   baseURL: authApiUrl as string,
@@ -8,6 +9,8 @@ const axiosInstance: AxiosInstance = axios.create({
     "Content-type": "application/json; charset=UTF-8",
   },
 });
+
+setupOriginatorCodeInterceptor(axiosInstance);
 
 axiosInstance.interceptors.response.use(
   (response) => response,

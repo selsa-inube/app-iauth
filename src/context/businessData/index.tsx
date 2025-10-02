@@ -4,6 +4,7 @@ import { IBusinessDataProvider } from "@ptypes/context/businessData/IBusinessDat
 import { IOriginatorSuccess } from "@ptypes/api/IOriginatorSuccess";
 import { getOriginator } from "@services/core/getOriginator";
 import { urlDefault } from "@config/hook/urlDefault";
+import { setOriginatorCode } from "@api/originatorCodeInterceptor";
 
 const BusinessDataContext = createContext<IBusinessDataContext | undefined>(undefined);
 
@@ -34,6 +35,7 @@ const BusinessDataProvider = (props: IBusinessDataProvider) => {
         originatorCode,
       });
       setOriginatorData(response);
+      setOriginatorCode(response.originatorCode);
     } catch (err) {
       console.error("Error fetching originator data:", err);
       setError("Error al obtener datos del originador");
@@ -43,6 +45,7 @@ const BusinessDataProvider = (props: IBusinessDataProvider) => {
         logoUrl: urlDefault.logoUrl,
         originatorCode: "",
       });
+      setOriginatorCode(null);
     } finally {
       setIsLoading(false);
     }
