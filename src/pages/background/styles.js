@@ -5,7 +5,7 @@ import { backgroundPageTokens } from "./tokens";
 const StyledMaskContainer = styled.div`
   width: 100%;
   height: 100vh;
-  background-image: url(${imgBackground});
+  background-image: url(${(props) => props.$backgroundImageUrl ?? imgBackground});
   z-index: -2;
   background-repeat: no-repeat;
   background-size: cover;

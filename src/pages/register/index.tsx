@@ -4,7 +4,7 @@ import { useEffect, useMemo, useCallback } from "react";
 import { RegisterUI } from "./interface";
 import { ITextSize } from "@ptypes/components/ITextSize";
 import { registerLabels } from "@config/register/labels/registerLabels";
-import { useBusinessData } from "@hooks/useBusinessData";
+import { useBusinessDataContext } from "@context/businessData";
 import { useCredentialRequirements } from "@hooks/useCredentialRequirements";
 import type { ILocationState } from "@ptypes/pages/register/ILocationState";
 import type { UserData } from "@ptypes/hooks/useValidationToken/IUserData";
@@ -19,9 +19,7 @@ const Register = () => {
   const labelsSizeDifferent: ITextSize = screenMobile ? "medium" : "large";
   const userData: UserData | undefined = location.state?.userData;
 
-  const { urlLogo } = useBusinessData({
-    originatorCode: userData?.originatorCode,
-  });
+  const { originatorData, fetchOriginatorData } = useBusinessDataContext();
 
   const {
     fetchCredentialRequirements,
@@ -44,10 +42,10 @@ const Register = () => {
       ...registerLabels,
       invitedBy: {
         ...registerLabels.invitedBy,
-        imageUrl: urlLogo,
+        imageUrl: originatorData?.logoUrl || "",
       },
     }),
-    [urlLogo],
+    [originatorData?.logoUrl],
   );
 
   useEffect(() => {
@@ -55,6 +53,14 @@ const Register = () => {
       navigate("/");
     }
   }, [userData, navigate]);
+
+  useEffect(() => {
+    if (userData?.originatorCode) {
+      fetchOriginatorData(undefined, userData.originatorCode).catch((error) => {
+        console.error("Error fetching originator data:", error);
+      });
+    }
+  }, [userData?.originatorCode, fetchOriginatorData]);
 
   useEffect(() => {
     if (userData?.originatorCode) {

@@ -4,7 +4,7 @@ import { backgroundUnsplashTokens } from "./tokens";
 
 const StyledMaskUnSplashContainer = styled.div`
   width: 100%;
-  background-image: url(${imgBackground});
+  background-image: url(${(props) => props.$backgroundImageUrl ?? imgBackground});
   z-index: -2;
   background-repeat: no-repeat;
   background-size: cover;

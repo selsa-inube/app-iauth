@@ -2,10 +2,10 @@ import { StyledMaskContainer, StyledMask } from "./styles";
 import type { ICard } from "@ptypes/components/card/ICard";
 
 const BackgroundUI = (props: ICard) =>{
-    const { children } = props;
+    const { children, backgroundImageUrl } = props;
 
     return (
-        <StyledMaskContainer>
+        <StyledMaskContainer $backgroundImageUrl={backgroundImageUrl}>
             <StyledMask>
                 {children}
             </StyledMask>

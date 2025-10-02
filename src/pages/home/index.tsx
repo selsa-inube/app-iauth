@@ -2,7 +2,7 @@ import { HomeUI } from "@pages/home/interface";
 import { Spinner, Stack, useMediaQuery } from "@inubekit/inubekit";
 import { useEffect, useState } from "react";
 import { IHome } from "@ptypes/pages/home/IHome";
-import { useBusinessData } from "@hooks/useBusinessData";
+import { useBusinessDataContext } from "@context/businessData";
 import { EModalWarning } from "@enum/components/EModalWarning";
 import { StatusMessage } from "@pages/statusMessage";
 import { EStatusMessage } from "@enum/pages/EStatusMessage";
@@ -19,9 +19,7 @@ const Home = (props: IHome) => {
     hasOriginatorError,
   } = useHomeValidation(props);
 
-  const { urlLogo } = useBusinessData({
-    originatorId,
-  });
+  const { originatorData, fetchOriginatorData } = useBusinessDataContext();
   const screenMobile = useMediaQuery("(max-width: 768px)");
   const [isModalWarningOpen, setIsModalWarningOpen] = useState(false);
   const [modalWarningType, setModalWarningType] = useState<EModalWarning>(
@@ -29,6 +27,14 @@ const Home = (props: IHome) => {
   );
   const handleCloseModal = () => setIsModalWarningOpen(false);
   const [isRedirectPortal, setIsRedirectPortal] = useState(false);
+
+  useEffect(() => {
+    if (originatorId) {
+      fetchOriginatorData(originatorId).catch((error) => {
+        console.error("Error fetching originator data:", error);
+      });
+    }
+  }, [originatorId, fetchOriginatorData]);
 
   useEffect(() => {
     if (modalWarningType !== EModalWarning.NONE) {
@@ -76,7 +82,7 @@ const Home = (props: IHome) => {
       isMobile={screenMobile}
       modalWarningType={modalWarningType}
       setModalWarningType={setModalWarningType}
-      urlLogo={urlLogo}
+      urlLogo={originatorData?.logoUrl || ""}
       handleCloseModal={handleCloseModal}
       isModalWarningOpen={isModalWarningOpen}
       isRedirectPortal={isRedirectPortal}
