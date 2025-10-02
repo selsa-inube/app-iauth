@@ -23,7 +23,7 @@ const validatePassword = async (props: IValidateParams): Promise<IValidate> => {
     userAccount: username,
     authenticationCredential: password,
     state: state,
-    codeChallege: codeChallenge,
+    codeChallenge: codeChallenge,
     callbackUrl: finalCallbackUrl,
   }, config);
   return data;
