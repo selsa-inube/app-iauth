@@ -17,7 +17,7 @@ const LoginForm = (props: ILoginForm) => {
     widthStack,
     labelsSize,
     labelsSizeDifferent,
-    securityImageUrl,
+    securityImage,
     securityPhrase,
     screenMobile
   } = useTwoStepLoginForm({
@@ -41,7 +41,7 @@ const LoginForm = (props: ILoginForm) => {
         labelsSize={labelsSize}
         labelsSizeDifferent={labelsSizeDifferent}
         showLink={showLink}
-        securityImageUrl={securityImageUrl}
+        securityImage={securityImage}
         securityPhrase={securityPhrase}
         isMobile={screenMobile}
       />

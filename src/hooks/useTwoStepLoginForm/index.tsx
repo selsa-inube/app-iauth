@@ -24,7 +24,7 @@ const useTwoStepLoginForm = (props: IUseTwoStepLoginForm) => {
   const [inputValue, setInputValue] = useState("");
   const [userName, setUserName] = useState<string>("");
   const [labels, setLabels] = useState<IFormStepLabels>(userNameStepLabels);
-  const [securityImageUrl, setSecurityImageUrl] = useState<string>("");
+  const [securityImage, setSecurityImage] = useState<string>("");
   const [securityPhrase, setSecurityPhrase] = useState<string>("");
   const [numberPasswordAttempts, setNumberPasswordAttempts] = useState(0);
   const handleInputChange = (
@@ -89,7 +89,7 @@ const useTwoStepLoginForm = (props: IUseTwoStepLoginForm) => {
       }
 
       setUserName(inputValue);
-      setSecurityImageUrl(response.securityImageUrl);
+  setSecurityImage(response.securityImage);
       setSecurityPhrase(response.safetyPhrase);
       setCurrentStep(EFormStepLabels.SECURITY_CHECK);
       setInputValid(null);
@@ -189,7 +189,7 @@ const useTwoStepLoginForm = (props: IUseTwoStepLoginForm) => {
     widthStack,
     labelsSize,
     labelsSizeDifferent,
-    securityImageUrl,
+    securityImage,
     securityPhrase,
   };
 };

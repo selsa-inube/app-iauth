@@ -18,7 +18,7 @@ const LoginFormUI = (props: ILoginForm) => {
     labelsSize,
     screenMobile,
     showLink,
-    securityImageUrl,
+    securityImage,
     securityPhrase,
     isMobile
   } = props;
@@ -47,7 +47,7 @@ const LoginFormUI = (props: ILoginForm) => {
             alignItems="center"
           >
             <SecurityCheck
-              imageUrl={securityImageUrl ?? ""}
+              imageUrl={securityImage ? `data:image/svg+xml;base64,${securityImage}` : ""}
               phrase={securityPhrase ?? ""}
               isMobile={isMobile}
             />
