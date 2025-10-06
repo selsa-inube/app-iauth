@@ -9,7 +9,7 @@ const SecurityImageStep = (props: ISecurityImageStep) => {
   const [pickerOpen, setPickerOpen] = useState(false);
 
   const handlePhraseChange = (value: string) => {
-    onFormChange("securityPhrase", value);
+    onFormChange("SafetyPhrase", value);
   };
 
   const handleOpenPicker = () => setPickerOpen(true);
@@ -20,9 +20,9 @@ const SecurityImageStep = (props: ISecurityImageStep) => {
   };
 
   useEffect(() => {
-    const enabled = (formData.securityPhrase ?? "").trim().length > 0;
+    const enabled = (formData.SafetyPhrase ?? "").trim().length > 0;
     onNextEnabledChange?.(enabled);
-  }, [formData.securityPhrase, onNextEnabledChange]);
+  }, [formData.SafetyPhrase, onNextEnabledChange]);
 
   return (
     <>

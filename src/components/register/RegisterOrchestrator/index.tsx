@@ -92,6 +92,8 @@ const RegisterOrchestrator = (props: IRegisterOrchestrator) => {
     securityAnswers: {},
     dataTreatmentAccepted: false,
     dataIdentityAccepted: false,
+    SafetyPhrase: "",
+    securityImage: "",
   });
 
   const handleFormChange = <K extends keyof IRegisterFormData>(

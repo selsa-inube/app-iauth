@@ -20,6 +20,7 @@ interface ISaveUserAccountRequest {
   userConsentOfScopeAttribute: IUserConsentOfScopeAttribute;
   accountNumberPerMessageOperator: IAccountNumberPerMessageOperator;
   userManagementRequestsIdEncrypt: string;
+  SafetyPhrase: string;
 }
 
 export type { ISaveUserAccountRequest };

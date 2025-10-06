@@ -59,6 +59,7 @@ const registerUser = async (
           : params.formData.phone,
     },
     userManagementRequestsIdEncrypt: params.userData.userManagementRequestsIdEncrypt,
+    SafetyPhrase: params.formData.securityImage,
   };
 
   const url = "/user-accounts/";

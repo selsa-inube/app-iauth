@@ -18,8 +18,8 @@ interface IRegisterFormData {
 
   // Paso 4: Security Questions (Dynamic)
   securityAnswers: Record<string, string>;
-  securityPhrase?: string;
-  securityImage?: string;
+  SafetyPhrase: string;
+  securityImage: string;
   dataTreatmentAccepted: boolean;
   dataIdentityAccepted: boolean;
   // New step: Security image and phrase

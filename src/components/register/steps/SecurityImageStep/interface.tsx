@@ -34,7 +34,7 @@ const SecurityImageStepUI = (props: ISecurityImageStepUI) => {
             size="wide"
             maxLength={150}
             minLength={0}
-            value={formData.securityPhrase ?? ""}
+            value={formData.SafetyPhrase ?? ""}
             onChange={(e) => onPhraseChange?.(e.target.value)}
           />
         </Box>
