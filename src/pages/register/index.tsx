@@ -72,6 +72,7 @@ const Register = () => {
     }
   }, [
     userData?.originatorCode,
+    originatorData?.originatorCode,
     fetchCredentialRequirements,
   ]);
 
