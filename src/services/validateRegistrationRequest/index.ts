@@ -9,7 +9,7 @@ import type { UserData } from "@ptypes/hooks/useValidationToken/IUserData";
 const validateRegistrationRequest = async (
   token: string,
 ): Promise<ValidationResult> => {
-  const url = "/user-account-management-requests";
+  const url = "/user-account-management-requests/valid";
   const body : IValidateRegistrationRequest = { userManagementRequestsIdEncrypt: token };
   const config : AxiosRequestConfig = {
     headers: {
