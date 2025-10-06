@@ -20,9 +20,9 @@ const SecurityImageStep = (props: ISecurityImageStep) => {
   };
 
   useEffect(() => {
-    const enabled = (formData.SafetyPhrase ?? "").trim().length > 0;
+    const enabled = (formData.SafetyPhrase ?? "").trim().length > 0 && (formData.securityImage ?? "").trim().length > 0;
     onNextEnabledChange?.(enabled);
-  }, [formData.SafetyPhrase, onNextEnabledChange]);
+  }, [formData.SafetyPhrase, formData.securityImage, onNextEnabledChange]);
 
   return (
     <>
