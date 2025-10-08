@@ -13,7 +13,7 @@ import { messages } from "@config/hook/messages";
 import { EModalWarning } from "@enum/components/EModalWarning";
 import { IUseTwoStepLoginForm } from "@ptypes/hooks/IUseTwoStepLoginForm";
 import { modalWarningContent } from "@config/hook/modalWarning";
-import { numberAttemptsDefault, authCodeQueryParam } from "@config/environment";
+import { numberAttemptsDefault, authCodeQueryParam, stateQueryParam } from "@config/environment";
 
 const useTwoStepLoginForm = (props: IUseTwoStepLoginForm) => {
   const { setModalWarningType, setRedirectPortal, callbackUrl, state, codeChallenge } = props;
@@ -164,6 +164,8 @@ const useTwoStepLoginForm = (props: IUseTwoStepLoginForm) => {
         if (response.authenticationCode) {
           const queryParamName = authCodeQueryParam ?? "ac";
           url.searchParams.set(queryParamName, response.authenticationCode);
+          const stateParamName = stateQueryParam ?? "state";
+          url.searchParams.set(stateParamName, state ?? "");
         }
         window.location.href = url.toString();
       }, 2000);
