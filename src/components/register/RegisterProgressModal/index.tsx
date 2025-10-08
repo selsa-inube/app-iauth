@@ -7,7 +7,7 @@ import { registerProgressModal } from "@config/register/modal/registerProgress";
 import { useNavigate } from "react-router-dom";
 
 const RegisterProgressModal = (props: IRegisterProgressModal) => {
-  const { isMobile, onModalClose, registrationState, progressSteps, originatorName } = props;
+  const { isMobile, onModalClose, registrationState, progressSteps, originatorName, registrationRedirectUrl } = props;
   const navigate = useNavigate();
 
   const handleModalClose = useCallback(() => {
@@ -16,8 +16,11 @@ const RegisterProgressModal = (props: IRegisterProgressModal) => {
 
   const handleSuccessClose = useCallback(() => {
     onModalClose?.();
-    navigate("/", { replace: true });
-  }, [onModalClose, navigate]);
+    if (registrationRedirectUrl) {
+      window.location.assign(registrationRedirectUrl);
+      return;
+    }
+  }, [onModalClose, navigate, registrationRedirectUrl]);
 
   const renderModal = () => {
     switch (registrationState) {

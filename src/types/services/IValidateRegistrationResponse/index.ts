@@ -9,5 +9,6 @@ interface IValidateRegistrationResponse {
     biologicalSex?: string;
     identificationType: string;
     identificationNumber: string;
+    registrationRedirectUrl: string;
 }
 export type { IValidateRegistrationResponse };

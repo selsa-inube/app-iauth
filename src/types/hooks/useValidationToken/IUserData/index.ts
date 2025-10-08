@@ -8,6 +8,7 @@ interface UserData {
   consumerApplicationCode: string;
   userManagementRequestsId: string;
   userManagementRequestsIdEncrypt: string;
+  registrationRedirectUrl: string;
 }
 
 export type { UserData };

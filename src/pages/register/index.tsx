@@ -121,6 +121,7 @@ const Register = () => {
           progressSteps={progressSteps}
           originatorName={userData?.originatorName}
           onModalClose={onModalClose}
+          registrationRedirectUrl={userData?.registrationRedirectUrl}
         />
       )}
     </>
