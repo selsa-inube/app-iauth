@@ -51,6 +51,7 @@ const ModalInformationUI = (props: IModalUI) => {
                     appearance="light"
                     flexDirection="column"
                     justifyContent="center"
+                    width="100%"
                     gap={tokens.spacing.s075}
                     padding={tokens.spacing.s100}
                 >

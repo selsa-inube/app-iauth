@@ -8,6 +8,7 @@ import { StatusMessage } from "@pages/statusMessage";
 import { EStatusMessage } from "@enum/pages/EStatusMessage";
 import { PageLayout } from "@components/layout/PageLayout";
 import { useHomeValidation } from "@hooks/useHomeValidation";
+import { useInstitutionalMessage } from "@hooks/useInstitutionalMessage";
 
 const Home = (props: IHome) => {
   const {
@@ -29,6 +30,7 @@ const Home = (props: IHome) => {
   );
   const handleCloseModal = () => setIsModalWarningOpen(false);
   const [isRedirectPortal, setIsRedirectPortal] = useState(false);
+  const { modalInformation } = useInstitutionalMessage();
 
   useEffect(() => {
     if (originatorId) {
@@ -93,6 +95,7 @@ const Home = (props: IHome) => {
       applicationName={applicationName}
       state={state}
       codeChallenge={codeChallenge}
+      modalInformation={modalInformation}
     />
   );
 };
