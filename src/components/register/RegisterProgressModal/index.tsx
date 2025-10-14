@@ -17,7 +17,7 @@ const RegisterProgressModal = (props: IRegisterProgressModal) => {
   const handleSuccessClose = useCallback(() => {
     onModalClose?.();
     if (registrationRedirectUrl) {
-      window.location.assign(registrationRedirectUrl);
+      window.location.href = registrationRedirectUrl;
       return;
     }
   }, [onModalClose, navigate, registrationRedirectUrl]);
