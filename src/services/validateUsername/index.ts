@@ -23,11 +23,11 @@ const validateUsername = async (
       userAccount: response.data.userAccount,
       safetyPhrase: response.data.safetyPhrase,
       securityImageUrl: response.data.securityImageUrl,
-      securityImage: response.data.securityImage,
+      signedUrl: response.data.signedUrl,
     };
   }
 
-  return { status: response.status, userAccount: "", safetyPhrase: "", securityImageUrl: "", securityImage: "" };
+  return { status: response.status, userAccount: "", safetyPhrase: "", securityImageUrl: "", signedUrl: "" };
 };
 
 export { validateUsername };

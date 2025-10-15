@@ -89,7 +89,7 @@ const useTwoStepLoginForm = (props: IUseTwoStepLoginForm) => {
       }
 
       setUserName(inputValue);
-  setSecurityImage(response.securityImage);
+  setSecurityImage(response.signedUrl || "");
       setSecurityPhrase(response.safetyPhrase);
       setCurrentStep(EFormStepLabels.SECURITY_CHECK);
       setInputValid(null);
