@@ -22,6 +22,7 @@ const BusinessDataProvider = (props: IBusinessDataProvider) => {
         brandUrl: "",
         logoUrl: urlDefault.logoUrl,
         originatorCode: "",
+        originatorName: "",
       });
       return;
     }
@@ -44,6 +45,7 @@ const BusinessDataProvider = (props: IBusinessDataProvider) => {
         brandUrl: "",
         logoUrl: urlDefault.logoUrl,
         originatorCode: "",
+        originatorName: "",
       });
       setOriginatorCode(null);
     } finally {

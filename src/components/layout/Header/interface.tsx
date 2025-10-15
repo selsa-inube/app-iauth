@@ -1,9 +1,11 @@
 import { Stack, Text } from "@inubekit/inubekit";
 import { titles } from "@config/login/titles";
 import { StyledImg } from "./styled";
+import { useBusinessDataContext } from "@context/businessData";
 
 
 const HeaderUI = () => {
+    const {originatorData} = useBusinessDataContext();
 
     return (
         <Stack
@@ -16,7 +18,7 @@ const HeaderUI = () => {
                 justifyContent="center"
                 gap="7.07px"
             >
-                <StyledImg />
+                <StyledImg img={originatorData?.brandUrl} />
             </Stack>
             <Stack>
                 <Text

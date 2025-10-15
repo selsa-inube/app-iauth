@@ -3,6 +3,7 @@ interface IOriginatorSuccess {
   brandUrl: string;
   logoUrl: string;
   originatorCode: string;
+  originatorName: string;
 }
 
 export type { IOriginatorSuccess };

@@ -1,5 +1,5 @@
 import { Stack, Text } from "@inubekit/inubekit";
-import { StyledImg } from "./styles";
+import { FallbackImage } from "@components/utils/FallbackImage";
 import { LoginForm } from "@pages/loginForm/";
 import { IHomeUI } from "@ptypes/pages/home/IHomeUI";
 import { labelsTitles } from "@config/login/entryPage";
@@ -10,8 +10,10 @@ import { ModalWarning } from "@components/layout/ModalWarning";
 import { ModalInformation } from "@design/feedback/modalInformation";
 import { spacing } from "@design/tokens/tokensWithReference/spacing/spacing";
 import { RedirectSpinner } from "@pages/redirectSpinner";
+import { useBusinessDataContext } from "@context/businessData";
 
 const HomeUI = (props: IHomeUI) => {
+  const {originatorData} = useBusinessDataContext();
   const {
     isMobile,
     urlLogo,
@@ -70,10 +72,14 @@ const HomeUI = (props: IHomeUI) => {
           >
             {labelsTitles.titleImg.replace("{0}", applicationName ?? "")}
           </Text>
-          <StyledImg
+          <FallbackImage
             src={urlLogo}
-            $isMobile={isMobile}
             alt={labelsTitles.textAltImg}
+            fallbackText={originatorData?.originatorName}
+            imageHeight={isMobile ? "50px" : "70px"}
+            imageWidth={isMobile ? "180px" : "252px"}
+            isMobile={isMobile}
+            textSize={isMobile ? "medium" : "large"}
           />
         </Stack>
         <Stack
