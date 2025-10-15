@@ -79,7 +79,11 @@ const HomeUI = (props: IHomeUI) => {
             imageHeight={isMobile ? "50px" : "70px"}
             imageWidth={isMobile ? "180px" : "252px"}
             isMobile={isMobile}
-            textSize={isMobile ? "medium" : "large"}
+            type={isMobile ? "title" : "headline"}
+            textAlign="center"
+            textSize={isMobile ? "large" : "medium"}
+            appearance="dark"
+            weight="bold"
           />
         </Stack>
         <Stack

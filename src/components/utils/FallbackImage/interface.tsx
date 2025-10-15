@@ -1,5 +1,5 @@
 import { Text } from "@inubekit/inubekit";
-import { StyledImgWrapper, StyledImg } from "./styled";
+import { StyledImg } from "./styled";
 import type { IFallbackImageUI } from "@ptypes/components/utils/FallbackImage/IFallbackImageUI/index";
 import { labels } from "@config/components/utils/FallbackImage/labels";
 
@@ -9,6 +9,8 @@ const FallbackImageUI = (props: IFallbackImageUI) => {
     alt,
     isMobile,
     textSize = "large",
+    type,
+    textAlign="center",
     appearance = "primary",
     weight = "bold",
     showFallback,
@@ -17,13 +19,10 @@ const FallbackImageUI = (props: IFallbackImageUI) => {
     imageWidth,
     imageHeight,
   } = props;
-
   return showFallback || !src ? (
-    <StyledImgWrapper $isMobile={!!isMobile} $width={imageWidth} $height={imageHeight}>
-      <Text size={textSize} appearance={appearance} weight={weight} type="headline" textAlign="center">
+      <Text size={textSize} appearance={appearance} weight={weight} type={type} textAlign={textAlign}>
         {fallbackText || alt || labels.fallbackAlt}
       </Text>
-    </StyledImgWrapper>
   ) : (
     <StyledImg $isMobile={!!isMobile} $width={imageWidth} $height={imageHeight} src={src} alt={alt} onError={onImageError} />
   );

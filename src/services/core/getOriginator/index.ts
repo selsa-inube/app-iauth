@@ -27,7 +27,8 @@ const getOriginator = async (
     url,
     config,
   );
-
+  data.originatorName= "Prueba"
+  data.logoUrl= "storage.googleapis.com/inube-assets/crediboard/credicar-logo.pngg"
   return data;
 };
 

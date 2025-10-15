@@ -14,6 +14,8 @@ const InvitedByUI = (props: IInvitedByUI) => {
         src={urlImg}
         alt={originatorName}
         isMobile={isMobile}
+        type={isMobile ? "title" : "headline"}
+        textAlign="center"
         imageWidth={"141px"}
         imageHeight={"40px"}
       />

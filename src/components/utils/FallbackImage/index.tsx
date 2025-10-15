@@ -9,6 +9,8 @@ const FallbackImage = (props: IFallbackImage) => {
     fallbackText,
     isMobile,
     textSize,
+    type,
+    textAlign,
     appearance,
     weight,
     imageWidth,
@@ -28,6 +30,8 @@ const FallbackImage = (props: IFallbackImage) => {
       fallbackText={fallbackText}
       isMobile={isMobile}
       textSize={textSize}
+      type={type}
+      textAlign={textAlign}
       appearance={appearance}
       weight={weight}
       showFallback={showFallback}
