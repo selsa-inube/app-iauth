@@ -18,9 +18,9 @@ const BusinessDataProvider = (props: IBusinessDataProvider) => {
   const fetchOriginatorData = useCallback(async (originatorId?: string, originatorCode?: string) => {
     if (!originatorId && !originatorCode) {
       setOriginatorData({
-        backgroundImageUrl: "",
-        brandUrl: "",
-        logoUrl: urlDefault.logoUrl,
+        signedUrlBackgroundImage: "",
+        signedUrlBrand: "",
+        signedUrlLogo: urlDefault.logoUrl,
         originatorCode: "",
         originatorName: "",
       });
@@ -41,9 +41,9 @@ const BusinessDataProvider = (props: IBusinessDataProvider) => {
       console.error("Error fetching originator data:", err);
       setError("Error al obtener datos del originador");
       setOriginatorData({
-        backgroundImageUrl: "",
-        brandUrl: "",
-        logoUrl: urlDefault.logoUrl,
+        signedUrlBackgroundImage: "",
+        signedUrlBrand: "",
+        signedUrlLogo: urlDefault.logoUrl,
         originatorCode: "",
         originatorName: "",
       });

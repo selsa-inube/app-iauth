@@ -20,7 +20,7 @@ const useBusinessData = (props: IUseBusinessData) => {
             originatorId,
             originatorCode,
           });
-          setUrlLogo(response.logoUrl || urlDefault.logoUrl);
+          setUrlLogo(response.signedUrlLogo || urlDefault.logoUrl);
         } catch (err) {
           console.error("Error fetching originator data:", err);
           setError("Error al obtener datos del originador");

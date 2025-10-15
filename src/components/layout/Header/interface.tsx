@@ -18,7 +18,7 @@ const HeaderUI = () => {
                 justifyContent="center"
                 gap="7.07px"
             >
-                <StyledImg img={originatorData?.brandUrl} />
+                <StyledImg img={originatorData?.signedUrlBrand} />
             </Stack>
             <Stack>
                 <Text

@@ -6,7 +6,7 @@ const Background = (props: ICard) => {
     const { children } = props;
     const { originatorData } = useBusinessDataContext();
     return (
-        <BackgroundUI backgroundImageUrl={originatorData?.backgroundImageUrl}>
+        <BackgroundUI backgroundImageUrl={originatorData?.signedUrlBackgroundImage}>
             {children}
         </BackgroundUI>
     );

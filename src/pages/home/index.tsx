@@ -86,7 +86,7 @@ const Home = (props: IHome) => {
       isMobile={screenMobile}
       modalWarningType={modalWarningType}
       setModalWarningType={setModalWarningType}
-      urlLogo={originatorData?.logoUrl || ""}
+      urlLogo={originatorData?.signedUrlLogo || ""}
       handleCloseModal={handleCloseModal}
       isModalWarningOpen={isModalWarningOpen}
       isRedirectPortal={isRedirectPortal}

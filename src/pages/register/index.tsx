@@ -42,10 +42,10 @@ const Register = () => {
       ...registerLabels,
       invitedBy: {
         ...registerLabels.invitedBy,
-        imageUrl: originatorData?.logoUrl || "",
+        imageUrl: originatorData?.signedUrlLogo || "",
       },
     }),
-    [originatorData?.logoUrl],
+    [originatorData?.signedUrlLogo],
   );
 
   useEffect(() => {
