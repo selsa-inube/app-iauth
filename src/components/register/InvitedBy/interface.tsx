@@ -17,7 +17,9 @@ const InvitedByUI = (props: IInvitedByUI) => {
         type={isMobile ? "title" : "headline"}
         textAlign="center"
         imageWidth={"141px"}
+        textSize={isMobile ? "large" : "medium"}
         imageHeight={"40px"}
+        appearance="dark"
       />
     </Stack>
   );
