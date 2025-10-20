@@ -5,8 +5,10 @@ import { InvitedBy } from "@components/register/InvitedBy";
 import { RegisterOrchestrator } from "@components/register/RegisterOrchestrator";
 import { registerStepLabels } from "@config/register/labels/registerStepLabels";
 import type { IRegisterPageUI } from "@ptypes/pages/register/IRegisterPageUI";
+import { useBusinessDataContext } from "@context/businessData";
 
 const RegisterUI = (props: IRegisterPageUI) => {
+  const { originatorData } = useBusinessDataContext();
   const {
     labelsSize,
     userData,
@@ -41,7 +43,7 @@ const RegisterUI = (props: IRegisterPageUI) => {
           alignItems="center"
           direction="column"
         >
-          <HeaderUI labelsSizeDifferent={labelsSize} />
+          <HeaderUI />
           <UserWelcome userData={userData} labels={labels} />
         </Stack>
         
@@ -55,6 +57,7 @@ const RegisterUI = (props: IRegisterPageUI) => {
             text={labels.invitedBy.text}
             textSize={labelsSize}
             isMobile={isMobile}
+            originatorName={originatorData?.originatorName || ""}
           />
         </Stack>
         

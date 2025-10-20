@@ -9,7 +9,6 @@ const getCredentialRequirements = async (
 ): Promise<ICredentialRequirementResponse> => {
   const config: AxiosRequestConfig = {
     headers: {
-      "X-Business-Unit": "test",
       "X-Action": "SearchCredentialRequirement",
     },
   };

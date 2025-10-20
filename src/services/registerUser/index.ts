@@ -5,17 +5,12 @@ import type { IValidateRegistrationErrorResponse } from "@ptypes/services/IValid
 import type { ISaveUserAccountResponse } from "@ptypes/services/ISaveUserAccountResponse";
 import { IRegisterUserParams } from "@ptypes/api/IRegisterUserParams";
 import { IRegisterUserResponse } from "@ptypes/api/IRegisterUserResponse";
+import { svgUrlToFile } from "@utils/svgToFile";
 
 const registerUser = async (
   params: IRegisterUserParams,
 ): Promise<IRegisterUserResponse> => {
-  const config: AxiosRequestConfig = {
-    headers: {
-      "X-Business-Unit": "test",
-      "X-Action": "SaveUserAccount",
-    },
-  };
-  const body: ISaveUserAccountRequest = {
+  const bodyData: ISaveUserAccountRequest = {
     userManagementRequestsId: params.userData.userManagementRequestsId,
     accountName: params.formData.username,
     email: params.formData.email,
@@ -60,12 +55,28 @@ const registerUser = async (
           : params.formData.phone,
     },
     userManagementRequestsIdEncrypt: params.userData.userManagementRequestsIdEncrypt,
+    SafetyPhrase: params.formData.SafetyPhrase,
+  };
+
+  const formData = new FormData();
+  formData.append("data", JSON.stringify(bodyData));
+  
+  if (params.formData.securityImage) {
+    const imageFile = await svgUrlToFile(params.formData.securityImage);
+    formData.append("img", imageFile);
+  }
+
+  const config: AxiosRequestConfig = {
+    headers: {
+      "X-Action": "SaveUserAccount",
+      "Content-Type": "multipart/form-data",
+    },
   };
 
   const url = "/user-accounts/";
   const response = (await axiosInstance.post(
     url,
-    body,
+    formData,
     config,
   )) as AxiosResponse<
     ISaveUserAccountResponse | IValidateRegistrationErrorResponse

@@ -5,5 +5,6 @@ interface IInvitedBy {
   text: string;
   textSize?: ITextSize;
   isMobile?: boolean;
+  originatorName: string;
 }
 export type { IInvitedBy };

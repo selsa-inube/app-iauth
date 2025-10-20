@@ -1,8 +1,9 @@
 interface IOriginatorSuccess {
-  backgroundImageUrl: string;
-  brandUrl: string;
-  htmlNews: string;
-  logoUrl: string;
+  signedUrlBackgroundImage: string;
+  signedUrlBrand: string;
+  signedUrlLogo: string;
+  originatorCode: string;
+  originatorName: string;
 }
 
 export type { IOriginatorSuccess };

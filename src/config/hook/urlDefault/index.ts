@@ -1,4 +1,4 @@
-import logoDefault from "@assets/img/lgo/logo-sistemasnelinea.png"; 
+import logoDefault from "@assets/img/lgo/logo-feselsa.png"; 
 
 const urlDefault = {
     logoUrl: logoDefault,

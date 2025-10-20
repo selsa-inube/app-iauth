@@ -6,16 +6,17 @@ import { IFormStepLabels } from "@ptypes/hooks/useTwoStepLoginForm/IFormStepLabe
 import { EFormStepLabels } from "@enum/hooks/EFormStepLabels";
 import { userNameStepLabels } from "@config/login/labels/usernameStepLabels";
 import { passwordStepLabels } from "@config/login/labels/passwordStepLabels";
+import { securityStepLabels } from "@config/login/labels/securityStepLabels";
 import { useMediaQuery } from "@inubekit/inubekit";
 import { ITextSize } from "@ptypes/components/ITextSize";
 import { messages } from "@config/hook/messages";
 import { EModalWarning } from "@enum/components/EModalWarning";
 import { IUseTwoStepLoginForm } from "@ptypes/hooks/IUseTwoStepLoginForm";
 import { modalWarningContent } from "@config/hook/modalWarning";
-import { numberAttemptsDefault, authCodeQueryParam } from "@config/environment";
+import { numberAttemptsDefault, authCodeQueryParam, stateQueryParam } from "@config/environment";
 
 const useTwoStepLoginForm = (props: IUseTwoStepLoginForm) => {
-  const { setModalWarningType, setRedirectPortal, callbackUrl } = props;
+  const { setModalWarningType, setRedirectPortal, callbackUrl, state, codeChallenge } = props;
   const [currentStep, setCurrentStep] = useState<EFormStepLabels>(
     EFormStepLabels.USER_NAME_INPUT,
   );
@@ -23,6 +24,8 @@ const useTwoStepLoginForm = (props: IUseTwoStepLoginForm) => {
   const [inputValue, setInputValue] = useState("");
   const [userName, setUserName] = useState<string>("");
   const [labels, setLabels] = useState<IFormStepLabels>(userNameStepLabels);
+  const [securityImage, setSecurityImage] = useState<string>("");
+  const [securityPhrase, setSecurityPhrase] = useState<string>("");
   const [numberPasswordAttempts, setNumberPasswordAttempts] = useState(0);
   const handleInputChange = (
     formSubmitEvent: React.ChangeEvent<HTMLInputElement>,
@@ -73,17 +76,31 @@ const useTwoStepLoginForm = (props: IUseTwoStepLoginForm) => {
         }));
         return;
       }
+      if (response.status !== 200) {
+        setInputValid(false);
+        setLabels((prev) => ({
+          ...prev,
+          validation: {
+            ...prev.validation,
+            errorMessage: messages.messageServiceError,
+          },
+        }));
+        return;
+      }
 
       setUserName(inputValue);
-      setCurrentStep(EFormStepLabels.USER_PASSWORD_INPUT);
+      setSecurityImage(response.urlSecuritySignedImage || "");
+      setSecurityPhrase(response.safetyPhrase);
+      setCurrentStep(EFormStepLabels.SECURITY_CHECK);
       setInputValid(null);
       setInputValue("");
-      setLabels({
-        ...passwordStepLabels,
-        header: {
-          ...passwordStepLabels.header,
-        },
-      });
+      setLabels(securityStepLabels);
+    }
+
+    if (currentStep === EFormStepLabels.SECURITY_CHECK) {
+      setCurrentStep(EFormStepLabels.USER_PASSWORD_INPUT);
+      setLabels(passwordStepLabels);
+      return;
     }
 
     if (currentStep === EFormStepLabels.USER_PASSWORD_INPUT) {
@@ -106,6 +123,8 @@ const useTwoStepLoginForm = (props: IUseTwoStepLoginForm) => {
         password: inputValue,
         username: userName,
         callbackUrl: callbackUrl,
+        state: state,
+        codeChallenge: codeChallenge,
       });
 
       if (
@@ -145,6 +164,8 @@ const useTwoStepLoginForm = (props: IUseTwoStepLoginForm) => {
         if (response.authenticationCode) {
           const queryParamName = authCodeQueryParam ?? "ac";
           url.searchParams.set(queryParamName, response.authenticationCode);
+          const stateParamName = stateQueryParam ?? "state";
+          url.searchParams.set(stateParamName, state ?? "");
         }
         window.location.href = url.toString();
       }, 2000);
@@ -170,6 +191,8 @@ const useTwoStepLoginForm = (props: IUseTwoStepLoginForm) => {
     widthStack,
     labelsSize,
     labelsSizeDifferent,
+    securityImage,
+    securityPhrase,
   };
 };
 

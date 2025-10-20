@@ -1,16 +1,28 @@
 import { HomeUI } from "@pages/home/interface";
-import { useMediaQuery } from "@inubekit/inubekit";
+import { Spinner, Stack, useMediaQuery } from "@inubekit/inubekit";
 import { useEffect, useState } from "react";
 import { IHome } from "@ptypes/pages/home/IHome";
-import { useBusinessData } from "@hooks/useBusinessData";
+import { useBusinessDataContext } from "@context/businessData";
 import { EModalWarning } from "@enum/components/EModalWarning";
+import { StatusMessage } from "@pages/statusMessage";
+import { EStatusMessage } from "@enum/pages/EStatusMessage";
+import { PageLayout } from "@components/layout/PageLayout";
+import { useHomeValidation } from "@hooks/useHomeValidation";
+import { useInstitutionalMessage } from "@hooks/useInstitutionalMessage";
 
 const Home = (props: IHome) => {
-  const { originatorId, originatorCode, callbackUrl } = props;
-  const { urlLogo } = useBusinessData({
+  const {
     originatorId,
-    originatorCode,
-  });
+    callbackUrl,
+    applicationName,
+    state,
+    codeChallenge,
+    hasMissingParams,
+    isValidatingOriginator,
+    hasOriginatorError,
+  } = useHomeValidation(props);
+
+  const { originatorData, fetchOriginatorData } = useBusinessDataContext();
   const screenMobile = useMediaQuery("(max-width: 768px)");
   const [isModalWarningOpen, setIsModalWarningOpen] = useState(false);
   const [modalWarningType, setModalWarningType] = useState<EModalWarning>(
@@ -18,6 +30,15 @@ const Home = (props: IHome) => {
   );
   const handleCloseModal = () => setIsModalWarningOpen(false);
   const [isRedirectPortal, setIsRedirectPortal] = useState(false);
+  const { modalInformation } = useInstitutionalMessage();
+
+  useEffect(() => {
+    if (originatorId) {
+      fetchOriginatorData(originatorId).catch((error) => {
+        console.error("Error fetching originator data:", error);
+      });
+    }
+  }, [originatorId, fetchOriginatorData]);
 
   useEffect(() => {
     if (modalWarningType !== EModalWarning.NONE) {
@@ -25,17 +46,56 @@ const Home = (props: IHome) => {
     }
   }, [modalWarningType]);
 
+  if (hasMissingParams) {
+    return (
+      <PageLayout>
+        <StatusMessage
+          messageType={EStatusMessage.MISSING_PARAMS}
+        />
+      </PageLayout>
+    );
+  }
+
+  if (isValidatingOriginator) {
+    return (
+      <PageLayout>
+        <Stack
+          justifyContent="center"
+          alignItems="center"
+          height="100%"
+          width="100%"
+        >
+          <Spinner />
+        </Stack>
+      </PageLayout>
+    );
+  }
+
+  if (hasOriginatorError) {
+    return (
+      <PageLayout>
+        <StatusMessage
+          messageType={EStatusMessage.GENERAL_ERROR}
+        />
+      </PageLayout>
+    );
+  }
+
   return (
     <HomeUI
       isMobile={screenMobile}
       modalWarningType={modalWarningType}
       setModalWarningType={setModalWarningType}
-      urlLogo={urlLogo}
+      urlLogo={originatorData?.signedUrlLogo || ""}
       handleCloseModal={handleCloseModal}
       isModalWarningOpen={isModalWarningOpen}
       isRedirectPortal={isRedirectPortal}
       setRedirectPortal={setIsRedirectPortal}
       callbackUrl={callbackUrl}
+      applicationName={applicationName}
+      state={state}
+      codeChallenge={codeChallenge}
+      modalInformation={modalInformation}
     />
   );
 };

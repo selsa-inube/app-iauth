@@ -37,11 +37,11 @@ const StatusMessage = (props: IStatusMessage) => {
   const messageConfig = getMessageConfig();
 
   const handleButtonClick = () => {
-    if (onButtonClick) {
-      onButtonClick();
-    } else {
+    if (!onButtonClick) {
       navigate("/");
+      return;
     }
+    onButtonClick();
   };
 
   return (
@@ -49,7 +49,9 @@ const StatusMessage = (props: IStatusMessage) => {
       title={messageConfig.title}
       message={messageConfig.message}
       buttonText={messageConfig.buttonText}
-      buttonAppearance={messageConfig.buttonAppearance}
+      buttonAppearance={
+        messageConfig.buttonText ? messageConfig.buttonAppearance : undefined
+      }
       icon={messageConfig.icon}
       onButtonClick={handleButtonClick}
       labelsSizeDifferent={labelsSizeDifferent}

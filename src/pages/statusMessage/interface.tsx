@@ -23,7 +23,7 @@ const StatusMessageUI = (props: IStatusMessageUI) => {
         title={title}
         message={message}
         buttonText={buttonText}
-        buttonAppearance={buttonAppearance}
+        buttonAppearance={buttonText ? buttonAppearance : undefined}
         icon={icon}
         onButtonClick={onButtonClick}
         labelsSizeDifferent={labelsSizeDifferent}

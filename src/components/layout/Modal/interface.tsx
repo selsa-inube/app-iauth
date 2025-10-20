@@ -29,7 +29,7 @@ const ModalUI = (props: IModalUI) => {
           margin={`0 0 ${tokensWithReference.spacing.s250} 0`}
         >
           {title ? (
-            <Text type="headline" size="small" appearance="dark">
+            <Text type="title" size="large" appearance="dark">
               {title}
             </Text>
           ) : (

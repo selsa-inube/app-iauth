@@ -9,7 +9,6 @@ const getSecurityQuestions = async (
 ): Promise<ISecurityQuestionsResponse> => {
   const config: AxiosRequestConfig = {
     headers: {
-      "X-Business-Unit": "test",
       "X-Action": "SearchSecurityQuestionAndAnswer",
     },
   };

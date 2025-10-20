@@ -1,5 +1,9 @@
 interface IValidationsUsername {
-    status: number
+    status: number;
+    userAccount: string;
+    safetyPhrase: string;
+    securityImageUrl?: string;
+    urlSecuritySignedImage?: string;
 }
 
 export type { IValidationsUsername };

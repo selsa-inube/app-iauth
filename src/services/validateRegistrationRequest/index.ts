@@ -9,7 +9,7 @@ import type { UserData } from "@ptypes/hooks/useValidationToken/IUserData";
 const validateRegistrationRequest = async (
   token: string,
 ): Promise<ValidationResult> => {
-  const url = "/user-account-management-requests";
+  const url = "/user-account-management-requests/valid";
   const body : IValidateRegistrationRequest = { userManagementRequestsIdEncrypt: token };
   const config : AxiosRequestConfig = {
     headers: {
@@ -17,32 +17,10 @@ const validateRegistrationRequest = async (
     },
   };
 
-  let response: AxiosResponse<IValidateRegistrationResponse | IValidateRegistrationErrorResponse> | undefined =
+  const response: AxiosResponse<IValidateRegistrationResponse | IValidateRegistrationErrorResponse> =
     await axiosInstance.post(url, body, config);
-  const backendReturnedError = !response || !(response.status >= 200 && response.status < 300) || (response.data && (response.data as IValidateRegistrationErrorResponse).code);
-  if (backendReturnedError) {
-    const mockData: IValidateRegistrationResponse = {
-      identificationType: "CC",
-      identificationNumber: "1234567890",
-      firstNames: "Juan",
-      lastNames: "Pérez",
-      originatorCode: "SistemasEnlinea",
-      originatorName: "Sistemas Enlinea",
-      userManagementRequestsId: "id-originador-prueba",
-      consumerApplicationCode: "Linix",
-      biologicalSex: "Male"
-    };
 
-    response = {
-      data: mockData,
-      status: 200,
-      statusText: "OK",
-      headers: {},
-      config: {},
-    } as AxiosResponse<IValidateRegistrationResponse>;
-  }
-
-  const { status, data } = response!;
+  const { status, data } = response;
 
   if (status >= 200 && status < 300 && data && !(<IValidateRegistrationErrorResponse>data).code) {
     const success = data as IValidateRegistrationResponse;
@@ -56,6 +34,7 @@ const validateRegistrationRequest = async (
       consumerApplicationCode: success.consumerApplicationCode ?? "",
       userManagementRequestsId: success.userManagementRequestsId ?? "",
       userManagementRequestsIdEncrypt: token,
+      registrationRedirectUrl: success.registrationRedirectUrl
     };
 
     return { type: "VALID_USER_DATA", userData } as ValidationResult;

@@ -8,8 +8,7 @@ const getOriginator = async (
 ): Promise<IOriginatorSuccess> => {
   const config: AxiosRequestConfig = {
     headers: {
-      "X-Business-Unit": "test",
-      "X-Action": "SearchValidOriginator",
+      "X-Action": "SearchGeneralOriginator",
     },
   };
 
@@ -22,13 +21,12 @@ const getOriginator = async (
   }
 
   const queryString = queryParams.toString();
-  const url = `/originators${queryString ? `?${queryString}` : ""}`;
+  const url = `/originators/valid${queryString ? `?${queryString}` : ""}`;
 
   const { data } = await iauthQueryAxiosInstance.get<IOriginatorSuccess>(
     url,
     config,
   );
-
   return data;
 };
 

@@ -4,10 +4,10 @@ import { EStatusIcon } from "@enum/components/EStatusIcon";
 interface IInformativeCard {
   title: string;
   message: string;
-  buttonText: string;
-  buttonAppearance: "primary" | "warning";
+  buttonText?: string;
+  buttonAppearance?: "primary" | "warning";
   icon: EStatusIcon;
-  onButtonClick: () => void;
+  onButtonClick?: () => void;
   labelsSizeDifferent: ITextSize;
 }
 

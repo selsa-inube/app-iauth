@@ -11,6 +11,14 @@ interface IHomeUI {
   isRedirectPortal: boolean;
   setRedirectPortal: React.Dispatch<React.SetStateAction<boolean>>;
   callbackUrl?: string;
+  applicationName?: string;
+  state?: string;
+  codeChallenge?: string;
+  modalInformation?: {
+    showModal?: boolean;
+    title?: string;
+    content?: string;
+  };
 }
 
 export type { IHomeUI };

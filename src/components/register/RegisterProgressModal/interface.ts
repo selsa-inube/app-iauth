@@ -7,6 +7,7 @@ interface IRegisterProgressModal {
   progressSteps: IRequestSteps[];
   onModalClose?: () => void;
   originatorName?: string;
+  registrationRedirectUrl: string;
 }
 
 export type { IRegisterProgressModal };
