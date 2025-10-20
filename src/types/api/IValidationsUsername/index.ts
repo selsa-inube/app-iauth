@@ -3,7 +3,7 @@ interface IValidationsUsername {
     userAccount: string;
     safetyPhrase: string;
     securityImageUrl?: string;
-    signedUrl?: string;
+    urlSecuritySignedImage?: string;
 }
 
 export type { IValidationsUsername };
