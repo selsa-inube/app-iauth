@@ -13,7 +13,6 @@ interface ISaveUserAccountRequest {
   surnames: string;
   userAccount: string;
   userPhoneNumber: string;
-  consumerApplicationCode: string;
   mainOriginatorCode: string;
   securityQuestions?: ISecurityQuestionAnswer[];
   userAccountAuthenticationMethod: IUserAccountAuthenticationMethod;

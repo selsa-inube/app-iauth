@@ -20,7 +20,6 @@ const registerUser = async (
     surnames: params.userData.lastNames,
     userAccount: params.formData.username,
     userPhoneNumber: params.formData.phone,
-    consumerApplicationCode: params.userData.consumerApplicationCode ?? "",
     mainOriginatorCode: params.userData.originatorCode ?? "",
     ...(Object.entries(params.formData.securityAnswers || {}).length > 0 && {
       securityQuestions: Object.entries(params.formData.securityAnswers || {})

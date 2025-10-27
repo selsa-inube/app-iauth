@@ -17,8 +17,6 @@ interface ISaveUserAccountResponse {
   userAccountStatus?: string;
   mainOriginatorCode?: string;
   mainOriginatorName?: string;
-  consumerApplicationCode?: string;
-  consumerApplicationName?: string;
   dateOfTheLastBlock?: string;
   usersConsentOfScopeAttributes?: IUsersConsentOfScopeAttribute[];
   userAccountAuthenticationMethods?: IUserAccountAuthenticationMethodResponse[];

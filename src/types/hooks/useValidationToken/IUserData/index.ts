@@ -5,7 +5,6 @@ interface UserData {
   lastNames: string;
   originatorCode: string;
   originatorName: string;
-  consumerApplicationCode: string;
   userManagementRequestsId: string;
   userManagementRequestsIdEncrypt: string;
   registrationRedirectUrl: string;

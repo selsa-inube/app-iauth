@@ -31,7 +31,6 @@ const validateRegistrationRequest = async (
       lastNames: success.lastNames ?? "",
       originatorCode: success.originatorCode,
       originatorName: success.originatorName,
-      consumerApplicationCode: success.consumerApplicationCode ?? "",
       userManagementRequestsId: success.userManagementRequestsId ?? "",
       userManagementRequestsIdEncrypt: token,
       registrationRedirectUrl: success.registrationRedirectUrl
