@@ -1,5 +1,5 @@
 import { HomeUI } from "@pages/home/interface";
-import { Spinner, Stack, useMediaQuery } from "@inubekit/inubekit";
+import { Spinner, Stack, useFlag, useMediaQuery } from "@inubekit/inubekit";
 import { useEffect, useState } from "react";
 import { IHome } from "@ptypes/pages/home/IHome";
 import { useBusinessDataContext } from "@context/businessData";
@@ -9,6 +9,9 @@ import { EStatusMessage } from "@enum/pages/EStatusMessage";
 import { PageLayout } from "@components/layout/PageLayout";
 import { useHomeValidation } from "@hooks/useHomeValidation";
 import { useInstitutionalMessage } from "@hooks/useInstitutionalMessage";
+import { flags } from "@config/hook/flags";
+
+const PERMANENT_FLAG_DURATION = 100000000000;
 
 const Home = (props: IHome) => {
   const {
@@ -21,6 +24,7 @@ const Home = (props: IHome) => {
     isValidatingOriginator,
     hasOriginatorError,
   } = useHomeValidation(props);
+  const {addFlag} = useFlag();
 
   const { originatorData, fetchOriginatorData } = useBusinessDataContext();
   const screenMobile = useMediaQuery("(max-width: 768px)");
@@ -28,7 +32,15 @@ const Home = (props: IHome) => {
   const [modalWarningType, setModalWarningType] = useState<EModalWarning>(
     EModalWarning.NONE,
   );
-  const handleCloseModal = () => setIsModalWarningOpen(false);
+  const handleCloseModal = () => {
+    setIsModalWarningOpen(false);
+    addFlag({
+          title: flags.accountLocked.title,
+          description: flags.accountLocked.description,
+          appearance: "help",
+          duration: PERMANENT_FLAG_DURATION,
+        });
+  }
   const [isRedirectPortal, setIsRedirectPortal] = useState(false);
   const { modalInformation } = useInstitutionalMessage();
 
