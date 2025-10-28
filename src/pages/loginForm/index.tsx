@@ -9,6 +9,7 @@ const LoginForm = (props: ILoginForm) => {
   const {
     showLink,
     currentStep,
+    handleBack,
     handleInputChange,
     handleSubmit,
     labels,
@@ -33,6 +34,7 @@ const LoginForm = (props: ILoginForm) => {
       <LoginFormUI
         currentStep={currentStep}
         handleSubmit={handleSubmit}
+        onBack={handleBack}
         labels={labels}
         inputValid={inputValid}
         handleInputChange={handleInputChange}

@@ -45,6 +45,24 @@ const useTwoStepLoginForm = (props: IUseTwoStepLoginForm) => {
     }
   };
 
+  const handleBack = () => {
+    if (currentStep === EFormStepLabels.USER_PASSWORD_INPUT) {
+      setCurrentStep(EFormStepLabels.SECURITY_CHECK);
+      setLabels(securityStepLabels);
+      setInputValue("");
+      setInputValid(null);
+      return;
+    }
+
+    if (currentStep === EFormStepLabels.SECURITY_CHECK) {
+      setCurrentStep(EFormStepLabels.USER_NAME_INPUT);
+      setLabels(userNameStepLabels);
+      setInputValue("");
+      setInputValid(null);
+      return;
+    }
+  };
+
   const handleSubmit = async (
     formSubmitEvent: React.FormEvent<HTMLFormElement>,
   ) => {
@@ -184,6 +202,7 @@ const useTwoStepLoginForm = (props: IUseTwoStepLoginForm) => {
     userName,
     handleInputChange,
     handleSubmit,
+    handleBack,
     labels,
     inputValid,
     inputValue,

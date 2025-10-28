@@ -6,6 +6,7 @@ import { ITextSize } from "@ptypes/components/ITextSize";
 interface ILoginForm {
   currentStep: EFormStepLabels;
   handleSubmit: (e: FormEvent<HTMLFormElement>) => Promise<void>;
+  onBack: () => void;
   labels: IFormStepLabels;
   inputValid: boolean | null;
   handleInputChange: (e: ChangeEvent<HTMLInputElement>) => void;

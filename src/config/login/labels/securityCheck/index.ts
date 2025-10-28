@@ -6,6 +6,7 @@ const securityLabels = {
   actions: {
     continue: "Continuar",
     login: "Iniciar sesión",
+    back: "Volver",
   },
   imageAlt: "Imagen de seguridad",
 };

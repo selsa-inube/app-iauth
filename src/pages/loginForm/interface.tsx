@@ -1,4 +1,4 @@
-import { Divider, Grid, Stack, Button } from "@inubekit/inubekit";
+import { Divider, Grid, Stack, Button, Icon } from "@inubekit/inubekit";
 import { Links } from "@pages/link";
 import { DynamicInputs } from "@components/login/DynamicInputs";
 import { ILoginForm } from "@ptypes/components/login/ILoginForm";
@@ -6,10 +6,12 @@ import { Header } from "@components/layout/Header";
 import { SecurityCheck } from "@components/login/SecurityCheck";
 import { EFormStepLabels } from "@enum/hooks/EFormStepLabels";
 import { securityLabels } from "@config/login/labels/securityCheck";
+import { MdOutlineArrowBack } from "react-icons/md";
 
 const LoginFormUI = (props: ILoginForm) => {
   const {
     handleSubmit,
+    onBack,
     labels,
     inputValid,
     handleInputChange,
@@ -24,6 +26,7 @@ const LoginFormUI = (props: ILoginForm) => {
   } = props;
   const isSecurityStep = currentStep === EFormStepLabels.SECURITY_CHECK;
   const isPasswordStep = currentStep === EFormStepLabels.USER_PASSWORD_INPUT;
+  const showBack = isSecurityStep || isPasswordStep;
 
   return (
     <form onSubmit={handleSubmit}>
@@ -35,7 +38,21 @@ const LoginFormUI = (props: ILoginForm) => {
         width="100%"
         height="100%"
       >
-        <Header />
+        {showBack ? (
+          <Grid templateColumns="auto 1fr auto" alignItems="center" width={screenMobile}>
+            <Stack width="24px" alignItems="flex-start">
+              <Icon
+                onClick={onBack}
+                icon={<MdOutlineArrowBack />}
+                appearance="gray"
+              />
+            </Stack>
+            <Header />
+            <Stack width="24px" />
+          </Grid>
+        ) : (
+          <Header />
+        )}
 
         <Divider dashed />
 
@@ -64,14 +81,30 @@ const LoginFormUI = (props: ILoginForm) => {
           />
         )}
 
-        <Stack direction="column" width={screenMobile} alignItems="center">
-          <Button
-            appearance="primary"
-            type="submit"
-            children={isPasswordStep ? securityLabels.actions.login : securityLabels.actions.continue}
-            fullwidth={true}
-          />
-        </Stack>
+        {isSecurityStep ? (
+          <Stack direction="row" width={screenMobile} justifyContent="flex-end" gap="16px">
+            <Button
+              type="button"
+              onClick={onBack}
+              variant="outlined"
+              appearance="gray"
+            >
+              {securityLabels.actions.back}
+            </Button>
+            <Button appearance="primary" type="submit">
+              {securityLabels.actions.continue}
+            </Button>
+          </Stack>
+        ) : (
+          <Stack direction="column" width={screenMobile} alignItems="center">
+            <Button
+              appearance="primary"
+              type="submit"
+              children={isPasswordStep ? securityLabels.actions.login : securityLabels.actions.continue}
+              fullwidth={true}
+            />
+          </Stack>
+        )}
         {showLink && <Links labelsSize="small" />}
       </Grid>
     </form>
