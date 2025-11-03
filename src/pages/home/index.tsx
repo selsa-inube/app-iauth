@@ -34,12 +34,14 @@ const Home = (props: IHome) => {
   );
   const handleCloseModal = () => {
     setIsModalWarningOpen(false);
-    addFlag({
-          title: flags.accountLocked.title,
-          description: flags.accountLocked.description,
-          appearance: "help",
-          duration: PERMANENT_FLAG_DURATION,
-        });
+    if(modalWarningType === EModalWarning.SECOND_WARNING) {
+      addFlag({
+            title: flags.accountLocked.title,
+            description: flags.accountLocked.description,
+            appearance: "help",
+            duration: PERMANENT_FLAG_DURATION,
+          });
+      }
   }
   const [isRedirectPortal, setIsRedirectPortal] = useState(false);
   const { modalInformation } = useInstitutionalMessage();
