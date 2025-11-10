@@ -6,7 +6,7 @@ import { AxiosRequestConfig } from "axios";
 
 const validatePassword = async (props: IValidateParams): Promise<IValidate> => {
   let { password, username } = props;
-  const { callbackUrl, state, codeChallenge } = props;
+  const { callbackUrl, state, codeChallenge, applicationName } = props;
   if (password && username) {
     password = btoa(password);
     username = btoa(username);
@@ -22,6 +22,7 @@ const validatePassword = async (props: IValidateParams): Promise<IValidate> => {
   const { data } = await axiosInstance.post<IValidate>("/user-accounts/", {
     userAccount: username,
     authenticationCredential: password,
+    applicationName: applicationName,
     state: state,
     codeChallenge: codeChallenge,
     callbackUrl: finalCallbackUrl,
