@@ -6,6 +6,7 @@ interface ILoginForm {
   callbackUrl?: string;
   state?: string;
   codeChallenge?: string;
+  applicationName?: string;
 }
 
 export type { ILoginForm };
