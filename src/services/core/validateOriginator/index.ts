@@ -1,4 +1,4 @@
-import {iauthQueryAxiosInstance} from "@api/iauthQuery";
+import { axiosInstance } from "@api/auth";
 import { IValidateOriginatorParams } from "@ptypes/services/core/IValidateOriginatorParams";
 import { AxiosRequestConfig, AxiosResponse } from "axios";
 
@@ -11,21 +11,27 @@ const validateOriginator = async (
     throw new Error("Missing originator identifier");
   }
 
-  const queryParams = new URLSearchParams();
-  queryParams.append("applicationName", applicationName);
-  queryParams.append("callbackUrl", callbackUrl);
-  queryParams.append("originatorId", originatorId);
-
   const config: AxiosRequestConfig = {
     headers: {
       "X-Action": "SearchValidOriginator",
     },
   };
 
-  const url = `/originators/valid?${queryParams.toString()}`;
-  const response = (await iauthQueryAxiosInstance.get(url, config)) as AxiosResponse;
+  const url = "/originators/valid";
 
-  return response?.status === 204;
+  const requestBody = {
+    originatorId,
+    applicationName,
+    callbackUrl,
+  };
+
+  const response = (await axiosInstance.post(
+    url,
+    requestBody,
+    config,
+  )) as AxiosResponse;
+
+  return response?.status === 200;
 };
 
 export { validateOriginator };
