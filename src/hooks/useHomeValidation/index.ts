@@ -1,7 +1,9 @@
 import { useEffect, useMemo, useState } from "react";
 import { validateOriginator } from "@services/core/validateOriginator";
+import { authenticateBySession } from "@services/core/authenticateBySession";
 import { IUseHomeValidation } from "@ptypes/hooks/useHomeValidation";
 import { IHome } from "@ptypes/pages/home/IHome";
+import { buildRedirectUrl } from "@utils/buildRedirectUrl";
 
 const REQUIRED_PARAMS = [
   "originatorId",
@@ -94,6 +96,29 @@ const useHomeValidation = (props: IHome): IUseHomeValidation => {
 
         if (!isValid) {
           setHasOriginatorError(true);
+          return;
+        }
+
+        if (stateValue && codeChallenge) {
+          const sessionResponse = await authenticateBySession({
+            state: stateValue,
+            callbackUrl,
+            codeChallenge,
+          });
+
+          if (!isSubscribed) {
+            return;
+          }
+
+          if (sessionResponse) {
+            const redirectUrl = buildRedirectUrl({
+              callbackUrl: sessionResponse.callbackUrl ?? callbackUrl,
+              authenticationCode: sessionResponse.authenticationCode,
+              state: sessionResponse.state ?? stateValue,
+            });
+            window.location.href = redirectUrl;
+            return;
+          }
         }
       } catch {
         if (isSubscribed) {
