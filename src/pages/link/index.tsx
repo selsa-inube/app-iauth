@@ -3,11 +3,12 @@ import { ILink } from "@ptypes/components/login/ILink";
 
 const Links = (props:ILink) => {
     const {
-        labelsSize
+        labelsSize,
+        registerUrl
     } = props;
 
     return(
-        <LinksUI labelsSize={labelsSize} />
+        <LinksUI labelsSize={labelsSize} registerUrl={registerUrl} />
     );
 }
 

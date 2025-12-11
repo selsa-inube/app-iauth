@@ -11,10 +11,14 @@ const REQUIRED_PARAMS = [
   "codeChallenge",
 ] as const;
 
+const OPTIONAL_PARAMS = ["registerUrl"] as const;
+
+type AllParams = (typeof REQUIRED_PARAMS)[number] | (typeof OPTIONAL_PARAMS)[number];
+
 const getValueFromSources = (
   explicitValue: string | undefined,
   searchParams: URLSearchParams,
-  paramName: (typeof REQUIRED_PARAMS)[number],
+  paramName: AllParams,
 ) => explicitValue ?? searchParams.get(paramName) ?? undefined;
 
 const useHomeValidation = (props: IHome): IUseHomeValidation => {
@@ -43,6 +47,11 @@ const useHomeValidation = (props: IHome): IUseHomeValidation => {
     props.codeChallenge,
     searchParams,
     "codeChallenge",
+  );
+  const registerUrl = getValueFromSources(
+    props.registerUrl,
+    searchParams,
+    "registerUrl",
   );
 
   const hasMissingParams = [
@@ -119,6 +128,7 @@ const useHomeValidation = (props: IHome): IUseHomeValidation => {
     applicationName,
     state: stateValue,
     codeChallenge,
+    registerUrl,
     hasMissingParams,
     isValidatingOriginator,
     hasOriginatorError,

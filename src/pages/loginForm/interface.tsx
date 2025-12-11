@@ -22,7 +22,8 @@ const LoginFormUI = (props: ILoginForm) => {
     showLink,
     securityImage,
     securityPhrase,
-    isMobile
+    isMobile,
+    registerUrl
   } = props;
   const isSecurityStep = currentStep === EFormStepLabels.SECURITY_CHECK;
   const isPasswordStep = currentStep === EFormStepLabels.USER_PASSWORD_INPUT;
@@ -105,7 +106,7 @@ const LoginFormUI = (props: ILoginForm) => {
             />
           </Stack>
         )}
-        {showLink && <Links labelsSize="small" />}
+        {showLink && <Links labelsSize="small" registerUrl={registerUrl} />}
       </Grid>
     </form>
   );
