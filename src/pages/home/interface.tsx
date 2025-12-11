@@ -25,6 +25,7 @@ const HomeUI = (props: IHomeUI) => {
     setRedirectPortal,
     callbackUrl,
     applicationName,
+    registerUrl,
     modalInformation,
   } = props;
   return (
@@ -107,6 +108,7 @@ const HomeUI = (props: IHomeUI) => {
             applicationName={applicationName}
             state={props.state}
             codeChallenge={props.codeChallenge}
+            registerUrl={registerUrl}
           />
         </Stack>
       </Stack>

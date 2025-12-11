@@ -19,6 +19,7 @@ interface ILoginForm {
   securityImage?: string;
   securityPhrase?: string;
   isMobile?: boolean;
+  registerUrl?: string;
 }
 
 export type { ILoginForm };

@@ -4,6 +4,7 @@ interface IUseHomeValidation {
   applicationName?: string;
   state?: string;
   codeChallenge?: string;
+  registerUrl?: string;
   hasMissingParams: boolean;
   isValidatingOriginator: boolean;
   hasOriginatorError: boolean;

@@ -20,6 +20,7 @@ const Home = (props: IHome) => {
     applicationName,
     state,
     codeChallenge,
+    registerUrl,
     hasMissingParams,
     isValidatingOriginator,
     hasOriginatorError,
@@ -109,6 +110,7 @@ const Home = (props: IHome) => {
       applicationName={applicationName}
       state={state}
       codeChallenge={codeChallenge}
+      registerUrl={registerUrl}
       modalInformation={modalInformation}
     />
   );
