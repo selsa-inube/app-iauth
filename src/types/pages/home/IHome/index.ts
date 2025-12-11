@@ -4,6 +4,7 @@ interface IHome {
   callbackUrl?: string;
   state?: string;
   codeChallenge?: string;
+  registerUrl?: string;
   modalInformation?: {
     showModal?: boolean;
     title?: string;
