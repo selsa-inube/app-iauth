@@ -1,10 +1,6 @@
-interface IHome {
-  originatorId?: string;
-  applicationName?: string;
-  callbackUrl?: string;
-  state?: string;
-  codeChallenge?: string;
-  registerUrl?: string;
+import { IAuthParams } from "@ptypes/hooks/useAuthParams/IAuthParams";
+
+interface IHome extends IAuthParams {
   modalInformation?: {
     showModal?: boolean;
     title?: string;

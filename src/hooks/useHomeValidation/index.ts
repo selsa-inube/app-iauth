@@ -1,66 +1,21 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 import { validateOriginator } from "@services/core/validateOriginator";
+import { authenticateBySession } from "@services/core/authenticateBySession";
 import { IUseHomeValidation } from "@ptypes/hooks/useHomeValidation";
-import { IHome } from "@ptypes/pages/home/IHome";
+import { IAuthParams } from "@ptypes/hooks/useAuthParams/IAuthParams";
+import { buildRedirectUrl } from "@utils/buildRedirectUrl";
+import { useAuthParams } from "@hooks/useAuthParams";
 
-const REQUIRED_PARAMS = [
-  "originatorId",
-  "applicationName",
-  "callbackUrl",
-  "state",
-  "codeChallenge",
-] as const;
-
-const OPTIONAL_PARAMS = ["registerUrl"] as const;
-
-type AllParams = (typeof REQUIRED_PARAMS)[number] | (typeof OPTIONAL_PARAMS)[number];
-
-const getValueFromSources = (
-  explicitValue: string | undefined,
-  searchParams: URLSearchParams,
-  paramName: AllParams,
-) => explicitValue ?? searchParams.get(paramName) ?? undefined;
-
-const useHomeValidation = (props: IHome): IUseHomeValidation => {
-  const searchParams = useMemo(
-    () => new URLSearchParams(window.location.search),
-    [],
-  );
-
-  const originatorId = getValueFromSources(
-    props.originatorId,
-    searchParams,
-    "originatorId",
-  );
-  const applicationName = getValueFromSources(
-    props.applicationName,
-    searchParams,
-    "applicationName",
-  );
-  const callbackUrl = getValueFromSources(
-    props.callbackUrl,
-    searchParams,
-    "callbackUrl",
-  );
-  const stateValue = getValueFromSources(props.state, searchParams, "state");
-  const codeChallenge = getValueFromSources(
-    props.codeChallenge,
-    searchParams,
-    "codeChallenge",
-  );
-  const registerUrl = getValueFromSources(
-    props.registerUrl,
-    searchParams,
-    "registerUrl",
-  );
-
-  const hasMissingParams = [
+const useHomeValidation = (props: IAuthParams): IUseHomeValidation => {
+  const {
     originatorId,
     applicationName,
     callbackUrl,
-    stateValue,
+    state,
     codeChallenge,
-  ].some((value) => !value);
+    registerUrl,
+    hasMissingParams,
+  } = useAuthParams(props);
 
   const [isValidatingOriginator, setIsValidatingOriginator] = useState(
     !hasMissingParams,
@@ -103,6 +58,29 @@ const useHomeValidation = (props: IHome): IUseHomeValidation => {
 
         if (!isValid) {
           setHasOriginatorError(true);
+          return;
+        }
+
+        if (state && codeChallenge) {
+          const sessionResponse = await authenticateBySession({
+            state,
+            callbackUrl,
+            codeChallenge,
+          });
+
+          if (!isSubscribed) {
+            return;
+          }
+
+          if (sessionResponse) {
+            const redirectUrl = buildRedirectUrl({
+              callbackUrl: sessionResponse.callbackUrl ?? callbackUrl,
+              authenticationCode: sessionResponse.authenticationCode,
+              state: sessionResponse.state ?? state,
+            });
+            window.location.href = redirectUrl;
+            return;
+          }
         }
       } catch {
         if (isSubscribed) {
@@ -126,7 +104,7 @@ const useHomeValidation = (props: IHome): IUseHomeValidation => {
     originatorId,
     callbackUrl,
     applicationName,
-    state: stateValue,
+    state,
     codeChallenge,
     registerUrl,
     hasMissingParams,
