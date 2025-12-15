@@ -5,6 +5,7 @@ import { IUseHomeValidation } from "@ptypes/hooks/useHomeValidation";
 import { IAuthParams } from "@ptypes/hooks/useAuthParams/IAuthParams";
 import { buildRedirectUrl } from "@utils/buildRedirectUrl";
 import { useAuthParams } from "@hooks/useAuthParams";
+import { useBusinessDataContext } from "@context/businessData";
 
 const useHomeValidation = (props: IAuthParams): IUseHomeValidation => {
   const {
@@ -16,6 +17,8 @@ const useHomeValidation = (props: IAuthParams): IUseHomeValidation => {
     registerUrl,
     hasMissingParams,
   } = useAuthParams(props);
+
+  const { fetchOriginatorData } = useBusinessDataContext();
 
   const [isValidatingOriginator, setIsValidatingOriginator] = useState(
     !hasMissingParams,
@@ -60,6 +63,8 @@ const useHomeValidation = (props: IAuthParams): IUseHomeValidation => {
           setHasOriginatorError(true);
           return;
         }
+
+        await fetchOriginatorData(originatorId);
 
         if (state && codeChallenge) {
           const sessionResponse = await authenticateBySession({

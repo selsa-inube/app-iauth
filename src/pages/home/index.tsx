@@ -15,7 +15,6 @@ const PERMANENT_FLAG_DURATION = 100000000000;
 
 const Home = (props: IHome) => {
   const {
-    originatorId,
     callbackUrl,
     applicationName,
     state,
@@ -27,7 +26,7 @@ const Home = (props: IHome) => {
   } = useHomeValidation(props);
   const {addFlag} = useFlag();
 
-  const { originatorData, fetchOriginatorData } = useBusinessDataContext();
+  const { originatorData } = useBusinessDataContext();
   const screenMobile = useMediaQuery("(max-width: 768px)");
   const [isModalWarningOpen, setIsModalWarningOpen] = useState(false);
   const [modalWarningType, setModalWarningType] = useState<EModalWarning>(
@@ -46,14 +45,6 @@ const Home = (props: IHome) => {
   }
   const [isRedirectPortal, setIsRedirectPortal] = useState(false);
   const { modalInformation } = useInstitutionalMessage();
-
-  useEffect(() => {
-    if (originatorId) {
-      fetchOriginatorData(originatorId).catch((error) => {
-        console.error("Error fetching originator data:", error);
-      });
-    }
-  }, [originatorId, fetchOriginatorData]);
 
   useEffect(() => {
     if (modalWarningType !== EModalWarning.NONE) {
