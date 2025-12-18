@@ -10,7 +10,7 @@ const REQUIRED_PARAMS = [
   "codeChallenge",
 ] as const;
 
-const OPTIONAL_PARAMS = ["registerUrl"] as const;
+const OPTIONAL_PARAMS = ["registerUrl", "returnTo"] as const;
 
 type AllParams =
   | (typeof REQUIRED_PARAMS)[number]
@@ -54,6 +54,11 @@ const useAuthParams = (props: IAuthParams = {}): IUseAuthParams => {
     searchParams,
     "registerUrl",
   );
+  const returnTo = getValueFromSources(
+    props.returnTo,
+    searchParams,
+    "returnTo",
+  );
 
   const hasMissingParams = [
     originatorId,
@@ -70,6 +75,7 @@ const useAuthParams = (props: IAuthParams = {}): IUseAuthParams => {
     state,
     codeChallenge,
     registerUrl,
+    returnTo,
     hasMissingParams,
     searchParams,
   };

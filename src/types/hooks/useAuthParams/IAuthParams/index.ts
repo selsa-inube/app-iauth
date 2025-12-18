@@ -5,6 +5,7 @@ interface IAuthParams {
   state?: string;
   codeChallenge?: string;
   registerUrl?: string;
+  returnTo?: string;
 }
 
 export type { IAuthParams };
