@@ -3,7 +3,8 @@ interface IValidate {
     callbackUrl?: string,
     code?: string,
     description?: string,
-    success?: boolean
+    success?: boolean,
+    state?: string
 };
 
 export type { IValidate };    

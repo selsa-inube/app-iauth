@@ -5,16 +5,20 @@
 // eslint-disable-next-line @typescript-eslint/no-empty-object-type
 // eslint-disable-next-line @typescript-eslint/no-empty-object-type
 import "styled-components"
+import "react"
 import { ITheme } from "@ptypes/context/ITheme"
 
 declare module "styled-components" {
     export interface DefaultTheme extends ITheme {}
 }
-//@ts-ignore
-declare global {
-  namespace JSX {
-    interface IntrinsicAttributes {
-      [key: `$${string}`]: any;
-    }
+declare module "react" {
+  interface Attributes {
+    [key: `$${string}`]: unknown;
+  }
+  interface HTMLAttributes<T> {
+    [key: `$${string}`]: unknown;
+  }
+  interface SVGAttributes<T> {
+    [key: `$${string}`]: unknown;
   }
 }

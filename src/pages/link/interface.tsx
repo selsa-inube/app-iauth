@@ -5,8 +5,11 @@ import { links } from "@config/login/links";
 
 const LinksUI = (props: ILink) => {
     const {
-        labelsSize
+        labelsSize,
+        registerUrl
     } = props;
+
+    const isEnabled = Boolean(registerUrl);
 
     return (
         <>
@@ -25,15 +28,26 @@ const LinksUI = (props: ILink) => {
                     appearance="gray"
                     children={links.linkUsername.textSpan}
                 />
-                <Link
-                    path="https://www.sistemasenlinea.com.co/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    size={labelsSize}
-                    type="label"
-                >
-                    {links.linkUsername.textLink}
-                </Link>
+                {isEnabled ? (
+                    <Link
+                        path={registerUrl!}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        size={labelsSize}
+                        type="label"
+                    >
+                        {links.linkUsername.textLink}
+                    </Link>
+                ) : (
+                    <Text
+                        as="span"
+                        size={labelsSize}
+                        appearance="gray"
+                        disabled
+                    >
+                        {links.linkUsername.textLink}
+                    </Text>
+                )}
             </Stack>
         </>
     )

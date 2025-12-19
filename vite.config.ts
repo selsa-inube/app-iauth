@@ -20,7 +20,7 @@ export default defineConfig({
       '@pages': path.resolve(__dirname, './src/pages'),
       '@enum': path.resolve(__dirname, './src/enum'),
       '@services': path.resolve(__dirname, './src/services'),
-
+      '@utils': path.resolve(__dirname, './src/utils'),
     }
   },
 });

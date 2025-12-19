@@ -1,0 +1,62 @@
+import { StatusMessageUI } from "@pages/statusMessage/interface";
+import { useMediaQuery } from "@inubekit/inubekit";
+import { IStatusMessage } from "@ptypes/pages/statusMessage/IStatusMessage";
+import { statusMessages } from "@config/pages/statusMessage";
+import { EStatusMessage } from "@enum/pages/EStatusMessage";
+import { EStatusIcon } from "@enum/components/EStatusIcon";
+import { ITextSize } from "@ptypes/components/ITextSize";
+import { useNavigate } from "react-router-dom";
+const StatusMessage = (props: IStatusMessage) => {
+  const { messageType, customMessage, onButtonClick } = props;
+  const navigate = useNavigate();
+  const screenMobile = useMediaQuery("(max-width: 768px)");
+  const labelsSizeDifferent: ITextSize = screenMobile ? "medium" : "large";
+  const getMessageConfig = () => {
+    if (messageType === EStatusMessage.NONE) {
+      return {
+        title: "Mensaje no definido",
+        message: "No se ha especificado un tipo de mensaje válido.",
+        buttonText: "Entendido",
+        buttonAppearance: "primary" as const,
+        icon: EStatusIcon.USER_CHECK,
+      };
+    }
+
+    const baseMessage =
+      statusMessages[messageType as keyof typeof statusMessages];
+
+    return {
+      title: customMessage?.title ?? baseMessage.title,
+      message: customMessage?.message ?? baseMessage.message,
+      buttonText: customMessage?.buttonText ?? baseMessage.buttonText,
+      buttonAppearance: customMessage?.buttonAppearance ?? baseMessage.buttonAppearance,
+      icon: customMessage?.icon ?? baseMessage.icon,
+    };
+  };
+
+  const messageConfig = getMessageConfig();
+
+  const handleButtonClick = () => {
+    if (!onButtonClick) {
+      navigate("/");
+      return;
+    }
+    onButtonClick();
+  };
+
+  return (
+    <StatusMessageUI
+      title={messageConfig.title}
+      message={messageConfig.message}
+      buttonText={messageConfig.buttonText}
+      buttonAppearance={
+        messageConfig.buttonText ? messageConfig.buttonAppearance : undefined
+      }
+      icon={messageConfig.icon}
+      onButtonClick={handleButtonClick}
+      labelsSizeDifferent={labelsSizeDifferent}
+    />
+  );
+};
+
+export { StatusMessage };

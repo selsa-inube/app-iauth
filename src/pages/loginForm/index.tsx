@@ -4,11 +4,12 @@ import { Card } from "@components/layout/Card";
 import { ILoginForm } from "@ptypes/pages/loginForm/ILoginForm";
 
 const LoginForm = (props: ILoginForm) => {
-  const { setModalWarningType, setRedirectPortal, callbackUrl } = props;
+  const { setModalWarningType, setRedirectPortal, callbackUrl, state, codeChallenge, applicationName, registerUrl } = props;
 
   const {
     showLink,
     currentStep,
+    handleBack,
     handleInputChange,
     handleSubmit,
     labels,
@@ -17,10 +18,16 @@ const LoginForm = (props: ILoginForm) => {
     widthStack,
     labelsSize,
     labelsSizeDifferent,
+    securityImage,
+    securityPhrase,
+    screenMobile
   } = useTwoStepLoginForm({
     setModalWarningType,
     setRedirectPortal,
     callbackUrl,
+    applicationName,
+    state,
+    codeChallenge,
   });
 
   return (
@@ -28,6 +35,7 @@ const LoginForm = (props: ILoginForm) => {
       <LoginFormUI
         currentStep={currentStep}
         handleSubmit={handleSubmit}
+        onBack={handleBack}
         labels={labels}
         inputValid={inputValid}
         handleInputChange={handleInputChange}
@@ -36,6 +44,10 @@ const LoginForm = (props: ILoginForm) => {
         labelsSize={labelsSize}
         labelsSizeDifferent={labelsSizeDifferent}
         showLink={showLink}
+        securityImage={securityImage}
+        securityPhrase={securityPhrase}
+        isMobile={screenMobile}
+        registerUrl={registerUrl}
       />
     </Card>
   );

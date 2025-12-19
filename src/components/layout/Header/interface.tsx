@@ -1,13 +1,11 @@
 import { Stack, Text } from "@inubekit/inubekit";
 import { titles } from "@config/login/titles";
-import { IHeader } from "@ptypes/components/login/IHeader";
 import { StyledImg } from "./styled";
+import { useBusinessDataContext } from "@context/businessData";
 
 
-const HeaderUI = (props: IHeader) => {
-    const {
-        labelsSizeDifferent
-    } = props;
+const HeaderUI = () => {
+    const {originatorData} = useBusinessDataContext();
 
     return (
         <Stack
@@ -16,26 +14,18 @@ const HeaderUI = (props: IHeader) => {
         >
             <Stack
                 alignItems="center"
-                height="34.02px"
+                height="50px"
                 justifyContent="center"
                 gap="7.07px"
             >
-                <StyledImg />
-                <Text
-                    type="title"
-                    size={labelsSizeDifferent}
-                    appearance="gray"
-                    weight="bold"
-                >
-                    {titles.firstTitleIAuth}
-                </Text>
+                <StyledImg img={originatorData?.signedUrlBrand} />
             </Stack>
             <Stack>
                 <Text
                     textAlign="center"
                     type="body"
                     size="medium"
-                    appearance="dark"
+                    appearance="gray"
                     weight="normal"
                 >
                     {titles.secondTitleIAuth}

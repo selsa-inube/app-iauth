@@ -2,7 +2,7 @@ import { Box } from ".";
 import { IBox } from "@ptypes/components/box/IBox";
 import { Button, Text, Stack, inube } from "@inubekit/inubekit";
 import { ThemeProvider } from "styled-components";
-import { ITheme } from "@src/types/context/ITheme";
+import { ITheme } from "@ptypes/context/ITheme";
 
 const story = {
   title: "layout/Box",

@@ -28,3 +28,7 @@ storybook-static
 tsconfig.app.tsbuildinfo
 .env
 tsconfig.app.tsbuildinfo
+tsconfig.node.tsbuildinfo
+tsconfig.tsbuildinfo
+*.tsbuildinfo
+vite.config.d.ts

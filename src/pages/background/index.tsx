@@ -1,13 +1,14 @@
+import { useBusinessDataContext } from "@context/businessData";
 import { BackgroundUI } from "./interface";
 import type { ICard } from "@ptypes/components/card/ICard";
 
 const Background = (props: ICard) => {
     const { children } = props;
-
+    const { originatorData } = useBusinessDataContext();
     return (
-        <BackgroundUI>
-            {children}    
-        </ BackgroundUI>
+        <BackgroundUI backgroundImageUrl={originatorData?.signedUrlBackgroundImage}>
+            {children}
+        </BackgroundUI>
     );
 }
  export { Background };

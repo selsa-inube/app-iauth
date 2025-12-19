@@ -1,5 +1,5 @@
 import { Stack, Text } from "@inubekit/inubekit";
-import { StyledImg } from "./styles";
+import { FallbackImage } from "@components/utils/FallbackImage";
 import { LoginForm } from "@pages/loginForm/";
 import { IHomeUI } from "@ptypes/pages/home/IHomeUI";
 import { labelsTitles } from "@config/login/entryPage";
@@ -8,11 +8,12 @@ import { Mask } from "@components/utils/Mask";
 import { mask } from "@config/login/mask";
 import { ModalWarning } from "@components/layout/ModalWarning";
 import { ModalInformation } from "@design/feedback/modalInformation";
-import { tokens } from "@design/tokens/tokens";
 import { spacing } from "@design/tokens/tokensWithReference/spacing/spacing";
 import { RedirectSpinner } from "@pages/redirectSpinner";
+import { useBusinessDataContext } from "@context/businessData";
 
 const HomeUI = (props: IHomeUI) => {
+  const {originatorData} = useBusinessDataContext();
   const {
     isMobile,
     urlLogo,
@@ -23,8 +24,10 @@ const HomeUI = (props: IHomeUI) => {
     isRedirectPortal,
     setRedirectPortal,
     callbackUrl,
+    applicationName,
+    registerUrl,
+    modalInformation,
   } = props;
-
   return (
     <Background>
       <Mask zIndex={mask.maskBackground.zIndex} isModal={false} />
@@ -49,14 +52,17 @@ const HomeUI = (props: IHomeUI) => {
 
       <Stack
         direction="column"
-        padding={`${tokens.spacing.s150} ${tokens.spacing.s400}`}
-        height="auto"
+        height="100vh"
+        justifyContent="flex-start"
+        alignItems="center"
         gap={isMobile ? spacing.s250 : "0"}
       >
         <Stack
           direction="column"
           justifyContent="center"
-          width={isMobile ? `190px` : `200px`}
+          alignItems="center"
+          padding={`${spacing.s200} 0 0 0`}
+          width={isMobile ? `240px` : `360px`}
         >
           <Text
             appearance="gray"
@@ -65,25 +71,44 @@ const HomeUI = (props: IHomeUI) => {
             size="small"
             textAlign="center"
           >
-            {labelsTitles.titleImg}
+            {labelsTitles.titleImg.replace("{0}", applicationName ?? "")}
           </Text>
-          <StyledImg
+          <FallbackImage
             src={urlLogo}
-            $isMobile={isMobile}
             alt={labelsTitles.textAltImg}
+            fallbackText={originatorData?.originatorName}
+            imageHeight={isMobile ? "50px" : "70px"}
+            imageWidth={isMobile ? "180px" : "252px"}
+            isMobile={isMobile}
+            type={isMobile ? "title" : "headline"}
+            textAlign="center"
+            textSize={isMobile ? "large" : "medium"}
+            appearance="dark"
+            weight="bold"
           />
         </Stack>
         <Stack
           direction="column"
           alignItems="center"
+          justifyContent="center"
+          alignContent="center"
           width="100%"
+          height="100%"
           gap={spacing.s200}
         >
-          <ModalInformation />
+          <ModalInformation 
+            showModal={modalInformation?.showModal}
+            title={modalInformation?.title}
+            content={modalInformation?.content}
+          />
           <LoginForm
             setModalWarningType={setModalWarningType}
             setRedirectPortal={setRedirectPortal}
             callbackUrl={callbackUrl}
+            applicationName={applicationName}
+            state={props.state}
+            codeChallenge={props.codeChallenge}
+            registerUrl={registerUrl}
           />
         </Stack>
       </Stack>

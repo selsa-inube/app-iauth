@@ -3,6 +3,7 @@ import {
   iauthQueryProcessService,
   fetchTimeoutServices,
 } from "@config/environment";
+import { setupOriginatorCodeInterceptor } from "@api/originatorCodeInterceptor";
 
 const iauthQueryAxiosInstance: AxiosInstance = axios.create({
   baseURL: iauthQueryProcessService!,
@@ -11,6 +12,8 @@ const iauthQueryAxiosInstance: AxiosInstance = axios.create({
     "Content-type": "application/json; charset=UTF-8",
   },
 });
+
+setupOriginatorCodeInterceptor(iauthQueryAxiosInstance);
 
 iauthQueryAxiosInstance.interceptors.response.use(
   (response) => response,

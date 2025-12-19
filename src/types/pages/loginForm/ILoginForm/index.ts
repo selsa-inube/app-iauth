@@ -4,6 +4,10 @@ interface ILoginForm {
   setModalWarningType: React.Dispatch<React.SetStateAction<EModalWarning>>;
   setRedirectPortal: React.Dispatch<React.SetStateAction<boolean>>;
   callbackUrl?: string;
+  state?: string;
+  codeChallenge?: string;
+  applicationName?: string;
+  registerUrl?: string;
 }
 
 export type { ILoginForm };
