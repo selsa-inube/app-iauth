@@ -8,7 +8,7 @@ import { useAuthParams } from "@hooks/useAuthParams";
 import { IAuthParams } from "@ptypes/hooks/useAuthParams/IAuthParams";
 
 const Logout = (props: IAuthParams) => {
-  const { hasMissingParams } = useAuthParams(props);
+  const { hasMissingParams, returnTo } = useAuthParams(props);
 
   const [isLoggingOut, setIsLoggingOut] = useState(!hasMissingParams);
   const [hasLogoutError, setHasLogoutError] = useState(false);
@@ -36,7 +36,7 @@ const Logout = (props: IAuthParams) => {
         }
 
         if (isSuccess) {
-          const redirectUrl = `/${window.location.search}`;
+          const redirectUrl = returnTo || `/${window.location.search}`;
           window.location.href = redirectUrl;
           return;
         }
